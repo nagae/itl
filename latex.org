@@ -2,7 +2,7 @@
 以下では， =texmf= ディレクトリを Dropbox 上に置く方法を示す．
 ** TeXLive 2013 のインストール
 *** 参考
-- TeX Live を使おう --- Linux ユーザと Mac OS X ユーザのために ---:: http://www.fugenji.org/~thomas/texlive-guide/
+- TeX Live を使おう --- Linux ユーザと Mac OS X ユーザのために --- :: http://www.fugenji.org/~thomas/texlive-guide/
 *** 本体のインストール
 1. インストーラと texlive.profile をダウンロード
 
@@ -20,17 +20,12 @@
      ./install-tl --profile texlive2013.profile
    #+END_SRC
 
-   # 以下は2012年版(古い)：
-   # #+BEGIN_SRC sh
-   # curl -LO https://raw.github.com/gist/3292343/texlive2012.profile
-   # ./install-tl --profile texlive2012.profile
-   # #+End_SRC
-
 3. 不要なファイルを消去
    #+BEGIN_SRC sh
      cd ~/Downloads
      rm -rf install-tl*
    #+END_SRC
+
 **** profile が上手く読めない場合やinteractive modeで自分で設定したい場合
 色々なカスタマイズが可能だが，以下では上記の =texlive2013.profile= と同じ設定にする方法を示す．
 1. 下記の main manu で =Enter command:= の後に =D RET= を入力(ディレクトリ)：
