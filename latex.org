@@ -278,7 +278,7 @@ brew install --with-emacs=/Applications/Emacs.app/Contents/MacOS/Emacs auctex
 | =C-x '=        | 次のエラーを表示                 |
 | =C-u C-x '=    | 前のエラーを表示                 |
 
-※長江研の設定では，=C-c C-c=, =C-c C-r=, =C-c C-b= に続く処理コマンドとして(デフォルトで実装されているものも含め)以下が用意されている：
+※長江研の設定では， =C-c C-c=, =C-c C-r=, =C-c C-b= に続く処理コマンドとして(デフォルトで実装されているものも含め)以下が用意されている：
 #+BEGIN_EXAMPLE
 BibTeX 	Biber 	Check 	Clean 	Clean All 	File 	Index
 LaTeX 	Other 	Print 	Queue 	Spell 	View 	direct
