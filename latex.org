@@ -1,0 +1,401 @@
+* LaTeX
+以下では，=texmf= ディレクトリを Dropbox 上に置く方法を示す．
+** TeXLive 2013 のインストール
+*** 参考
+- TeX Live を使おう --- Linux ユーザと Mac OS X ユーザのために ---:: http://www.fugenji.org/~thomas/texlive-guide/
+*** 本体のインストール
+1. インストーラと texlive.profile をダウンロード
+   以下の texlive.profile では =TEXMFHOME= を =~/Dropbox/texmf:/usr/local/share/texmf= としている．
+   なお，=/us/local/share/texmf= は後述する auctex で利用．
+   #+BEGIN_SRC sh
+     cd ~/Downloads
+     curl -LO http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz 
+     tar -xzf install-tl-unx.tar.gz
+     cd install-tl* 
+   #+END_SRC
+2. インストーラを起動
+   #+BEGIN_SRC sh
+     curl -LO https://gist.github.com/nagae^g:/6533236/raw/texlive2013.profile
+     ./install-tl --profile texlive2013.profile
+   #+END_SRC
+   # 以下は2012年版(古い)：
+   # #+BEGIN_SRC screen
+   # $ curl -LO https://raw.github.com/gist/3292343/texlive2012.profile
+   # $ ./install-tl --profile texlive2012.profile
+   # #+End_SRC
+3. 不要なファイルを消去
+   #+BEGIN_SRC sh
+     cd ~/Downloads
+     rm -rf install-tl*
+   #+END_SRC
+**** profile が上手く読めない場合やinteractive modeで自分で設定したい場合
+色々なカスタマイズが可能だが，以下では上記の =texlive2013.profile= と同じ設定にする方法を示す．
+1. 下記の main manu で =Enter command:= の後に =D RET= を入力(ディレクトリ)：
+  #+BEGIN_SRC screen
+    ======================> TeX Live installation procedure <=====================
+       
+    =======> Note: Letters/digits in <angle brackets> indicate menu items <=======
+    =======>       for commands or configurable options                   <=======
+       
+     Detected platform: universal binaries for MacOSX/Darwin
+    
+     <B> platforms: 1 out of 18
+       
+     <S> installation scheme (scheme-full)
+         84 collections out of 85, disk space required: 3889 MB
+       
+     Customizing installation scheme:
+       <C> standard collections
+       <L> language collections
+       
+     <D> directories:
+       TEXDIR (the main TeX directory):
+    (省略)
+    Actions:
+     <I> start installation to hard disk
+     <H> help
+     <Q> quit
+    
+    Enter command: 
+ #+END_SRC
+
+2. 下記の Directories setup メニューで =Enter command:= の後に =7 RET= と入力(TEXMFHOME)の設定
+   #+BEGIN_SRC screen
+     ===============================================================================
+     Directories setup:
+     
+      <1> TEXDIR:       /usr/local/texlive/2013
+          support tree: /usr/local/texlive/2013/texmf
+      <2> TEXMFLOCAL:     /usr/local/texlive/texmf-local
+      <3> TEXMFSYSVAR:    /usr/local/texlive/2013/texmf-var
+      <4> TEXMFSYSCONFIG: /usr/local/texlive/2013/texmf-config
+     
+      <5> TEXMFVAR:       ~/.texlive2013/texmf-var
+      <6> TEXMFCONFIG:    ~/.texlive2013/texmf-config
+      <7> TEXMFHOME:      ~/texmf
+     
+      Note: ~ will expand to $HOME (or to %USERPROFILE% on Windows)
+     
+     Actions:
+      <R> return to main menu
+      <Q> quit
+     
+     Enter command: 
+   #+END_SRC
+
+3. 下記のように新しい =TEXMFHOME= ディレクトリを訊かれるので =~/Dropbox/texmf:/usr/local/share/texmf= と入力して return：
+   #+BEGIN_SRC screen
+     New value for TEXMFHOME [~/texmf]: 
+   #+END_SRC
+   
+4. Directory setup の表示の =TEXMFHOME= の部分が下記のように変わったことを確認し
+   たら =r RET= と入力して main menu に戻る．
+   #+BEGIN_SRC screen
+     (省略)
+     <6> TEXMFCONFIG:    ~/.texlive2013/texmf-config
+     <7> TEXMFHOME:      ~/Dropbox/texmf:/usr/local/share/texmf
+     
+      Note: ~ will expand to $HOME (or to %USERPROFILE% on Windows)
+     (省略)
+   #+END_SRC
+
+5. main menu で下記のように表示されたら =i RET= としてインストールを開始する
+   #+BEGIN_SRC screen
+     ======================> TeX Live installation procedure <=====================
+     
+     =======> Note: Letters/digits in <angle brackets> indicate menu items <=======
+     =======>       for commands or configurable options                   <=======
+     
+     (省略)
+     
+      <D> directories:
+      (省略)
+        TEXMFHOME (directory for user-specific files):
+          ~/Dropbox/texmf:/usr/local/share/texmf
+     
+     (省略)
+     
+     Actions:
+      <I> start installation to hard disk
+      <H> help
+      <Q> quit
+   #+END_SRC
+
+*** パスの設定
+5. =/usr/local/texbin= へシンボリックリンクを張っておく
+   #+BEGIN_SRC sh
+   ln -s /usr/local/texlive/2013/bin/x86_64-darwin /usr/local/texbin
+   #+END_SRC
+6. TeX フォルダパスの設定
+   =~/.bash_profile= に以下を追記：
+   #+BEGIN_SRC sh
+   export PATH=/usr/local/texbin:$PATH
+   export MANPATH=/usr/local/texlive/2013/texmf/doc/man:$MANPATH
+   #+END_SRC
+7. パスを反映
+   どのフォルダでも構わないのでターミナルから以下を実行：
+   #+BEGIN_SRC screen
+   source ~/.bash_profile
+   #+END_SRC
+*** otf パッケージ用のフォントの設定
+下記の情報は少し古いかも(参照：http://www.fugenji.org/~thomas/texlive-guide/font_setup.html)
+1. フォントマップをコピーする：
+   #+BEGIN_SRC sh
+     mkdir -p /usr/local/texlive/texmf-local/fonts/map/dvipdfm/
+     cd  /usr/local/texlive/texmf-local/fonts/map/dvipdfm/
+     curl -O https://gist.github.com/nagae/1353863/raw/hiragino-mini-embed.map
+     curl -O https://gist.github.com/nagae/1354092/raw/hiragino-embed.map
+   #+END_SRC
+2. ヒラギノフォントにシンボリックリンクを貼る：
+   #+BEGIN_SRC sh
+     mkdir -p /usr/local/texlive/texmf-local/fonts/opentype/public/hiragino/
+     cd /usr/local/texlive/texmf-local/fonts/opentype/public/hiragino/
+     ln -fs "/Library/Fonts/ヒラギノ明朝 Pro W3.otf" ./HiraMinPro-W3.otf
+     ln -fs "/Library/Fonts/ヒラギノ明朝 Pro W6.otf" ./HiraMinPro-W6.otf
+     ln -fs "/Library/Fonts/ヒラギノ丸ゴ Pro W4.otf" ./HiraMaruPro-W4.otf
+     ln -fs "/Library/Fonts/ヒラギノ角ゴ Pro W3.otf" ./HiraKakuPro-W3.otf
+     ln -fs "/Library/Fonts/ヒラギノ角ゴ Pro W6.otf" ./HiraKakuPro-W6.otf
+     ln -fs "/Library/Fonts/ヒラギノ角ゴ Std W8.otf" ./HiraKakuStd-W8.otf
+   #+END_SRC
+3. Tex用のパスを更新：
+   どのフォルダからでも構わないのでターミナルから以下を実行：
+   #+BEGIN_SRC sh
+   sudo mktexlsr
+   #+END_SRC
+** コンパイルしてみる
+以下をターミナルから実行してみる
+#+BEGIN_SRC sh
+  mkdir -p ~/Downloads/sampletex
+  cd ~/Downloads/sampletex
+  curl -O https://gist.github.com/nagae/1350983/raw/sample.tex 
+  platex sample.tex 
+  dvipdfm -f hiragino-mini-embed sample 
+  open sample.pdf
+#+END_SRC
+** tlmgr を使って常に最新の状態を保つ
+上述の方法によって tlmgr もインストールされる．これを使えば，TeX を常に最新の状態に保てる．
+*** リポジトリを登録
+tlmgr が参照するリポジトリに =mirror.ctan.org= を指定しておく([[http://www.fugenji.org/~thomas/texlive-guide/tlmgr.html][参考]])．この操作は初回に一度行えばよい．
+#+BEGIN_SRC sh
+sudo tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet
+#+END_SRC
+*** tlmgr 自身の更新
+- tlmgr 自身とシステムを同時に更新
+  #+BEGIN_SRC sh
+  sudo tlmgr update --self --all
+  #+END_SRC
+**** 知られている問題：
+- 2013年9月頃 =Unknown docfile tag:=
+  #+BEGIN_SRC sh
+    Unknown docfile tag:  texmf-dist/doc/latex/pythontex/pythontex_quickstart.pdf details=""Quick start" documentation" at /usr/local/texlive/2013/tlpkg/TeXLive/TLPOBJ.pm line 127
+  #+END_SRC
+  というメッセージが出て止まる場合の対処法は http://tex.stackexchange.com/a/133690/36810
+** latexmk
+latexmk は TeX の処理を自動化してくれるスクリプト．
+設定を =~/.latexmkrc= に記載しておくと，ターミナルから =latexmk= を呼ぶだけで色々な処理をしてくれる．
+例えば，以下のように =~/.latexmkrc= に書いておく，
+#+HTML: <script src="https://gist.github.com/nagae/5290992.js"></script>
+もしくは，ターミナルから
+#+BEGIN_SRC sh
+cd ~/
+curl -LO curl -LO https://gist.github.com/nagae/3293112/raw/.latexmkrc
+#+END_SRC
+としておくと，
+#+BEGIN_SRC sh
+$ latexmk sample.tex
+#+END_SRC
+とするだけで =platex= → =pbitex= → =platex= → =dvipdfmx= と処理を続けて pdf を作成してくれる．さらに，
+#+BEGIN_SRC sh
+$ latexmk -pv sample.tex
+#+END_SRC
+とすれば，その pdf ファイルを Preview.app で開いてくれる．
+
+** Emacs との連携
+Emacs 上でのLaTeX ソースの編集に支援ツールは必須
+*** auctex
+**** 特徴
+Emacs 上での LaTeX 編集を支援．C-c C-c で compile したり，C-c C-p C-d で preview 見たりできる．
+**** 参考
+- 公式サイト :: http://www.gnu.org/software/auctex/
+- EmacsWiki :: http://emacswiki.org/emacs/AUCTeX
+- 奥村先生 :: http://oku.edu.mie-u.ac.jp/~okumura/texwiki/?AUCTeX
+**** インストール
+Homebrew でインストール可能
+#+BEGIN_SRC screen
+brew install --with-emacs=/Applications/Emacs.app/Contents/MacOS/Emacs auctex
+#+END_SRC
+**** 使い方
+***** 章・節，環境，マクロの入力
+- TABで補完が可能．
+- カーソルの上下(もしくは =M-p, M-n=)で履歴を選択可能．
+#+ATTR_HTML: border=2 rules="all"
+| ショートカット           | 機能                                                   |
+|--------------------------+--------------------------------------------------------|
+| =C-c C-s=                | 章(=chapter=)，節(=section=)，小節(=subsection=)を入力 |
+| =C-c C-e=                | 環境(=\begin{}...\end{}=)を入力                        |
+| =C-c C-m= もしくは =C-c RET= | マクロ(eg. =\ret{}, \centering{}=)を挿入               |
+***** フォント変更
+- 何も選択せずにショートカットを入力すると LaTeX コマンドだけを入力し，括弧内で待機
+- 文字列を選択してショートカットを入力すると，当該文字を LaTeX コマンド内に内挿
+#+ATTR_HTML: border=2 rules="all"
+| ショートカット | 機能                                                                          |
+|----------------+-------------------------------------------------------------------------------|
+| =C-c C-f C-b=   | 太字 =\textbf{*}=                                                             |
+| =C-c C-f C-i=   | イタリック =\textit{*}=                                                       |
+| =C-c C-f C-e=   | 強調 =\emph{*}=                                                               |
+| =C-c C-f C-s=   | 斜体 =\textsl{*}=                                                             |
+| =C-c C-f C-r=   | ローマン =\textrm{*}=                                                         |
+| =C-c C-f C-f=   | サンセリフ．修飾の無い(Sans-serif)=ゴシック体 =\textsf{*}=                    |
+| =C-c C-f C-t=   | タイプライター =\texttt{*}=                                                   |
+| =C-c C-f C-c=   | スモールキャピタル(Small cap.)．小文字を「小さい大文字」で表記． =\textsc{*}= |
+| =C-c C-f C-d=  | フォント修飾を削除                                                            |
+***** コメント
+#+ATTR_HTML: border=2 rules="all"
+| ショートカット | 機能                               |
+|----------------+------------------------------------|
+| =C-c ;=        | 選択したリージョンをコメントアウト |
+| =C-c %=        | 現在の段落をコメントアウト         |
+***** マーク
+#+ATTR_HTML: border=2 rules="all"
+| ショートカット | 機能                     |
+|----------------+--------------------------|
+| =C-c *=        | 現在のセクションをマーク |
+| =C-c .=        | 現在の環境をマーク       |
+***** 処理
+処理コマンドは TAB補完および上下(=M-p, M-n=)履歴表示が可能
+#+ATTR_HTML: border=2 rules="all"
+| ショートカット | 機能                           |
+|----------------+----------------------------------|
+| =C-c C-c=      | 文章全体を処理(※)               |
+| =C-c C-r=      | 選択したリージョンのみを処理(※) |
+| =C-c C-b=      | 現在のバッファのみを処理(※)     |
+|----------------+----------------------------------|
+| C-c '          | エラーを表示                     |
+| C-x '          | 次のエラーを表示                 |
+| C-u C-x '      | 前のエラーを表示                 |
+
+※長江研の設定では，=C-c C-c=, =C-c C-r=, =C-c C-b= に続く処理コマンドとして(デフォルトで実装されているものも含め)以下が用意されている：
+#+BEGIN_EXAMPLE
+BibTeX 	Biber 	Check 	Clean 	Clean All 	File 	Index
+LaTeX 	Other 	Print 	Queue 	Spell 	View 	direct
+dvipdfmx 	latexmk 	pBibTeX 	pLaTeX
+#+END_EXAMPLE
+このうち，頻繁に使うのは以下のコマンドである．いずれもタブ補完が可能：
+#+ATTR_HTML: border="2" rules="all"
+|-----------+----------------------------------------------------------------------------------------------|
+| コマンド  | 処理内容                                                                                     |
+|-----------+----------------------------------------------------------------------------------------------|
+| pLaTeX    | pLaTeX を実行(.tex → .dvi)                                                                  |
+| pBibTeX   | pBibTeX を実行(.aux ファイルを元に .bbl を生成)                                              |
+| dvipdfmx  | dvipdfmx を実行(.dvi → .pdf)                                                                |
+| latexmk   | latexmk を実行(=~/.latexmkrc= で処理内容を設定可能)                                          |
+| View      | (=open foo.pdf= などを呼び出せる)                                                            |
+| Other     | 任意のコマンドを実行(e.g. =open -a Preview foo.pdf= などを呼び出せる)                        |
+| direct    | TeX ファイルを処理した後，PDF ファイルを開く(latexmk の後，=open -a Preview foo.pdf= を実行) |
+| Check     | lacheck による文法チェック                                                                   |
+| Clean     | TeX 処理時に生成される中間ファイル(.aux, .toc, .log, .bbl など)を削除                        |
+| Clean All | 上記中間ファイルに加えて .dvi, .ps, .pdf などのファイルも削除                                |
+| Spell     | スペルチェック                                                                               |
+|-----------+----------------------------------------------------------------------------------------------|
+
+***** COMMENT プレビュー
+C-c C-p C-p, 当該箇所のプレビュー
+preview-at-point
+Preview/Generate previews (or toggle) at point
+If the cursor is positioned on or inside of a preview area, this toggles its visibility, regenerating the preview if necessary. If not, it will run the surroundings through preview. The surroundings include all areas up to the next valid preview, unless invalid previews occur before, in which case the area will include the last such preview in either direction. And overriding any other action, if a region is active (transient-mark-mode or zmacs-regions), it is run through preview-region.
+
+<mouse-2>
+The middle mouse button has a similar action bound to it as preview-at-point, only that it knows which preview to apply it to according to the position of the click. You can click either anywhere on a previewed image, or when the preview is opened and showing the source text, you can click on the icon preceding the source text. In other areas, the usual mouse key action (typically: paste) is not affected.
+
+<mouse-3>
+The right mouse key pops up a context menu with several options: toggling the preview, regenerating it, removing it (leaving the unpreviewed text), copying the text inside of the preview, and copying it in a form suitable for copying as an image into a mail or news article. This is a one-image variant of the following command:
+
+C-c C-p C-w
+preview-copy-region-as-mml
+Copy a region as MML
+This command is also available as a variant in the context menu on the right mouse button (where the region is the preview that has been clicked on). It copies the current region into the kill buffer in a form suitable for copying as a text including images into a mail or news article using mml-mode (see (emacs-mime)Composing section ‘Composing’ in Emacs MIME).
+
+If you regenerate or otherwise kill the preview in its source buffer before the mail or news gets posted, this will fail. Also you should generate images you want to send with preview-transparent-border set to nil, or the images will have an ugly border. preview-latex detects this condition and asks whether to regenerate the region with borders switched off. As this is an asynchronous operation running in the background, you’ll need to call this command explicitly again to get the newly generated images into the kill ring.
+
+Preview your articles with mml-preview (on M-m P, or C-c C-m P in Emacs 22) to make sure they look fine.
+
+C-c C-p C-e
+preview-environment
+Preview/Generate previews for environment
+Run preview on LaTeX environment. The environments in preview-inner-environments are treated as inner levels so that for instance, the split environment in \begin{equation}\begin{split}…\end{split}\end{equation} is properly displayed. If called with a numeric argument, the corresponding number of outward nested environments is treated as inner levels.
+
+C-c C-p C-s
+preview-section
+Preview/Generate previews for section
+Run preview on this LaTeX section.
+
+C-c C-p C-r
+preview-region
+Preview/Generate previews for region
+Run preview on current region.
+
+C-c C-p C-b
+preview-buffer
+Preview/Generate previews for buffer
+Run preview on the current buffer.
+
+C-c C-p C-d
+preview-document
+Preview/Generate previews for document
+Run preview on the current document.
+
+C-c C-p C-c C-p
+preview-clearout-at-point
+Preview/Remove previews at point
+Clear out (remove) the previews that are immediately adjacent to point.
+
+C-c C-p C-c C-s
+preview-clearout-section
+Preview/Remove previews from section
+Clear out all previews in current section.
+
+C-c C-p C-c C-r
+preview-clearout
+Preview/Remove previews from region
+Clear out all previews in the current region.
+
+C-c C-p C-c C-b
+preview-clearout-buffer
+Preview/Remove previews from buffer
+Clear out all previews in current buffer. This makes the current buffer lose all previews.
+
+C-c C-p C-c C-d
+preview-clearout-document
+Preview/Remove previews from document
+Clear out all previews in current document. The document consists of all buffers that have the same master file as the current buffer. This makes the current document lose all previews.
+
+C-c C-p C-f
+preview-cache-preamble
+Preview/Turn preamble cache on
+Dump a pregenerated format file. For the rest of the session, this file is used when running on the same master file. Use this if you know your LaTeX takes a long time to start up, the speedup will be most noticeable when generating single or few previews. If you change your preamble, do this again. preview-latex will try to detect the necessity of that automatically when editing changes to the preamble are done from within Emacs, but it will not notice if the preamble effectively changes because some included file or style file is tampered with.
+
+C-c C-p C-c C-f
+preview-cache-preamble-off
+Preview/Turn preamble cache off
+Clear the pregenerated format file and stop using preambles for the current document. If the caching gives you problems, use this.
+
+C-c C-p C-i
+preview-goto-info-page
+Preview/Read Documentation
+Read the info manual.
+
+M-x preview-report-bug <RET>
+preview-report-bug
+Preview/Report Bug
+This is the preferred way of reporting bugs as it will fill in what version of preview-latex you are using as well as versions of relevant other software, and also some of the more important settings. Please use this method of reporting, if at all possible and before reporting a bug, have a look at Known problems.
+
+C-c C-k
+*** cdLaTeX
+**** 特徴
+auctex と同様の機能を持つが minor-mode のため，org-mode などと併用できる
+**** インストール
+ターミナルから以下を実行．(長江研設定ファイル =ver1.0.4= 以降では github 経由で取得することにした)．
+#+BEGIN_SRC sh
+cd ~/Dropbox/.emacs.d/
+git submodule add git@github.com:emacsmirror/cdlatex.git lisp/cdlatex
+#+END_SRC
