@@ -295,7 +295,7 @@ dvipdfmx 	latexmk 	pBibTeX 	pLaTeX
 | latexmk   | latexmk を実行(=~/.latexmkrc= で処理内容を設定可能)                                          |
 | View      | (=open foo.pdf= などを呼び出せる)                                                            |
 | Other     | 任意のコマンドを実行(e.g. =open -a Preview foo.pdf= などを呼び出せる)                        |
-| direct    | TeX ファイルを処理した後，PDF ファイルを開く(latexmk の後，=open -a Preview foo.pdf= を実行) |
+| direct    | TeX ファイルを処理した後，PDF ファイルを開く(latexmk の後， =open -a Preview foo.pdf= を実行) |
 | Check     | lacheck による文法チェック                                                                   |
 | Clean     | TeX 処理時に生成される中間ファイル(.aux, .toc, .log, .bbl など)を削除                        |
 | Clean All | 上記中間ファイルに加えて .dvi, .ps, .pdf などのファイルも削除                                |
