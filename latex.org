@@ -3,6 +3,21 @@
 ** TeXLive 2013 のインストール
 *** 参考
 - TeX Live を使おう --- Linux ユーザと Mac OS X ユーザのために --- :: http://www.fugenji.org/~thomas/texlive-guide/
+*** 2012 からのアップグレード
+1. TeXLive 2012 のバックアップ
+   #+BEGIN_SRC sh
+     mv /usr/local/texlive/2012/ /usr/local/texlive/.2012
+   #+END_SRC
+   
+   TeXLive 2013 でうまく動かなくなったら，
+   #+BEGIN_SRC sh
+     mv /usr/local/texlive/2013 /usr/local/texlive/.2013
+     mv /usr/local/texlive/.2012 /usr/local/texlive/2012
+     sed 's|/usr/local/texlive/2013|/usr/local/texlive/2012|g' ~/.bash_profile
+     source ~/.bash_profile
+     sudo mktexlsr
+   #+END_SRC
+   とすれば TeXLive 2012 に戻せるはず．
 *** 本体のインストール
 1. インストーラと texlive.profile をダウンロード
 
@@ -123,7 +138,7 @@
 *** パスの設定
 5. =/usr/local/texbin= へシンボリックリンクを張っておく
    #+BEGIN_SRC sh
-   ln -s /usr/local/texlive/2013/bin/x86_64-darwin /usr/local/texbin
+   ln -fs /usr/local/texlive/2013/bin/x86_64-darwin /usr/local/texbin
    #+END_SRC
 6. TeX フォルダパスの設定
    =~/.bash_profile= に以下を追記：
@@ -131,6 +146,13 @@
    export PATH=/usr/local/texbin:$PATH
    export MANPATH=/usr/local/texlive/2013/texmf/doc/man:$MANPATH
    #+END_SRC
+
+   TeXLive 2012 で既に =MANPATH= を設定済みなら，ターミナルから以下を実行すればよ
+   い．
+   #+BEGIN_SRC sh
+   sed 's|/usr/local/texlive/2012|/usr/local/texlive/2013|g' ~/.bash_profile
+   #+END_SRC
+
 7. パスを反映
    どのフォルダでも構わないのでターミナルから以下を実行：
    #+BEGIN_SRC screen
