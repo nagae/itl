@@ -1,12 +1,13 @@
 * LaTeX
-以下では，=texmf= ディレクトリを Dropbox 上に置く方法を示す．
+以下では， =texmf= ディレクトリを Dropbox 上に置く方法を示す．
 ** TeXLive 2013 のインストール
 *** 参考
 - TeX Live を使おう --- Linux ユーザと Mac OS X ユーザのために ---:: http://www.fugenji.org/~thomas/texlive-guide/
 *** 本体のインストール
 1. インストーラと texlive.profile をダウンロード
+
    以下の texlive.profile では =TEXMFHOME= を =~/Dropbox/texmf:/usr/local/share/texmf= としている．
-   なお，=/us/local/share/texmf= は後述する auctex で利用．
+   なお， =/usr/local/share/texmf= は後述する auctex で利用．
    #+BEGIN_SRC sh
      cd ~/Downloads
      curl -LO http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz 
@@ -18,11 +19,13 @@
      curl -LO https://gist.github.com/nagae^g:/6533236/raw/texlive2013.profile
      ./install-tl --profile texlive2013.profile
    #+END_SRC
+
    # 以下は2012年版(古い)：
-   # #+BEGIN_SRC screen
-   # $ curl -LO https://raw.github.com/gist/3292343/texlive2012.profile
-   # $ ./install-tl --profile texlive2012.profile
+   # #+BEGIN_SRC sh
+   # curl -LO https://raw.github.com/gist/3292343/texlive2012.profile
+   # ./install-tl --profile texlive2012.profile
    # #+End_SRC
+
 3. 不要なファイルを消去
    #+BEGIN_SRC sh
      cd ~/Downloads
@@ -59,7 +62,8 @@
     Enter command: 
  #+END_SRC
 
-2. 下記の Directories setup メニューで =Enter command:= の後に =7 RET= と入力(TEXMFHOME)の設定
+2. 下記の Directories setup メニューで =Enter command:= の後に =7 RET= と入力
+   (=TEXMFHOME= の設定)
    #+BEGIN_SRC screen
      ===============================================================================
      Directories setup:
@@ -270,9 +274,9 @@ brew install --with-emacs=/Applications/Emacs.app/Contents/MacOS/Emacs auctex
 | =C-c C-r=      | 選択したリージョンのみを処理(※) |
 | =C-c C-b=      | 現在のバッファのみを処理(※)     |
 |----------------+----------------------------------|
-| C-c '          | エラーを表示                     |
-| C-x '          | 次のエラーを表示                 |
-| C-u C-x '      | 前のエラーを表示                 |
+| =C-c '=        | エラーを表示                     |
+| =C-x '=        | 次のエラーを表示                 |
+| =C-u C-x '=    | 前のエラーを表示                 |
 
 ※長江研の設定では，=C-c C-c=, =C-c C-r=, =C-c C-b= に続く処理コマンドとして(デフォルトで実装されているものも含め)以下が用意されている：
 #+BEGIN_EXAMPLE
