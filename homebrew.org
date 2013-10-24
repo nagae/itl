@@ -1,0 +1,150 @@
+* Homebrew によるパッケージ管理
+** 概要
+homebrew は研究環境に必要な様々な UNIX ツールをまとめて管理(インストール，
+ライブラリ依存関係のチェック，アンインストールなど)してくれるパッケージ管理システ
+ムである．
+
+homebrew は同様の Mac 用パッケージ管理システムである macport に比べてインストール
+にかかる負荷が軽い．これは homebrew では「Mac OS X に標準でついてくるものまでわざ
+わざインストールしない」という方針が採用されているためである．
+** インストール
+*** 参考サイト
+- 本家 :: http://mxcl.github.com/homebrew/
+- https://github.com/mxcl/homebrew/wiki/installation
+*** Command Line Tools for Xcode のインストール
+- 事前に [[#Apple_ID][Apple ID]] の登録が必要．
+- https://developer.apple.com/downloads/index.action にアクセス．Apple ID での Sign in を求められる．
+- Command Line Tools (OS X Mountain Lion) for Xcode の最新版をクリックし，dmg ファイル(下図の赤枠)をクリックしてダウンロード
+
+  #+ATTR_HTML: alt="Command Line Tools" align="center" width="600"
+  [[file:fig/Command_Line_Tools.png]]
+- Download された dmg ファイルをマウントし，仮想ドライブ内の Command Line Tools (Mountain Lion).mpkg をダブルクリック
+*** Homebrew のインストール
+- ターミナルから以下を実行：
+  #+begin_src screen
+  $ ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+  #+end_src
+- =~/.bash_profile= (無ければ新たに作成し)に以下を追記：
+  #+begin_src screen
+  export PATH=/usr/local/bin:$PATH
+  #+end_src
+  上記を実行する方法は2通りある：
+  - ターミナル上で Emacs を起動して編集する方法 :: 
+    1) まず，ターミナル上で
+       #+BEGIN_SRC screen
+       $ emacs ~/.bash_profile
+       #+END_SRC
+       として，Emacs を起動する．
+    2) 上記をコピー＆ペーストする．
+    3) 保存(C-x C-s: Ctrlを押しながら x, s とタイプする)した後，
+       Emacs を終了(C-x C-c; Ctrl を押しながら x, cとタイプ)する．
+  - =pbpaste= から追記する方法 :: 
+    1) 上記をコピーする．
+    2) ターミナル上で
+       #+BEGIN_SRC screen
+       $ pbpaste >> ~/.bash_profile
+       #+END_SRC
+       とする．
+- =homebrew/dupes= をリポジトリに追加：
+  #+BEGIN_SRC screen
+  $ brew tap homebrew/dupes
+  #+END_SRC
+** Homebrew の使い方
+*** ワークフロー
+- 必要なツールをインストール
+  #+begin_src screen
+  $ brew search foo             # foo という名前の formula を探す
+  $ brew options foo            # foo のインストール時に設定できるオプション一覧を表示
+  $ brew install [options] foo  # foo という名前の formula をインストールする
+  #+end_src
+- 週に1度くらいは自身のアップデートと formula 更新
+  #+begin_src screen
+  $ brew update                 # Homebrew 自身をアップデート
+  $ brew outdated               # 更新された formula 一覧を表示
+  $ brew upgrade                # 更新された formula をアップグレード
+  #+end_src
+*** 基本コマンド
+#+ATTR_HTML: border=2 rules="all"
+| コマンド           | 機能                                                          |
+|--------------------+---------------------------------------------------------------|
+| =brew update=      | 自分自身をアップデート                             |
+| =brew outdated=    | 更新された formula を表示                                     |
+| =brew upgrade=     | 更新された formula をアップグレード                           |
+| =brew doctor=      | Homebrew を自己診断                                           |
+|--------------------+---------------------------------------------------------------|
+| =brew search foo=  | foo という名前の formula を検索                               |
+| =brew options foo= | foo をインストールする際に設定できるオプション一覧を表示      |
+| =brew install foo= | foo をインストール                                            |
+|--------------------+---------------------------------------------------------------|
+| =brew list=        | インストール済の formula 一覧を表示                           |
+| =brew list foo=    | foo という名前の formula がインストールしたファイル一覧を表示 |
+| =brew unlink foo=  | foo へのシンボリックリンクを外す                              |
+| =brew remove foo=  | foo を削除する                                                |
+|--------------------+---------------------------------------------------------------|
+**** =brew update= すると =error: The following untracked working tree files would be overwritten by merge:= というエラーが出る(13.10.25)
+=brew update= しようとすると以下のようなエラーメッセージが出る場合の対処法：
+#+BEGIN_SRC screen
+  $ brew update
+  error: The following untracked working tree files would be overwritten by merge:
+    Library/Formula/apple-gcc42.rb
+  Please move or remove them before you can merge.
+  Aborting
+  Error: Failure while executing: git pull -q origin refs/heads/master:refs/remotes/origin/master
+#+END_SRC
+
+適当な名前のフォルダ(eg. =.temporary_stack=)を作って，その中に =apple-gcc42.rb=
+を移動させる
+#+BEGIN_SRC screen
+cd /usr/local/Library/Formula/
+mkdir .temporary_stack
+mv apple-gcc42.rb .temporary_stack/
+#+END_SRC
+
+あとはいつも通り =brew update= する
+#+BEGIN_SRC screen
+brew update
+#+END_SRC
+** Homebrew でインストールしておくべき UNIX ツール
+*** COMMENT wget
+**** 概要
+HTTP や FTP 経由でファイルを取得する．Mac OS X 標準の =curl= よりも高機能．
+**** インストール
+#+begin_src screen
+$ brew install wget
+#+end_src
+*** rsync (http://rsync.samba.org)
+**** 機能概要
+フォルダのバックアップや同期を取る．
+**** インストール
+=homebrew/dupes= をリポジトリに追加していれば，以下でインストール可能：
+#+BEGIN_SRC screen
+$ brew install rsync
+#+END_SRC
+*** git (http://git-scm.com)
+**** 機能概要
+分散リポジトリバージョン管理システム．
+**** インストール
+#+BEGIN_SRC screen
+$ brew install git
+#+END_SRC
+*** magit (http://philjackson.github.io/magit/)
+**** 機能概要
+Emacs上で動く Git 用ツール
+**** インストール
+#+BEGIN_SRC screen
+$ brew install magit
+#+END_SRC
+*** auctex (http://www.gnu.org/software/auctex/)
+**** 機能概要
+EmacsでのTeXファイル編集を支援する．
+**** インストール
+#+BEGIN_SRC screen
+brew install --with-emacs=/Applications/Emacs.app/Contents/MacOS/Emacs auctex 
+#+END_SRC
+*** ghostscript (http://www.ghostscript.com)
+**** 機能概要
+Postscript インタプリタ．Emacs上でPDFや画像ファイルを表示させる docview に必須．
+**** インストール
+#+BEGIN_SRC screen
+brew install ghostscript
+#+END_SRC
