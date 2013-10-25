@@ -14,10 +14,10 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
 *** Command Line Tools for Xcode のインストール
 - 事前に [[#Apple_ID][Apple ID]] の登録が必要．
 - https://developer.apple.com/downloads/index.action にアクセス．Apple ID での Sign in を求められる．
-- Command Line Tools (OS X Mountain Lion) for Xcode の最新版をクリックし，dmg ファイル(下図の赤枠)をクリックしてダウンロード
+- Command Line Tools (OS X Mountain Lion) for Xcode の最新版をクリックし，dmg ファイル(下図参照)をクリックしてダウンロード
 
   #+ATTR_HTML: alt="Command Line Tools" align="center" width="600"
-  [[file:fig/Command_Line_Tools.png]]
+  [[file:fig/Command_Line_Tools_Mountain_Lion.png]]
 - Download された dmg ファイルをマウントし，仮想ドライブ内の Command Line Tools (Mountain Lion).mpkg をダブルクリック
 *** Homebrew のインストール
 - ターミナルから以下を実行：
