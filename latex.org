@@ -15,7 +15,7 @@
      mv /usr/local/texlive/.2012 /usr/local/texlive/2012
      sed 's|/usr/local/texlive/2013|/usr/local/texlive/2012|g' ~/.bash_profile
      source ~/.bash_profile
-     sudo mktexlsr
+     mktexlsr
    #+END_SRC
    とすれば TeXLive 2012 に戻せるはず．
 *** 本体のインストール
@@ -186,7 +186,7 @@
 3. Tex用のパスを更新：
    どのフォルダからでも構わないのでターミナルから以下を実行：
    #+BEGIN_SRC sh
-   sudo mktexlsr
+   mktexlsr
    #+END_SRC
 ** コンパイルしてみる
 以下をターミナルから実行してみる
@@ -203,12 +203,12 @@
 *** リポジトリを登録
 tlmgr が参照するリポジトリに =mirror.ctan.org= を指定しておく([[http://www.fugenji.org/~thomas/texlive-guide/tlmgr.html][参考]])．この操作は初回に一度行えばよい．
 #+BEGIN_SRC sh
-sudo tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet
+tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet
 #+END_SRC
 *** tlmgr 自身の更新
 - tlmgr 自身とシステムを同時に更新
   #+BEGIN_SRC sh
-  sudo tlmgr update --self --all
+  tlmgr update --self --all
   #+END_SRC
 **** 知られている問題：
 - 2013年9月頃 =Unknown docfile tag:=
