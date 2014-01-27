@@ -5,21 +5,18 @@
      $ brew install --cocoa emacs
      :
      :
-     ==> Caveats Emacs.app was installed to: /usr/local/Cellar/emacs/24.3
+     ==> Caveats A command line wrapper for the cocoa app was installed to:
+      /usr/local/Cellar/emacs/24.3/bin/emacs
      
-     To link the application to a normal Mac OS X location:
-      brew linkapps
-     or:
-      ln -s /usr/local/Cellar/emacs/24.3/Emacs.app /Applications # この行をターミナルで実行
-     :
-     :
-     ==> Summary 🍺 /usr/local/Cellar/emacs/24.3: 3851 files, 111M, built in 92 seconds
+     .app bundles were installed to /usr/local/Cellar/emacs/24.3 (or libexec).
+     Run brew linkapps to symlink these to /Applications.
+     ==> Summary
+      /usr/local/Cellar/emacs/24.3: 3909 files, 114M, built in 3.3 minutes
    #+end_src
-2. 上記の実行結果を参考に，アプリケーション・フォルダにシンボリックリンクを張る(Emacs のバージョンが 24.3.xの場合)
+2. 上記の実行結果を参考に，アプリケーション・フォルダにシンボリックリンクを張る(以前に比べてコマンドが簡単になりました)．
    #+begin_src screen
-   $ ln -fs /usr/local/Cellar/emacs/24.3/Emacs.app /Applications
+   $ brew linkapps
    #+end_src
-   バージョンが異なる場合は 24.3 の部分を適当に変更
 3. Spotlight で呼び出せるように Automator でアプリケーションとして登録
    1) [[file:/Applications/Automator.app][Automator.app]] を起動し，メニューから「アプリケーション」を選択
       #+attr_html: alt="Automator設定画面" align="center" width="600"
@@ -30,7 +27,7 @@
      #+begin_src screen
      open -a /Applications/Emacs.app
      #+end_src
-   5) ファイル名を =Emacs.app= として「書類」フォルダに保存する
+   5) ファイル名を =Emacs.app= として iCloud フォルダに保存する
 ** 長江研 Emacs 設定方針
 Emacs は初期設定ファイル(=~/.emacs.d/init.el=)が極めて重要な役割を果たす[1]．同じ
 Emacs を使っていても，初期設定ファイルが違うと全く違うアプリケーションのように感
