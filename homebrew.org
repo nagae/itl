@@ -114,13 +114,14 @@ brew update
 ** Homebrew でインストールしておくべき UNIX ツール
 *** 以下を実行する
 #+BEGIN_SRC screen
-brew install rsync
-brew install emacs --cocoa
-brew install 
-brew install git
-brew install magit
-brew install --with-emacs=/Applications/Emacs.app/Contents/MacOS/Emacs auctex
-brew install ghostscript
+  brew install rsync              # フォルダのバックアップや同期を取る．
+  brew install emacs --cocoa      # 最強のエディタ
+  brew install https://gist.github.com/nagae/3009185/raw/ddskk.rb # 日本語入力 SKK
+  brew install git                # 分散リポジトリバージョン管理システム．
+  brew install magit              # Emacs上で動く Git 用ツール
+  brew install --with-emacs=/Applications/Emacs.app/Contents/MacOS/Emacs auctex # EmacsでのTeXファイル編集を支援する．
+  brew install ghostscript        # Postscript インタプリタ．Emacs上でPDFや画像ファイルを表示させる docview に必須．
+  
 #+END_SRC
 *** COMMENT wget
 **** 概要
