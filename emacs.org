@@ -23,7 +23,7 @@
 3. Spotlight で呼び出せるように Automator でアプリケーションとして登録
    1) [[file:/Applications/Automator.app][Automator.app]] を起動し，メニューから「アプリケーション」を選択
       #+attr_html: alt="Automator設定画面" align="center" width="600"
-      [[file:fig/Automator_1.png]]
+      [[file:fig/emacs_Automator_1.png]]
    2) 検索窓に「シェルスクリプトを実行」と入力
    3) 「シェルスクリプトを実行」と書かれたアイコンをダブルクリック
    4) デフォルトで =cat= と書かれたシェルスクリプトを以下に変更：
