@@ -31,7 +31,7 @@
    #+END_SRC
 2. インストーラを起動
    #+BEGIN_SRC sh
-     curl -LO https://gist.github.com/nagae^g:/6533236/raw/texlive2013.profile
+     curl -LO https://gist.github.com/nagae/6533236/raw/texlive2013.profile
      ./install-tl --profile texlive2013.profile
    #+END_SRC
 
@@ -39,6 +39,11 @@
    #+BEGIN_SRC sh
      cd ~/Downloads
      rm -rf install-tl*
+   #+END_SRC
+
+4. 関連する homebrew パッケージのインストール
+   #+BEGIN_SRC sh
+   brew install --with-emacs=/Applications/Emacs.app/Contents/MacOS/Emacs auctex # EmacsでのTeXファイル編集を支援する．
    #+END_SRC
 
 **** profile が上手く読めない場合やinteractive modeで自分で設定したい場合
