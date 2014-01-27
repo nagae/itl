@@ -18,7 +18,7 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
   - Mountain Lion の場合：\\
     Command Line Tools (OS X Mountain Lion) for Xcode の最新版をクリックし，dmg ファイル(下図参照)をクリックしてダウンロード
     #+ATTR_HTML: alt="Command Line Tools" align="center" width="600"
-    [[file:fig/Command_Line_Tools_Mountain_Lion.png]]
+    [[file:fig/homebrew_Command_Line_Tools_Mountain_Lion.png]]
 - Download された dmg ファイルをマウントし，仮想ドライブ内の Command Line Tools (OS X 10.x).mpkg をダブルクリック
 *** Homebrew のインストール
 - 本体のダウンロード．ターミナルから以下を実行：
