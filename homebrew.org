@@ -52,7 +52,7 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
        $ pbpaste >> ~/.bash_profile
        #+END_SRC
        とする．
-- =homebrew/dupes= をリポジトリに追加：
+- OS X に標準で登載されているコマンドの最新版を提供する =homebrew/dupes= をリポジトリに追加：
   #+BEGIN_SRC screen
   $ brew tap homebrew/dupes
   #+END_SRC
