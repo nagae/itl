@@ -1,15 +1,15 @@
 * Mac のセットアップ
-** まずやること：ソフトウェアアップデート，キーバインドの変更，Trackpad の変更
-*** ソフトウェア・アップデートの実行
+** ソフトウェア・アップデートの実行
 Mac に入っている OS が最新のものになっていない場合，後述する機能が使えない可能性があるばかりか，悪意のある攻撃に対する脆弱性が修正されていないかもしれない．
 - メニューバー左上のリンゴマーク→ソフトウェア・アップデートを実行
+** キーバインドの変更
 *** ctrl と caps lock を入れ替える
 本研究室では ctrl を多用するので，あまり使わない caps lock と入れ替える．
 - システム環境設定→キーボード→修飾キー を開いて設定
 *** spotlight のキーバインドを ctrl + shift + space に変更
 デフォルトでは ctrl + space だが，このキーバインドは後述する Emacs で「mark set」の機能に割当てられている．
 - システム環境設定→spotlight を開いて設定
-*** Trackpad の設定
+** Trackpad の設定
 - システム環境設定→トラックパッド
 #+ATTR_HTML: alt="trackpad設定" align="center" width="600"
 [[file:fig/setup_trackpad.png]]
@@ -41,7 +41,7 @@ Mac に入っている OS が最新のものになっていない場合，後述
 **** ターミナルだけでも行える
 #+BEGIN_SRC screen
 cd ~/Downloads/
-curl -O http://www.boastr.de/BetterTouchTool.zip
+curl -O http://bettertouchtool.net/BetterTouchTool.zip
 unzip -o BetterTouchTool.zip
 cp -r BetterTouchTool.app/ /Applications/
 rm -r BetterTouchTool.app
