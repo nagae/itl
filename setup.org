@@ -1,0 +1,66 @@
+* Mac のセットアップ
+** ソフトウェア・アップデートの実行
+Mac に入っている OS が最新のものになっていない場合，後述する機能が使えない可能性があるばかりか，悪意のある攻撃に対する脆弱性が修正されていないかもしれない．
+- メニューバー左上のリンゴマーク→ソフトウェア・アップデートを実行
+** キーバインドの変更
+*** ctrl と caps lock を入れ替える
+本研究室では ctrl を多用するので，あまり使わない caps lock と入れ替える．
+- システム環境設定→キーボード→修飾キー を開いて設定
+*** spotlight のキーバインドを ctrl + shift + space に変更
+デフォルトでは ctrl + space だが，このキーバインドは後述する Emacs で「mark set」の機能に割当てられている．
+- システム環境設定→spotlight を開いて設定
+** Trackpad の設定
+- システム環境設定→トラックパッド
+#+ATTR_HTML: alt="trackpad設定" align="center" width="600"
+[[file:fig/setup_trackpad.png]]
+** キーボード・ショートカット
+- Mac では ⌘ (command), control, shift, option のキーとアルファベットや数字キーを組み合わえることで様々な機能を呼び出せる．
+  http://support.apple.com/kb/HT1343?viewlocale=ja_JP
+*** 覚えておくと便利なショートカット
+#+ATTR_HTML: ID="align_left" rules="all"
+| ショートカット        | 機能                         |
+|-----------------------+------------------------------|
+| ⌘+c                   | コピー                       |
+| ⌘+v                   | ペースト                     |
+| ⌘+w                   | ウィンドウを閉じる           |
+| ctrl + shift + space  | spotlight                    |
+| ctrl + option + space | spotlight を Finder 上で起動 |
+| ⌘+h                   | ウィンドウを隠す     |
+| ⌘+m                   | ウィンドウを最小化  |
+| ⌘+q                   | 終了                         |
+| ⌘+option+esc          | アプリケーションの強制終了   |
+
+** BetterTouchTools のインストールと設定
+*** BTT の特徴
+- Trackpad による様々なジェスチャーを各種機能に設定できる
+*** インストール方法
+**** マウスを使う場合
+- http://www.boastr.de/ から BetterTouchTool.zip をダウンロード
+- BetterTouchTool.zip をダブルクリック
+- 生成された BetterTouchTool.app を =/Applications/= フォルダに移動．
+**** ターミナルだけでも行える
+#+BEGIN_SRC screen
+cd ~/Downloads/
+curl -O http://bettertouchtool.net/BetterTouchTool.zip
+unzip -o BetterTouchTool.zip
+cp -r BetterTouchTool.app/ /Applications/
+rm -r BetterTouchTool.app
+#+END_SRC
+*** 設定例
+**** ログインと同時に起動するように
+Preference -> Settings -> Launch BetterTouchTools on startup をチェック
+**** Global
+#+ATTR_HTML: ID="align_left" rules="all"
+| ジェスチャー                  | 機能                         | 解説                                                                                                                  |
+|-------------------------------+------------------------------+-----------------------------------------------------------------------------------------------------------------------|
+| Corner Click Bottom Right     | Sleep Display                | Trackpadの右下をクリック : ディスプレイをスリープ                                                                     |
+| Three Finger Click            | Lookup word under cursor     | 3本指クリック: カーソル下の単語を調べる                                                                               |
+| Three Finger Clickswipe Down  | Restore old window size      | 3本指で下へクリック・スワイプ : ウィンドウのサイズを元に戻す                                                          |
+| Three Finger Clickswipe Left  | Maximize Window Left         | 3本指で左へクリック・スワイプ : ウィンドウを画面の左半分にスナップ・最大化                                            |
+| Three Finger Clickswipe Right | Maximize Window Right        | 3本指で右へクリック・スワイプ : ウィンドウを画面の右半分にスナップ・最大化                                            |
+| Three Finger Clickswipe Up    | Maximize Window              | 3本指で上へクリック・スワイプ : ウィンドウを最大化                                                                    |
+| Three Finger Swipe Up         | End (end of the page)        | 3本指で上へスワイプ : ページの最後へ（Endと同じ）                                                                     |
+| Three Finger Swipe Down       | Home (beginning of the page) | 3本指で下へスワイプ : ページの先頭へ（fn + ←と同じ）                                                                 |
+| Three Finger Swipe Left       | ⌘⇧]                          | 3本指で右から左へスワイプ : 右のタブへ(Safari.app, Terminal.app, Firefox.app, Google Chrome.app などで共通に利用可能) |
+| Three Finger Swipe Right      | ⌘⇧[                          | 3本指で左から右へスワイプ : 左のタブへ                                                                                |
+
