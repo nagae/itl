@@ -112,6 +112,16 @@ mv apple-gcc42.rb .temporary_stack/
 brew update
 #+END_SRC
 ** Homebrew でインストールしておくべき UNIX ツール
+*** 以下を実行する
+#+BEGIN_SRC screen
+brew install rsync
+brew install emacs --cocoa
+brew install 
+brew install git
+brew install magit
+brew install --with-emacs=/Applications/Emacs.app/Contents/MacOS/Emacs auctex
+brew install ghostscript
+#+END_SRC
 *** COMMENT wget
 **** 概要
 HTTP や FTP 経由でファイルを取得する．Mac OS X 標準の =curl= よりも高機能．
@@ -119,7 +129,7 @@ HTTP や FTP 経由でファイルを取得する．Mac OS X 標準の =curl= �
 #+begin_src screen
 $ brew install wget
 #+end_src
-*** rsync (http://rsync.samba.org)
+*** COMMENT rsync (http://rsync.samba.org)
 **** 機能概要
 フォルダのバックアップや同期を取る．
 **** インストール
@@ -127,28 +137,28 @@ $ brew install wget
 #+BEGIN_SRC screen
 $ brew install rsync
 #+END_SRC
-*** git (http://git-scm.com)
+*** COMMENT git (http://git-scm.com)
 **** 機能概要
 分散リポジトリバージョン管理システム．
 **** インストール
 #+BEGIN_SRC screen
 $ brew install git
 #+END_SRC
-*** magit (http://philjackson.github.io/magit/)
+*** COMMENT magit (http://philjackson.github.io/magit/)
 **** 機能概要
 Emacs上で動く Git 用ツール
 **** インストール
 #+BEGIN_SRC screen
 $ brew install magit
 #+END_SRC
-*** auctex (http://www.gnu.org/software/auctex/)
+*** COMMENT auctex (http://www.gnu.org/software/auctex/)
 **** 機能概要
 EmacsでのTeXファイル編集を支援する．
 **** インストール
 #+BEGIN_SRC screen
 brew install --with-emacs=/Applications/Emacs.app/Contents/MacOS/Emacs auctex 
 #+END_SRC
-*** ghostscript (http://www.ghostscript.com)
+*** COMMENT ghostscript (http://www.ghostscript.com)
 **** 機能概要
 Postscript インタプリタ．Emacs上でPDFや画像ファイルを表示させる docview に必須．
 **** インストール
