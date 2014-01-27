@@ -1,0 +1,478 @@
+* Gurobi / Python で最適化
+** Gurobi / Python の環境構築
+*** Python のバージョン確認
+- Gurobi は Mac OS X デフォルトの Python しかサポートしない([[https://groups.google.com/d/msg/gurobi/ghzhXNugDxs/mFNWanBl1fMJ][参考]])．まずは Python
+  のバージョンを確認：
+  #+BEGIN_SRC sh
+  $ which python                  # Python へのパスが
+  /usr/bin/python                 # /usr/bin/python となっていることを確認 
+  $ python --version              # Python のバージョンが
+  Python 2.7.5                    # 2.7.5 (Mavericks) になっていることを確認
+  #+END_SRC
+- もし homebrew などで別のバージョンの python を入れてしまっている場合は Gurobi
+  が正常に機能しないので unlink (一時停止) か uninstall (消去)しておく．
+  - unlink (一時停止)する場合:
+    #+BEGIN_SRC sh
+      $ brew unlink python            # /usr/loca/bin/python を一時的に使わなくする
+    #+END_SRC
+  - unlinstall (消去)する場合
+    #+BEGIN_SRC sh
+      $ brew uninstall python            # /usr/loca/bin/python を完全に消去する
+    #+END_SRC
+*** Gurobi アカウントの作成とアカデミック・ライセンスの取得
+以下の情報は
+http://www.gurobi.com/products/licensing-and-pricing/academic-licensing に基づい
+ている．
+**** Gurobi のアカウント・ライセンスについて
+Gurobi のアカデミック・ライセンスは以下の制約の下で利用可能である：
+- 学位授与機構を備えた学術機関の教員・学生もしくはスタッフのみが利用できる
+- 研究もしくは教育目的にのみ利用できる
+- 公認の学術機関ドメインから validate される必要がある．アカデミック・ライセンス
+  の有効期限は12ヶ月だが，適切な教員・学生もしくはスタッフは，この手続きを繰り返
+  すことでライセンスを更新できる．
+
+**** アカウント作成，ライセンスの取得および認証の方法
+1. http://www.gurobi.com にアクセスし，Register for Free をクリック
+   #+ATTR_HTML: width=720
+   [[file:fig/grb_register.png]]
+2. Account Type は「Academic」とし，Email は =tohoku.ac.jp= で終わるアドレスを利
+   用．Company/University には「Tohoku University」とする
+3. http://www.gurobi.com のメニューバーから Download > Licenses に移動し，FREE
+   ACADEMIC のページに移動．2箇所をチェックして Request License する
+   #+ATTR_HTML: width=720
+   [[file:fig/grb_academic_license.png]]
+4. ライセンスが発行される．Gurobi をインストールした後，ここで表示される
+   =grbgetkey= 以下のコマンドをターミナルで入力するとライセンスファイルが生成さ
+   れる．
+   #+ATTR_HTML: width=720
+   [[file:fig/grb_license_detail.png]]
+**** Gurobi のダウンロードとインストール
+6. http://www.gurobi.com のメニューバーから Download > Gurobi Optimizer のページ
+   に移動し，Current version: 5.6.0 の Mac OS 版と READ ME を選択してDownload する．
+   #+ATTR_HTML: width=720
+   [[file:fig/grb_Mac_OS_Download.png]]
+7. README.txt に従ってインストールする(ダウンロードした pkg ファイルをダブルクリッ
+   クすればインストールできる)．実行ファイルなどは
+   #+BEGIN_SRC example
+   /Library/gurobi560/mac64
+   #+END_SRC
+   以下にインストールされる．
+8. ターミナルを立ち上げ，上記のライセンス取得コマンドを実行する：
+   #+BEGIN_SRC sh
+     grbgetkey ae36ac20-16e6-acd2-f242-4da6e765fa0a # このキーは実際には使用できない
+   #+END_SRC
+   
+   Gurobi のサーバーに接続して認証が完了すると，ライセンスファイルの生成場所を尋
+   ねてくる：
+   #+BEGIN_SRC sh
+   Gurobi license key client (version 5.6.0)
+Copyright (c) 2012, Gurobi Optimization, Inc.
+
+-------------------------------
+Contacting Gurobi key server...
+-------------------------------
+
+Key for license ID 45789 was successfully retrieved.
+License expires at the end of the day on 2014-08-26.
+
+---------------------
+Saving license key...
+---------------------
+
+In which directory would you like to store the Gurobi license key file?
+[hit Enter to store it in /Users/[username]]]: 
+   #+END_SRC
+   デフォルトではホームフォルダにライセンスファイルが生成される．
+9. 生成されたライセンスを Gurobi のフォルダに移動する:
+   #+BEGIN_SRC sh
+   mv ~/gurobi.lic /Library/gurobi560/
+   #+END_SRC
+10. ターミナルで =gurobi.sh= を実行してエラーが出なければOK:
+    #+BEGIN_SRC sh
+      $ gurobi.sh                     # gurobi.sh を実行
+      Python 2.7.2 (default, Oct 11 2012, 20:14:37) 
+      [GCC 4.2.1 Compatible Apple Clang 4.0 (tags/Apple/clang-418.0.60)] on darwin
+      Type "help", "copyright", "credits" or "license" for more information.
+     
+      Gurobi Interactive Shell (mac64), Version 5.6.0
+      Copyright (c) 2013, Gurobi Optimization, Inc.
+      Type "help()" for help
+    #+END_SRC
+    ここでは Ctrl-D を押して終了させよう．
+
+    ライセンスファイルが無効な場合，以下のようなメッセージが表示される：
+    #+BEGIN_SRC sh
+      Python 2.7.2 (default, Oct 11 2012, 20:14:37) 
+      [GCC 4.2.1 Compatible Apple Clang 4.0 (tags/Apple/clang-418.0.60)] on darwin
+      Type "help", "copyright", "credits" or "license" for more information.
+      Traceback (most recent call last):
+        File "/usr/local/lib/gurobi.py", line 5, in <module>
+          from gurobipy import *
+        File "/usr/local/lib/python2.7/site-packages/gurobipy/__init__.py", line 1, in <module>
+          from gurobipy import *
+        File "gurobi.pxi", line 11, in init gurobipy (../../src/python/gurobipy.c:72659)
+        File "env.pxi", line 27, in gurobipy.Env.__init__ (../../src/python/gurobipy.c:3099)
+      gurobipy.GurobiError: No Gurobi license found (user nagae, host iMac-Late2012.local, hostid b1b0acc5)
+    #+END_SRC
+    この場合も終了させるには Ctrl-D．
+*** Gurobi をアップグレードする場合
+新しいパッケージをダウンロード→インストールし，ライセンスファイルを
+=/Library/gurobixxx/= に移動(もしくはコピー)する．ライセンスの更新は不要．
+*** pip と homebrew を使って Python のパッケージを充実させる
+http://joernhees.de/blog/2013/06/08/mac-os-x-10-8-scientific-python-with-homebrew/
+に紹介されているパッケージを入れる．ただし，このサイトでは python の最新版を
+homebrew でインストールすることを前提としてるが，それだと Gurobi が動かない．
+
+そこで，ここでは，Mac OS X デフォルトの Python 用の =pip= をインストールし，
+それを使ってパッケージを追加する方法を述べる．
+
+また，=pip= でインストールできる(i.e. Python関係)パッケージは極力 =pip= を用いる
+こととした．
+
+1. pip のインストール
+   pip は Python 用のパッケージインストーラである．homebrew 版 python には pip
+   も含まれるが，Mac OS X デフォルト版にはそれが無いのでインストールする．
+   #+BEGIN_SRC sh
+   sudo easy_install pip
+   #+END_SRC
+2. homebrew のリポジトリに =homebrew/science= と =samueljohn/python= を追加する：
+   #+BEGIN_SRC sh
+     brew tap homebrew/science # a lot of cool formulae for scientific tools
+     brew tap samueljohn/python
+     brew update && brew upgrade
+   #+END_SRC
+   =samueljohn/python= 内の numpy, scipy は近いうちに =homebrew/science= に移動
+   するそうなので注意([[https://github.com/samueljohn/homebrew-python/blob/master/README.md][参照]])．
+
+   2013/10/07 現在，=pip install scipy= とすると =swig= が無い，と言われてエラー
+   になるので =samueljohn/python= を利用する方針に修正．
+3. 順番に色々入れていく：
+   #+BEGIN_SRC sh
+          # 仮想環境構築
+          sudo pip install virtualenv nose     # virtualenv は Python の仮想環境を構築するもの．nose は Python の単体テストを簡単にできるように拡張したもの
+          
+          # インタラクティブ・モードの強化
+          brew install qt pyqt            # Qt は GUIツールキット．pyqt はその Python バインディング
+          brew install zmq                # ZeroMQ は軽さがウリのMQ(message queuing, アプリケーション間データ交換方式の1つ)
+          sudo pip install ipython[zmq,qtconsole,notebook,test] # iPython は Python のインタラクティブ・モードを進化させたもの
+          
+          # デバッグ出力
+          sudo pip install q                   # q はお手軽なデバッグ出力用のパッケージ
+          
+          # 科学技術計算用(Numpy, Scipy)
+          # pip install scipy が通らなくなったので，homebrew からインストールするようにした
+          brew install numpy               # NumPy は Python で科学計算を行うための基本パッケージ
+          brew install scipy --with-openblas              # SciPy は科学・工学用モジュール群
+          # 数式処理，グラフのプロット
+          sudo pip install sympy               # SymPy はシンボリックな数式処理のためのライブラリ
+          sudo pip install matplotlib          # matplotlib は Python で2Dグラフをプロットするためのライブラリ
+          
+          # ネットワーク分析
+          sudo pip install networkx           # NetworkX はネットワーク分析用パッケージ
+          sudo pip install graphillion        # Graphillion は「数え上げお姉さん」を救うパッケージ
+     
+          # 画像処理
+          sudo pip install pillow              # Pillow は Python の画像処理ライブラリ
+          brew install imagemagick graphviz # imagemagick は画像の操作・表示のためのソフトウェア．graphviz はグラフ描画ソフトウェア．
+          brew install cairo --without-x    # cairo はベクトルベースのフリーの2Dグラフィックスライブラリ
+          brew install py2cairo             # cairo 用の python 2.x バインディング
+          
+          # データ解析，自然言語処理
+          sudo pip install pandas nltk         # pandas はデータ解析ライブラリ，nltk は自然言語処理ツールキット，
+   #+END_SRC
+4. Homebrew でインストールした Python モジュールへのパスを通す
+   組み込み Python 下の pip でインストールしたライブラリと homebrew からインストー
+   ルした Python ライブラリを混在させる場合には，環境変数 =PYTHONPATH= に
+   homebrew 下の =site-packages= へのパスを追記する必要がある．
+   - =~/.bash_profile= に 以下を追加する：
+     #+BEGIN_SRC profile
+     export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
+     #+END_SRC
+
+   - ターミナルで以下を実行する
+     #+BEGIN_SRC sh
+     $ source ~/.bash_profile
+     #+END_SRC
+   
+** Gurobi を使ってみる
+*** Python を起動
+ターミナルから以下を入力：
+#+BEGIN_SRC sh
+python
+#+END_SRC
+
+Python が起動し，プロンプトが =>>>= に変わる．以下，順に入力していく：
+#+BEGIN_SRC sh
+  >>> import gurobipy as grb                                      # Gurobi 用パッケージを grb という名前でimport
+  >>> m = grb.read('/Library/gurobi560/mac64/examples/data/coins.lp') # デフォルトのインタラクティブ・モデルではファイル名のTAB補完は効かない
+  Read LP format model from file /Library/gurobi560/mac64/examples/data/coins.lp # 読み込みファイル名，
+  Reading time = 0.00 seconds     # 読み込みにかかった時間などが表示される
+  (null): 4 rows, 9 columns, 16 nonzeros
+  >>> m.optimize()                                                # 最適化メソッドを呼び出す
+  Optimize a model with 4 rows, 9 columns and 16 nonzeros             # 最適化された結果が表示される
+  Found heuristic solution: objective -0
+  Presolve removed 1 rows and 5 columns
+  Presolve time: 0.00s
+  Presolved: 3 rows, 4 columns, 9 nonzeros
+  Variable types: 0 continuous, 4 integer (0 binary)
+  
+  Root relaxation: objective 1.134615e+02, 4 iterations, 0.00 seconds
+  
+      Nodes    |    Current Node    |     Objective Bounds      |     Work
+   Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+  
+       0     0  113.46154    0    1   -0.00000  113.46154     -      -    0s
+  H    0     0                     113.4500000  113.46154  0.01%     -    0s
+  
+  Explored 0 nodes (4 simplex iterations) in 0.00 seconds
+  Thread count was 8 (of 8 available processors)
+  
+  Optimal solution found (tolerance 1.00e-04)
+  Best objective 1.134500000000e+02, best bound 1.134500000000e+02, gap 0.0%
+  >>> for v in m.getVars():   # 「:」を入力した後改行すると，次のプロンプトが ... になる
+  ...:     print v.varName, v.X   # print の前には TAB を押してインデントが必要
+  ...:                         # 何も入力しないで改行すると for ブロックを抜られる
+#+END_SRC
+すると以下が表示されるはず:
+#+BEGIN_SRC sh
+  Pennies 0.0
+  Nickels -0.0
+  Dimes 2.0
+  Quarters 53.0
+  Dollars 100.0
+  Cu 999.8
+  Ni 46.9
+  Zi 50.0
+  Mn 30.0
+#+END_SRC
+Python のインタラクティブ・モードを終了するにはCtrl-D を入力．
+#+BEGIN_SRC sh
+  >>>                                 # ここで Ctrl-D とすると
+  $                                   # Python モードが終了し，もとのターミナルのプロンプトに戻る
+#+END_SRC
+
+*** 最小費用流問題を解いてみる
+次のようなネットワークを対象として起点(a)から終点(d)まで $v=17$ 単位の製品を輸送
+する最小費用流を求める問題を考える(ただし，各リンクの $c$ は輸送費用，$a$ は容量を表す)．
+#+BEGIN_SRC dot :cmd neato :file gurobi_python_MCF_network.png :exports results
+  digraph G{
+          a [pos="0,0!"];
+          b [pos="1,1!"];
+          c [pos="1,-1!"];
+          d [pos="2,0!"];
+  
+          a->b [label="c=2, a=10"];
+          a->c [label="c=8, a=10"];
+          b->c [headlabel="c=3, a=3", labeldistance=5, labelangle=0];
+          b->d [headlabel="c=8, a=9", labeldistance=3, labelangle=-60];   
+          c->d [headlabel="c=4, a=8", labeldistance=3, labelangle=60];
+  }
+#+END_SRC
+
+#+RESULTS:
+[[file:gurobi_python_MCF_network.png]]
+
+**** モデルの定式化
+ノード集合 $\ClN$ とリンク集合 $\ClA$ を以下のように定義する：
+
+\[
+\ClN = \{a, b, c, d\}, \ClA = \{(a, b), (a, c), (b, c), (b, d), (c, d)\}
+\]
+
+このとき，最小費用流問題は，以下の3つの要素で構成される：
+1) 最小化すべき目的関数(総輸送費用)：
+
+   \[
+   \min_{\Vtx} \sum_{(i, j) \in \ClA} c_{i, j} x_{i, j}
+   \]
+2) 制約条件その1(各ノードでのフロー保存則)：
+
+   \[
+   \Subto{} \sum_{(i, n) \in \ClA} x_{i, n} - \sum_{(n, j) \in \ClA} 
+   = b_{n}, \quad \forall n \in \ClN
+   \]
+
+   ただし，$b_{n}$ は，$n$ が起点(a)なら $-v$, $n$ が終点なら$v$, それ以外なら0
+   となる定数．
+3) 制約条件その2(非負制約)：
+
+   \[
+   x_{i, j} \geq 0, \quad \forall (i, j) \in \ClA
+   \]
+**** Gurobi で表現してみる
+- まずは Python モードを起動:
+  #+BEGIN_SRC sh
+  $ python
+  #+END_SRC
+- リンクとノード集合を定義する：
+  #+BEGIN_SRC sh
+    >>> links = [('a','b'), ('a','c'), ('b', 'c'), ('b','d'),('c','d')]
+    >>> nodes = ['a', 'b', 'c', 'd']
+    >>> orig = 'a'                      # 起点
+    >>> dest = 'd'                      # 終点
+  #+END_SRC
+- ノード集合は各リンクの起点もしくは終点の集まりなので，以下のように生成してもよ
+  い．
+  #+BEGIN_SRC sh
+    >>> nodes = set([i for (i, j) in links] + [j for (i, j) in links])
+  #+END_SRC
+- 各リンクの費用と容量を設定する
+  #+BEGIN_SRC sh
+    >>> cost = dict(zip(links,[2,8,3,8,4]))
+    >>> capacity = dict(zip(links, [10, 10, 3, 9, 8]))
+  #+END_SRC
+- 総輸送量を設定する
+  #+BEGIN_SRC sh
+    >>> total_volume = 17
+  #+END_SRC
+- Python 用 Gurobi パッケージを「grb」という名前で読み込む
+  #+BEGIN_SRC sh
+    >>> import gurobipy as grb
+  #+END_SRC
+- モデルを格納する grb.Model型変数 m を作成する
+  #+BEGIN_SRC sh
+    >>> m = grb.Model()
+  #+END_SRC
+- GRB.addVar()という関数を用いてリンクごとの未知変数を定義する．
+  #+BEGIN_SRC sh
+    >>> x = {}
+    >>> for (i,j) in links:
+    ...    x[i, j] = m.addVar(vtype=grb.GRB.CONTINUOUS, name="x_{%s,%s}" % (i, j)) # x[i, j]の前にはインデントが必要
+    ...                             # 何も入力しないで改行
+  #+END_SRC
+- 目的関数を定義し，最大化/最小化のいずれを行うかを指定する
+  #+BEGIN_SRC sh
+    >>> m.update()                  # モデルに変数が追加されたことを反映させる
+    >>> m.setObjective(grb.quicksum(x[i, j]*cost[i, j] for (i, j) in links)) # 目的関数
+    >>> m.setAttr("ModelSense", grb.GRB.MINIMIZE) 
+  #+END_SRC
+- ノードごとのフロー保存則を追加する
+  #+BEGIN_SRC sh
+    >>> b = {}
+    >>> for n in nodes:
+    ...    # フロー保存則の右辺の定数を決定する
+    ...    if n == orig:            # if の前にはインデントが必要
+    ...        b[n] = - total_volume # b[n] の前には更にインデントが必要
+    ...    elif n == dest:
+    ...        b[n] = total_volume
+    ...    else:
+    ...        b[n] = 0
+    ...    # ノードごとのフロー保存則
+    ...    # 行末に「\」をつけると複数行にまたがって記述できる
+    ...    m.addConstr(grb.quicksum(x[i, j] for (i, j) in links if j == n)\ 
+    ...                - grb.quicksum(x[i, j] for (i, j) in links if i == n) \
+    ...                == b[n], name="flow reservation at %s" % n)
+    ...    # 空白行を入力することで for ブロックを抜けられる
+  #+END_SRC
+- 非負制約と容量制約を追加する
+  #+BEGIN_SRC sh
+    >>> for (i, j) in links:
+    ...    x[i, j].lb = 0.0
+    ...    x[i, j].ub = capacity[i, j]
+    ...    # 空白行を入力することで for ブロックを抜けられる
+  #+END_SRC
+- モデルを更新し，mincostflow.lp に線形計画問題の形で出力する
+  #+BEGIN_SRC sh
+    >>> m.update()
+    >>> m.write("mincostflow.lp")  
+  #+END_SRC
+- 最適化を行う
+  #+BEGIN_SRC sh
+    >>> m.optimize()
+    Optimize a model with 4 rows, 5 columns and 10 nonzeros
+    Presolve removed 2 rows and 3 columns
+    Presolve time: 0.00s
+    Presolved: 2 rows, 2 columns, 4 nonzeros
+    
+    Iteration    Objective       Primal Inf.    Dual Inf.      Time
+           0    1.8000000e+02   2.000000e+00   0.000000e+00      0s
+           1    1.8300000e+02   0.000000e+00   0.000000e+00      0s
+    
+    Solved in 1 iterations and 0.00 seconds
+    Optimal objective  1.830000000e+02
+  #+END_SRC
+- 最適値と最適解(最小費用流)を表示させる
+  #+BEGIN_SRC sh
+    >>> print "optimal value:\t%8.4f" % m.ObjVal
+    optimal value:  183.0000
+    >>> for (i, j) in links:
+    ...    print "%s:\t%8.4f" % (x[i, j].VarName, x[i, j].X)
+    ...
+    x_{a,b}:         10.0000
+    x_{a,c}:          7.0000
+    x_{b,c}:          1.0000
+    x_{b,d}:          9.0000
+    x_{c,d}:          8.0000
+  #+END_SRC
+*** インタラクティブ・モードに疲れたら
+インタラクティブ・モードで逐一コマンドを入力するのは面倒．そういう場合は，以下の
+ようなスクリプト・ファイルに記述して呼び出せばいい．
+#+BEGIN_SRC python
+  #! /usr/bin/python
+  # *-* encoding: utf-8 *-*
+  
+  # リンク集合
+  links = [('a','b'), ('a','c'), ('b', 'c'), ('b','d'),('c','d')]
+  # ノード集合
+  nodes = ['a', 'b', 'c', 'd']
+  orig = 'a'                      # 起点
+  dest = 'd'                      # 終点
+  
+  # 各リンクの輸送費用
+  cost = dict(zip(links,[2,8,3,8,4]))
+  # 各リンクの容量
+  capacity = dict(zip(links, [10, 10, 3, 9, 8]))
+  # 起点から終点までの総輸送量
+  total_volume = 17
+  
+  # Gurobi パッケージを grb という名前で import 
+  import gurobipy as grb
+  # print "%s:\t%8.4f" % (x[i, j].VarName, x[i, j].X)
+  m = grb.Model()
+  # 未知変数を x という辞書型変数に格納
+  x = {}
+  # addVar() という関数を用いてモデルに変数を追加する
+  for (i,j) in links:
+      x[i, j] = m.addVar(vtype=grb.GRB.CONTINUOUS, name="x_{%s,%s}" % (i, j))
+  m.update()                  # モデルに変数が追加されたことを反映させる
+  
+  # 目的関数を設定し，最小化を行うことを明示する
+  m.setObjective(grb.quicksum(x[i, j]*cost[i, j] for (i, j) in links))# 目的関数
+  m.setAttr("ModelSense", grb.GRB.MINIMIZE)
+  
+  # 各ノードでのフロー保存則を追加する
+  b = {}                          # フロー保存則の右辺の定数を設定する
+  for n in nodes:
+      if n == orig:
+          b[n] = - total_volume
+      elif n == dest:
+          b[n] = total_volume
+      else:
+          b[n] = 0
+      # ノードごとのフロー保存則
+      # 行馬に「\」をつけると1つの行を複数行にまたがって記述できる
+      m.addConstr(grb.quicksum(x[i, j] for (i, j) in links if j == n)\
+                  - grb.quicksum(x[i, j] for (i, j) in links if i == n) \
+                  == b[n], name="flow reservation at %s" % n)
+  
+  # 各ノードでの非負制約と容量制約を追加する
+  for (i, j) in links:
+      x[i, j].lb = 0.0
+      x[i, j].ub = capacity[i, j]
+  
+  # モデルに制約条件が追加されたことを反映させる
+  m.update()
+  m.write("mincostflow.lp")       # mincostflow.lp というファイルに定式化されたモデルを出力する
+  
+  # 最適化を行い，結果を表示させる
+  m.optimize()
+  print "optimal value:\t%8.4f" % m.ObjVal
+  for (i, j) in links:
+      print "%s:\t%8.4f" % (x[i, j].VarName, x[i, j].X)
+#+END_SRC
+
+Python からファイルを呼び出すには，ターミナルで
+#+BEGIN_SRC sh
+$ python sampleMCF.py
+#+END_SRC
+とすればよい．
