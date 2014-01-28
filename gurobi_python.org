@@ -146,41 +146,49 @@ homebrew でインストールすることを前提としてるが，それだ�
 
    2013/10/07 現在，=pip install scipy= とすると =swig= が無い，と言われてエラー
    になるので =samueljohn/python= を利用する方針に修正．
-3. 順番に色々入れていく：
+3. グラフィック用ターミナルを2つ入れておく
+   - XQuartz
+     - http://xquartz.macosforge.org/landing/ から dmg ファイルをダウンロードしてインストール
+   - Aquaterm
+     - http://sourceforge.net/projects/aquaterm/
+4. 順番に色々入れていく：
    #+BEGIN_SRC sh
-          # 仮想環境構築
-          sudo pip install virtualenv nose     # virtualenv は Python の仮想環境を構築するもの．nose は Python の単体テストを簡単にできるように拡張したもの
-          
-          # インタラクティブ・モードの強化
-          brew install qt pyqt            # Qt は GUIツールキット．pyqt はその Python バインディング
-          brew install zmq                # ZeroMQ は軽さがウリのMQ(message queuing, アプリケーション間データ交換方式の1つ)
-          sudo pip install ipython[zmq,qtconsole,notebook,test] # iPython は Python のインタラクティブ・モードを進化させたもの
-          
-          # デバッグ出力
-          sudo pip install q                   # q はお手軽なデバッグ出力用のパッケージ
-          
-          # 科学技術計算用(Numpy, Scipy)
-          # pip install scipy が通らなくなったので，homebrew からインストールするようにした
-          brew install numpy               # NumPy は Python で科学計算を行うための基本パッケージ
-          brew install scipy --with-openblas              # SciPy は科学・工学用モジュール群
-          # 数式処理，グラフのプロット
-          sudo pip install sympy               # SymPy はシンボリックな数式処理のためのライブラリ
-          sudo pip install matplotlib          # matplotlib は Python で2Dグラフをプロットするためのライブラリ
-          
-          # ネットワーク分析
-          sudo pip install networkx           # NetworkX はネットワーク分析用パッケージ
-          sudo pip install graphillion        # Graphillion は「数え上げお姉さん」を救うパッケージ
+     # 仮想環境構築
+     sudo pip install virtualenv nose     # virtualenv は Python の仮想環境を構築するもの．nose は Python の単体テストを簡単にできるように拡張したもの
      
-          # 画像処理
-          sudo pip install pillow              # Pillow は Python の画像処理ライブラリ
-          brew install imagemagick graphviz # imagemagick は画像の操作・表示のためのソフトウェア．graphviz はグラフ描画ソフトウェア．
-          brew install cairo --without-x    # cairo はベクトルベースのフリーの2Dグラフィックスライブラリ
-          brew install py2cairo             # cairo 用の python 2.x バインディング
+     # インタラクティブ・モードの強化
+     brew install qt pyqt            # Qt は GUIツールキット．pyqt はその Python バインディング
+     brew install zmq                # ZeroMQ は軽さがウリのMQ(message queuing, アプリケーション間データ交換方式の1つ)
+     sudo pip install ipython[zmq,qtconsole,notebook,test] # iPython は Python のインタラクティブ・モードを進化させたもの
+     
+     # デバッグ出力
+     sudo pip install q                   # q はお手軽なデバッグ出力用のパッケージ
+     
+     # 科学技術計算用(Numpy, Scipy)
+     # pip install scipy が通らなくなったので，homebrew からインストールするようにした
+     brew install gfortran           # scipy のコンパイルに必要
+     sudo pip install numpy --upgrade # Numpy を最新版に
+     sudo pip install scipy --upgrade # Scipy を最新版に
+     
+     # 数式処理，グラフのプロット
+     sudo pip install sympy               # SymPy はシンボリックな数式処理のためのライブラリ
+     sudo pip install matplotlib          # matplotlib は Python で2Dグラフをプロットするためのライブラリ
+     brew install https://raw2.github.com/mw9/homebrew/42770e1a0c840828b34ad31d3920908d7c08ea3e/Library/Formula/gnuplot.rb --latex # gnuplot はグラフ描画用
+     
+     # ネットワーク分析
+     sudo pip install networkx           # NetworkX はネットワーク分析用パッケージ
+     sudo pip install graphillion        # Graphillion は「数え上げお姉さん」を救うパッケージ
           
-          # データ解析，自然言語処理
-          sudo pip install pandas nltk         # pandas はデータ解析ライブラリ，nltk は自然言語処理ツールキット，
+     # 画像処理
+     sudo pip install pillow              # Pillow は Python の画像処理ライブラリ
+     brew install imagemagick graphviz # imagemagick は画像の操作・表示のためのソフトウェア．graphviz はグラフ描画ソフトウェア．
+     brew install cairo --without-x    # cairo はベクトルベースのフリーの2Dグラフィックスライブラリ
+     brew install py2cairo             # cairo 用の python 2.x バインディング
+     
+     # データ解析，自然言語処理
+     sudo pip install pandas nltk         # pandas はデータ解析ライブラリ，nltk は自然言語処理ツールキット，
    #+END_SRC
-4. Homebrew でインストールした Python モジュールへのパスを通す
+5. Homebrew でインストールした Python モジュールへのパスを通す
    組み込み Python 下の pip でインストールしたライブラリと homebrew からインストー
    ルした Python ライブラリを混在させる場合には，環境変数 =PYTHONPATH= に
    homebrew 下の =site-packages= へのパスを追記する必要がある．
