@@ -140,6 +140,12 @@
       <Q> quit
    #+END_SRC
 
+**** インストールした後で TEXMFHOME を修正したい場合
+=tlmgr= でも変更できる． 
+#+BEGIN_SRC sh
+tlmgr conf texmf TEXMFHOME ~/Dropbox/texmf:/usr/local/share/texmf
+#+END_SRC
+
 *** パスの設定
 5. =/usr/local/texbin= へシンボリックリンクを張っておく
    #+BEGIN_SRC sh
