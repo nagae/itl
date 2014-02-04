@@ -12,8 +12,7 @@
 #+INFOJS_OPT: path:org-info.js
 #+INFOJS_OPT: view:showall toc:nil sdepth:3 ltoc:2
 #+INFOJS_OPT: toc:t tdepth:1 view:showall mouse:underline buttons:nil
-#+INFOJS_OPT: up:../
-#+INFOJS_OPT: home:../
+#+INFOJS_OPT: up:../ home:../
 
 #+STYLE: <link rel=stylesheet href="style.css" type="text/css">
 

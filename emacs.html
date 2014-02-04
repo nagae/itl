@@ -1,0 +1,689 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<title>ITL/Emacs編</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="ITL/Emacs編"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2014-02-04T14:41+0900"/>
+<meta name="author" content="Takeshi Nagae"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<link rel=stylesheet href="style.css" type="text/css">
+<script type="text/javascript" src="org-info.js">
+/**
+ *
+ * @source: org-info.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in org-info.js.
+ *
+ * Copyright (C) 2012-2013  Sebastian Rose
+ *
+ *
+ * The JavaScript code in this tag is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in org-info.js.
+ *
+ */
+</script>
+
+<script type="text/javascript">
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "1");
+org_html_manager.set("LINK_HOME", "../");
+org_html_manager.set("LINK_UP", "./");
+org_html_manager.set("LOCAL_TOC", "2");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "0");
+org_html_manager.set("VIEW", "showall");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">ITL/Emacs編</h1>
+
+
+
+
+
+<div id="table-of-contents">
+<h2>&#30446;&#27425;</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 Emacs &mdash; 最強のエディタ</a>
+<ul>
+<li><a href="#sec-1-1">1.1 インストール方法</a></li>
+<li><a href="#sec-1-2">1.2 長江研 Emacs 設定方針</a></li>
+<li><a href="#sec-1-3">1.3 Emacs の初期設定</a></li>
+<li><a href="#sec-1-4">1.4 初期設定ファイルの更新</a></li>
+<li><a href="#sec-1-5">1.5 基本的な操作方法</a>
+<ul>
+<li><a href="#sec-1-5-1">1.5.1 特殊キー</a></li>
+<li><a href="#sec-1-5-2">1.5.2 同時押しと順次押し</a></li>
+<li><a href="#sec-1-5-3">1.5.3 まずはパニック対応(<code>ESC, C-g</code>)</a></li>
+<li><a href="#sec-1-5-4">1.5.4 カーソルの操作</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-6">1.6 参考資料</a></li>
+<li><a href="#sec-1-7">1.7 独自設定</a>
+<ul>
+<li><a href="#sec-1-7-1">1.7.1 基本操作</a></li>
+<li><a href="#sec-1-7-2">1.7.2 Anything</a></li>
+<li><a href="#sec-1-7-3">1.7.3 もっとある</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Emacs &mdash; 最強のエディタ</h2>
+<div class="outline-text-2" id="text-1">
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> インストール方法</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<ol>
+<li>本体を Homebrew でインストール
+
+
+
+<pre class="src src-screen">$ brew install --cocoa emacs
+:
+:
+==&gt; Caveats A command line wrapper for the cocoa app was installed to:
+ /usr/local/Cellar/emacs/24.3/bin/emacs
+
+.app bundles were installed to /usr/local/Cellar/emacs/24.3 (or libexec)<span style="color: #b0c4de;">.</span>
+Run brew linkapps to symlink these to /Applications.
+==&gt; Summary
+ /usr/local/Cellar/emacs/24.3: 3909 files, 114M, built<span style="color: #00ffff;"> in</span> 3.3 minutes
+</pre>
+
+</li>
+<li>上記の実行結果を参考に，アプリケーション・フォルダにシンボリックリンクを張る(以前に比べてコマンドが簡単になりました)．
+
+
+
+<pre class="src src-screen">$ brew linkapps
+</pre>
+
+</li>
+<li>Spotlight で呼び出せるように Automator でアプリケーションとして登録
+<ol>
+<li><a href="file:///Applications/Automator.app">Automator.app</a> を起動し，メニューから「アプリケーション」を選択
+      <img src="fig/emacs_Automator_1.png" alt="Automator設定画面" align="center" width="600" />
+</li>
+<li>検索窓に「シェルスクリプトを実行」と入力
+</li>
+<li>「シェルスクリプトを実行」と書かれたアイコンをダブルクリック
+</li>
+<li>デフォルトで <code>cat</code> と書かれたシェルスクリプトを以下に変更：
+
+
+
+<pre class="src src-screen">open -a /Applications/Emacs.app
+</pre>
+
+</li>
+<li>ファイル名を <code>Emacs.app</code> として iCloud フォルダに保存する
+</li>
+</ol>
+
+</li>
+</ol>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 長江研 Emacs 設定方針</h3>
+<div class="outline-text-3" id="text-1-2">
+
+<p>Emacs は初期設定ファイル(<code>~/.emacs.d/init.el</code>)が極めて重要な役割を果たす<sup><a class="footref" name="fnr-.1" href="#fn-.1">1</a></sup>．同じ
+Emacs を使っていても，初期設定ファイルが違うと全く違うアプリケーションのように感
+じる．そのため，マシンごとに別々の初期設定ファイルを用いると，複数のマシンで作業
+する(eg. 研究室の作業を自宅で引き継ぐ)際に作業効率が著しく低下する．そこで，以下
+では，次のポリシーに従った設定方法を述べる：
+</p><ul>
+<li>環境変数や homebrew のパスなど，マシン固有の設定はローカル上の <code>~/.emacs.d/init.el</code> に記述
+</li>
+<li>それ以外の初期設定ファイルは Dropbox上の <code>~/Dropbox/.emacs.d/</code> 以下に置く
+</li>
+<li>ELPA(Emacs Lisp Package Archives)を積極的に利用．通常，これらのファイルはローカルの <code>~/.emacs.d/elpa/</code> 以下に置かれるが，ここでは，これをDropbox 上の <code>~/Dropbox/.emacs.d/elpa</code> へのシンボリックリンクとして設定．
+</li>
+<li>ELPAでインストールできないlispファイル群は Dropbox 上の <code>~/Dropbox/.emacs.d/lisp</code> 以下に置く．
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Emacs の初期設定</h3>
+<div class="outline-text-3" id="text-1-3">
+
+<ol>
+<li>ローカルの初期設定フォルダを作成：
+
+
+
+<pre class="src src-screen">$ mkdir ~/.emacs.d/
+</pre>
+
+</li>
+<li><code>~/.emacs.d/init.el</code> を以下のように設定する：
+   <script src="https://gist.github.com/nagae/5269225.js"></script>
+
+<p>   
+   なお，上記ファイルは以下の手順でダウンロードすることも可能：
+</p>
+
+
+<pre class="src src-screen">$ cd ~/.emacs.d
+$ curl -O https://gist.github.com/nagae/5269225/raw/init.el
+</pre>
+
+<p>
+   <code>curl -O foo</code> は指定されたインターネット上のファイルを同じ名前で現在のディレクトリに保存するコマンド．
+</p></li>
+<li>リポジトリからDropbox 上に設定ファイルを読み込む：
+<ol>
+<li>Bitbucket と Github に SSH 公開鍵アクセスが可能か調べる
+
+
+
+<pre class="src src-text">$ ssh git@bitbucket.org
+PTY allocation request failed on channel 0
+conq: logged in as ***.
+
+You can use git or hg to connect to Bitbucket. Shell access is disabled.
+Connection to bitbucket.org closed.
+</pre>
+
+<p>
+      <code>You can use git or hg to connect to Bitbucket.</code> と表示されれば OK.
+</p>
+
+
+<pre class="src src-text">$ ssh git@github.com
+PTY allocation request failed on channel 0
+Hi ****! You've successfully authenticated, but GitHub does not provide shell access.
+Connection to github.com closed.
+</pre>
+
+<p>
+      <code>Hi ****! You've successfully authenticated</code> と表示されればOK(****は Github.com のアカウント名)．
+</p></li>
+<li>アクセスできない場合は以下の手順を試してみる：
+<ul>
+<li><a href="#Github-Bitbucket-SSH">Github / Bitbucket に SSH で接続する</a> の設定を確認
+</li>
+<li><code>~/.ssh/known_host</code> から <code>github.com</code> や <code>bitbucket.org</code> を含む行を削除する
+</li>
+<li>秘密鍵を指定してSSHでアクセスしてみる: 具体的には，ターミナルから以下を入力
+
+
+
+<pre class="src src-screen">$ ssh -i ~/.ssh/id_rsa git@bitbucket.org
+$ ssh -i ~/.ssh/id_rsa git@github.com
+</pre>
+
+</li>
+</ul>
+
+</li>
+<li>Bitbucket / Github にアクセスできることを確認したら，ターミナルから以下を実行：
+
+
+
+<pre class="src src-screen">$ cd ~/Dropbox/
+$ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git
+</pre>
+
+</li>
+</ol>
+
+</li>
+<li>Dropbox のlisp用フォルダへのシンボリックリンクをローカルの設定フォルダ <code>~/.emacs.d/</code> に置く：
+
+
+
+<pre class="src src-screen">$ ln -s ~/Dropbox/.emacs.d/elpa ~/.emacs.d <span style="color: #ff4500;"># </span><span style="color: #ff4500;">Dropbox&#19978;&#12398; elpa &#12501;&#12457;&#12523;&#12480;&#12408;&#12398;&#12471;&#12531;&#12508;&#12522;&#12483;&#12463;&#12522;&#12531;&#12463;&#12434;&#24373;&#12427;</span>
+</pre>
+
+</li>
+</ol>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> 初期設定ファイルの更新</h3>
+<div class="outline-text-3" id="text-1-4">
+
+<ul>
+<li>上記の初期設定ファイルは適宜更新される．更新を反映するにはターミナルから以下を実行する：
+
+
+
+<pre class="src src-screen">$ cd ~/Dropbox/.emacs.d
+$ git pull
+</pre>
+
+</li>
+<li><code>lisp/spaces</code> など，一部の lisp は別のリポジトリを(submodule として)取り込んでいるので，以下で最新のものに更新できる(はず)：
+
+
+
+<pre class="src src-screen">$ cd ~/Dropbox/.emacs.d
+$ git submodule update --init --recursive
+$ git submodule update --recursive
+</pre>
+
+</li>
+<li><code>--init</code> オプションをつけると初期化のみを行うようです(<a href="http://stackoverflow.com/questions/10168449/git-update-submodule-recursive">参考</a>)．
+</li>
+<li><code>git pull</code> あたりでどうにもうまく行かないときは，<code>~/Dropbox/.emacs.d</code> 自体を clone し直してみる：
+
+
+
+<pre class="src src-screen">$ cd ~/Dropbox                  <span style="color: #ff4500;"># </span><span style="color: #ff4500;">~/Dropbox &#12395;&#31227;&#21205;</span>
+$ mv .emacs.d .emacs.d.backup   <span style="color: #ff4500;"># </span><span style="color: #ff4500;">.emacs.d &#12434;&#21029;&#21517;&#12391;&#36864;&#36991;</span>
+$ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git   <span style="color: #ff4500;"># </span><span style="color: #ff4500;">&#26368;&#26032;&#29256;&#12434; clone</span>
+</pre>
+
+<p>
+  後は <code>.emacs.d.backup</code> の中身を適宜 <code>.emacs.d</code> に書き写していけばいい
+</p></li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> 基本的な操作方法</h3>
+<div class="outline-text-3" id="text-1-5">
+
+
+</div>
+
+<div id="outline-container-1-5-1" class="outline-4">
+<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> 特殊キー</h4>
+<div class="outline-text-4" id="text-1-5-1">
+
+<p>上記の設定の下では，Emacs で用いる特殊キーは以下のように割当てられる．
+</p><table  border="2" cellspacing="0" cellpadding="6" rules="all" frame="hsides">
+<colgroup><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">特殊キー名</th><th scope="col" class="left">省略表記</th><th scope="col" class="left">キーボード上のキー</th></tr>
+</thead>
+<tbody>
+<tr><td class="left">Control</td><td class="left">C-</td><td class="left">caps lock</td></tr>
+<tr><td class="left">Meta</td><td class="left">M-</td><td class="left">command (⌘)</td></tr>
+<tr><td class="left">Super</td><td class="left">s-</td><td class="left">option (alt)</td></tr>
+</tbody>
+<tbody>
+<tr><td class="left">Return</td><td class="left">RET</td><td class="left">return (enter)</td></tr>
+<tr><td class="left">Tab</td><td class="left">TAB</td><td class="left">tab</td></tr>
+<tr><td class="left">Delete</td><td class="left">DEL</td><td class="left">delete</td></tr>
+<tr><td class="left">Esc</td><td class="left">ESC</td><td class="left">esc</td></tr>
+</tbody>
+</table>
+
+<img src="fig/Emacs/Control_Meta_Super.png"  alt="fig/Emacs/Control_Meta_Super.png" />
+
+<p>
+以降では，caps lock を「Control キー」，command (⌘) を「Meta キー」，option(alt) を「super キー」と呼ぶことにする．
+</p></div>
+
+</div>
+
+<div id="outline-container-1-5-2" class="outline-4">
+<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> 同時押しと順次押し</h4>
+<div class="outline-text-4" id="text-1-5-2">
+
+<p>Emacs では，特殊キーとそれ以外のキーの組み合わせ(キーバインド)によって多彩な操作が可能である．
+全てのキー操作は「同時押し」と「順次押し」で構成される．
+</p><dl>
+<dt>同時押し</dt><dd>特殊キーとそれ以外のキーを <span class="alert">同時</span> に押すこと．ハイフン(-)で表現される．
+<dl>
+<dt><code>C-g</code></dt><dd>Control と g を同時に押す
+</dd>
+<dt><code>M-x</code></dt><dd>Meta と x を同時に押す
+</dd>
+<dt><code>C-x-n</code></dt><dd>Control と Meta と n を同時に押す
+</dd>
+</dl>
+
+</dd>
+<dt>順次押し</dt><dd>あるキーや同時押しの <span class="alert">後で</span>, 別のキーや同時押しを入力すること．空白記号で区切って表現される．
+<dl>
+<dt><code>C-x C-s</code></dt><dd>C-x の後で C-s を入力する
+</dd>
+<dt><code>M-x info</code></dt><dd>M-x の後で「info」と入力する
+</dd>
+<dt><code>C-x RET f</code></dt><dd>C-x, リターンキー, f の順に入力する
+</dd>
+</dl>
+
+</dd>
+</dl>
+
+<p>特殊キーと
+</p></div>
+
+</div>
+
+<div id="outline-container-1-5-3" class="outline-4">
+<h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span> まずはパニック対応(<code>ESC, C-g</code>)</h4>
+<div class="outline-text-4" id="text-1-5-3">
+
+<p>操作中に予期せぬ画面になってしまった時は，<code>ESC</code> か <code>C-g</code> (Control と g の同時押し)を押すことで，大抵，元の画面に戻ってこれる．
+</p><ol>
+<li>Emacs を起動すると，最初はこのような画面(eshell)が現れるはずだ．
+   <img src="fig/Emacs/initial_window.png" width="600" alt="fig/Emacs/initial_window.png" />
+</li>
+<li><code>C-h C-h</code> (Controlキー と h の同時押しを2回)を入力する．
+</li>
+<li>こんな画面になってしまう
+   <img src="fig/Emacs/C-h_C-h_window.png" width="600" alt="fig/Emacs/C-h_C-h_window.png" />
+</li>
+<li>慌てずに <code>ESC</code> を押せば，元の画面に戻る．
+</li>
+<li>今度は <code>C-x C-u</code> (Control キーと x の同時押しの後，Control と u の同時押し)を入力する．
+</li>
+<li>こんな画面になるはずだ
+   <img src="fig/Emacs/C-x_C-u_window.png" width="600" alt="fig/Emacs/C-x_C-u_window.png" />
+</li>
+<li>この画面は <code>ESC</code> を入力しても消えてくれない．そんな時も慌てず <code>C-g</code> を入力すれば，元の画面に戻る．
+</li>
+</ol>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-5-4" class="outline-4">
+<h4 id="sec-1-5-4"><span class="section-number-4">1.5.4</span> カーソルの操作</h4>
+<div class="outline-text-4" id="text-1-5-4">
+
+<p>Emacs では，十字キーではなく，キーバインドでもカーソルを操作できる．最初は十字キーの方が楽なように思うだろうが，慣れてくると十字キーに手を伸ばすのが億劫になってくるはずだ．最初の画面(eshell)で色々試してみよう．
+</p><table  border="2" cellspacing="0" cellpadding="6" rules="all" frame="hsides">
+<colgroup><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">キーバインド</th><th scope="col" class="left">動作</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><code>C-f</code></td><td class="left">カーソルを右(前)へ</td></tr>
+<tr><td class="left"><code>C-b</code></td><td class="left">カーソルを左(後)へ</td></tr>
+<tr><td class="left"><code>C-n</code></td><td class="left">カーソルを下(次の行)へ</td></tr>
+<tr><td class="left"><code>C-p</code></td><td class="left">カーソルを上(前の行)へ</td></tr>
+<tr><td class="left"><code>C-a</code></td><td class="left">カーソルを行の先頭へ</td></tr>
+<tr><td class="left"><code>C-e</code></td><td class="left">カーソルを行の末尾へ</td></tr>
+</tbody>
+<tbody>
+<tr><td class="left"><code>M-f</code></td><td class="left">カーソルを1単語右(前)へ</td></tr>
+<tr><td class="left"><code>M-b</code></td><td class="left">カーソルを1単語左(後)へ</td></tr>
+<tr><td class="left"><code>C-v</code></td><td class="left">カーソルを1画面下(次の画面)へ</td></tr>
+<tr><td class="left"><code>M-v</code></td><td class="left">カーソルを1画面上(前の画面)へ</td></tr>
+<tr><td class="left"><code>M-&lt;</code></td><td class="left">カーソルをバッファの先頭へ</td></tr>
+<tr><td class="left"><code>M-&gt;</code></td><td class="left">カーソルをバッファの末尾へ</td></tr>
+</tbody>
+<tbody>
+<tr><td class="left"><code>DEL</code></td><td class="left">カーソルの <span class="alert">前</span> の1文字を消去</td></tr>
+<tr><td class="left"><code>C-d</code></td><td class="left">カーソルの <span class="alert">後</span> の1文字を消去</td></tr>
+</tbody>
+</table>
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> 参考資料</h3>
+<div class="outline-text-3" id="text-1-6">
+
+<p>順次書いていきますが膨大なので，まずは <a href="http://www.amazon.co.jp/dp/4774150029">Emacs 実践入門</a> の§2.3以降を読みながら各自で慣れていって下さい．
+</p></div>
+
+</div>
+
+<div id="outline-container-1-7" class="outline-3">
+<h3 id="sec-1-7"><span class="section-number-3">1.7</span> 独自設定</h3>
+<div class="outline-text-3" id="text-1-7">
+
+<p><a href="https://bitbucket.org/nagae/.emacs.d">https://bitbucket.org/nagae/.emacs.d</a> で公開している設定ファイルでは，
+<a href="http://www.amazon.co.jp/dp/4774150029">Emacs 実践入門</a> に記載されていないような独自のキーバインドがいくつかある．
+</p>
+</div>
+
+<div id="outline-container-1-7-1" class="outline-4">
+<h4 id="sec-1-7-1"><span class="section-number-4">1.7.1</span> 基本操作</h4>
+<div class="outline-text-4" id="text-1-7-1">
+
+<dl>
+<dt>ウィンドウの切り替え(<code>C-;</code>)</dt><dd><code>C-x o</code> だけでなく <code>C-;</code> でもウィンドウが切り替えられる．
+</dd>
+<dt>指定行への移動(<code>M-g</code>)</dt><dd><code>M-x goto-line</code> を <code>M-g</code> だけで起動できる
+</dd>
+<dt>バッファ切り替え(<code>C-x b</code>)</dt><dd><code>C-x b</code> で <a href="http://www.bookshelf.jp/soft/meadow_28.html#SEC370">iswitchb</a> を起動できる．カーソルの左右と <code>C-f, C-b</code> で次のバッファ/前のバッファを選択できる．
+</dd>
+<dt>前後のバッファへの瞬時切り替え(<code>C-&lt;, C-&gt;</code>)</dt><dd>バッファ切り替えを立ち上げなくても <code>C-&lt;</code> で前のバッファ， <code>C-&gt;</code> で後のバッファに切り替えられる
+</dd>
+</dl>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-7-2" class="outline-4">
+<h4 id="sec-1-7-2"><span class="section-number-4">1.7.2</span> Anything</h4>
+<div class="outline-text-4" id="text-1-7-2">
+
+<dl>
+<dt><code>s-a</code> (option キーと a の同時押し)</dt><dd><code>s-a</code> でanything-for-files を起動
+</dd>
+</dl>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-7-3" class="outline-4">
+<h4 id="sec-1-7-3"><span class="section-number-4">1.7.3</span> もっとある</h4>
+<div class="outline-text-4" id="text-1-7-3">
+
+<p>便利な独自機能はまだ沢山あるが鋭意執筆中．
+</p>
+<div id="footnotes">
+<h2 class="footnotes">&#33050;&#27880;: </h2>
+<div id="text-footnotes">
+<p class="footnote"><sup><a class="footnum" name="fn-.1" href="#fnr-.1">1</a></sup> <code>.emacs.d</code> のように先頭に <code>.</code> のついたファイルやフォルダは隠しファイル/隠しフォ
+ルダであり，普段はFinder や <code>ls</code> コマンドで見ることはできない．これらを見るには，
+ターミナルから以下のように入力する：
+</p>
+
+
+<pre class="src src-screen">$ ls -a ~/
+</pre>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">&#26085;&#20184;: 2014-02-04T14:41+0900</p>
+<p class="author">&#33879;&#32773;: Takeshi Nagae</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>
