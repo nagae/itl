@@ -1,0 +1,960 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>setup</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="setup"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2014-02-04T09:31+0900"/>
+<meta name="author" content="Takeshi Nagae"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">setup</h1>
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 Mac のセットアップ</a>
+<ul>
+<li><a href="#sec-1-1">1.1 ソフトウェア・アップデートの実行</a></li>
+<li><a href="#sec-1-2">1.2 キーバインドの変更</a>
+<ul>
+<li><a href="#sec-1-2-1">1.2.1 ctrl と caps lock を入れ替える</a></li>
+<li><a href="#sec-1-2-2">1.2.2 spotlight のキーバインドを ctrl + shift + space に変更</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-3">1.3 Trackpad の設定</a></li>
+<li><a href="#sec-1-4">1.4 キーボード・ショートカット</a>
+<ul>
+<li><a href="#sec-1-4-1">1.4.1 覚えておくと便利なショートカット</a></li>
+</ul></li>
+</ul>
+</li>
+<li><a href="#sec-2">2 ソフトウェアのインストール方法</a></li>
+<li><a href="#sec-3">3 BetterTouchTools のインストールと設定</a>
+<ul>
+<li><a href="#sec-3-1">3.1 BTT の特徴</a></li>
+<li><a href="#sec-3-2">3.2 インストール方法</a>
+<ul>
+<li><a href="#sec-3-2-1">3.2.1 マウスを使う場合</a></li>
+<li><a href="#sec-3-2-2">3.2.2 ターミナルだけでも行える</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-3">3.3 設定例</a>
+<ul>
+<li><a href="#sec-3-3-1">3.3.1 ログインと同時に起動するように</a></li>
+<li><a href="#sec-3-3-2">3.3.2 Global</a></li>
+</ul></li>
+</ul>
+</li>
+<li><a href="#sec-4">4 各種サービスのアカウント作成とユーティリティのインストール</a>
+<ul>
+<li><a href="#sec-4-1">4.1 iCloud (https://www.icloud.com)</a>
+<ul>
+<li><a href="#sec-4-1-1">4.1.1 特徴</a></li>
+<li><a href="#sec-4-1-2">4.1.2 アカウント作成・ユーティリティ</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-2">4.2 Dropbox (https://www.dropbox.com/)</a>
+<ul>
+<li><a href="#sec-4-2-1">4.2.1 特徴</a></li>
+<li><a href="#sec-4-2-2">4.2.2 アカウント作成・ユーティリティ</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-3">4.3 Cloud.app (http://getcloudapp.com)</a>
+<ul>
+<li><a href="#sec-4-3-1">4.3.1 特徴</a></li>
+<li><a href="#sec-4-3-2">4.3.2 アカウント作成・ユーティリティ</a></li>
+<li><a href="#sec-4-3-3">4.3.3 参考サイト</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-4">4.4 Github (https://github.com)</a>
+<ul>
+<li><a href="#sec-4-4-1">4.4.1 特徴</a></li>
+<li><a href="#sec-4-4-2">4.4.2 アカウント作成・ユーティリティ</a></li>
+<li><a href="#sec-4-4-3">4.4.3 参考サイト</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-5">4.5 Bitbucket (https://bitbucket.org)</a>
+<ul>
+<li><a href="#sec-4-5-1">4.5.1 特徴</a></li>
+<li><a href="#sec-4-5-2">4.5.2 アカウント作成・ユーティリティ</a></li>
+<li><a href="#sec-4-5-3">4.5.3 参考サイト</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-6">4.6 Evernote (必須ではない)</a></li>
+<li><a href="#sec-4-7">4.7 Github / Bitbucket に SSH で接続する</a>
+<ul>
+<li><a href="#sec-4-7-1">4.7.1 公開鍵と秘密鍵の作成</a></li>
+<li><a href="#sec-4-7-2">4.7.2 Bitbucket に SSH の公開鍵を登録する</a></li>
+<li><a href="#sec-4-7-3">4.7.3 Github に SSH の公開鍵を登録する</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Mac のセットアップ</h2>
+<div class="outline-text-2" id="text-1">
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> ソフトウェア・アップデートの実行</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<p>Mac に入っている OS が最新のものになっていない場合，後述する機能が使えない可能性があるばかりか，悪意のある攻撃に対する脆弱性が修正されていないかもしれない．
+</p><ul>
+<li>メニューバー左上のリンゴマーク→ソフトウェア・アップデートを実行
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> キーバインドの変更</h3>
+<div class="outline-text-3" id="text-1-2">
+
+
+</div>
+
+<div id="outline-container-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> ctrl と caps lock を入れ替える</h4>
+<div class="outline-text-4" id="text-1-2-1">
+
+<p>本研究室では ctrl を多用するので，あまり使わない caps lock と入れ替える．
+</p><ul>
+<li>システム環境設定→キーボード→修飾キー を開いて設定
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> spotlight のキーバインドを ctrl + shift + space に変更</h4>
+<div class="outline-text-4" id="text-1-2-2">
+
+<p>デフォルトでは ctrl + space だが，このキーバインドは後述する Emacs で「mark set」の機能に割当てられている．
+</p><ul>
+<li>システム環境設定→spotlight を開いて設定
+</li>
+</ul>
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Trackpad の設定</h3>
+<div class="outline-text-3" id="text-1-3">
+
+<ul>
+<li>システム環境設定→トラックパッド
+</li>
+</ul>
+
+<p><img src="fig/setup_trackpad.png" alt="trackpad設定" align="center" width="600" />
+</p></div>
+
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> キーボード・ショートカット</h3>
+<div class="outline-text-3" id="text-1-4">
+
+<ul>
+<li>Mac では ⌘ (command), control, shift, option のキーとアルファベットや数字キーを組み合わえることで様々な機能を呼び出せる．
+  <a href="http://support.apple.com/kb/HT1343?viewlocale=ja_JP">http://support.apple.com/kb/HT1343?viewlocale=ja_JP</a>
+</li>
+</ul>
+
+
+</div>
+
+<div id="outline-container-1-4-1" class="outline-4">
+<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> 覚えておくと便利なショートカット</h4>
+<div class="outline-text-4" id="text-1-4-1">
+
+<table  border="2" cellspacing="0" cellpadding="6" rules="all" frame="hsides" ID="align_left">
+<colgroup><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">ショートカット</th><th scope="col" class="left">機能</th></tr>
+</thead>
+<tbody>
+<tr><td class="left">⌘+c</td><td class="left">コピー</td></tr>
+<tr><td class="left">⌘+v</td><td class="left">ペースト</td></tr>
+<tr><td class="left">⌘+w</td><td class="left">ウィンドウを閉じる</td></tr>
+<tr><td class="left">ctrl + shift + space</td><td class="left">spotlight</td></tr>
+<tr><td class="left">ctrl + option + space</td><td class="left">spotlight を Finder 上で起動</td></tr>
+<tr><td class="left">⌘+h</td><td class="left">ウィンドウを隠す</td></tr>
+<tr><td class="left">⌘+m</td><td class="left">ウィンドウを最小化</td></tr>
+<tr><td class="left">⌘+q</td><td class="left">終了</td></tr>
+<tr><td class="left">⌘+option+esc</td><td class="left">アプリケーションの強制終了</td></tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> ソフトウェアのインストール方法</h2>
+<div class="outline-text-2" id="text-2">
+
+<p>Mac ではソフトウェアのインストール方法に3通りある．
+</p><ul>
+<li>App Store からインストールする
+</li>
+<li>.app ファイルをアプリケーション・フォルダに移動させる
+</li>
+<li>.pkg ファイルをダブルクリックする
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> BetterTouchTools のインストールと設定</h2>
+<div class="outline-text-2" id="text-3">
+
+
+</div>
+
+<div id="outline-container-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> BTT の特徴</h3>
+<div class="outline-text-3" id="text-3-1">
+
+<ul>
+<li>Trackpad による様々なジェスチャーを各種機能に設定できる
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> インストール方法</h3>
+<div class="outline-text-3" id="text-3-2">
+
+
+</div>
+
+<div id="outline-container-3-2-1" class="outline-4">
+<h4 id="sec-3-2-1"><span class="section-number-4">3.2.1</span> マウスを使う場合</h4>
+<div class="outline-text-4" id="text-3-2-1">
+
+<ul>
+<li><a href="http://www.boastr.de/">http://www.boastr.de/</a> から BetterTouchTool.zip をダウンロード
+</li>
+<li>BetterTouchTool.zip をダブルクリック
+</li>
+<li>生成された BetterTouchTool.app を <code>/Applications/</code> フォルダに移動．
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-3-2-2" class="outline-4">
+<h4 id="sec-3-2-2"><span class="section-number-4">3.2.2</span> ターミナルだけでも行える</h4>
+<div class="outline-text-4" id="text-3-2-2">
+
+
+
+
+<pre class="src src-screen"><span style="color: #b0c4de;">cd</span> ~/Downloads/
+curl -O http://bettertouchtool.net/BetterTouchTool.zip
+unzip -o BetterTouchTool.zip
+cp -r BetterTouchTool.app/ /Applications/
+rm -r BetterTouchTool.app
+</pre>
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> 設定例</h3>
+<div class="outline-text-3" id="text-3-3">
+
+
+</div>
+
+<div id="outline-container-3-3-1" class="outline-4">
+<h4 id="sec-3-3-1"><span class="section-number-4">3.3.1</span> ログインと同時に起動するように</h4>
+<div class="outline-text-4" id="text-3-3-1">
+
+<p>Preference -&gt; Settings -&gt; Launch BetterTouchTools on startup をチェック
+</p></div>
+
+</div>
+
+<div id="outline-container-3-3-2" class="outline-4">
+<h4 id="sec-3-3-2"><span class="section-number-4">3.3.2</span> Global</h4>
+<div class="outline-text-4" id="text-3-3-2">
+
+<table  border="2" cellspacing="0" cellpadding="6" rules="all" frame="hsides" ID="align_left">
+<colgroup><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">ジェスチャー</th><th scope="col" class="left">機能</th><th scope="col" class="left">解説</th></tr>
+</thead>
+<tbody>
+<tr><td class="left">Corner Click Bottom Right</td><td class="left">Sleep Display</td><td class="left">Trackpadの右下をクリック : ディスプレイをスリープ</td></tr>
+<tr><td class="left">Three Finger Click</td><td class="left">Lookup word under cursor</td><td class="left">3本指クリック: カーソル下の単語を調べる</td></tr>
+<tr><td class="left">Three Finger Clickswipe Down</td><td class="left">Restore old window size</td><td class="left">3本指で下へクリック・スワイプ : ウィンドウのサイズを元に戻す</td></tr>
+<tr><td class="left">Three Finger Clickswipe Left</td><td class="left">Maximize Window Left</td><td class="left">3本指で左へクリック・スワイプ : ウィンドウを画面の左半分にスナップ・最大化</td></tr>
+<tr><td class="left">Three Finger Clickswipe Right</td><td class="left">Maximize Window Right</td><td class="left">3本指で右へクリック・スワイプ : ウィンドウを画面の右半分にスナップ・最大化</td></tr>
+<tr><td class="left">Three Finger Clickswipe Up</td><td class="left">Maximize Window</td><td class="left">3本指で上へクリック・スワイプ : ウィンドウを最大化</td></tr>
+<tr><td class="left">Three Finger Swipe Up</td><td class="left">End (end of the page)</td><td class="left">3本指で上へスワイプ : ページの最後へ（Endと同じ）</td></tr>
+<tr><td class="left">Three Finger Swipe Down</td><td class="left">Home (beginning of the page)</td><td class="left">3本指で下へスワイプ : ページの先頭へ（fn + ←と同じ）</td></tr>
+<tr><td class="left">Three Finger Swipe Left</td><td class="left">⌘⇧]</td><td class="left">3本指で右から左へスワイプ : 右のタブへ(Safari.app, Terminal.app, Firefox.app, Google Chrome.app などで共通に利用可能)</td></tr>
+<tr><td class="left">Three Finger Swipe Right</td><td class="left">⌘⇧[</td><td class="left">3本指で左から右へスワイプ : 左のタブへ</td></tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> 各種サービスのアカウント作成とユーティリティのインストール</h2>
+<div class="outline-text-2" id="text-4">
+
+
+</div>
+
+<div id="outline-container-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> iCloud (<a href="https://www.icloud.com">https://www.icloud.com</a>)</h3>
+<div class="outline-text-3" id="text-4-1">
+
+
+</div>
+
+<div id="outline-container-4-1-1" class="outline-4">
+<h4 id="sec-4-1-1"><span class="section-number-4">4.1.1</span> 特徴</h4>
+<div class="outline-text-4" id="text-4-1-1">
+
+<ul>
+<li>無料で5GBのクラウドストレージ．
+</li>
+<li>MacやiOS デバイス間でMail/Safariのブックマーク/iCalendarを同期させたり，iOSデバイスのデータや設定をバックアップしたりできる．
+</li>
+<li>GoodReaderを始め，各種iOS Appからのアクセスが容易だが，ローカル・フォルダとの同期は無い．
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-4-1-2" class="outline-4">
+<h4 id="sec-4-1-2"><span class="section-number-4">4.1.2</span> アカウント作成・ユーティリティ</h4>
+<div class="outline-text-4" id="text-4-1-2">
+
+<ul>
+<li><a href="http://www.apple.com/jp/icloud/setup/mac.html">http://www.apple.com/jp/icloud/setup/mac.html</a> を参考に
+</li>
+</ul>
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Dropbox (<a href="https://www.dropbox.com/">https://www.dropbox.com/</a>)</h3>
+<div class="outline-text-3" id="text-4-2">
+
+
+</div>
+
+<div id="outline-container-4-2-1" class="outline-4">
+<h4 id="sec-4-2-1"><span class="section-number-4">4.2.1</span> 特徴</h4>
+<div class="outline-text-4" id="text-4-2-1">
+
+<ul>
+<li>無料で2GBのクラウドストレージ．
+</li>
+<li><b>30日まで</b> 履歴を保存しているので，うっかり上書き・削除してしまっても復元可能．
+</li>
+<li>ローカルの <code>~/Dropbox</code> フォルダと自動的に同期．
+</li>
+<li>.emacs, texmf, skk 辞書などの保存には便利．
+</li>
+<li>iOS からもファイル閲覧可能．
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-4-2-2" class="outline-4">
+<h4 id="sec-4-2-2"><span class="section-number-4">4.2.2</span> アカウント作成・ユーティリティ</h4>
+<div class="outline-text-4" id="text-4-2-2">
+
+<ul>
+<li><a href="http://db.tt/pqpSl9b">http://db.tt/pqpSl9b</a> からアカウントを作成
+</li>
+<li><a href="https://www.dropbox.com/downloading?src=index">https://www.dropbox.com/downloading?src=index</a> からユーティリティをダウンロード．
+</li>
+</ul>
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> Cloud.app (<a href="http://getcloudapp.com">http://getcloudapp.com</a>)</h3>
+<div class="outline-text-3" id="text-4-3">
+
+
+</div>
+
+<div id="outline-container-4-3-1" class="outline-4">
+<h4 id="sec-4-3-1"><span class="section-number-4">4.3.1</span> 特徴</h4>
+<div class="outline-text-4" id="text-4-3-1">
+
+<ul>
+<li>ファイルの共有機能に特化．
+</li>
+<li>Cloud への保存と同時に，当該ファイルへのURLをクリップボードに送ってくれる．これをメールなどにペーストすることでファイルが共有可能．
+</li>
+<li>Finder から Ctrl + option + R とするだけで，上記作業が完了するので便利．
+</li>
+<li>保存容量は無制限だが，無料プランの場合，アップロードできるファイルが 10ファイル/日，25MB/ファイル に限定される．
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-4-3-2" class="outline-4">
+<h4 id="sec-4-3-2"><span class="section-number-4">4.3.2</span> アカウント作成・ユーティリティ</h4>
+<div class="outline-text-4" id="text-4-3-2">
+
+<ul>
+<li><a href="http://getcloudapp.com">http://getcloudapp.com</a> からアカウント作成＆ユーティリティをダウンロード
+</li>
+<li>アカウントを作成したら <a href="http://my.cl.ly/account">http://my.cl.ly/account</a> の Privacy -&gt; Default Privacy for New Drops のチェックを private にすること(→<a href="http://blog.getcloudapp.com/privacy-redux/">理由</a>)
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-4-3-3" class="outline-4">
+<h4 id="sec-4-3-3"><span class="section-number-4">4.3.3</span> 参考サイト</h4>
+<div class="outline-text-4" id="text-4-3-3">
+
+<ul>
+<li><a href="http://www.dtp-transit.jp/utility/post_1650.html">http://www.dtp-transit.jp/utility/post_1650.html</a>
+</li>
+<li><a href="http://wakabamac.blog95.fc2.com/blog-entry-1046.html">http://wakabamac.blog95.fc2.com/blog-entry-1046.html</a>
+</li>
+</ul>
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4-4" class="outline-3">
+<h3 id="sec-4-4"><span class="section-number-3">4.4</span> Github (<a href="https://github.com">https://github.com</a>)</h3>
+<div class="outline-text-3" id="text-4-4">
+
+
+</div>
+
+<div id="outline-container-4-4-1" class="outline-4">
+<h4 id="sec-4-4-1"><span class="section-number-4">4.4.1</span> 特徴</h4>
+<div class="outline-text-4" id="text-4-4-1">
+
+<ul>
+<li>Bitbucket と同じ git リポジトリ
+</li>
+<li>ちょっとしたコード断片の公開・管理に便利な gist システムを備える
+</li>
+<li>push したソースを Web 上からでも編集できる
+</li>
+<li>公開リポジトリは無料で無制限に作成可能．プライベート・リポジトリは有料．
+</li>
+<li>ディレクトリ構造を持たない gist であればプライベートでも無制限に作成可能．
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-4-4-2" class="outline-4">
+<h4 id="sec-4-4-2"><span class="section-number-4">4.4.2</span> アカウント作成・ユーティリティ</h4>
+<div class="outline-text-4" id="text-4-4-2">
+
+<ul>
+<li><a href="https://github.com">https://github.com</a> から Sign up
+</li>
+<li>Mac 用のユーティリティとして <a href="http://mac.github.com">http://mac.github.com</a> が用意されている．
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-4-4-3" class="outline-4">
+<h4 id="sec-4-4-3"><span class="section-number-4">4.4.3</span> 参考サイト</h4>
+<div class="outline-text-4" id="text-4-4-3">
+
+<ul>
+<li><a href="http://qiita.com/items/4272209ad80380933000">http://qiita.com/items/4272209ad80380933000</a>
+</li>
+<li><a href="http://samura1.net/2012/10/github_first/">http://samura1.net/2012/10/github_first/</a>
+</li>
+</ul>
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4-5" class="outline-3">
+<h3 id="sec-4-5"><span class="section-number-3">4.5</span> Bitbucket (<a href="https://bitbucket.org">https://bitbucket.org</a>)</h3>
+<div class="outline-text-3" id="text-4-5">
+
+
+</div>
+
+<div id="outline-container-4-5-1" class="outline-4">
+<h4 id="sec-4-5-1"><span class="section-number-4">4.5.1</span> 特徴</h4>
+<div class="outline-text-4" id="text-4-5-1">
+
+<ul>
+<li>Github と同様の git リポジトリ
+</li>
+<li>gist システムやソースのWeb編集機能は無い
+</li>
+<li>公開/プライベートともに無制限にリポジトリを作成できる
+</li>
+<li>5人までならプライベート・リポジトリを共有できる．アカデミック・アカウントなら無制限に共有できる(!)
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-4-5-2" class="outline-4">
+<h4 id="sec-4-5-2"><span class="section-number-4">4.5.2</span> アカウント作成・ユーティリティ</h4>
+<div class="outline-text-4" id="text-4-5-2">
+
+<ul>
+<li><a href="https://bitbucket.org">https://bitbucket.org</a> から sign up
+</li>
+<li>Mac 用のユーティリティとして <a href="http://www.sourcetreeapp.com">http://www.sourcetreeapp.com</a> が用意されている
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-4-5-3" class="outline-4">
+<h4 id="sec-4-5-3"><span class="section-number-4">4.5.3</span> 参考サイト</h4>
+<div class="outline-text-4" id="text-4-5-3">
+
+<dl>
+<dt>サインアップ</dt><dd><a href="http://toruuetani.bitbucket.org/bitbucket.html#id2">http://toruuetani.bitbucket.org/bitbucket.html#id2</a>
+</dd>
+</dl>
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4-6" class="outline-3">
+<h3 id="sec-4-6"><span class="section-number-3">4.6</span> Evernote (必須ではない)</h3>
+<div class="outline-text-3" id="text-4-6">
+
+</div>
+
+</div>
+
+<div id="outline-container-4-7" class="outline-3">
+<h3 id="sec-4-7"><span class="section-number-3">4.7</span> Github / Bitbucket に SSH で接続する</h3>
+<div class="outline-text-3" id="text-4-7">
+
+
+</div>
+
+<div id="outline-container-4-7-1" class="outline-4">
+<h4 id="sec-4-7-1"><span class="section-number-4">4.7.1</span> 公開鍵と秘密鍵の作成</h4>
+<div class="outline-text-4" id="text-4-7-1">
+
+<ul>
+<li><code>~/.ssh</code> にSSH用の公開鍵と秘密鍵を作る
+
+
+
+<pre class="src src-screen">$ mkdir ~/.ssh                    <span style="color: #ff4500;"># </span><span style="color: #ff4500;">ssh&#29992;&#12398;&#12487;&#12451;&#12524;&#12463;&#12488;&#12522;&#12434;&#20316;&#12427;</span>
+$ cd ~/.ssh
+$ ssh-keygen -t rsa -f id_rsa     <span style="color: #ff4500;"># </span><span style="color: #ff4500;">id_rsa &#12392;&#12356;&#12358;&#31192;&#23494;&#37749;&#12392; id_rsa.pub &#12392;&#12356;&#12358;&#20844;&#38283;&#37749;&#12434;&#20316;&#12427;</span>
+<span style="color: #ff4500;"># </span><span style="color: #ff4500;">&#12497;&#12473;&#12501;&#12524;&#12540;&#12474;&#12434;&#20837;&#21147;&#12375;&#12383;&#24460;&#65292;&#21516;&#12376;&#12418;&#12398;&#12434;&#12418;&#12358;&#19968;&#24230;&#20837;&#21147;&#65294;</span>
+<span style="color: #ff4500;"># </span><span style="color: #ff4500;">&#12371;&#12371;&#12391;&#20837;&#21147;&#12377;&#12427;&#12497;&#12473;&#12501;&#12524;&#12540;&#12474;&#12399;&#65292;Mac &#26412;&#20307;&#12408;&#12398;&#12525;&#12464;&#12452;&#12531;&#29992;&#12392;&#21516;&#12376;&#12395;&#12375;&#12390;&#12418;&#21839;&#38988;&#28961;&#12356;&#65294;</span>
+$ chmod 700 ~/.ssh
+$ chmod 600 ~/.ssh/id_rsa.pub 
+</pre>
+
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-4-7-2" class="outline-4">
+<h4 id="sec-4-7-2"><span class="section-number-4">4.7.2</span> Bitbucket に SSH の公開鍵を登録する</h4>
+<div class="outline-text-4" id="text-4-7-2">
+
+<ul>
+<li><a href="https://bitbucket.org/">Bitbucket</a> の右上のアバターから「Manage account」を選ぶ
+  <img src="fig/Bitbucket-icon.png" align="center" width="600" alt="fig/Bitbucket-icon.png" />
+</li>
+<li>左側のメニューから「SSH keys」を選び，「Add Key」をクリック
+  <img src="fig/Bitbucket-SSH_keys.png" align="center" width="600" alt="fig/Bitbucket-SSH_keys.png" />
+</li>
+<li>適当なラベルを与えたあと，公開鍵を Keys にコピーする．ターミナル上で
+
+
+
+<pre class="src src-screen">pbcopy &lt; ~/.ssh/id_rsa.pub
+</pre>
+
+<p>
+  としてから Key のところでペーストすると簡単．
+  <img src="fig/Bitbucket-Add_key.png" align="center" width="600" alt="fig/Bitbucket-Add_key.png" />
+</p></li>
+<li><code>~/.ssh/config</code> に以下を記載
+
+
+
+<pre class="src src-text">Host bitbucket
+ User git
+ Port 22
+ Hostname bitbucket.org
+ IdentityFile ~/.ssh/id_rsa
+ TCPKeepAlive yes
+ IdentitiesOnly yes  
+</pre>
+
+<p>
+  これを実現する方法は2つある
+</p><dl>
+<dt>ターミナル上で Emacs を起動して編集する方法</dt><dd>
+<ol>
+<li>まず，ターミナル上で
+
+
+
+<pre class="src src-screen">$ emacs ~/.ssh/config
+</pre>
+
+<p>
+       として，Emacs を起動する．
+</p></li>
+<li>上記をコピー＆ペーストする．
+</li>
+<li>保存(C-x C-s: Ctrlを押しながら x, s とタイプする)した後，
+       Emacs を終了(C-x C-c; Ctrl を押しながら x, cとタイプ)する．
+</li>
+</ol>
+
+</dd>
+<dt><code>pbpaste</code> から追記する方法</dt><dd>
+<ol>
+<li>上記をコピーする．
+</li>
+<li>ターミナル上で以下を入力：
+
+
+
+<pre class="src src-screen">$ pbpaste &gt;&gt; ~/.ssh/config
+$ echo &gt;&gt; ~/.ssh/config         <span style="color: #ff4500;"># </span><span style="color: #ff4500;">&#25913;&#34892;&#12434;&#21152;&#12360;&#12427;</span>
+</pre>
+
+</li>
+</ol>
+
+</dd>
+<dt>確認</dt><dd>追記したら，うまく記載できているか確認．ターミナル上で
+
+
+
+<pre class="src src-screen">$ less ~/.ssh/config
+</pre>
+
+<p>
+    とする．less は <code>q</code> で終了できる．思った通りに記載できていなかったら emacs などで編集．
+</p></dd>
+</dl>
+
+</li>
+<li>SSH接続を試してみる．ターミナル上で <code>ssh git@bitbucket.org</code> としてみる．
+
+
+
+<pre class="src src-text">$ ssh git@bitbucket.org
+The authenticity of host 'bitbucket.org (207.223.240.182)' can't be established.
+RSA key fingerprint is 97:8c:1b:f2:.....
+Are you sure you want to continue connecting (yes/no)? 
+</pre>
+
+<p>
+  と表示されたら，<code>yes</code> を入力．
+</p>
+
+
+<pre class="src src-screen"><span style="color: #ff4500;"># </span><span style="color: #ff4500;">(Warning &#12364;&#20986;&#12427;&#12371;&#12392;&#12418;&#12354;&#12427;)</span>
+PTY allocation request failed on channel 0
+conq: logged<span style="color: #00ffff;"> in</span> as ****.        <span style="color: #ff4500;"># </span><span style="color: #ff4500;">**** &#12395;&#12399; bitbucket.org &#12398;&#12450;&#12459;&#12454;&#12531;&#12488;&#21517;&#12364;&#20837;&#12427;</span>
+
+You can use git or hg to connect to Bitbucket. Shell access is disabled.
+Connection to bitbucket.org closed.
+</pre>
+
+<p>
+  と出れば成功．
+</p></li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-4-7-3" class="outline-4">
+<h4 id="sec-4-7-3"><span class="section-number-4">4.7.3</span> Github に SSH の公開鍵を登録する</h4>
+<div class="outline-text-4" id="text-4-7-3">
+
+<ul>
+<li><a href="https://github.com/">github.com</a> の右上のユーザー名をクリック
+  <img src="fig/Github-icon.png" align="center" width="600" alt="fig/Github-icon.png" />
+</li>
+<li>ダッシュボード画面で右上の「Edit Your Profile」をクリック
+  <img src="fig/Github-edit_profile.png" align="center" width="600" alt="fig/Github-edit_profile.png" />
+</li>
+<li>左側のメニューから「SSH Keys」を選び，「Add SSH Key」をクリック．
+</li>
+<li>編集画面が開くので，Title に適当なラベルを与え(省略可能)，公開鍵を Key にペーストし「Add Key」をクリック．
+  <img src="fig/Github-Add_SSH_key.png" align="center" width="600" alt="fig/Github-Add_SSH_key.png" />
+</li>
+<li>公開鍵をペーストする簡単な方法：ターミナル上で
+
+
+
+<pre class="src src-screen">pbcopy &lt; ~/.ssh/id_rsa.pub
+</pre>
+
+<p>
+  としてから Key のところでペースト(Command+V)．
+</p></li>
+<li><code>~/.ssh/config</code> に以下を追記(上述も参照)．
+
+
+
+<pre class="src src-text">Host github
+ User git
+ Port 22
+ Hostname github.com
+ IdentityFile ~/.ssh/id_rsa
+ TCPKeepAlive yes
+ IdentitiesOnly yes
+</pre>
+
+</li>
+<li>うまく記載できているか確認．ターミナル上で
+
+
+
+<pre class="src src-screen">$ less ~/.ssh/config
+</pre>
+
+<p>
+  とする．less は <code>q</code> で終了できる．思った通りに記載できていなかったら emacs などで編集．
+</p></li>
+<li>SSH接続を試してみる．ターミナル上で <code>ssh git@github.com</code> としてみる．
+
+
+
+<pre class="src src-text">$ ssh git@github.com
+The authenticity of host 'github.com (204.232.175.90)' can't be established.
+RSA key fingerprint is 16:27:ac:a5:76:....
+Are you sure you want to continue connecting (yes/no)? 
+</pre>
+
+<p>
+  と表示されたら，<code>yes</code> を入力．
+</p>
+
+
+<pre class="src src-text"># (Warning &#12364;&#20986;&#12427;&#12371;&#12392;&#12418;&#12354;&#12427;)
+PTY allocation request failed on channel 0
+Hi ****! You've successfully authenticated, but GitHub does not provide shell access.
+Connection to github.com closed.
+# **** &#12395;&#12399; github.com &#12398;&#12450;&#12459;&#12454;&#12531;&#12488;&#21517;&#12364;&#20837;&#12427;
+</pre>
+
+<p>
+  と出れば成功．
+</p></li>
+</ul>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2014-02-04T09:31+0900</p>
+<p class="author">Author: Takeshi Nagae</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>
