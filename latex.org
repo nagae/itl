@@ -446,8 +446,9 @@ C-c C-k
 **** 特徴
 auctex と同様の機能を持つが minor-mode のため，org-mode などと併用できる
 **** インストール
-- ELPA からインストール可能
-- Emacs を立ち上げ，以下を入力して RET
-  #+BEGIN_SRC example
-  M-x package-install auctex
+- ELPA のバージョン(4.0)は古くて使えないので，git から最新版を取ってくる必要がある．
+- ターミナルから以下を実行
+  #+BEGIN_SRC screen
+    cd ~/Dropbox/.emacs.d/
+    git submodule add git@github.com:emacsmirror/cdlatex.git lisp/cdlatex
   #+END_SRC
