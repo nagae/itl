@@ -1,0 +1,925 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<title>ITL/LaTeX編</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="ITL/LaTeX編"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2014-02-04T12:56+0900"/>
+<meta name="author" content="Takeshi Nagae"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<link rel=stylesheet href="style.css" type="text/css">
+<script type="text/javascript" src="org-info.js">
+/**
+ *
+ * @source: org-info.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in org-info.js.
+ *
+ * Copyright (C) 2012-2013  Sebastian Rose
+ *
+ *
+ * The JavaScript code in this tag is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in org-info.js.
+ *
+ */
+</script>
+
+<script type="text/javascript">
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "1");
+org_html_manager.set("LINK_HOME", "../");
+org_html_manager.set("LINK_UP", "../");
+org_html_manager.set("LOCAL_TOC", "2");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "0");
+org_html_manager.set("VIEW", "showall");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">ITL/LaTeX編</h1>
+
+
+
+
+
+<div id="table-of-contents">
+<h2>&#30446;&#27425;</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 LaTeX</a>
+<ul>
+<li><a href="#sec-1-1">1.1 TeXLive 2013 のインストール</a>
+<ul>
+<li><a href="#sec-1-1-1">1.1.1 参考</a></li>
+<li><a href="#sec-1-1-2">1.1.2 2012 からのアップグレード</a></li>
+<li><a href="#sec-1-1-3">1.1.3 本体のインストール</a></li>
+<li><a href="#sec-1-1-4">1.1.4 パスの設定</a></li>
+<li><a href="#sec-1-1-5">1.1.5 otf パッケージ用のフォントの設定</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-2">1.2 コンパイルしてみる</a></li>
+<li><a href="#sec-1-3">1.3 tlmgr を使って常に最新の状態を保つ</a>
+<ul>
+<li><a href="#sec-1-3-1">1.3.1 リポジトリを登録</a></li>
+<li><a href="#sec-1-3-2">1.3.2 tlmgr 自身の更新</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-4">1.4 latexmk</a></li>
+<li><a href="#sec-1-5">1.5 Emacs との連携</a>
+<ul>
+<li><a href="#sec-1-5-1">1.5.1 auctex</a></li>
+<li><a href="#sec-1-5-2">1.5.2 cdLaTeX</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> LaTeX</h2>
+<div class="outline-text-2" id="text-1">
+
+<p>以下では， <code>texmf</code> ディレクトリを Dropbox 上に置く方法を示す．
+</p>
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> TeXLive 2013 のインストール</h3>
+<div class="outline-text-3" id="text-1-1">
+
+
+</div>
+
+<div id="outline-container-1-1-1" class="outline-4">
+<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> 参考</h4>
+<div class="outline-text-4" id="text-1-1-1">
+
+<dl>
+<dt>TeX Live を使おう &mdash; Linux ユーザと Mac OS X ユーザのために &mdash;</dt><dd><a href="http://www.fugenji.org/~thomas/texlive-guide/">http://www.fugenji.org/~thomas/texlive-guide/</a>
+</dd>
+</dl>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-1-2" class="outline-4">
+<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> 2012 からのアップグレード</h4>
+<div class="outline-text-4" id="text-1-1-2">
+
+<ol>
+<li>TeXLive 2012 のバックアップ
+
+
+
+<pre class="src src-sh">mv /usr/local/texlive/2012/ /usr/local/texlive/.2012
+</pre>
+
+
+<p>   
+   TeXLive 2013 でうまく動かなくなったら，
+</p>
+
+
+<pre class="src src-sh">mv /usr/local/texlive/2013 /usr/local/texlive/.2013
+mv /usr/local/texlive/.2012 /usr/local/texlive/2012
+sed <span style="color: #ffa07a;">'s|/usr/local/texlive/2013|/usr/local/texlive/2012|g'</span> ~/.bash_profile
+<span style="color: #b0c4de;">source</span> ~/.bash_profile
+mktexlsr
+</pre>
+
+<p>
+   とすれば TeXLive 2012 に戻せるはず．
+</p></li>
+</ol>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-1-3" class="outline-4">
+<h4 id="sec-1-1-3"><span class="section-number-4">1.1.3</span> 本体のインストール</h4>
+<div class="outline-text-4" id="text-1-1-3">
+
+<ol>
+<li>インストーラと texlive.profile をダウンロード
+
+<p>
+   以下の texlive.profile では <code>TEXMFHOME</code> を <code>~/Dropbox/texmf:/usr/local/share/texmf</code> としている．
+   なお， <code>/usr/local/share/texmf</code> は後述する auctex で利用．
+</p>
+
+
+<pre class="src src-sh"><span style="color: #b0c4de;">cd</span> ~/Downloads
+curl -LO http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz 
+tar -xzf install-tl-unx.tar.gz
+<span style="color: #b0c4de;">cd</span> install-tl* 
+</pre>
+
+</li>
+<li>インストーラを起動
+
+
+
+<pre class="src src-sh">curl -LO https://gist.github.com/nagae/6533236/raw/texlive2013.profile
+./install-tl --profile texlive2013.profile
+</pre>
+
+
+</li>
+<li>不要なファイルを消去
+
+
+
+<pre class="src src-sh"><span style="color: #b0c4de;">cd</span> ~/Downloads
+rm -rf install-tl*
+</pre>
+
+
+</li>
+<li>関連する homebrew パッケージのインストール
+
+
+
+<pre class="src src-sh">brew install --with-emacs=/Applications/Emacs.app/Contents/MacOS/Emacs auctex <span style="color: #ff4500;"># </span><span style="color: #ff4500;">Emacs&#12391;&#12398;TeX&#12501;&#12449;&#12452;&#12523;&#32232;&#38598;&#12434;&#25903;&#25588;&#12377;&#12427;&#65294;</span>
+</pre>
+
+</li>
+</ol>
+
+
+<ul>
+<li id="sec-1-1-3-1">profile が上手く読めない場合やinteractive modeで自分で設定したい場合<br/>
+色々なカスタマイズが可能だが，以下では上記の <code>texlive2013.profile</code> と同じ設定にする方法を示す．
+<ol>
+<li>下記の main manu で <code>Enter command:</code> の後に <code>D RET</code> を入力(ディレクトリ)：
+
+
+
+<pre class="src src-screen">======================&gt; TeX Live installation procedure &lt;=====================
+
+=======&gt; Note: Letters/digits<span style="color: #00ffff;"> in</span> &lt;angle brackets&gt; indicate menu items &lt;=======
+=======&gt;       for commands or configurable options                   &lt;=======
+
+ Detected platform: universal binaries for MacOSX/Darwin
+
+ &lt;B&gt; platforms: 1 out of 18
+
+ &lt;S&gt; installation scheme (scheme-full)
+     84 collections out of 85, disk space required: 3889 MB
+
+ Customizing installation scheme:
+   &lt;C&gt; standard collections
+   &lt;L&gt; language collections
+
+ &lt;D&gt; directories:
+   TEXDIR (the main TeX directory):
+(&#30465;&#30053;)
+Actions:
+ &lt;I&gt; start installation to hard disk
+ &lt;H&gt; help
+ &lt;Q&gt; quit
+
+Enter command: 
+</pre>
+
+
+</li>
+<li>下記の Directories setup メニューで <code>Enter command:</code> の後に <code>7 RET</code> と入力
+   (<code>TEXMFHOME</code> の設定)
+
+
+
+<pre class="src src-screen">===============================================================================
+Directories setup:
+
+ &lt;1&gt; TEXDIR:       /usr/local/texlive/2013
+     support tree: /usr/local/texlive/2013/texmf
+ &lt;2&gt; TEXMFLOCAL:     /usr/local/texlive/texmf-local
+ &lt;3&gt; TEXMFSYSVAR:    /usr/local/texlive/2013/texmf-var
+ &lt;4&gt; TEXMFSYSCONFIG: /usr/local/texlive/2013/texmf-config
+
+ &lt;5&gt; TEXMFVAR:       ~/.texlive2013/texmf-var
+ &lt;6&gt; TEXMFCONFIG:    ~/.texlive2013/texmf-config
+ &lt;7&gt; TEXMFHOME:      ~/texmf
+
+ Note: ~ will expand to $<span style="color: #eedd82;">HOME</span> (or to %USERPROFILE% on Windows)
+
+Actions:
+ &lt;R&gt; return to main menu
+ &lt;Q&gt; quit
+
+Enter command: 
+</pre>
+
+
+</li>
+<li>下記のように新しい <code>TEXMFHOME</code> ディレクトリを訊かれるので <code>~/Dropbox/texmf:/usr/local/share/texmf</code> と入力して return：
+
+
+
+<pre class="src src-screen">New value for TEXMFHOME [~/texmf]: 
+</pre>
+
+
+</li>
+<li>Directory setup の表示の <code>TEXMFHOME</code> の部分が下記のように変わったことを確認し
+   たら <code>r RET</code> と入力して main menu に戻る．
+
+
+
+<pre class="src src-screen">(&#30465;&#30053;)
+&lt;6&gt; TEXMFCONFIG:    ~/.texlive2013/texmf-config
+&lt;7&gt; TEXMFHOME:      ~/Dropbox/texmf:/usr/local/share/texmf
+
+ Note: ~ will expand to $<span style="color: #eedd82;">HOME</span> (or to %USERPROFILE% on Windows)
+(&#30465;&#30053;)
+</pre>
+
+
+</li>
+<li>main menu で下記のように表示されたら <code>i RET</code> としてインストールを開始する
+
+
+
+<pre class="src src-screen">======================&gt; TeX Live installation procedure &lt;=====================
+
+=======&gt; Note: Letters/digits<span style="color: #00ffff;"> in</span> &lt;angle brackets&gt; indicate menu items &lt;=======
+=======&gt;       for commands or configurable options                   &lt;=======
+
+(&#30465;&#30053;)
+
+ &lt;D&gt; directories:
+ (&#30465;&#30053;)
+   TEXMFHOME (directory for user-specific files):
+     ~/Dropbox/texmf:/usr/local/share/texmf
+
+(&#30465;&#30053;)
+
+Actions:
+ &lt;I&gt; start installation to hard disk
+ &lt;H&gt; help
+ &lt;Q&gt; quit
+</pre>
+
+</li>
+</ol>
+
+
+</li>
+</ul>
+<ul>
+<li id="sec-1-1-3-2">インストールした後で TEXMFHOME を修正したい場合<br/>
+<code>tlmgr</code> でも変更できる． 
+
+
+
+<pre class="src src-sh">tlmgr conf texmf TEXMFHOME ~/Dropbox/texmf:/usr/local/share/texmf
+</pre>
+
+
+</li>
+</ul>
+</div>
+
+</div>
+
+<div id="outline-container-1-1-4" class="outline-4">
+<h4 id="sec-1-1-4"><span class="section-number-4">1.1.4</span> パスの設定</h4>
+<div class="outline-text-4" id="text-1-1-4">
+
+<ol>
+<li><code>/usr/local/texbin</code> へシンボリックリンクを張っておく
+
+
+
+<pre class="src src-sh">ln -fs /usr/local/texlive/2013/bin/x86_64-darwin /usr/local/texbin
+</pre>
+
+</li>
+<li>TeX フォルダパスの設定
+   <code>~/.bash_profile</code> に以下を追記：
+
+
+
+<pre class="src src-sh"><span style="color: #b0c4de;">export</span> <span style="color: #eedd82;">PATH</span>=/usr/local/texbin:$<span style="color: #eedd82;">PATH</span>
+<span style="color: #b0c4de;">export</span> <span style="color: #eedd82;">MANPATH</span>=/usr/local/texlive/2013/texmf/doc/man:$<span style="color: #eedd82;">MANPATH</span>
+</pre>
+
+
+<p>
+   TeXLive 2012 で既に <code>MANPATH</code> を設定済みなら，ターミナルから以下を実行すればよ
+   い．
+</p>
+
+
+<pre class="src src-sh">sed <span style="color: #ffa07a;">'s|/usr/local/texlive/2012|/usr/local/texlive/2013|g'</span> ~/.bash_profile
+</pre>
+
+
+</li>
+<li>パスを反映
+   どのフォルダでも構わないのでターミナルから以下を実行：
+
+
+
+<pre class="src src-screen"><span style="color: #b0c4de;">source</span> ~/.bash_profile
+</pre>
+
+</li>
+</ol>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-1-5" class="outline-4">
+<h4 id="sec-1-1-5"><span class="section-number-4">1.1.5</span> otf パッケージ用のフォントの設定</h4>
+<div class="outline-text-4" id="text-1-1-5">
+
+<p>下記の情報は少し古いかも(参照：<a href="http://www.fugenji.org/~thomas/texlive-guide/font_setup.html">http://www.fugenji.org/~thomas/texlive-guide/font_setup.html</a>)
+</p><ol>
+<li>フォントマップをコピーする：
+
+
+
+<pre class="src src-sh">mkdir -p /usr/local/texlive/texmf-local/fonts/map/dvipdfm/
+<span style="color: #b0c4de;">cd</span>  /usr/local/texlive/texmf-local/fonts/map/dvipdfm/
+curl -O https://gist.github.com/nagae/1353863/raw/hiragino-mini-embed.map
+curl -O https://gist.github.com/nagae/1354092/raw/hiragino-embed.map
+</pre>
+
+</li>
+<li>ヒラギノフォントにシンボリックリンクを貼る：
+
+
+
+<pre class="src src-sh">mkdir -p /usr/local/texlive/texmf-local/fonts/opentype/public/hiragino/
+<span style="color: #b0c4de;">cd</span> /usr/local/texlive/texmf-local/fonts/opentype/public/hiragino/
+ln -fs <span style="color: #ffa07a;">"/Library/Fonts/&#12498;&#12521;&#12462;&#12494;&#26126;&#26397; Pro W3.otf"</span> ./HiraMinPro-W3.otf
+ln -fs <span style="color: #ffa07a;">"/Library/Fonts/&#12498;&#12521;&#12462;&#12494;&#26126;&#26397; Pro W6.otf"</span> ./HiraMinPro-W6.otf
+ln -fs <span style="color: #ffa07a;">"/Library/Fonts/&#12498;&#12521;&#12462;&#12494;&#20024;&#12468; Pro W4.otf"</span> ./HiraMaruPro-W4.otf
+ln -fs <span style="color: #ffa07a;">"/Library/Fonts/&#12498;&#12521;&#12462;&#12494;&#35282;&#12468; Pro W3.otf"</span> ./HiraKakuPro-W3.otf
+ln -fs <span style="color: #ffa07a;">"/Library/Fonts/&#12498;&#12521;&#12462;&#12494;&#35282;&#12468; Pro W6.otf"</span> ./HiraKakuPro-W6.otf
+ln -fs <span style="color: #ffa07a;">"/Library/Fonts/&#12498;&#12521;&#12462;&#12494;&#35282;&#12468; Std W8.otf"</span> ./HiraKakuStd-W8.otf
+</pre>
+
+</li>
+<li>Tex用のパスを更新：
+   どのフォルダからでも構わないのでターミナルから以下を実行：
+
+
+
+<pre class="src src-sh">mktexlsr
+</pre>
+
+</li>
+</ol>
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> コンパイルしてみる</h3>
+<div class="outline-text-3" id="text-1-2">
+
+<p>以下をターミナルから実行してみる
+</p>
+
+
+<pre class="src src-sh">mkdir -p ~/Downloads/sampletex
+<span style="color: #b0c4de;">cd</span> ~/Downloads/sampletex
+curl -O https://gist.github.com/nagae/1350983/raw/sample.tex 
+platex sample.tex 
+dvipdfm -f hiragino-mini-embed sample 
+open sample.pdf
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> tlmgr を使って常に最新の状態を保つ</h3>
+<div class="outline-text-3" id="text-1-3">
+
+<p>上述の方法によって tlmgr もインストールされる．これを使えば，TeX を常に最新の状態に保てる．
+</p>
+</div>
+
+<div id="outline-container-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> リポジトリを登録</h4>
+<div class="outline-text-4" id="text-1-3-1">
+
+<p>tlmgr が参照するリポジトリに <code>mirror.ctan.org</code> を指定しておく(<a href="http://www.fugenji.org/~thomas/texlive-guide/tlmgr.html">参考</a>)．この操作は初回に一度行えばよい．
+</p>
+
+
+<pre class="src src-sh">tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3-2" class="outline-4">
+<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> tlmgr 自身の更新</h4>
+<div class="outline-text-4" id="text-1-3-2">
+
+<ul>
+<li>tlmgr 自身とシステムを同時に更新
+
+
+
+<pre class="src src-sh">tlmgr update --self --all
+</pre>
+
+</li>
+</ul>
+
+<ul>
+<li id="sec-1-3-2-1">知られている問題：<br/>
+<ul>
+<li>2013年9月頃 <code>Unknown docfile tag:</code>
+
+
+
+<pre class="src src-sh">Unknown docfile tag:  texmf-dist/doc/latex/pythontex/pythontex_quickstart.pdf <span style="color: #eedd82;">details</span>=<span style="color: #ffa07a;">""</span>Quick start<span style="color: #ffa07a;">" documentation"</span> at /usr/local/texlive/2013/tlpkg/TeXLive/TLPOBJ.pm line 127
+</pre>
+
+<p>
+  というメッセージが出て止まる場合の対処法は <a href="http://tex.stackexchange.com/a/133690/36810">http://tex.stackexchange.com/a/133690/36810</a>
+</p></li>
+</ul>
+
+</li>
+</ul>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> latexmk</h3>
+<div class="outline-text-3" id="text-1-4">
+
+<p>latexmk は TeX の処理を自動化してくれるスクリプト．
+設定を <code>~/.latexmkrc</code> に記載しておくと，ターミナルから <code>latexmk</code> を呼ぶだけで色々な処理をしてくれる．
+例えば，以下のように <code>~/.latexmkrc</code> に書いておく，
+<script src="https://gist.github.com/nagae/5290992.js"></script>
+もしくは，ターミナルから
+</p>
+
+
+<pre class="src src-sh"><span style="color: #b0c4de;">cd</span> ~/
+curl -LO curl -LO https://gist.github.com/nagae/3293112/raw/.latexmkrc
+</pre>
+
+<p>
+としておくと，
+</p>
+
+
+<pre class="src src-sh">$ latexmk sample.tex
+</pre>
+
+<p>
+とするだけで <code>platex</code> → <code>pbitex</code> → <code>platex</code> → <code>dvipdfmx</code> と処理を続けて pdf を作成してくれる．さらに，
+</p>
+
+
+<pre class="src src-sh">$ latexmk -pv sample.tex
+</pre>
+
+<p>
+とすれば，その pdf ファイルを Preview.app で開いてくれる．
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Emacs との連携</h3>
+<div class="outline-text-3" id="text-1-5">
+
+<p>Emacs 上でのLaTeX ソースの編集に支援ツールは必須
+</p>
+</div>
+
+<div id="outline-container-1-5-1" class="outline-4">
+<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> auctex</h4>
+<div class="outline-text-4" id="text-1-5-1">
+
+<ul>
+<li id="sec-1-5-1-1">特徴<br/>
+Emacs 上での LaTeX 編集を支援．C-c C-c で compile したり，C-c C-p C-d で preview 見たりできる．
+</li>
+</ul>
+<ul>
+<li id="sec-1-5-1-2">参考<br/>
+<dl>
+<dt>公式サイト</dt><dd><a href="http://www.gnu.org/software/auctex/">http://www.gnu.org/software/auctex/</a>
+</dd>
+<dt>EmacsWiki</dt><dd><a href="http://emacswiki.org/emacs/AUCTeX">http://emacswiki.org/emacs/AUCTeX</a>
+</dd>
+<dt>奥村先生</dt><dd><a href="http://oku.edu.mie-u.ac.jp/~okumura/texwiki/?AUCTeX">http://oku.edu.mie-u.ac.jp/~okumura/texwiki/?AUCTeX</a>
+</dd>
+</dl>
+
+</li>
+</ul>
+<ul>
+<li id="sec-1-5-1-3">インストール<br/>
+Homebrew でインストール可能
+
+
+
+<pre class="src src-screen">brew install --with-emacs=/Applications/Emacs.app/Contents/MacOS/Emacs auctex
+</pre>
+
+</li>
+</ul>
+<ul>
+<li id="sec-1-5-1-4">使い方<br/>
+<ul>
+<li id="sec-1-5-1-4-1">章・節，環境，マクロの入力<br/>
+<ul>
+<li>TABで補完が可能．
+</li>
+<li>カーソルの上下(もしくは <code>M-p, M-n</code>)で履歴を選択可能．
+</li>
+</ul>
+
+<table  border="2" cellspacing="0" cellpadding="6" rules="all" frame="hsides">
+<colgroup><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">ショートカット</th><th scope="col" class="left">機能</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><code>C-c C-s</code></td><td class="left">章(<code>chapter</code>)，節(<code>section</code>)，小節(<code>subsection</code>)を入力</td></tr>
+<tr><td class="left"><code>C-c C-e</code></td><td class="left">環境(<code>\begin{}...\end{}</code>)を入力</td></tr>
+<tr><td class="left"><code>C-c C-m</code> もしくは <code>C-c RET</code></td><td class="left">マクロ(eg. <code>\ret{}, \centering{}</code>)を挿入</td></tr>
+</tbody>
+</table>
+
+</li>
+</ul>
+<ul>
+<li id="sec-1-5-1-4-2">フォント変更<br/>
+<ul>
+<li>何も選択せずにショートカットを入力すると LaTeX コマンドだけを入力し，括弧内で待機
+</li>
+<li>文字列を選択してショートカットを入力すると，当該文字を LaTeX コマンド内に内挿
+</li>
+</ul>
+
+<table  border="2" cellspacing="0" cellpadding="6" rules="all" frame="hsides">
+<colgroup><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">ショートカット</th><th scope="col" class="left">機能</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><code>C-c C-f C-b</code></td><td class="left">太字 <code>\textbf{*}</code></td></tr>
+<tr><td class="left"><code>C-c C-f C-i</code></td><td class="left">イタリック <code>\textit{*}</code></td></tr>
+<tr><td class="left"><code>C-c C-f C-e</code></td><td class="left">強調 <code>\emph{*}</code></td></tr>
+<tr><td class="left"><code>C-c C-f C-s</code></td><td class="left">斜体 <code>\textsl{*}</code></td></tr>
+<tr><td class="left"><code>C-c C-f C-r</code></td><td class="left">ローマン <code>\textrm{*}</code></td></tr>
+<tr><td class="left"><code>C-c C-f C-f</code></td><td class="left">サンセリフ．修飾の無い(Sans-serif)=ゴシック体 <code>\textsf{*}</code></td></tr>
+<tr><td class="left"><code>C-c C-f C-t</code></td><td class="left">タイプライター <code>\texttt{*}</code></td></tr>
+<tr><td class="left"><code>C-c C-f C-c</code></td><td class="left">スモールキャピタル(Small cap.)．小文字を「小さい大文字」で表記． <code>\textsc{*}</code></td></tr>
+<tr><td class="left"><code>C-c C-f C-d</code></td><td class="left">フォント修飾を削除</td></tr>
+</tbody>
+</table>
+
+</li>
+</ul>
+<ul>
+<li id="sec-1-5-1-4-3">コメント<br/>
+<table  border="2" cellspacing="0" cellpadding="6" rules="all" frame="hsides">
+<colgroup><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">ショートカット</th><th scope="col" class="left">機能</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><code>C-c ;</code></td><td class="left">選択したリージョンをコメントアウト</td></tr>
+<tr><td class="left"><code>C-c %</code></td><td class="left">現在の段落をコメントアウト</td></tr>
+</tbody>
+</table>
+
+</li>
+</ul>
+<ul>
+<li id="sec-1-5-1-4-4">マーク<br/>
+<table  border="2" cellspacing="0" cellpadding="6" rules="all" frame="hsides">
+<colgroup><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">ショートカット</th><th scope="col" class="left">機能</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><code>C-c *</code></td><td class="left">現在のセクションをマーク</td></tr>
+<tr><td class="left"><code>C-c .</code></td><td class="left">現在の環境をマーク</td></tr>
+</tbody>
+</table>
+
+</li>
+</ul>
+<ul>
+<li id="sec-1-5-1-4-5">処理<br/>
+処理コマンドは TAB補完および上下(<code>M-p, M-n</code>)履歴表示が可能
+<table  border="2" cellspacing="0" cellpadding="6" rules="all" frame="hsides">
+<colgroup><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">ショートカット</th><th scope="col" class="left">機能</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><code>C-c C-c</code></td><td class="left">文章全体を処理(※)</td></tr>
+<tr><td class="left"><code>C-c C-r</code></td><td class="left">選択したリージョンのみを処理(※)</td></tr>
+<tr><td class="left"><code>C-c C-b</code></td><td class="left">現在のバッファのみを処理(※)</td></tr>
+</tbody>
+<tbody>
+<tr><td class="left">=C-c '=</td><td class="left">エラーを表示</td></tr>
+<tr><td class="left">=C-x '=</td><td class="left">次のエラーを表示</td></tr>
+<tr><td class="left">=C-u C-x '=</td><td class="left">前のエラーを表示</td></tr>
+</tbody>
+</table>
+
+
+<p>
+※長江研の設定では， <code>C-c C-c</code>, <code>C-c C-r</code>, <code>C-c C-b</code> に続く処理コマンドとして(デフォルトで実装されているものも含め)以下が用意されている：
+</p>
+
+
+<pre class="example">BibTeX  Biber   Check   Clean   Clean All       File    Index
+LaTeX   Other   Print   Queue   Spell   View    direct
+dvipdfmx        latexmk         pBibTeX         pLaTeX
+</pre>
+
+<p>
+このうち，頻繁に使うのは以下のコマンドである．いずれもタブ補完が可能：
+</p><table  border="2" cellspacing="0" cellpadding="6" rules="all" frame="hsides">
+<colgroup><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">コマンド</th><th scope="col" class="left">処理内容</th></tr>
+</thead>
+<tbody>
+<tr><td class="left">pLaTeX</td><td class="left">pLaTeX を実行(.tex → .dvi)</td></tr>
+<tr><td class="left">pBibTeX</td><td class="left">pBibTeX を実行(.aux ファイルを元に .bbl を生成)</td></tr>
+<tr><td class="left">dvipdfmx</td><td class="left">dvipdfmx を実行(.dvi → .pdf)</td></tr>
+<tr><td class="left">latexmk</td><td class="left">latexmk を実行(<code>~/.latexmkrc</code> で処理内容を設定可能)</td></tr>
+<tr><td class="left">View</td><td class="left">(<code>open foo.pdf</code> などを呼び出せる)</td></tr>
+<tr><td class="left">Other</td><td class="left">任意のコマンドを実行(e.g. <code>open -a Preview foo.pdf</code> などを呼び出せる)</td></tr>
+<tr><td class="left">direct</td><td class="left">TeX ファイルを処理した後，PDF ファイルを開く(latexmk の後， <code>open -a Preview foo.pdf</code> を実行)</td></tr>
+<tr><td class="left">Check</td><td class="left">lacheck による文法チェック</td></tr>
+<tr><td class="left">Clean</td><td class="left">TeX 処理時に生成される中間ファイル(.aux, .toc, .log, .bbl など)を削除</td></tr>
+<tr><td class="left">Clean All</td><td class="left">上記中間ファイルに加えて .dvi, .ps, .pdf などのファイルも削除</td></tr>
+<tr><td class="left">Spell</td><td class="left">スペルチェック</td></tr>
+</tbody>
+</table>
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+</div>
+
+<div id="outline-container-1-5-2" class="outline-4">
+<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> cdLaTeX</h4>
+<div class="outline-text-4" id="text-1-5-2">
+
+<ul>
+<li id="sec-1-5-2-1">特徴<br/>
+auctex と同様の機能を持つが minor-mode のため，org-mode などと併用できる
+</li>
+</ul>
+<ul>
+<li id="sec-1-5-2-2">インストール<br/>
+ターミナルから以下を実行．(長江研設定ファイル <code>ver1.0.4</code> 以降では github 経由で取得することにした)．
+
+
+
+<pre class="src src-sh"><span style="color: #b0c4de;">cd</span> ~/Dropbox/.emacs.d/
+git submodule add git@github.com:emacsmirror/cdlatex.git lisp/cdlatex
+</pre>
+
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">&#26085;&#20184;: 2014-02-04T12:56+0900</p>
+<p class="author">&#33879;&#32773;: Takeshi Nagae</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>
