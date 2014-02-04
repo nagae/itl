@@ -18,8 +18,7 @@
 #+EXPORT_EXCLUDE_TAGS: noexport
 
 #+INFOJS_OPT: toc:t tdepth:1 view:showall mouse:underline buttons:nil
-#+INFOJS_OPT: up:./index.html
-#+INFOJS_OPT: home:http:nagae.github.io
+#+INFOJS_OPT: up:./index.html home:http:nagae.github.io
 
 #+STYLE: <link rel=stylesheet href="style.css" type="text/css">
 
