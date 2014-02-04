@@ -172,8 +172,9 @@ tlmgr conf texmf TEXMFHOME ~/Dropbox/texmf:/usr/local/share/texmf
 6. TeX フォルダパスの設定
    =~/.bash_profile= に以下を追記：
    #+BEGIN_SRC sh
-   export PATH=/usr/local/texbin:$PATH
-   export MANPATH=/usr/local/texlive/2013/texmf/doc/man:$MANPATH
+     export PATH=/usr/local/texbin:$PATH
+     export MANPATH=/usr/local/texlive/2013/texmf/doc/man:$MANPATH
+     export INFOPATH=/usr/local/texlive/2013/texmf-dist/doc/info:$INFOPATH
    #+END_SRC
 
    TeXLive 2012 で既に =MANPATH= を設定済みなら，ターミナルから以下を実行すればよ
