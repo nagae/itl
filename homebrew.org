@@ -145,6 +145,7 @@ brew update
   brew install ghostscript        # Postscript インタプリタ．Emacs上でPDFや画像ファイルを表示させる docview に必須．
   # 以下は Emacs をインストールした後でのみ実行可能
   brew install emacs --cocoa      # 最強のエディタ
+  brew linkapps                   # emacs へのシンボリックリンクを /Applications フォルダ下に作成
   brew install https://gist.github.com/nagae/3009185/raw/ddskk.rb # 日本語入力 SKK
 #+END_SRC
 *** COMMENT wget

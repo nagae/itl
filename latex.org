@@ -1,3 +1,21 @@
+#+TITLE:     ITL/LaTeX編
+#+AUTHOR:    Takeshi Nagae
+#+EMAIL:     nagae@m.tohoku.ac.jp
+#+LANGUAGE:  ja
+#+OPTIONS:   H:3 num:3 toc:2 \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t author:t creator:t
+#+OPTIONS:   TeX:t LaTeX:dvipng skip:nil d:nil todo:nil pri:nil tags:not-in-toc timestamp:t
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+
+#+OPTIONS: toc:1 num:3
+
+#+INFOJS_OPT: path:org-info.js
+#+INFOJS_OPT: view:showall toc:nil sdepth:3 ltoc:2
+#+INFOJS_OPT: toc:t tdepth:1 view:showall mouse:underline buttons:nil
+#+INFOJS_OPT: up:../ home:../
+
+#+STYLE: <link rel=stylesheet href="style.css" type="text/css">
+
 * LaTeX
 以下では， =texmf= ディレクトリを Dropbox 上に置く方法を示す．
 ** TeXLive 2013 のインストール

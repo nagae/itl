@@ -45,3 +45,5 @@ div.outline-text-4 {
     border-color: #888888;
     padding: 4pt;
 }
+#align_left td.left { text-align: left; border:1 solid;}
+#align_left td.right { text-align: right; border:1 solid;}

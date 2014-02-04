@@ -1,9 +1,6 @@
 #+TITLE:     Information Technology Literacy
 #+AUTHOR:    Takeshi Nagae
 #+EMAIL:     nagae@m.tohoku.ac.jp
-#+DESCRIPTION:
-#+KEYWORDS:
-
 #+LANGUAGE:  ja
 #+OPTIONS:   H:3 num:3 toc:2 \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t author:t creator:t
 #+OPTIONS:   TeX:t LaTeX:dvipng skip:nil d:nil todo:nil pri:nil tags:not-in-toc timestamp:t
@@ -19,11 +16,6 @@
 #+INFOJS_OPT: home:../
 
 #+STYLE: <link rel=stylesheet href="style.css" type="text/css">
-#+STYLE: <style type="text/css">
-#+STYLE: #align_left td.left { text-align: left; border:1 solid;}
-#+STYLE: #align_left td.right { text-align: right; border:1 solid;}
-#+STYLE: </style>
-
 
 * 環境を整えよう
 - [[./setup.org][Mac のセットアップ，基本的なソフトウェアのインストール]]
