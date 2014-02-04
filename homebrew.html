@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<title>ITL/Homebrew編</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="ITL/Homebrew編"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2014-02-04T10:04+0900"/>
+<meta name="author" content="Takeshi Nagae"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<style type="text/css">
+#align_left td.left { text-align: left; border:1 solid;}
+#align_left td.right { text-align: right; border:1 solid;}
+</style>
+<link rel=stylesheet href="style.css" type="text/css">
+<script type="text/javascript" src="http://orgmode.org/org-info.js">
+/**
+ *
+ * @source: http://orgmode.org/org-info.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in http://orgmode.org/org-info.js.
+ *
+ * Copyright (C) 2012-2013  Sebastian Rose
+ *
+ *
+ * The JavaScript code in this tag is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in http://orgmode.org/org-info.js.
+ *
+ */
+</script>
+
+<script type="text/javascript">
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "1");
+org_html_manager.set("LINK_HOME", "http:nagae.github.io");
+org_html_manager.set("LINK_UP", "./index.html");
+org_html_manager.set("LOCAL_TOC", "2");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "0");
+org_html_manager.set("VIEW", "showall");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">ITL/Homebrew編</h1>
+
+
+
+
+
+
+<div id="table-of-contents">
+<h2>&#30446;&#27425;</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 Homebrew によるパッケージ管理</a>
+<ul>
+<li><a href="#sec-1-1">1.1 概要</a></li>
+<li><a href="#sec-1-2">1.2 インストール</a>
+<ul>
+<li><a href="#sec-1-2-1">1.2.1 参考サイト</a></li>
+<li><a href="#sec-1-2-2">1.2.2 Command Line Tools for Xcode のインストール</a></li>
+<li><a href="#sec-1-2-3">1.2.3 Homebrew のインストール</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-3">1.3 Homebrew の使い方</a>
+<ul>
+<li><a href="#sec-1-3-1">1.3.1 ワークフロー</a></li>
+<li><a href="#sec-1-3-2">1.3.2 基本コマンド</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-4">1.4 Homebrew でインストールしておくべき UNIX ツール</a>
+<ul>
+<li><a href="#sec-1-4-1">1.4.1 以下を実行する</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Homebrew によるパッケージ管理</h2>
+<div class="outline-text-2" id="text-1">
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 概要</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<p>homebrew は研究環境に必要な様々な UNIX ツールをまとめて管理(インストール，
+ライブラリ依存関係のチェック，アンインストールなど)してくれるパッケージ管理システ
+ムである．
+</p>
+<p>
+homebrew は同様の Mac 用パッケージ管理システムである macport に比べてインストール
+にかかる負荷が軽い．これは homebrew では「Mac OS X に標準でついてくるものまでわざ
+わざインストールしない」という方針が採用されているためである．
+</p></div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> インストール</h3>
+<div class="outline-text-3" id="text-1-2">
+
+
+</div>
+
+<div id="outline-container-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> 参考サイト</h4>
+<div class="outline-text-4" id="text-1-2-1">
+
+<dl>
+<dt>本家</dt><dd><a href="http://mxcl.github.com/homebrew/">http://mxcl.github.com/homebrew/</a>
+</dd>
+<dt>???</dt><dd><a href="https://github.com/mxcl/homebrew/wiki/installation">https://github.com/mxcl/homebrew/wiki/installation</a>
+</dd>
+</dl>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> Command Line Tools for Xcode のインストール</h4>
+<div class="outline-text-4" id="text-1-2-2">
+
+<ul>
+<li>事前に <a href="#Apple_ID">Apple ID</a> の登録が必要．
+</li>
+<li><a href="https://developer.apple.com/downloads/index.action">https://developer.apple.com/downloads/index.action</a> にアクセス．Apple ID での Sign in を求められる．
+</li>
+<li>Command Line Tools (OS X Mavericks) for Xcode の最新版をクリックし，dmg ファイル(下図参照)をクリックしてダウンロード
+<ul>
+<li>Mountain Lion の場合：<br/>
+    Command Line Tools (OS X Mountain Lion) for Xcode の最新版をクリックし，dmg ファイル(下図参照)をクリックしてダウンロード
+    <img src="fig/homebrew_Command_Line_Tools_Mountain_Lion.png" alt="Command Line Tools" align="center" width="600" />
+</li>
+</ul>
+
+</li>
+<li>Download された dmg ファイルをマウントし，仮想ドライブ内の Command Line Tools (OS X 10.x).mpkg をダブルクリック
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-3" class="outline-4">
+<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> Homebrew のインストール</h4>
+<div class="outline-text-4" id="text-1-2-3">
+
+<ul>
+<li>本体のダウンロード．ターミナルから以下を実行：
+
+
+
+<pre class="src src-screen">$ ruby -e <span style="color: #ffa07a;">"$(</span><span style="color: #fa8072;">curl</span><span style="color: #ffa07a;"> -fsSL https://raw.github.com/mxcl/homebrew/go/install)"</span>
+</pre>
+
+<p>
+  ダウンロードが始まる．
+</p></li>
+<li>診断する．ターミナルから以下を実行：
+
+
+
+<pre class="src src-screen">brew doctor
+</pre>
+
+<p>
+  <code>Your system is ready to brew</code> と表示されれば OK.
+</p></li>
+<li><code>~/.bash_profile</code> (無ければ新たに作成し)に以下を追記：
+
+
+
+<pre class="src src-screen"><span style="color: #b0c4de;">export</span> <span style="color: #eedd82;">PATH</span>=/usr/local/bin:$<span style="color: #eedd82;">PATH</span>
+</pre>
+
+<p>
+  上記を実行する方法は2通りある：
+</p><dl>
+<dt>ターミナル上で Emacs を起動して編集する方法</dt><dd>
+<ol>
+<li>まず，ターミナル上で
+
+
+
+<pre class="src src-screen">$ emacs ~/.bash_profile
+</pre>
+
+<p>
+       として，Emacs を起動する．
+</p></li>
+<li>上記をコピー＆ペーストする．
+</li>
+<li>保存(C-x C-s: Ctrlを押しながら x, s とタイプする)した後，
+       Emacs を終了(C-x C-c; Ctrl を押しながら x, cとタイプ)する．
+</li>
+</ol>
+
+</dd>
+<dt><code>pbpaste</code> から追記する方法</dt><dd>
+<ol>
+<li>上記をコピーする．
+</li>
+<li>ターミナル上で
+
+
+
+<pre class="src src-screen">$ pbpaste &gt;&gt; ~/.bash_profile
+</pre>
+
+<p>
+       とする．
+</p></li>
+</ol>
+
+</dd>
+</dl>
+
+</li>
+<li>OS X に標準で登載されているコマンドの最新版を提供する <code>homebrew/dupes</code> をリポジトリに追加：
+
+
+
+<pre class="src src-screen">$ brew tap homebrew/dupes
+</pre>
+
+</li>
+</ul>
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Homebrew の使い方</h3>
+<div class="outline-text-3" id="text-1-3">
+
+
+</div>
+
+<div id="outline-container-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> ワークフロー</h4>
+<div class="outline-text-4" id="text-1-3-1">
+
+<ul>
+<li>必要なツールをインストール
+
+
+
+<pre class="src src-screen">$ brew search foo             <span style="color: #ff4500;"># </span><span style="color: #ff4500;">foo &#12392;&#12356;&#12358;&#21517;&#21069;&#12398; formula &#12434;&#25506;&#12377;</span>
+$ brew options foo            <span style="color: #ff4500;"># </span><span style="color: #ff4500;">foo &#12398;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#26178;&#12395;&#35373;&#23450;&#12391;&#12365;&#12427;&#12458;&#12503;&#12471;&#12519;&#12531;&#19968;&#35239;&#12434;&#34920;&#31034;</span>
+$ brew install [options] foo  <span style="color: #ff4500;"># </span><span style="color: #ff4500;">foo &#12392;&#12356;&#12358;&#21517;&#21069;&#12398; formula &#12434;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#12377;&#12427;</span>
+</pre>
+
+</li>
+<li>週に1度くらいは自身のアップデートと formula 更新
+
+
+
+<pre class="src src-screen">$ brew update                 <span style="color: #ff4500;"># </span><span style="color: #ff4500;">Homebrew &#33258;&#36523;&#12434;&#12450;&#12483;&#12503;&#12487;&#12540;&#12488;</span>
+$ brew outdated               <span style="color: #ff4500;"># </span><span style="color: #ff4500;">&#26356;&#26032;&#12373;&#12428;&#12383; formula &#19968;&#35239;&#12434;&#34920;&#31034;</span>
+$ brew upgrade                <span style="color: #ff4500;"># </span><span style="color: #ff4500;">&#26356;&#26032;&#12373;&#12428;&#12383; formula &#12434;&#12450;&#12483;&#12503;&#12464;&#12524;&#12540;&#12489;</span>
+</pre>
+
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3-2" class="outline-4">
+<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> 基本コマンド</h4>
+<div class="outline-text-4" id="text-1-3-2">
+
+<table  border="2" cellspacing="0" cellpadding="6" rules="all" frame="hsides">
+<colgroup><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">コマンド</th><th scope="col" class="left">機能</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><code>brew update</code></td><td class="left">自分自身をアップデート</td></tr>
+<tr><td class="left"><code>brew outdated</code></td><td class="left">更新された formula を表示</td></tr>
+<tr><td class="left"><code>brew upgrade</code></td><td class="left">更新された formula をアップグレード</td></tr>
+<tr><td class="left"><code>brew doctor</code></td><td class="left">Homebrew を自己診断</td></tr>
+</tbody>
+<tbody>
+<tr><td class="left"><code>brew search foo</code></td><td class="left">foo という名前の formula を検索</td></tr>
+<tr><td class="left"><code>brew options foo</code></td><td class="left">foo をインストールする際に設定できるオプション一覧を表示</td></tr>
+<tr><td class="left"><code>brew install foo</code></td><td class="left">foo をインストール</td></tr>
+</tbody>
+<tbody>
+<tr><td class="left"><code>brew list</code></td><td class="left">インストール済の formula 一覧を表示</td></tr>
+<tr><td class="left"><code>brew list foo</code></td><td class="left">foo という名前の formula がインストールしたファイル一覧を表示</td></tr>
+<tr><td class="left"><code>brew unlink foo</code></td><td class="left">foo へのシンボリックリンクを外す</td></tr>
+<tr><td class="left"><code>brew remove foo</code></td><td class="left">foo を削除する</td></tr>
+</tbody>
+</table>
+
+<ul>
+<li id="sec-1-3-2-1"><code>brew update</code> すると <code>error: The following untracked working tree files would be overwritten by merge:</code> というエラーが出る(13.10.25)<br/>
+<code>brew update</code> しようとすると以下のようなエラーメッセージが出る場合の対処法：
+
+
+
+<pre class="src src-screen">$ brew update
+error: The following untracked working tree files would be overwritten by merge:
+  Library/Formula/apple-gcc42.rb
+Please move or remove them before you can merge.
+Aborting
+Error: Failure while executing: git pull -q origin refs/heads/master:refs/remotes/origin/master
+</pre>
+
+
+<p>
+適当な名前のフォルダ(eg. <code>.temporary_stack</code>)を作って，その中に <code>apple-gcc42.rb</code>
+を移動させる
+</p>
+
+
+<pre class="src src-screen"><span style="color: #b0c4de;">cd</span> /usr/local/Library/Formula/
+mkdir .temporary_stack
+mv apple-gcc42.rb .temporary_stack/
+</pre>
+
+
+<p>
+あとはいつも通り <code>brew update</code> する
+</p>
+
+
+<pre class="src src-screen">brew update
+</pre>
+
+</li>
+</ul>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Homebrew でインストールしておくべき UNIX ツール</h3>
+<div class="outline-text-3" id="text-1-4">
+
+
+</div>
+
+<div id="outline-container-1-4-1" class="outline-4">
+<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> 以下を実行する</h4>
+<div class="outline-text-4" id="text-1-4-1">
+
+
+
+
+<pre class="src src-screen">brew install rsync              <span style="color: #ff4500;"># </span><span style="color: #ff4500;">&#12501;&#12457;&#12523;&#12480;&#12398;&#12496;&#12483;&#12463;&#12450;&#12483;&#12503;&#12420;&#21516;&#26399;&#12434;&#21462;&#12427;&#65294;</span>
+brew install git                <span style="color: #ff4500;"># </span><span style="color: #ff4500;">&#20998;&#25955;&#12522;&#12509;&#12472;&#12488;&#12522;&#12496;&#12540;&#12472;&#12519;&#12531;&#31649;&#29702;&#12471;&#12473;&#12486;&#12512;&#65294;</span>
+brew install magit              <span style="color: #ff4500;"># </span><span style="color: #ff4500;">Emacs&#19978;&#12391;&#21205;&#12367; Git &#29992;&#12484;&#12540;&#12523;</span>
+brew install ghostscript        <span style="color: #ff4500;"># </span><span style="color: #ff4500;">Postscript &#12452;&#12531;&#12479;&#12503;&#12522;&#12479;&#65294;Emacs&#19978;&#12391;PDF&#12420;&#30011;&#20687;&#12501;&#12449;&#12452;&#12523;&#12434;&#34920;&#31034;&#12373;&#12379;&#12427; docview &#12395;&#24517;&#38920;&#65294;</span>
+<span style="color: #ff4500;"># </span><span style="color: #ff4500;">&#20197;&#19979;&#12399; Emacs &#12434;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#12375;&#12383;&#24460;&#12391;&#12398;&#12415;&#23455;&#34892;&#21487;&#33021;</span>
+brew install emacs --cocoa      <span style="color: #ff4500;"># </span><span style="color: #ff4500;">&#26368;&#24375;&#12398;&#12456;&#12487;&#12451;&#12479;</span>
+brew install https://gist.github.com/nagae/3009185/raw/ddskk.rb <span style="color: #ff4500;"># </span><span style="color: #ff4500;">&#26085;&#26412;&#35486;&#20837;&#21147; SKK</span>
+</pre>
+
+
+
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">&#26085;&#20184;: 2014-02-04T10:04+0900</p>
+<p class="author">&#33879;&#32773;: Takeshi Nagae</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>

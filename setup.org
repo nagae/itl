@@ -1,4 +1,4 @@
-#+TITLE:     Information Technology Literacy 
+#+TITLE:     ITL/セットアップ編
 #+AUTHOR:    Takeshi Nagae
 #+EMAIL:     nagae@m.tohoku.ac.jp
 #+DESCRIPTION:
@@ -18,7 +18,7 @@
 #+EXPORT_EXCLUDE_TAGS: noexport
 
 #+INFOJS_OPT: toc:t tdepth:1 view:showall mouse:underline buttons:nil
-#+INFOJS_OPT: up:http:nagae.github.io
+#+INFOJS_OPT: up:./index.html
 #+INFOJS_OPT: home:http:nagae.github.io
 
 #+STYLE: <link rel=stylesheet href="style.css" type="text/css">
