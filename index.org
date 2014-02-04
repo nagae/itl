@@ -3,13 +3,6 @@
 #+EMAIL:     nagae@m.tohoku.ac.jp
 #+DESCRIPTION:
 #+KEYWORDS:
-#+OPTIONS: toc:1 num:3
-#+INFOJS_OPT: view:showall toc:nil sdepth:3 ltoc:2
-
-#+STYLE: <style type="text/css">
-#+STYLE: #align_left td.left { text-align: left; border:1 solid;}
-#+STYLE: #align_left td.right { text-align: right; border:1 solid;}
-#+STYLE: </style>
 
 #+LANGUAGE:  ja
 #+OPTIONS:   H:3 num:3 toc:2 \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t author:t creator:t
@@ -17,11 +10,20 @@
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
 
+#+OPTIONS: toc:1 num:3
+
+#+INFOJS_OPT: path:org-info.js
+#+INFOJS_OPT: view:showall toc:nil sdepth:3 ltoc:2
 #+INFOJS_OPT: toc:t tdepth:1 view:showall mouse:underline buttons:nil
 #+INFOJS_OPT: up:http:nagae.github.io
 #+INFOJS_OPT: home:http:nagae.github.io
 
 #+STYLE: <link rel=stylesheet href="style.css" type="text/css">
+#+STYLE: <style type="text/css">
+#+STYLE: #align_left td.left { text-align: left; border:1 solid;}
+#+STYLE: #align_left td.right { text-align: right; border:1 solid;}
+#+STYLE: </style>
+
 
 * 環境を整えよう
 - [[./setup.org][Mac のセットアップ，基本的なソフトウェアのインストール]]
