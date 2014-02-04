@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="ITL/LaTeX編"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-04T16:40+0900"/>
+<meta name="generated" content="2014-02-04T18:15+0900"/>
 <meta name="author" content="Takeshi Nagae"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -726,12 +726,18 @@ Emacs 上での LaTeX 編集を支援．C-c C-c で compile したり，C-c C-p 
 </ul>
 <ul>
 <li id="sec-1-5-1-3">インストール<br/>
-Homebrew でインストール可能
+<ul>
+<li>ELPA からインストール可能
+</li>
+<li>Emacs を立ち上げ，以下を入力して RET
 
 
 
-<pre class="src src-screen">brew install --with-emacs=/Applications/Emacs.app/Contents/MacOS/Emacs auctex
+<pre class="src src-example">M-x package-install auctex
 </pre>
+
+</li>
+</ul>
 
 </li>
 </ul>
@@ -899,13 +905,18 @@ auctex と同様の機能を持つが minor-mode のため，org-mode などと�
 </ul>
 <ul>
 <li id="sec-1-5-2-2">インストール<br/>
-ターミナルから以下を実行．(長江研設定ファイル <code>ver1.0.4</code> 以降では github 経由で取得することにした)．
+<ul>
+<li>ELPA からインストール可能
+</li>
+<li>Emacs を立ち上げ，以下を入力して RET
 
 
 
-<pre class="src src-sh"><span style="color: #b0c4de;">cd</span> ~/Dropbox/.emacs.d/
-git submodule add git@github.com:emacsmirror/cdlatex.git lisp/cdlatex
+<pre class="src src-example">M-x package-install auctex
 </pre>
+
+</li>
+</ul>
 
 </li>
 </ul>
@@ -916,7 +927,7 @@ git submodule add git@github.com:emacsmirror/cdlatex.git lisp/cdlatex
 </div>
 
 <div id="postamble">
-<p class="date">&#26085;&#20184;: 2014-02-04T16:40+0900</p>
+<p class="date">&#26085;&#20184;: 2014-02-04T18:15+0900</p>
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

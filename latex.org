@@ -271,10 +271,11 @@ Emacs 上での LaTeX 編集を支援．C-c C-c で compile したり，C-c C-p 
 - EmacsWiki :: http://emacswiki.org/emacs/AUCTeX
 - 奥村先生 :: http://oku.edu.mie-u.ac.jp/~okumura/texwiki/?AUCTeX
 **** インストール
-Homebrew でインストール可能
-#+BEGIN_SRC screen
-brew install --with-emacs=/Applications/Emacs.app/Contents/MacOS/Emacs auctex
-#+END_SRC
+- ELPA からインストール可能
+- Emacs を立ち上げ，以下を入力して RET
+  #+BEGIN_SRC example
+  M-x package-install auctex
+  #+END_SRC
 **** 使い方
 ***** 章・節，環境，マクロの入力
 - TABで補完が可能．
@@ -445,8 +446,8 @@ C-c C-k
 **** 特徴
 auctex と同様の機能を持つが minor-mode のため，org-mode などと併用できる
 **** インストール
-ターミナルから以下を実行．(長江研設定ファイル =ver1.0.4= 以降では github 経由で取得することにした)．
-#+BEGIN_SRC sh
-cd ~/Dropbox/.emacs.d/
-git submodule add git@github.com:emacsmirror/cdlatex.git lisp/cdlatex
-#+END_SRC
+- ELPA からインストール可能
+- Emacs を立ち上げ，以下を入力して RET
+  #+BEGIN_SRC example
+  M-x package-install auctex
+  #+END_SRC
