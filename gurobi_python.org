@@ -66,17 +66,17 @@ Gurobi のアカデミック・ライセンスは以下の制約の下で利用�
    #+ATTR_HTML: width=720
    [[file:fig/grb_license_detail.png]]
 *** Gurobi のダウンロードとインストール
-6. http://www.gurobi.com のメニューバーから Download > Gurobi Optimizer のページ
+1. http://www.gurobi.com のメニューバーから Download > Gurobi Optimizer のページ
    に移動し，Current version: 5.6.0 の Mac OS 版と READ ME を選択してDownload する．
    #+ATTR_HTML: width=720
    [[file:fig/grb_Mac_OS_Download.png]]
-7. README.txt に従ってインストールする(ダウンロードした pkg ファイルをダブルクリッ
+2. README.txt に従ってインストールする(ダウンロードした pkg ファイルをダブルクリッ
    クすればインストールできる)．実行ファイルなどは
    #+BEGIN_SRC example
    /Library/gurobi560/mac64
    #+END_SRC
    以下にインストールされる．
-8. ターミナルを立ち上げ，上記のライセンス取得コマンドを実行する：
+3. ターミナルを立ち上げ，上記のライセンス取得コマンドを実行する：
    #+BEGIN_SRC sh
      grbgetkey ae36ac20-16e6-acd2-f242-4da6e765fa0a # このキーは実際には使用できない
    #+END_SRC
@@ -102,41 +102,36 @@ In which directory would you like to store the Gurobi license key file?
 [hit Enter to store it in /Users/[username]]]: 
    #+END_SRC
    デフォルトではホームフォルダにライセンスファイルが生成される．
-9. 生成されたライセンスを Gurobi のフォルダに移動する:
+4. ターミナルで =gurobi.sh= を実行してエラーが出なければOK:
    #+BEGIN_SRC sh
-   mv ~/gurobi.lic /Library/gurobi560/
-   #+END_SRC
-10. ターミナルで =gurobi.sh= を実行してエラーが出なければOK:
-    #+BEGIN_SRC sh
-      $ gurobi.sh                     # gurobi.sh を実行
-      Python 2.7.2 (default, Oct 11 2012, 20:14:37) 
-      [GCC 4.2.1 Compatible Apple Clang 4.0 (tags/Apple/clang-418.0.60)] on darwin
-      Type "help", "copyright", "credits" or "license" for more information.
+     $ gurobi.sh                     # gurobi.sh を実行
+     Python 2.7.2 (default, Oct 11 2012, 20:14:37) 
+     [GCC 4.2.1 Compatible Apple Clang 4.0 (tags/Apple/clang-418.0.60)] on darwin
+     Type "help", "copyright", "credits" or "license" for more information.
      
-      Gurobi Interactive Shell (mac64), Version 5.6.0
-      Copyright (c) 2013, Gurobi Optimization, Inc.
-      Type "help()" for help
-    #+END_SRC
-    ここでは Ctrl-D を押して終了させよう．
+     Gurobi Interactive Shell (mac64), Version 5.6.0
+     Copyright (c) 2013, Gurobi Optimization, Inc.
+     Type "help()" for help
+   #+END_SRC
+   ここでは Ctrl-D を押して終了させよう．
 
-    ライセンスファイルが無効な場合，以下のようなメッセージが表示される：
-    #+BEGIN_SRC sh
-      Python 2.7.2 (default, Oct 11 2012, 20:14:37) 
-      [GCC 4.2.1 Compatible Apple Clang 4.0 (tags/Apple/clang-418.0.60)] on darwin
-      Type "help", "copyright", "credits" or "license" for more information.
-      Traceback (most recent call last):
-        File "/usr/local/lib/gurobi.py", line 5, in <module>
-          from gurobipy import *
-        File "/usr/local/lib/python2.7/site-packages/gurobipy/__init__.py", line 1, in <module>
-          from gurobipy import *
-        File "gurobi.pxi", line 11, in init gurobipy (../../src/python/gurobipy.c:72659)
-        File "env.pxi", line 27, in gurobipy.Env.__init__ (../../src/python/gurobipy.c:3099)
-      gurobipy.GurobiError: No Gurobi license found (user nagae, host iMac-Late2012.local, hostid b1b0acc5)
-    #+END_SRC
-    この場合も終了させるには Ctrl-D．
+   ライセンスファイルが無効な場合，以下のようなメッセージが表示される：
+   #+BEGIN_SRC sh
+     Python 2.7.2 (default, Oct 11 2012, 20:14:37) 
+     [GCC 4.2.1 Compatible Apple Clang 4.0 (tags/Apple/clang-418.0.60)] on darwin
+     Type "help", "copyright", "credits" or "license" for more information.
+     Traceback (most recent call last):
+       File "/usr/local/lib/gurobi.py", line 5, in <module>
+         from gurobipy import *
+       File "/usr/local/lib/python2.7/site-packages/gurobipy/__init__.py", line 1, in <module>
+         from gurobipy import *
+       File "gurobi.pxi", line 11, in init gurobipy (../../src/python/gurobipy.c:72659)
+       File "env.pxi", line 27, in gurobipy.Env.__init__ (../../src/python/gurobipy.c:3099)
+     gurobipy.GurobiError: No Gurobi license found (user nagae, host iMac-Late2012.local, hostid b1b0acc5)
+   #+END_SRC
+   この場合も終了させるには Ctrl-D．
 ** Gurobi をアップグレードする場合
-新しいパッケージをダウンロード→インストールし，ライセンスファイルを
-=/Library/gurobixxx/= に移動(もしくはコピー)する．ライセンスの更新は不要．
+新しいパッケージをダウンロード→インストールする．ライセンスの更新は不要．
 ** pip と homebrew を使って Python のパッケージを充実させる
 http://joernhees.de/blog/2013/06/08/mac-os-x-10-8-scientific-python-with-homebrew/
 に紹介されているパッケージを入れる．ただし，このサイトでは python の最新版を
