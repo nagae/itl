@@ -21,3 +21,4 @@
 - [[./homebrew.html][homebrew によるパッケージ管理]]
 - [[./emacs.org][最強のエディタ，Emacs のインストール]]
 - [[./latex.org][LaTeX (文章執筆＆プレゼン作成用)のインストール]]
+- [[./gurobi_python.org][Gurobi / Python で最適化]]
