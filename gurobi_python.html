@@ -1,0 +1,979 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<title>Gurobi / Python で最適化</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="Gurobi / Python で最適化"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2014-02-05T12:50+0900"/>
+<meta name="author" content="Takeshi Nagae"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<link rel=stylesheet href="style.css" type="text/css">
+<script type="text/javascript" src="org-info.js">
+/**
+ *
+ * @source: org-info.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in org-info.js.
+ *
+ * Copyright (C) 2012-2013  Sebastian Rose
+ *
+ *
+ * The JavaScript code in this tag is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in org-info.js.
+ *
+ */
+</script>
+
+<script type="text/javascript">
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "1");
+org_html_manager.set("LINK_HOME", "../");
+org_html_manager.set("LINK_UP", "./");
+org_html_manager.set("LOCAL_TOC", "2");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "0");
+org_html_manager.set("VIEW", "showall");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Gurobi / Python で最適化</h1>
+
+
+
+
+
+<div id="table-of-contents">
+<h2>&#30446;&#27425;</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 Gurobi / Python の環境構築</a>
+<ul>
+<li><a href="#sec-1-1">1.1 Python のバージョン確認</a></li>
+<li><a href="#sec-1-2">1.2 Gurobi アカウントの作成とアカデミック・ライセンスの取得</a>
+<ul>
+<li><a href="#sec-1-2-1">1.2.1 Gurobi のアカウント・ライセンスについて</a></li>
+<li><a href="#sec-1-2-2">1.2.2 アカウント作成，ライセンスの取得および認証の方法</a></li>
+<li><a href="#sec-1-2-3">1.2.3 Gurobi のダウンロードとインストール</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-3">1.3 Gurobi をアップグレードする場合</a></li>
+<li><a href="#sec-1-4">1.4 pip と homebrew を使って Python のパッケージを充実させる</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2 Gurobi を使ってみる</a>
+<ul>
+<li><a href="#sec-2-1">2.1 Python を起動</a></li>
+<li><a href="#sec-2-2">2.2 最小費用流問題を解いてみる</a>
+<ul>
+<li><a href="#sec-2-2-1">2.2.1 モデルの定式化</a></li>
+<li><a href="#sec-2-2-2">2.2.2 Gurobi で表現してみる</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-3">2.3 インタラクティブ・モードに疲れたら</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Gurobi / Python の環境構築</h2>
+<div class="outline-text-2" id="text-1">
+
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Python のバージョン確認</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<ul>
+<li>Gurobi は Mac OS X デフォルトの Python しかサポートしない(<a href="https://groups.google.com/d/msg/gurobi/ghzhXNugDxs/mFNWanBl1fMJ">参考</a>)．まずは Python
+  のバージョンを確認：
+
+
+
+<pre class="src src-sh">$ which python                  <span style="color: #99968b;"># </span><span style="color: #99968b;">Python &#12408;&#12398;&#12497;&#12473;&#12364;</span>
+/usr/bin/python                 <span style="color: #99968b;"># </span><span style="color: #99968b;">/usr/bin/python &#12392;&#12394;&#12387;&#12390;&#12356;&#12427;&#12371;&#12392;&#12434;&#30906;&#35469; </span>
+$ python --version              <span style="color: #99968b;"># </span><span style="color: #99968b;">Python &#12398;&#12496;&#12540;&#12472;&#12519;&#12531;&#12364;</span>
+Python 2.7.2                    <span style="color: #99968b;"># </span><span style="color: #99968b;">2.7.2 &#12395;&#12394;&#12387;&#12390;&#12356;&#12427;&#12371;&#12392;&#12434;&#30906;&#35469;</span>
+</pre>
+
+</li>
+<li>もし homebrew などで別のバージョンの python を入れてしまっている場合は Gurobi
+  が正常に機能しないので unlink (一時停止) か uninstall (消去)しておく．
+<ul>
+<li>unlink (一時停止)する場合:
+
+
+
+<pre class="src src-sh">$ brew unlink python            <span style="color: #99968b;"># </span><span style="color: #99968b;">/usr/loca/bin/python &#12434;&#19968;&#26178;&#30340;&#12395;&#20351;&#12431;&#12394;&#12367;&#12377;&#12427;</span>
+</pre>
+
+</li>
+<li>unlinstall (消去)する場合
+
+
+
+<pre class="src src-sh">$ brew uninstall python            <span style="color: #99968b;"># </span><span style="color: #99968b;">/usr/loca/bin/python &#12434;&#23436;&#20840;&#12395;&#28040;&#21435;&#12377;&#12427;</span>
+</pre>
+
+</li>
+</ul>
+
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Gurobi アカウントの作成とアカデミック・ライセンスの取得</h3>
+<div class="outline-text-3" id="text-1-2">
+
+<p>以下の情報は
+<a href="http://www.gurobi.com/products/licensing-and-pricing/academic-licensing">http://www.gurobi.com/products/licensing-and-pricing/academic-licensing</a> に基づい
+ている．
+</p>
+</div>
+
+<div id="outline-container-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> Gurobi のアカウント・ライセンスについて</h4>
+<div class="outline-text-4" id="text-1-2-1">
+
+<p>Gurobi のアカデミック・ライセンスは以下の制約の下で利用可能である：
+</p><ul>
+<li>学位授与機構を備えた学術機関の教員・学生もしくはスタッフのみが利用できる
+</li>
+<li>研究もしくは教育目的にのみ利用できる
+</li>
+<li>公認の学術機関ドメインから validate される必要がある．アカデミック・ライセンス
+  の有効期限は12ヶ月だが，適切な教員・学生もしくはスタッフは，この手続きを繰り返
+  すことでライセンスを更新できる．
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> アカウント作成，ライセンスの取得および認証の方法</h4>
+<div class="outline-text-4" id="text-1-2-2">
+
+<ol>
+<li><a href="http://www.gurobi.com">http://www.gurobi.com</a> にアクセスし，Register for Free をクリック
+   <img src="fig/grb_register.png" width=720 alt="fig/grb_register.png" />
+</li>
+<li>Account Type は「Academic」とし，Email は <code>tohoku.ac.jp</code> で終わるアドレスを利
+   用．Company/University には「Tohoku University」とする
+</li>
+<li><a href="http://www.gurobi.com">http://www.gurobi.com</a> のメニューバーから Download &gt; Licenses に移動し，FREE
+   ACADEMIC のページに移動．2箇所をチェックして Request License する
+   <img src="fig/grb_academic_license.png" width=720 alt="fig/grb_academic_license.png" />
+</li>
+<li>ライセンスが発行される．Gurobi をインストールした後，ここで表示される
+   <code>grbgetkey</code> 以下のコマンドをターミナルで入力するとライセンスファイルが生成さ
+   れる．
+   <img src="fig/grb_license_detail.png" width=720 alt="fig/grb_license_detail.png" />
+</li>
+</ol>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-3" class="outline-4">
+<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> Gurobi のダウンロードとインストール</h4>
+<div class="outline-text-4" id="text-1-2-3">
+
+<ol>
+<li><a href="http://www.gurobi.com">http://www.gurobi.com</a> のメニューバーから Download &gt; Gurobi Optimizer のページ
+   に移動し，Current version: 5.6.0 の Mac OS 版と READ ME を選択してDownload する．
+   <img src="fig/grb_Mac_OS_Download.png" width=720 alt="fig/grb_Mac_OS_Download.png" />
+</li>
+<li>README.txt に従ってインストールする(ダウンロードした pkg ファイルをダブルクリッ
+   クすればインストールできる)．実行ファイルなどは
+
+
+
+<pre class="src src-example">/Library/gurobi560/mac64
+</pre>
+
+<p>
+   以下にインストールされる．
+</p></li>
+<li>ターミナルを立ち上げ，上記のライセンス取得コマンドを実行する：
+
+
+
+<pre class="src src-sh">grbgetkey ae36ac20-16e6-acd2-f242-4da6e765fa0a <span style="color: #99968b;"># </span><span style="color: #99968b;">&#12371;&#12398;&#12461;&#12540;&#12399;&#23455;&#38555;&#12395;&#12399;&#20351;&#29992;&#12391;&#12365;&#12394;&#12356;</span>
+</pre>
+
+
+<p>   
+   Gurobi のサーバーに接続して認証が完了すると，ライセンスファイルの生成場所を尋
+   ねてくる：
+</p>
+
+
+<pre class="src src-sh">   Gurobi license key client (version 5.6.0)
+<span style="color: #cae682;">Copyright</span> (c) 2012, Gurobi Optimization, Inc.
+
+-------------------------------
+Contacting Gurobi key server...
+-------------------------------
+
+Key for license ID 45789 was successfully retrieved.
+License expires at the end of the day on 2014-08-26.
+
+---------------------
+Saving license key...
+---------------------
+
+In which directory would you like to store the Gurobi license key file?
+[hit Enter to store it<span style="color: #8ac6f2; font-weight: bold;"> in</span> /Users/[username]]]: 
+</pre>
+
+<p>
+   デフォルトではホームフォルダにライセンスファイルが生成される．
+</p></li>
+<li>生成されたライセンスを Gurobi のフォルダに移動する:
+
+
+
+<pre class="src src-sh">mv ~/gurobi.lic /Library/gurobi560/
+</pre>
+
+</li>
+<li>ターミナルで <code>gurobi.sh</code> を実行してエラーが出なければOK:
+
+
+
+<pre class="src src-sh">$ gurobi.sh                     <span style="color: #99968b;"># </span><span style="color: #99968b;">gurobi.sh &#12434;&#23455;&#34892;</span>
+Python 2.7.2 (default, Oct 11 2012, 20:14:37) 
+[GCC 4.2.1 Compatible Apple Clang 4.0 (tags/Apple/clang-418.0.60)] on darwin
+Type <span style="color: #95e454;">"help"</span>, <span style="color: #95e454;">"copyright"</span>, <span style="color: #95e454;">"credits"</span> or <span style="color: #95e454;">"license"</span> for more information.
+
+Gurobi Interactive Shell (mac64), Version 5.6.0
+<span style="color: #cae682;">Copyright</span> (c) 2013, Gurobi Optimization, Inc.
+Type <span style="color: #95e454;">"help()"</span> for help
+</pre>
+
+<p>
+    ここでは Ctrl-D を押して終了させよう．
+</p>
+<p>
+    ライセンスファイルが無効な場合，以下のようなメッセージが表示される：
+</p>
+
+
+<pre class="src src-sh">Python 2.7.2 (default, Oct 11 2012, 20:14:37) 
+[GCC 4.2.1 Compatible Apple Clang 4.0 (tags/Apple/clang-418.0.60)] on darwin
+Type <span style="color: #95e454;">"help"</span>, <span style="color: #95e454;">"copyright"</span>, <span style="color: #95e454;">"credits"</span> or <span style="color: #95e454;">"license"</span> for more information.
+<span style="color: #cae682;">Traceback</span> (most recent call last):
+  File <span style="color: #95e454;">"/usr/local/lib/gurobi.py"</span>, line 5,<span style="color: #8ac6f2; font-weight: bold;"> in</span> &lt;module&gt;
+    from gurobipy import *
+  File <span style="color: #95e454;">"/usr/local/lib/python2.7/site-packages/gurobipy/__init__.py"</span>, line 1,<span style="color: #8ac6f2; font-weight: bold;"> in</span> &lt;module&gt;
+    from gurobipy import *
+  File <span style="color: #95e454;">"gurobi.pxi"</span>, line 11,<span style="color: #8ac6f2; font-weight: bold;"> in</span> init gurobipy (../../src/python/gurobipy.c:72659)
+  File <span style="color: #95e454;">"env.pxi"</span>, line 27,<span style="color: #8ac6f2; font-weight: bold;"> in</span> gurobipy.Env.__init__ (../../src/python/gurobipy.c:3099)
+gurobipy.GurobiError: No Gurobi license found (user nagae, host iMac-Late2012.local, hostid b1b0acc5)
+</pre>
+
+<p>
+    この場合も終了させるには Ctrl-D．
+</p></li>
+</ol>
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Gurobi をアップグレードする場合</h3>
+<div class="outline-text-3" id="text-1-3">
+
+<p>新しいパッケージをダウンロード→インストールし，ライセンスファイルを
+<code>/Library/gurobixxx/</code> に移動(もしくはコピー)する．ライセンスの更新は不要．
+</p></div>
+
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> pip と homebrew を使って Python のパッケージを充実させる</h3>
+<div class="outline-text-3" id="text-1-4">
+
+<p><a href="http://joernhees.de/blog/2013/06/08/mac-os-x-10-8-scientific-python-with-homebrew/">http://joernhees.de/blog/2013/06/08/mac-os-x-10-8-scientific-python-with-homebrew/</a>
+に紹介されているパッケージを入れる．ただし，このサイトでは python の最新版を
+homebrew でインストールすることを前提としてるが，それだと Gurobi が動かない．
+</p>
+<p>
+そこで，ここでは，Mac OS X デフォルトの Python 用の <code>pip</code> をインストールし，
+それを使ってパッケージを追加する方法を述べる．
+</p>
+<p>
+また，<code>pip</code> でインストールできる(i.e. Python関係)パッケージは極力 <code>pip</code> を用いる
+こととした．
+</p>
+<ol>
+<li>pip のインストール
+   pip は Python 用のパッケージインストーラである．homebrew 版 python には pip
+   も含まれるが，Mac OS X デフォルト版にはそれが無いのでインストールする．
+
+
+
+<pre class="src src-sh">sudo easy_install pip
+</pre>
+
+</li>
+<li>homebrew のリポジトリに <code>homebrew/science</code> と <code>homebrew/homebrew-python</code> を追加する：
+
+
+
+<pre class="src src-sh">brew tap homebrew/science <span style="color: #99968b;"># </span><span style="color: #99968b;">a lot of cool formulae for scientific tools</span>
+brew tap homebrew/homebrew-python <span style="color: #99968b;"># </span><span style="color: #99968b;">python libraries</span>
+brew update &amp;&amp; brew upgrade
+</pre>
+
+
+</li>
+<li>順番に色々入れていく：
+
+
+
+<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">&#20206;&#24819;&#29872;&#22659;&#27083;&#31689;</span>
+sudo pip install virtualenv nose     <span style="color: #99968b;"># </span><span style="color: #99968b;">virtualenv &#12399; Python &#12398;&#20206;&#24819;&#29872;&#22659;&#12434;&#27083;&#31689;&#12377;&#12427;&#12418;&#12398;&#65294;nose &#12399; Python &#12398;&#21336;&#20307;&#12486;&#12473;&#12488;&#12434;&#31777;&#21336;&#12395;&#12391;&#12365;&#12427;&#12424;&#12358;&#12395;&#25313;&#24373;&#12375;&#12383;&#12418;&#12398;</span>
+
+<span style="color: #99968b;"># </span><span style="color: #99968b;">&#12452;&#12531;&#12479;&#12521;&#12463;&#12486;&#12451;&#12502;&#12539;&#12514;&#12540;&#12489;&#12398;&#24375;&#21270;</span>
+brew install qt pyqt            <span style="color: #99968b;"># </span><span style="color: #99968b;">Qt &#12399; GUI&#12484;&#12540;&#12523;&#12461;&#12483;&#12488;&#65294;pyqt &#12399;&#12381;&#12398; Python &#12496;&#12452;&#12531;&#12487;&#12451;&#12531;&#12464;</span>
+brew install zmq                <span style="color: #99968b;"># </span><span style="color: #99968b;">ZeroMQ &#12399;&#36605;&#12373;&#12364;&#12454;&#12522;&#12398;MQ(message queuing, &#12450;&#12503;&#12522;&#12465;&#12540;&#12471;&#12519;&#12531;&#38291;&#12487;&#12540;&#12479;&#20132;&#25563;&#26041;&#24335;&#12398;1&#12388;)</span>
+sudo pip install ipython[zmq,qtconsole,notebook,test] <span style="color: #99968b;"># </span><span style="color: #99968b;">iPython &#12399; Python &#12398;&#12452;&#12531;&#12479;&#12521;&#12463;&#12486;&#12451;&#12502;&#12539;&#12514;&#12540;&#12489;&#12434;&#36914;&#21270;&#12373;&#12379;&#12383;&#12418;&#12398;</span>
+
+<span style="color: #99968b;"># </span><span style="color: #99968b;">&#12487;&#12496;&#12483;&#12464;&#20986;&#21147;</span>
+sudo pip install q                   <span style="color: #99968b;"># </span><span style="color: #99968b;">q &#12399;&#12362;&#25163;&#36605;&#12394;&#12487;&#12496;&#12483;&#12464;&#20986;&#21147;&#29992;&#12398;&#12497;&#12483;&#12465;&#12540;&#12472;</span>
+
+<span style="color: #99968b;"># </span><span style="color: #99968b;">&#31185;&#23398;&#25216;&#34899;&#35336;&#31639;&#29992;(Numpy, Scipy)</span>
+<span style="color: #99968b;"># </span><span style="color: #99968b;">pip install scipy &#12364;&#36890;&#12425;&#12394;&#12367;&#12394;&#12387;&#12383;&#12398;&#12391;&#65292;homebrew &#12363;&#12425;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#12377;&#12427;&#12424;&#12358;&#12395;&#12375;&#12383;</span>
+brew install numpy               <span style="color: #99968b;"># </span><span style="color: #99968b;">NumPy &#12399; Python &#12391;&#31185;&#23398;&#35336;&#31639;&#12434;&#34892;&#12358;&#12383;&#12417;&#12398;&#22522;&#26412;&#12497;&#12483;&#12465;&#12540;&#12472;</span>
+brew install scipy --with-openblas              <span style="color: #99968b;"># </span><span style="color: #99968b;">SciPy &#12399;&#31185;&#23398;&#12539;&#24037;&#23398;&#29992;&#12514;&#12472;&#12517;&#12540;&#12523;&#32676;</span>
+<span style="color: #99968b;"># </span><span style="color: #99968b;">&#25968;&#24335;&#20966;&#29702;&#65292;&#12464;&#12521;&#12501;&#12398;&#12503;&#12525;&#12483;&#12488;</span>
+sudo pip install sympy               <span style="color: #99968b;"># </span><span style="color: #99968b;">SymPy &#12399;&#12471;&#12531;&#12508;&#12522;&#12483;&#12463;&#12394;&#25968;&#24335;&#20966;&#29702;&#12398;&#12383;&#12417;&#12398;&#12521;&#12452;&#12502;&#12521;&#12522;</span>
+sudo pip install matplotlib          <span style="color: #99968b;"># </span><span style="color: #99968b;">matplotlib &#12399; Python &#12391;2D&#12464;&#12521;&#12501;&#12434;&#12503;&#12525;&#12483;&#12488;&#12377;&#12427;&#12383;&#12417;&#12398;&#12521;&#12452;&#12502;&#12521;&#12522;</span>
+
+<span style="color: #99968b;"># </span><span style="color: #99968b;">&#12493;&#12483;&#12488;&#12527;&#12540;&#12463;&#20998;&#26512;</span>
+sudo pip install networkx           <span style="color: #99968b;"># </span><span style="color: #99968b;">NetworkX &#12399;&#12493;&#12483;&#12488;&#12527;&#12540;&#12463;&#20998;&#26512;&#29992;&#12497;&#12483;&#12465;&#12540;&#12472;</span>
+sudo pip install graphillion        <span style="color: #99968b;"># </span><span style="color: #99968b;">Graphillion &#12399;&#12300;&#25968;&#12360;&#19978;&#12370;&#12362;&#22985;&#12373;&#12435;&#12301;&#12434;&#25937;&#12358;&#12497;&#12483;&#12465;&#12540;&#12472;</span>
+
+<span style="color: #99968b;"># </span><span style="color: #99968b;">&#30011;&#20687;&#20966;&#29702;</span>
+sudo pip install pillow              <span style="color: #99968b;"># </span><span style="color: #99968b;">Pillow &#12399; Python &#12398;&#30011;&#20687;&#20966;&#29702;&#12521;&#12452;&#12502;&#12521;&#12522;</span>
+brew install imagemagick graphviz <span style="color: #99968b;"># </span><span style="color: #99968b;">imagemagick &#12399;&#30011;&#20687;&#12398;&#25805;&#20316;&#12539;&#34920;&#31034;&#12398;&#12383;&#12417;&#12398;&#12477;&#12501;&#12488;&#12454;&#12455;&#12450;&#65294;graphviz &#12399;&#12464;&#12521;&#12501;&#25551;&#30011;&#12477;&#12501;&#12488;&#12454;&#12455;&#12450;&#65294;</span>
+brew install cairo --without-x    <span style="color: #99968b;"># </span><span style="color: #99968b;">cairo &#12399;&#12505;&#12463;&#12488;&#12523;&#12505;&#12540;&#12473;&#12398;&#12501;&#12522;&#12540;&#12398;2D&#12464;&#12521;&#12501;&#12451;&#12483;&#12463;&#12473;&#12521;&#12452;&#12502;&#12521;&#12522;</span>
+brew install py2cairo             <span style="color: #99968b;"># </span><span style="color: #99968b;">cairo &#29992;&#12398; python 2.x &#12496;&#12452;&#12531;&#12487;&#12451;&#12531;&#12464;</span>
+
+<span style="color: #99968b;"># </span><span style="color: #99968b;">&#12487;&#12540;&#12479;&#35299;&#26512;&#65292;&#33258;&#28982;&#35328;&#35486;&#20966;&#29702;</span>
+sudo pip install pandas nltk         <span style="color: #99968b;"># </span><span style="color: #99968b;">pandas &#12399;&#12487;&#12540;&#12479;&#35299;&#26512;&#12521;&#12452;&#12502;&#12521;&#12522;&#65292;nltk &#12399;&#33258;&#28982;&#35328;&#35486;&#20966;&#29702;&#12484;&#12540;&#12523;&#12461;&#12483;&#12488;&#65292;</span>
+</pre>
+
+</li>
+<li>Homebrew でインストールした Python モジュールへのパスを通す
+   組み込み Python 下の pip でインストールしたライブラリと homebrew からインストー
+   ルした Python ライブラリを混在させる場合には，環境変数 <code>PYTHONPATH</code> に
+   homebrew 下の <code>site-packages</code> へのパスを追記する必要がある．
+<ul>
+<li><code>~/.bash_profile</code> に 以下を追加する：
+
+
+
+<pre class="src src-profile">export PYTHONPATH=<span style="color: #95e454;">"/usr/local/lib/python2.7/site-packages:$PYTHONPATH"</span>
+</pre>
+
+
+</li>
+<li>ターミナルで以下を実行する
+
+
+
+<pre class="src src-sh">$ source ~/.bash_profile
+</pre>
+
+</li>
+</ul>
+
+</li>
+</ol>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Gurobi を使ってみる</h2>
+<div class="outline-text-2" id="text-2">
+
+
+</div>
+
+<div id="outline-container-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Python を起動</h3>
+<div class="outline-text-3" id="text-2-1">
+
+<p>ターミナルから以下を入力：
+</p>
+
+
+<pre class="src src-sh">python
+</pre>
+
+
+<p>
+Python が起動し，プロンプトが <code>&gt;&gt;&gt;</code> に変わる．以下，順に入力していく：
+</p>
+
+
+<pre class="src src-sh">&gt;&gt;&gt; import gurobipy as grb                                      <span style="color: #99968b;"># </span><span style="color: #99968b;">Gurobi &#29992;&#12497;&#12483;&#12465;&#12540;&#12472;&#12434; grb &#12392;&#12356;&#12358;&#21517;&#21069;&#12391;import</span>
+&gt;&gt;&gt; m = grb.read(<span style="color: #95e454;">'/Library/gurobi560/mac64/examples/data/coins.lp'</span>) <span style="color: #99968b;"># </span><span style="color: #99968b;">&#12487;&#12501;&#12457;&#12523;&#12488;&#12398;&#12452;&#12531;&#12479;&#12521;&#12463;&#12486;&#12451;&#12502;&#12539;&#12514;&#12487;&#12523;&#12391;&#12399;&#12501;&#12449;&#12452;&#12523;&#21517;&#12398;TAB&#35036;&#23436;&#12399;&#21177;&#12363;&#12394;&#12356;</span>
+Read LP format model from file /Library/gurobi560/mac64/examples/data/coins.lp <span style="color: #99968b;"># </span><span style="color: #99968b;">&#35501;&#12415;&#36796;&#12415;&#12501;&#12449;&#12452;&#12523;&#21517;&#65292;</span>
+Reading time = 0.00 seconds     <span style="color: #99968b;"># </span><span style="color: #99968b;">&#35501;&#12415;&#36796;&#12415;&#12395;&#12363;&#12363;&#12387;&#12383;&#26178;&#38291;&#12394;&#12393;&#12364;&#34920;&#31034;&#12373;&#12428;&#12427;</span>
+(null): 4 rows, 9 columns, 16 nonzeros
+&gt;&gt;&gt; m.optimize()                                                <span style="color: #99968b;"># </span><span style="color: #99968b;">&#26368;&#36969;&#21270;&#12513;&#12477;&#12483;&#12489;&#12434;&#21628;&#12403;&#20986;&#12377;</span>
+Optimize a model with 4 rows, 9 columns and 16 nonzeros             <span style="color: #99968b;"># </span><span style="color: #99968b;">&#26368;&#36969;&#21270;&#12373;&#12428;&#12383;&#32080;&#26524;&#12364;&#34920;&#31034;&#12373;&#12428;&#12427;</span>
+Found heuristic solution: objective -0
+Presolve removed 1 rows and 5 columns
+Presolve time: 0.00s
+Presolved: 3 rows, 4 columns, 9 nonzeros
+Variable types: 0 continuous, 4 integer (0 binary)
+
+Root relaxation: objective 1.134615e+02, 4 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0  113.46154    0    1   -0.00000  113.46154     -      -    0s
+H    0     0                     113.4500000  113.46154  0.01%     -    0s
+
+Explored 0 nodes (4 simplex iterations) <span style="color: #8ac6f2; font-weight: bold;">in</span> 0.00 seconds
+Thread count was 8 (of 8 available processors)
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 1.134500000000e+02, best bound 1.134500000000e+02, gap 0.0%
+&gt;&gt;&gt; for v<span style="color: #8ac6f2; font-weight: bold;"> in</span> m.getVars():   <span style="color: #99968b;"># </span><span style="color: #99968b;">&#12300;:&#12301;&#12434;&#20837;&#21147;&#12375;&#12383;&#24460;&#25913;&#34892;&#12377;&#12427;&#12392;&#65292;&#27425;&#12398;&#12503;&#12525;&#12531;&#12503;&#12488;&#12364; ... &#12395;&#12394;&#12427;</span>
+...:     print v.varName, v.X   <span style="color: #99968b;"># </span><span style="color: #99968b;">print &#12398;&#21069;&#12395;&#12399; TAB &#12434;&#25276;&#12375;&#12390;&#12452;&#12531;&#12487;&#12531;&#12488;&#12364;&#24517;&#35201;</span>
+...:                         <span style="color: #99968b;"># </span><span style="color: #99968b;">&#20309;&#12418;&#20837;&#21147;&#12375;&#12394;&#12356;&#12391;&#25913;&#34892;&#12377;&#12427;&#12392; for &#12502;&#12525;&#12483;&#12463;&#12434;&#25244;&#12425;&#12428;&#12427;</span>
+</pre>
+
+<p>
+すると以下が表示されるはず:
+</p>
+
+
+<pre class="src src-sh">Pennies 0.0
+Nickels -0.0
+Dimes 2.0
+Quarters 53.0
+Dollars 100.0
+Cu 999.8
+Ni 46.9
+Zi 50.0
+Mn 30.0
+</pre>
+
+<p>
+Python のインタラクティブ・モードを終了するにはCtrl-D を入力．
+</p>
+
+
+<pre class="src src-sh">&gt;&gt;&gt;                                 <span style="color: #99968b;"># </span><span style="color: #99968b;">&#12371;&#12371;&#12391; Ctrl-D &#12392;&#12377;&#12427;&#12392;</span>
+$                                   <span style="color: #99968b;"># </span><span style="color: #99968b;">Python &#12514;&#12540;&#12489;&#12364;&#32066;&#20102;&#12375;&#65292;&#12418;&#12392;&#12398;&#12479;&#12540;&#12511;&#12490;&#12523;&#12398;&#12503;&#12525;&#12531;&#12503;&#12488;&#12395;&#25147;&#12427;</span>
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> 最小費用流問題を解いてみる</h3>
+<div class="outline-text-3" id="text-2-2">
+
+<p>次のようなネットワークを対象として起点(a)から終点(d)まで <img src="ltxpng/gurobi_python_2cfaaabc8c31d3bbe31a7812f215bd077efee30c.png" alt="$v=17$"/> 単位の製品を輸送
+する最小費用流を求める問題を考える(ただし，各リンクの <img src="ltxpng/gurobi_python_6caf19dd6d2471b128e64167a7bbd5404301d2ab.png" alt="$c$"/> は輸送費用，<img src="ltxpng/gurobi_python_1389692c7686b8063d66776811ccf4cec90dbce2.png" alt="$a$"/> は容量を表す)．
+</p>
+
+<p>
+<img src="gurobi_python_MCF_network.png"  alt="gurobi_python_MCF_network.png" />
+</p>
+
+</div>
+
+<div id="outline-container-2-2-1" class="outline-4">
+<h4 id="sec-2-2-1"><span class="section-number-4">2.2.1</span> モデルの定式化</h4>
+<div class="outline-text-4" id="text-2-2-1">
+
+<p>ノード集合 <img src="ltxpng/gurobi_python_c86b4e1c9de93ec18630e6188764376a9dfae200.png" alt="$\ClN$"/> とリンク集合 <img src="ltxpng/gurobi_python_8bef3827e79e93baea76da8a3a66a1752e86e8e3.png" alt="$\ClA$"/> を以下のように定義する：
+<img src="ltxpng/gurobi_python_22e0a010c2840150feb27f0966dae86b7a8aa92a.png" alt="\[
+\ClN = \{a, b, c, d\}, \ClA = \{(a, b), (a, c), (b, c), (b, d), (c, d)\}
+\]"/>
+</p>
+<p>
+このとき，最小費用流問題は，以下の3つの要素で構成される：
+</p><ol>
+<li>最小化すべき目的関数(総輸送費用)：
+
+<p>
+   <img src="ltxpng/gurobi_python_f7059f1f8cba7f7636377abfe5e0c8a6e1611b28.png" alt="\[
+   \min_{\Vtx} \sum_{(i, j) \in \ClA} c_{i, j} x_{i, j}
+   \]"/>
+</p></li>
+<li>制約条件その1(各ノードでのフロー保存則)：
+
+<p>   
+   <img src="ltxpng/gurobi_python_b24525c3d6a4d1dbdcbef0b6576b104a92a0829d.png" alt="\[
+   \Subto{} \sum_{(i, n) \in \ClA} x_{i, n} - \sum_{(n, j) \in \ClA} 
+   = b_{n}, \quad \forall n \in \ClN
+   \]"/>
+</p>
+<p>   
+   ただし，<img src="ltxpng/gurobi_python_be6e34dba8140f4aea10309c34e4b6c1cfc67b45.png" alt="$b_{n}$"/> は，<img src="ltxpng/gurobi_python_f66aefb8d966ec4f8556fb285fbc109903088b70.png" alt="$n$"/> が起点(a)なら <img src="ltxpng/gurobi_python_c83e27b3b4e10e0ede9f8cfb00ad18bb9af0d57c.png" alt="$-v$"/>, <img src="ltxpng/gurobi_python_f66aefb8d966ec4f8556fb285fbc109903088b70.png" alt="$n$"/> が終点なら<img src="ltxpng/gurobi_python_bb82d55e53284da82d6a72d85bd15e92eda5096c.png" alt="$v$"/>, それ以外なら0
+   となる定数．
+</p></li>
+<li>制約条件その2(非負制約)：
+
+<p>   
+   <img src="ltxpng/gurobi_python_3a62355639ee108654a814fda531aa9cfdb20c39.png" alt="\[
+   x_{i, j} \geq 0, \quad \forall (i, j) \in \ClA
+   \]"/>
+</p></li>
+</ol>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-2-2" class="outline-4">
+<h4 id="sec-2-2-2"><span class="section-number-4">2.2.2</span> Gurobi で表現してみる</h4>
+<div class="outline-text-4" id="text-2-2-2">
+
+<ul>
+<li>まずは Python モードを起動:
+
+
+
+<pre class="src src-sh">$ python
+</pre>
+
+</li>
+<li>リンクとノード集合を定義する：
+
+
+
+<pre class="src src-sh">&gt;&gt;&gt; links = [(<span style="color: #95e454;">'a'</span>,<span style="color: #95e454;">'b'</span>), (<span style="color: #95e454;">'a'</span>,<span style="color: #95e454;">'c'</span>), (<span style="color: #95e454;">'b'</span>, <span style="color: #95e454;">'c'</span>), (<span style="color: #95e454;">'b'</span>,<span style="color: #95e454;">'d'</span>),(<span style="color: #95e454;">'c'</span>,<span style="color: #95e454;">'d'</span>)]
+&gt;&gt;&gt; nodes = [<span style="color: #95e454;">'a'</span>, <span style="color: #95e454;">'b'</span>, <span style="color: #95e454;">'c'</span>, <span style="color: #95e454;">'d'</span>]
+&gt;&gt;&gt; orig = <span style="color: #95e454;">'a'</span>                      <span style="color: #99968b;"># </span><span style="color: #99968b;">&#36215;&#28857;</span>
+&gt;&gt;&gt; dest = <span style="color: #95e454;">'d'</span>                      <span style="color: #99968b;"># </span><span style="color: #99968b;">&#32066;&#28857;</span>
+</pre>
+
+</li>
+<li>ノード集合は各リンクの起点もしくは終点の集まりなので，以下のように生成してもよ
+  い．
+
+
+
+<pre class="src src-sh">&gt;&gt;&gt; nodes = set([i for (i, j) <span style="color: #8ac6f2; font-weight: bold;">in</span> links] + [j for (i, j) <span style="color: #8ac6f2; font-weight: bold;">in</span> links])
+</pre>
+
+</li>
+<li>各リンクの費用と容量を設定する
+
+
+
+<pre class="src src-sh">&gt;&gt;&gt; cost = dict(zip(links,[2,8,3,8,4]))
+&gt;&gt;&gt; capacity = dict(zip(links, [10, 10, 3, 9, 8]))
+</pre>
+
+</li>
+<li>総輸送量を設定する
+
+
+
+<pre class="src src-sh">&gt;&gt;&gt; total_volume = 17
+</pre>
+
+</li>
+<li>Python 用 Gurobi パッケージを「grb」という名前で読み込む
+
+
+
+<pre class="src src-sh">&gt;&gt;&gt; import gurobipy as grb
+</pre>
+
+</li>
+<li>モデルを格納する grb.Model型変数 m を作成する
+
+
+
+<pre class="src src-sh">&gt;&gt;&gt; m = grb.Model()
+</pre>
+
+</li>
+<li>GRB.addVar()という関数を用いてリンクごとの未知変数を定義する．
+
+
+
+<pre class="src src-sh">&gt;&gt;&gt; x = {}
+&gt;&gt;&gt; for (i,j) <span style="color: #8ac6f2; font-weight: bold;">in</span> links:
+...    x[i, j] = m.addVar(<span style="color: #cae682;">vtype</span>=grb.GRB.CONTINUOUS, <span style="color: #cae682;">name</span>=<span style="color: #95e454;">"x_{%s,%s}"</span> % (i, j)) <span style="color: #99968b;"># </span><span style="color: #99968b;">x[i, j]&#12398;&#21069;&#12395;&#12399;&#12452;&#12531;&#12487;&#12531;&#12488;&#12364;&#24517;&#35201;</span>
+...                             <span style="color: #99968b;"># </span><span style="color: #99968b;">&#20309;&#12418;&#20837;&#21147;&#12375;&#12394;&#12356;&#12391;&#25913;&#34892;</span>
+</pre>
+
+</li>
+<li>目的関数を定義し，最大化/最小化のいずれを行うかを指定する
+
+
+
+<pre class="src src-sh">&gt;&gt;&gt; m.update()                  <span style="color: #99968b;"># </span><span style="color: #99968b;">&#12514;&#12487;&#12523;&#12395;&#22793;&#25968;&#12364;&#36861;&#21152;&#12373;&#12428;&#12383;&#12371;&#12392;&#12434;&#21453;&#26144;&#12373;&#12379;&#12427;</span>
+&gt;&gt;&gt; m.setObjective(grb.quicksum(x[i, j]*cost[i, j] for (i, j) <span style="color: #8ac6f2; font-weight: bold;">in</span> links)) <span style="color: #99968b;"># </span><span style="color: #99968b;">&#30446;&#30340;&#38306;&#25968;</span>
+&gt;&gt;&gt; m.setAttr(<span style="color: #95e454;">"ModelSense"</span>, grb.GRB.MINIMIZE) 
+</pre>
+
+</li>
+<li>ノードごとのフロー保存則を追加する
+
+
+
+<pre class="src src-sh">&gt;&gt;&gt; b = {}
+&gt;&gt;&gt; for n<span style="color: #8ac6f2; font-weight: bold;"> in</span> nodes:
+...    <span style="color: #99968b;"># </span><span style="color: #99968b;">&#12501;&#12525;&#12540;&#20445;&#23384;&#21063;&#12398;&#21491;&#36794;&#12398;&#23450;&#25968;&#12434;&#27770;&#23450;&#12377;&#12427;</span>
+...    if n == orig:            <span style="color: #99968b;"># </span><span style="color: #99968b;">if &#12398;&#21069;&#12395;&#12399;&#12452;&#12531;&#12487;&#12531;&#12488;&#12364;&#24517;&#35201;</span>
+...        b[n] = - total_volume <span style="color: #99968b;"># </span><span style="color: #99968b;">b[n] &#12398;&#21069;&#12395;&#12399;&#26356;&#12395;&#12452;&#12531;&#12487;&#12531;&#12488;&#12364;&#24517;&#35201;</span>
+...    elif n == dest:
+...        b[n] = total_volume
+...    else:
+...        b[n] = 0
+...    <span style="color: #99968b;"># </span><span style="color: #99968b;">&#12494;&#12540;&#12489;&#12372;&#12392;&#12398;&#12501;&#12525;&#12540;&#20445;&#23384;&#21063;</span>
+...    <span style="color: #99968b;"># </span><span style="color: #99968b;">&#34892;&#26411;&#12395;&#12300;\&#12301;&#12434;&#12388;&#12369;&#12427;&#12392;&#35079;&#25968;&#34892;&#12395;&#12414;&#12383;&#12364;&#12387;&#12390;&#35352;&#36848;&#12391;&#12365;&#12427;</span>
+...    m.addConstr(grb.quicksum(x[i, j] for (i, j) <span style="color: #8ac6f2; font-weight: bold;">in</span> links if j == n)<span style="color: #95e454;">\ </span>
+...                - grb.quicksum(x[i, j] for (i, j) <span style="color: #8ac6f2; font-weight: bold;">in</span> links if i == n) <span style="color: #95e454;">\</span>
+...                == b[n], <span style="color: #cae682;">name</span>=<span style="color: #95e454;">"flow reservation at %s"</span> % n)
+...    <span style="color: #99968b;"># </span><span style="color: #99968b;">&#31354;&#30333;&#34892;&#12434;&#20837;&#21147;&#12377;&#12427;&#12371;&#12392;&#12391; for &#12502;&#12525;&#12483;&#12463;&#12434;&#25244;&#12369;&#12425;&#12428;&#12427;</span>
+</pre>
+
+</li>
+<li>非負制約と容量制約を追加する
+
+
+
+<pre class="src src-sh">&gt;&gt;&gt; for (i, j) <span style="color: #8ac6f2; font-weight: bold;">in</span> links:
+...    x[i, j].lb = 0.0
+...    x[i, j].ub = capacity[i, j]
+...    <span style="color: #99968b;"># </span><span style="color: #99968b;">&#31354;&#30333;&#34892;&#12434;&#20837;&#21147;&#12377;&#12427;&#12371;&#12392;&#12391; for &#12502;&#12525;&#12483;&#12463;&#12434;&#25244;&#12369;&#12425;&#12428;&#12427;</span>
+</pre>
+
+</li>
+<li>モデルを更新し，mincostflow.lp に線形計画問題の形で出力する
+
+
+
+<pre class="src src-sh">&gt;&gt;&gt; m.update()
+&gt;&gt;&gt; m.write(<span style="color: #95e454;">"mincostflow.lp"</span>)  
+</pre>
+
+</li>
+<li>最適化を行う
+
+
+
+<pre class="src src-sh">&gt;&gt;&gt; m.optimize()
+Optimize a model with 4 rows, 5 columns and 10 nonzeros
+Presolve removed 2 rows and 3 columns
+Presolve time: 0.00s
+Presolved: 2 rows, 2 columns, 4 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    1.8000000e+02   2.000000e+00   0.000000e+00      0s
+       1    1.8300000e+02   0.000000e+00   0.000000e+00      0s
+
+Solved<span style="color: #8ac6f2; font-weight: bold;"> in</span> 1 iterations and 0.00 seconds
+Optimal objective  1.830000000e+02
+</pre>
+
+</li>
+<li>最適値と最適解(最小費用流)を表示させる
+
+
+
+<pre class="src src-sh">&gt;&gt;&gt; print <span style="color: #95e454;">"optimal value:\t%8.4f"</span> % m.ObjVal
+optimal value:  183.0000
+&gt;&gt;&gt; for (i, j) <span style="color: #8ac6f2; font-weight: bold;">in</span> links:
+...    print <span style="color: #95e454;">"%s:\t%8.4f"</span> % (x[i, j].VarName, x[i, j].X)
+...
+x_{a,b}:         10.0000
+x_{a,c}:          7.0000
+x_{b,c}:          1.0000
+x_{b,d}:          9.0000
+x_{c,d}:          8.0000
+</pre>
+
+</li>
+</ul>
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> インタラクティブ・モードに疲れたら</h3>
+<div class="outline-text-3" id="text-2-3">
+
+<p>インタラクティブ・モードで逐一コマンドを入力するのは面倒．そういう場合は，以下の
+ようなスクリプト・ファイルに記述して呼び出せばいい．
+</p>
+
+
+<pre class="src src-python"><span style="color: #99968b;">#</span><span style="color: #99968b;">! /usr/bin/python</span>
+<span style="color: #99968b;"># </span><span style="color: #99968b;">*-* encoding: utf-8 *-*</span>
+
+<span style="color: #99968b;"># </span><span style="color: #99968b;">&#12522;&#12531;&#12463;&#38598;&#21512;</span>
+<span style="color: #f6f3e8; background-color: #242424;">links</span> = [(<span style="color: #95e454;">'a'</span>,<span style="color: #95e454;">'b'</span>), (<span style="color: #95e454;">'a'</span>,<span style="color: #95e454;">'c'</span>), (<span style="color: #95e454;">'b'</span>, <span style="color: #95e454;">'c'</span>), (<span style="color: #95e454;">'b'</span>,<span style="color: #95e454;">'d'</span>),(<span style="color: #95e454;">'c'</span>,<span style="color: #95e454;">'d'</span>)]
+<span style="color: #99968b;"># </span><span style="color: #99968b;">&#12494;&#12540;&#12489;&#38598;&#21512;</span>
+<span style="color: #f6f3e8; background-color: #242424;">nodes</span> = [<span style="color: #95e454;">'a'</span>, <span style="color: #95e454;">'b'</span>, <span style="color: #95e454;">'c'</span>, <span style="color: #95e454;">'d'</span>]
+<span style="color: #f6f3e8; background-color: #242424;">orig</span> = <span style="color: #95e454;">'a'</span>                      <span style="color: #99968b;"># &#36215;&#28857;</span>
+<span style="color: #f6f3e8; background-color: #242424;">dest</span> = <span style="color: #95e454;">'d'</span>                      <span style="color: #99968b;"># &#32066;&#28857;</span>
+
+<span style="color: #99968b;"># </span><span style="color: #99968b;">&#21508;&#12522;&#12531;&#12463;&#12398;&#36664;&#36865;&#36027;&#29992;</span>
+<span style="color: #f6f3e8; background-color: #242424;">cost</span> =<span style="color: #e5786d;"> dict</span>(zip(links,[<span style="color: #f6f3e8; background-color: #242424;">2</span>,<span style="color: #f6f3e8; background-color: #242424;">8</span>,<span style="color: #f6f3e8; background-color: #242424;">3</span>,<span style="color: #f6f3e8; background-color: #242424;">8</span>,<span style="color: #f6f3e8; background-color: #242424;">4</span>]))
+<span style="color: #99968b;"># </span><span style="color: #99968b;">&#21508;&#12522;&#12531;&#12463;&#12398;&#23481;&#37327;</span>
+<span style="color: #f6f3e8; background-color: #242424;">capacity</span> =<span style="color: #e5786d;"> dict</span>(zip(links, [<span style="color: #f6f3e8; background-color: #242424;">10</span>, <span style="color: #f6f3e8; background-color: #242424;">10</span>, <span style="color: #f6f3e8; background-color: #242424;">3</span>, <span style="color: #f6f3e8; background-color: #242424;">9</span>, <span style="color: #f6f3e8; background-color: #242424;">8</span>]))
+<span style="color: #99968b;"># </span><span style="color: #99968b;">&#36215;&#28857;&#12363;&#12425;&#32066;&#28857;&#12414;&#12391;&#12398;&#32207;&#36664;&#36865;&#37327;</span>
+<span style="color: #f6f3e8; background-color: #242424;">total_volume</span> = <span style="color: #f6f3e8; background-color: #242424;">17</span>
+
+<span style="color: #99968b;"># </span><span style="color: #99968b;">Gurobi &#12497;&#12483;&#12465;&#12540;&#12472;&#12434; grb &#12392;&#12356;&#12358;&#21517;&#21069;&#12391; import </span>
+<span style="color: #8ac6f2; font-weight: bold;">import</span> gurobipy <span style="color: #8ac6f2; font-weight: bold;">as</span> grb
+<span style="color: #99968b;"># </span><span style="color: #99968b;">print "%s:\t%8.4f" % (x[i, j].VarName, x[i, j].X)</span>
+<span style="color: #f6f3e8; background-color: #242424;">m</span> = grb.Model()
+<span style="color: #99968b;"># </span><span style="color: #99968b;">&#26410;&#30693;&#22793;&#25968;&#12434; x &#12392;&#12356;&#12358;&#36766;&#26360;&#22411;&#22793;&#25968;&#12395;&#26684;&#32013;</span>
+<span style="color: #f6f3e8; background-color: #242424;">x</span> = {}
+<span style="color: #99968b;"># </span><span style="color: #99968b;">addVar() &#12392;&#12356;&#12358;&#38306;&#25968;&#12434;&#29992;&#12356;&#12390;&#12514;&#12487;&#12523;&#12395;&#22793;&#25968;&#12434;&#36861;&#21152;&#12377;&#12427;</span>
+<span style="color: #8ac6f2; font-weight: bold;">for</span> (i,j) <span style="color: #8ac6f2; font-weight: bold;">in</span> links:
+    <span style="color: #f6f3e8; background-color: #242424;">x</span>[i, j] = m.addVar(vtype=grb.GRB.CONTINUOUS, name=<span style="color: #95e454;">"x_{%s,%s}"</span> % (i, j))
+m.update()                  <span style="color: #99968b;"># &#12514;&#12487;&#12523;&#12395;&#22793;&#25968;&#12364;&#36861;&#21152;&#12373;&#12428;&#12383;&#12371;&#12392;&#12434;&#21453;&#26144;&#12373;&#12379;&#12427;</span>
+
+<span style="color: #99968b;"># </span><span style="color: #99968b;">&#30446;&#30340;&#38306;&#25968;&#12434;&#35373;&#23450;&#12375;&#65292;&#26368;&#23567;&#21270;&#12434;&#34892;&#12358;&#12371;&#12392;&#12434;&#26126;&#31034;&#12377;&#12427;</span>
+m.setObjective(grb.quicksum(x[i, j]*cost[i, j] <span style="color: #8ac6f2; font-weight: bold;">for</span> (i, j) <span style="color: #8ac6f2; font-weight: bold;">in</span> links))<span style="color: #99968b;"># &#30446;&#30340;&#38306;&#25968;</span>
+m.setAttr(<span style="color: #95e454;">"ModelSense"</span>, grb.GRB.MINIMIZE)
+
+<span style="color: #99968b;"># </span><span style="color: #99968b;">&#21508;&#12494;&#12540;&#12489;&#12391;&#12398;&#12501;&#12525;&#12540;&#20445;&#23384;&#21063;&#12434;&#36861;&#21152;&#12377;&#12427;</span>
+<span style="color: #f6f3e8; background-color: #242424;">b</span> = {}                          <span style="color: #99968b;"># &#12501;&#12525;&#12540;&#20445;&#23384;&#21063;&#12398;&#21491;&#36794;&#12398;&#23450;&#25968;&#12434;&#35373;&#23450;&#12377;&#12427;</span>
+<span style="color: #8ac6f2; font-weight: bold;">for</span> n <span style="color: #8ac6f2; font-weight: bold;">in</span> nodes:
+    <span style="color: #8ac6f2; font-weight: bold;">if</span> n == orig:
+        <span style="color: #f6f3e8; background-color: #242424;">b</span>[n] = - total_volume
+    <span style="color: #8ac6f2; font-weight: bold;">elif</span> n == dest:
+        <span style="color: #f6f3e8; background-color: #242424;">b</span>[n] = total_volume
+    <span style="color: #8ac6f2; font-weight: bold;">else</span>:
+        <span style="color: #f6f3e8; background-color: #242424;">b</span>[n] = <span style="color: #f6f3e8; background-color: #242424;">0</span>
+    <span style="color: #99968b;"># &#12494;&#12540;&#12489;&#12372;&#12392;&#12398;&#12501;&#12525;&#12540;&#20445;&#23384;&#21063;</span>
+    <span style="color: #99968b;"># &#34892;&#39340;&#12395;&#12300;\&#12301;&#12434;&#12388;&#12369;&#12427;&#12392;1&#12388;&#12398;&#34892;&#12434;&#35079;&#25968;&#34892;&#12395;&#12414;&#12383;&#12364;&#12387;&#12390;&#35352;&#36848;&#12391;&#12365;&#12427;</span>
+    m.addConstr(grb.quicksum(x[i, j] <span style="color: #8ac6f2; font-weight: bold;">for</span> (i, j) <span style="color: #8ac6f2; font-weight: bold;">in</span> links <span style="color: #8ac6f2; font-weight: bold;">if</span> j == n)\
+                - grb.quicksum(x[i, j] <span style="color: #8ac6f2; font-weight: bold;">for</span> (i, j) <span style="color: #8ac6f2; font-weight: bold;">in</span> links <span style="color: #8ac6f2; font-weight: bold;">if</span> i == n) \
+                == <span style="color: #f6f3e8; background-color: #242424;">b</span>[n], name=<span style="color: #95e454;">"flow reservation at %s"</span> % n)
+
+<span style="color: #99968b;"># </span><span style="color: #99968b;">&#21508;&#12494;&#12540;&#12489;&#12391;&#12398;&#38750;&#36000;&#21046;&#32004;&#12392;&#23481;&#37327;&#21046;&#32004;&#12434;&#36861;&#21152;&#12377;&#12427;</span>
+<span style="color: #8ac6f2; font-weight: bold;">for</span> (i, j) <span style="color: #8ac6f2; font-weight: bold;">in</span> links:
+    x[i, j].lb = <span style="color: #f6f3e8; background-color: #242424;">0</span>.<span style="color: #f6f3e8; background-color: #242424;">0</span>
+    x[i, j].ub = capacity[i, j]
+
+<span style="color: #99968b;"># </span><span style="color: #99968b;">&#12514;&#12487;&#12523;&#12395;&#21046;&#32004;&#26465;&#20214;&#12364;&#36861;&#21152;&#12373;&#12428;&#12383;&#12371;&#12392;&#12434;&#21453;&#26144;&#12373;&#12379;&#12427;</span>
+m.update()
+m.write(<span style="color: #95e454;">"mincostflow.lp"</span>)       <span style="color: #99968b;"># mincostflow.lp &#12392;&#12356;&#12358;&#12501;&#12449;&#12452;&#12523;&#12395;&#23450;&#24335;&#21270;&#12373;&#12428;&#12383;&#12514;&#12487;&#12523;&#12434;&#20986;&#21147;&#12377;&#12427;</span>
+
+<span style="color: #99968b;"># </span><span style="color: #99968b;">&#26368;&#36969;&#21270;&#12434;&#34892;&#12356;&#65292;&#32080;&#26524;&#12434;&#34920;&#31034;&#12373;&#12379;&#12427;</span>
+m.optimize()
+<span style="color: #8ac6f2; font-weight: bold;">print</span> <span style="color: #95e454;">"optimal value:\t%8.4f"</span> % m.ObjVal
+<span style="color: #8ac6f2; font-weight: bold;">for</span> (i, j) <span style="color: #8ac6f2; font-weight: bold;">in</span> links:
+    <span style="color: #8ac6f2; font-weight: bold;">print</span> <span style="color: #95e454;">"%s:\t%8.4f"</span> % (x[i, j].VarName, x[i, j].X)
+</pre>
+
+
+<p>
+Python からファイルを呼び出すには，ターミナルで
+</p>
+
+
+<pre class="src src-sh">$ python sampleMCF.py
+</pre>
+
+<p>
+とすればよい．
+</p></div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">&#26085;&#20184;: 2014-02-05T12:50+0900</p>
+<p class="author">&#33879;&#32773;: Takeshi Nagae</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>
