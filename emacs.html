@@ -3,11 +3,11 @@
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
-<title>ITL/Emacs編</title>
+<title>ITL/Emacs &mdash; 最強のエディタ</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="ITL/Emacs編"/>
+<meta name="title" content="ITL/Emacs &mdash; 最強のエディタ"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-04T14:46+0900"/>
+<meta name="generated" content="2014-02-06T12:01+0900"/>
 <meta name="author" content="Takeshi Nagae"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -187,7 +187,7 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="content">
-<h1 class="title">ITL/Emacs編</h1>
+<h1 class="title">ITL/Emacs &mdash; 最強のエディタ</h1>
 
 
 
@@ -197,28 +197,27 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#27425;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1 Emacs &mdash; 最強のエディタ</a>
+<li><a href="#sec-1">1 インストール方法</a></li>
+<li><a href="#sec-2">2 長江研 Emacs 設定方針</a>
 <ul>
-<li><a href="#sec-1-1">1.1 インストール方法</a></li>
-<li><a href="#sec-1-2">1.2 長江研 Emacs 設定方針</a></li>
-<li><a href="#sec-1-3">1.3 Emacs の初期設定</a></li>
-<li><a href="#sec-1-4">1.4 初期設定ファイルの更新</a></li>
-<li><a href="#sec-1-5">1.5 基本的な操作方法</a>
-<ul>
-<li><a href="#sec-1-5-1">1.5.1 特殊キー</a></li>
-<li><a href="#sec-1-5-2">1.5.2 同時押しと順次押し</a></li>
-<li><a href="#sec-1-5-3">1.5.3 まずはパニック対応(<code>ESC, C-g</code>)</a></li>
-<li><a href="#sec-1-5-4">1.5.4 カーソルの操作</a></li>
+<li><a href="#sec-2-1">2.1 Emacs の初期設定</a></li>
+<li><a href="#sec-2-2">2.2 初期設定ファイルの更新</a></li>
 </ul>
 </li>
-<li><a href="#sec-1-6">1.6 参考資料</a></li>
-<li><a href="#sec-1-7">1.7 独自設定</a>
+<li><a href="#sec-3">3 基本的な操作方法</a>
 <ul>
-<li><a href="#sec-1-7-1">1.7.1 基本操作</a></li>
-<li><a href="#sec-1-7-2">1.7.2 Anything</a></li>
-<li><a href="#sec-1-7-3">1.7.3 もっとある</a></li>
+<li><a href="#sec-3-1">3.1 特殊キー</a></li>
+<li><a href="#sec-3-2">3.2 同時押しと順次押し</a></li>
+<li><a href="#sec-3-3">3.3 まずはパニック対応(<code>ESC, C-g</code>)</a></li>
+<li><a href="#sec-3-4">3.4 カーソルの操作</a></li>
 </ul>
 </li>
+<li><a href="#sec-4">4 参考資料</a></li>
+<li><a href="#sec-5">5 独自設定</a>
+<ul>
+<li><a href="#sec-5-1">5.1 基本操作</a></li>
+<li><a href="#sec-5-2">5.2 Anything</a></li>
+<li><a href="#sec-5-3">5.3 もっとある</a></li>
 </ul>
 </li>
 </ul>
@@ -226,15 +225,8 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Emacs &mdash; 最強のエディタ</h2>
+<h2 id="sec-1"><span class="section-number-2">1</span> インストール方法</h2>
 <div class="outline-text-2" id="text-1">
-
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> インストール方法</h3>
-<div class="outline-text-3" id="text-1-1">
 
 <ol>
 <li>本体を Homebrew でインストール
@@ -250,7 +242,7 @@ for the JavaScript code in this tag.
 .app bundles were installed to /usr/local/Cellar/emacs/24.3 (or libexec)<span style="color: #b0c4de;">.</span>
 Run brew linkapps to symlink these to /Applications.
 ==&gt; Summary
- /usr/local/Cellar/emacs/24.3: 3909 files, 114M, built<span style="color: #00ffff;"> in</span> 3.3 minutes
+ /usr/local/Cellar/emacs/24.3: 3909 files, 114M, built<span style="color: #ffffff; font-weight: bold;"> in</span> 3.3 minutes
 </pre>
 
 </li>
@@ -290,9 +282,9 @@ Run brew linkapps to symlink these to /Applications.
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 長江研 Emacs 設定方針</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 長江研 Emacs 設定方針</h2>
+<div class="outline-text-2" id="text-2">
 
 <p>Emacs は初期設定ファイル(<code>~/.emacs.d/init.el</code>)が極めて重要な役割を果たす<sup><a class="footref" name="fnr-.1" href="#fn-.1">1</a></sup>．同じ
 Emacs を使っていても，初期設定ファイルが違うと全く違うアプリケーションのように感
@@ -310,13 +302,12 @@ Emacs を使っていても，初期設定ファイルが違うと全く違う�
 </li>
 </ul>
 
-</div>
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Emacs の初期設定</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Emacs の初期設定</h3>
+<div class="outline-text-3" id="text-2-1">
 
 <ol>
 <li>ローカルの初期設定フォルダを作成：
@@ -404,7 +395,7 @@ $ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git
 
 
 
-<pre class="src src-screen">$ ln -s ~/Dropbox/.emacs.d/elpa ~/.emacs.d <span style="color: #ff4500;"># </span><span style="color: #ff4500;">Dropbox&#19978;&#12398; elpa &#12501;&#12457;&#12523;&#12480;&#12408;&#12398;&#12471;&#12531;&#12508;&#12522;&#12483;&#12463;&#12522;&#12531;&#12463;&#12434;&#24373;&#12427;</span>
+<pre class="src src-screen">$ ln -s ~/Dropbox/.emacs.d/elpa ~/.emacs.d <span style="color: #00cd66;"># </span><span style="color: #00cd66;">Dropbox&#19978;&#12398; elpa &#12501;&#12457;&#12523;&#12480;&#12408;&#12398;&#12471;&#12531;&#12508;&#12522;&#12483;&#12463;&#12522;&#12531;&#12463;&#12434;&#24373;&#12427;</span>
 </pre>
 
 </li>
@@ -414,9 +405,9 @@ $ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> 初期設定ファイルの更新</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> 初期設定ファイルの更新</h3>
+<div class="outline-text-3" id="text-2-2">
 
 <ul>
 <li>上記の初期設定ファイルは適宜更新される．更新を反映するにはターミナルから以下を実行する：
@@ -444,9 +435,9 @@ $ git submodule update --recursive
 
 
 
-<pre class="src src-screen">$ cd ~/Dropbox                  <span style="color: #ff4500;"># </span><span style="color: #ff4500;">~/Dropbox &#12395;&#31227;&#21205;</span>
-$ mv .emacs.d .emacs.d.backup   <span style="color: #ff4500;"># </span><span style="color: #ff4500;">.emacs.d &#12434;&#21029;&#21517;&#12391;&#36864;&#36991;</span>
-$ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git   <span style="color: #ff4500;"># </span><span style="color: #ff4500;">&#26368;&#26032;&#29256;&#12434; clone</span>
+<pre class="src src-screen">$ cd ~/Dropbox                  <span style="color: #00cd66;"># </span><span style="color: #00cd66;">~/Dropbox &#12395;&#31227;&#21205;</span>
+$ mv .emacs.d .emacs.d.backup   <span style="color: #00cd66;"># </span><span style="color: #00cd66;">.emacs.d &#12434;&#21029;&#21517;&#12391;&#36864;&#36991;</span>
+$ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git   <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#26368;&#26032;&#29256;&#12434; clone</span>
 </pre>
 
 <p>
@@ -456,19 +447,20 @@ $ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git   <span style="colo
 
 
 </div>
+</div>
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> 基本的な操作方法</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> 基本的な操作方法</h2>
+<div class="outline-text-2" id="text-3">
 
 
 </div>
 
-<div id="outline-container-1-5-1" class="outline-4">
-<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> 特殊キー</h4>
-<div class="outline-text-4" id="text-1-5-1">
+<div id="outline-container-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> 特殊キー</h3>
+<div class="outline-text-3" id="text-3-1">
 
 <p>上記の設定の下では，Emacs で用いる特殊キーは以下のように割当てられる．
 </p><table  border="2" cellspacing="0" cellpadding="6" rules="all" frame="hsides">
@@ -498,9 +490,9 @@ $ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git   <span style="colo
 
 </div>
 
-<div id="outline-container-1-5-2" class="outline-4">
-<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> 同時押しと順次押し</h4>
-<div class="outline-text-4" id="text-1-5-2">
+<div id="outline-container-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> 同時押しと順次押し</h3>
+<div class="outline-text-3" id="text-3-2">
 
 <p>Emacs では，特殊キーとそれ以外のキーの組み合わせ(キーバインド)によって多彩な操作が可能である．
 全てのキー操作は「同時押し」と「順次押し」で構成される．
@@ -534,9 +526,9 @@ $ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git   <span style="colo
 
 </div>
 
-<div id="outline-container-1-5-3" class="outline-4">
-<h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span> まずはパニック対応(<code>ESC, C-g</code>)</h4>
-<div class="outline-text-4" id="text-1-5-3">
+<div id="outline-container-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> まずはパニック対応(<code>ESC, C-g</code>)</h3>
+<div class="outline-text-3" id="text-3-3">
 
 <p>操作中に予期せぬ画面になってしまった時は，<code>ESC</code> か <code>C-g</code> (Control と g の同時押し)を押すことで，大抵，元の画面に戻ってこれる．
 </p><ol>
@@ -563,9 +555,9 @@ $ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git   <span style="colo
 
 </div>
 
-<div id="outline-container-1-5-4" class="outline-4">
-<h4 id="sec-1-5-4"><span class="section-number-4">1.5.4</span> カーソルの操作</h4>
-<div class="outline-text-4" id="text-1-5-4">
+<div id="outline-container-3-4" class="outline-3">
+<h3 id="sec-3-4"><span class="section-number-3">3.4</span> カーソルの操作</h3>
+<div class="outline-text-3" id="text-3-4">
 
 <p>Emacs では，十字キーではなく，キーバインドでもカーソルを操作できる．最初は十字キーの方が楽なように思うだろうが，慣れてくると十字キーに手を伸ばすのが億劫になってくるはずだ．最初の画面(eshell)で色々試してみよう．
 </p><table  border="2" cellspacing="0" cellpadding="6" rules="all" frame="hsides">
@@ -601,27 +593,27 @@ $ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git   <span style="colo
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> 参考資料</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> 参考資料</h2>
+<div class="outline-text-2" id="text-4">
 
 <p>順次書いていきますが膨大なので，まずは <a href="http://www.amazon.co.jp/dp/4774150029">Emacs 実践入門</a> の§2.3以降を読みながら各自で慣れていって下さい．
 </p></div>
 
 </div>
 
-<div id="outline-container-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> 独自設定</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> 独自設定</h2>
+<div class="outline-text-2" id="text-5">
 
 <p><a href="https://bitbucket.org/nagae/.emacs.d">https://bitbucket.org/nagae/.emacs.d</a> で公開している設定ファイルでは，
 <a href="http://www.amazon.co.jp/dp/4774150029">Emacs 実践入門</a> に記載されていないような独自のキーバインドがいくつかある．
 </p>
 </div>
 
-<div id="outline-container-1-7-1" class="outline-4">
-<h4 id="sec-1-7-1"><span class="section-number-4">1.7.1</span> 基本操作</h4>
-<div class="outline-text-4" id="text-1-7-1">
+<div id="outline-container-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> 基本操作</h3>
+<div class="outline-text-3" id="text-5-1">
 
 <dl>
 <dt>ウィンドウの切り替え(<code>C-;</code>)</dt><dd><code>C-x o</code> だけでなく <code>C-;</code> でもウィンドウが切り替えられる．
@@ -638,9 +630,9 @@ $ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git   <span style="colo
 
 </div>
 
-<div id="outline-container-1-7-2" class="outline-4">
-<h4 id="sec-1-7-2"><span class="section-number-4">1.7.2</span> Anything</h4>
-<div class="outline-text-4" id="text-1-7-2">
+<div id="outline-container-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Anything</h3>
+<div class="outline-text-3" id="text-5-2">
 
 <dl>
 <dt><code>s-a</code> (option キーと a の同時押し)</dt><dd><code>s-a</code> でanything-for-files を起動
@@ -651,9 +643,9 @@ $ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git   <span style="colo
 
 </div>
 
-<div id="outline-container-1-7-3" class="outline-4">
-<h4 id="sec-1-7-3"><span class="section-number-4">1.7.3</span> もっとある</h4>
-<div class="outline-text-4" id="text-1-7-3">
+<div id="outline-container-5-3" class="outline-3">
+<h3 id="sec-5-3"><span class="section-number-3">5.3</span> もっとある</h3>
+<div class="outline-text-3" id="text-5-3">
 
 <p>便利な独自機能はまだ沢山あるが鋭意執筆中．
 </p>
@@ -672,14 +664,13 @@ $ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git   <span style="colo
 </div>
 </div>
 </div>
-</div>
 
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">&#26085;&#20184;: 2014-02-04T14:46+0900</p>
+<p class="date">&#26085;&#20184;: 2014-02-06T12:01+0900</p>
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
