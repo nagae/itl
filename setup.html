@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="ITL/セットアップ編"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-04T14:43+0900"/>
+<meta name="generated" content="2014-02-06T12:19+0900"/>
 <meta name="author" content="Takeshi Nagae"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -271,6 +271,7 @@ for the JavaScript code in this tag.
 <li><a href="#sec-4-7-1">4.7.1 公開鍵と秘密鍵の作成</a></li>
 <li><a href="#sec-4-7-2">4.7.2 Bitbucket に SSH の公開鍵を登録する</a></li>
 <li><a href="#sec-4-7-3">4.7.3 Github に SSH の公開鍵を登録する</a></li>
+<li><a href="#sec-4-7-4">4.7.4 その他の SSH サーバーを登録する</a></li>
 </ul>
 </li>
 </ul>
@@ -804,13 +805,21 @@ rm -r BetterTouchTool.app
 
 
 
-<pre class="src src-screen">$ mkdir ~/.ssh                    <span style="color: #ff4500;"># </span><span style="color: #ff4500;">ssh&#29992;&#12398;&#12487;&#12451;&#12524;&#12463;&#12488;&#12522;&#12434;&#20316;&#12427;</span>
+<pre class="src src-screen">$ mkdir ~/.ssh                    <span style="color: #00cd66;"># </span><span style="color: #00cd66;">ssh&#29992;&#12398;&#12487;&#12451;&#12524;&#12463;&#12488;&#12522;&#12434;&#20316;&#12427;</span>
 $ cd ~/.ssh
-$ ssh-keygen -t rsa -f id_rsa     <span style="color: #ff4500;"># </span><span style="color: #ff4500;">id_rsa &#12392;&#12356;&#12358;&#31192;&#23494;&#37749;&#12392; id_rsa.pub &#12392;&#12356;&#12358;&#20844;&#38283;&#37749;&#12434;&#20316;&#12427;</span>
-<span style="color: #ff4500;"># </span><span style="color: #ff4500;">&#12497;&#12473;&#12501;&#12524;&#12540;&#12474;&#12434;&#20837;&#21147;&#12375;&#12383;&#24460;&#65292;&#21516;&#12376;&#12418;&#12398;&#12434;&#12418;&#12358;&#19968;&#24230;&#20837;&#21147;&#65294;</span>
-<span style="color: #ff4500;"># </span><span style="color: #ff4500;">&#12371;&#12371;&#12391;&#20837;&#21147;&#12377;&#12427;&#12497;&#12473;&#12501;&#12524;&#12540;&#12474;&#12399;&#65292;Mac &#26412;&#20307;&#12408;&#12398;&#12525;&#12464;&#12452;&#12531;&#29992;&#12392;&#21516;&#12376;&#12395;&#12375;&#12390;&#12418;&#21839;&#38988;&#28961;&#12356;&#65294;</span>
+$ ssh-keygen -t rsa -f id_rsa     <span style="color: #00cd66;"># </span><span style="color: #00cd66;">id_rsa &#12392;&#12356;&#12358;&#31192;&#23494;&#37749;&#12392; id_rsa.pub &#12392;&#12356;&#12358;&#20844;&#38283;&#37749;&#12434;&#20316;&#12427;</span>
+<span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#12497;&#12473;&#12501;&#12524;&#12540;&#12474;&#12434;&#20837;&#21147;&#12375;&#12383;&#24460;&#65292;&#21516;&#12376;&#12418;&#12398;&#12434;&#12418;&#12358;&#19968;&#24230;&#20837;&#21147;&#65294;</span>
+<span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#12371;&#12371;&#12391;&#20837;&#21147;&#12377;&#12427;&#12497;&#12473;&#12501;&#12524;&#12540;&#12474;&#12399;&#65292;Mac &#26412;&#20307;&#12408;&#12398;&#12525;&#12464;&#12452;&#12531;&#29992;&#12392;&#21516;&#12376;&#12395;&#12375;&#12390;&#12418;&#21839;&#38988;&#28961;&#12356;&#65294;</span>
 $ chmod 700 ~/.ssh
 $ chmod 600 ~/.ssh/id_rsa.pub 
+</pre>
+
+</li>
+<li>ここで作成した公開鍵/秘密鍵のパスフレーズは，以下のコマンドで後から変更できる：
+
+
+
+<pre class="src src-sh">ssh-keygen -f id_rsa -p
 </pre>
 
 </li>
@@ -887,7 +896,7 @@ $ chmod 600 ~/.ssh/id_rsa.pub
 
 
 <pre class="src src-screen">$ pbpaste &gt;&gt; ~/.ssh/config
-$ echo &gt;&gt; ~/.ssh/config         <span style="color: #ff4500;"># </span><span style="color: #ff4500;">&#25913;&#34892;&#12434;&#21152;&#12360;&#12427;</span>
+$ echo &gt;&gt; ~/.ssh/config         <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#25913;&#34892;&#12434;&#21152;&#12360;&#12427;</span>
 </pre>
 
 </li>
@@ -922,9 +931,9 @@ Are you sure you want to continue connecting (yes/no)?
 </p>
 
 
-<pre class="src src-screen"><span style="color: #ff4500;"># </span><span style="color: #ff4500;">(Warning &#12364;&#20986;&#12427;&#12371;&#12392;&#12418;&#12354;&#12427;)</span>
+<pre class="src src-screen"><span style="color: #00cd66;"># </span><span style="color: #00cd66;">(Warning &#12364;&#20986;&#12427;&#12371;&#12392;&#12418;&#12354;&#12427;)</span>
 PTY allocation request failed on channel 0
-conq: logged<span style="color: #00ffff;"> in</span> as ****.        <span style="color: #ff4500;"># </span><span style="color: #ff4500;">**** &#12395;&#12399; bitbucket.org &#12398;&#12450;&#12459;&#12454;&#12531;&#12488;&#21517;&#12364;&#20837;&#12427;</span>
+conq: logged<span style="color: #ffffff; font-weight: bold;"> in</span> as ****.        <span style="color: #00cd66;"># </span><span style="color: #00cd66;">**** &#12395;&#12399; bitbucket.org &#12398;&#12450;&#12459;&#12454;&#12531;&#12488;&#21517;&#12364;&#20837;&#12427;</span>
 
 You can use git or hg to connect to Bitbucket. Shell access is disabled.
 Connection to bitbucket.org closed.
@@ -1017,6 +1026,36 @@ Connection to github.com closed.
 </p></li>
 </ul>
 
+</div>
+
+</div>
+
+<div id="outline-container-4-7-4" class="outline-4">
+<h4 id="sec-4-7-4"><span class="section-number-4">4.7.4</span> その他の SSH サーバーを登録する</h4>
+<div class="outline-text-4" id="text-4-7-4">
+
+<p>上述の方法を応用すれば，他の SSH サーバーにもSSH公開鍵を登録できる．
+例えば，<code>username@remote.to</code> というサーバーに登録したい場合は，以下のようにターミナルから入力する．
+</p>
+
+
+<pre class="src src-sh">cat id_rsa.pub | ssh username@remote.to <span style="color: #bdb76b;">"cat&gt;&gt;.ssh/authorized_keys"</span>
+</pre>
+
+<p>
+そして，<code>~/.ssh/config</code> に以下を追記する：
+</p>
+
+
+<pre class="src src-text">Host alias
+ User username
+ Port 22
+ Hostname remote.to
+ IdentityFile ~/.ssh/id_rsa
+ TCPKeepAlive yes
+ IdentitiesOnly yes
+</pre>
+
 
 </div>
 </div>
@@ -1025,7 +1064,7 @@ Connection to github.com closed.
 </div>
 
 <div id="postamble">
-<p class="date">&#26085;&#20184;: 2014-02-04T14:43+0900</p>
+<p class="date">&#26085;&#20184;: 2014-02-06T12:19+0900</p>
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

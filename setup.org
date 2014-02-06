@@ -153,6 +153,10 @@ Preference -> Settings -> Launch BetterTouchTools on startup をチェック
     $ chmod 700 ~/.ssh
     $ chmod 600 ~/.ssh/id_rsa.pub 
   #+end_src
+- ここで作成した公開鍵/秘密鍵のパスフレーズは，以下のコマンドで後から変更できる：
+  #+BEGIN_SRC sh
+    ssh-keygen -f id_rsa -p
+  #+END_SRC
 *** Bitbucket に SSH の公開鍵を登録する
 - [[https://bitbucket.org/][Bitbucket]] の右上のアバターから「Manage account」を選ぶ
   #+ATTR_HTML: align="center" width="600"
@@ -264,4 +268,20 @@ Preference -> Settings -> Launch BetterTouchTools on startup をチェック
     # **** には github.com のアカウント名が入る
   #+END_SRC
   と出れば成功．
+*** その他の SSH サーバーを登録する
+上述の方法を応用すれば，他の SSH サーバーにもSSH公開鍵を登録できる．
+例えば，=username@remote.to= というサーバーに登録したい場合は，以下のようにターミナルから入力する．
+#+BEGIN_SRC sh
+cat id_rsa.pub | ssh username@remote.to "cat>>.ssh/authorized_keys"
+#+END_SRC
+そして，=~/.ssh/config= に以下を追記する：
+#+BEGIN_SRC text
+Host alias
+ User username
+ Port 22
+ Hostname remote.to
+ IdentityFile ~/.ssh/id_rsa
+ TCPKeepAlive yes
+ IdentitiesOnly yes
+#+END_SRC
 
