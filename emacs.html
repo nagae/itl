@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="ITL/Emacs &mdash; 最強のエディタ"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-06T12:01+0900"/>
+<meta name="generated" content="2014-02-06T12:04+0900"/>
 <meta name="author" content="Takeshi Nagae"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -197,27 +197,33 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#27425;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1 インストール方法</a></li>
+<li><a href="#sec-1">1 Emacs のインストール方法</a></li>
 <li><a href="#sec-2">2 長江研 Emacs 設定方針</a>
 <ul>
 <li><a href="#sec-2-1">2.1 Emacs の初期設定</a></li>
 <li><a href="#sec-2-2">2.2 初期設定ファイルの更新</a></li>
 </ul>
 </li>
-<li><a href="#sec-3">3 基本的な操作方法</a>
+<li><a href="#sec-3">3 SKK / AquaSKK &mdash; シンプル漢字かな入力</a>
 <ul>
-<li><a href="#sec-3-1">3.1 特殊キー</a></li>
-<li><a href="#sec-3-2">3.2 同時押しと順次押し</a></li>
-<li><a href="#sec-3-3">3.3 まずはパニック対応(<code>ESC, C-g</code>)</a></li>
-<li><a href="#sec-3-4">3.4 カーソルの操作</a></li>
+<li><a href="#sec-3-1">3.1 DDSKK</a></li>
+<li><a href="#sec-3-2">3.2 AquaSKK</a></li>
 </ul>
 </li>
-<li><a href="#sec-4">4 参考資料</a></li>
-<li><a href="#sec-5">5 独自設定</a>
+<li><a href="#sec-4">4 基本的な操作方法</a>
 <ul>
-<li><a href="#sec-5-1">5.1 基本操作</a></li>
-<li><a href="#sec-5-2">5.2 Anything</a></li>
-<li><a href="#sec-5-3">5.3 もっとある</a></li>
+<li><a href="#sec-4-1">4.1 特殊キー</a></li>
+<li><a href="#sec-4-2">4.2 同時押しと順次押し</a></li>
+<li><a href="#sec-4-3">4.3 まずはパニック対応(<code>ESC, C-g</code>)</a></li>
+<li><a href="#sec-4-4">4.4 カーソルの操作</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5 参考資料</a></li>
+<li><a href="#sec-6">6 独自設定</a>
+<ul>
+<li><a href="#sec-6-1">6.1 基本操作</a></li>
+<li><a href="#sec-6-2">6.2 Anything</a></li>
+<li><a href="#sec-6-3">6.3 もっとある</a></li>
 </ul>
 </li>
 </ul>
@@ -225,7 +231,7 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> インストール方法</h2>
+<h2 id="sec-1"><span class="section-number-2">1</span> Emacs のインストール方法</h2>
 <div class="outline-text-2" id="text-1">
 
 <ol>
@@ -452,15 +458,104 @@ $ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git   <span style="colo
 </div>
 
 <div id="outline-container-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> 基本的な操作方法</h2>
+<h2 id="sec-3"><span class="section-number-2">3</span> SKK / AquaSKK &mdash; シンプル漢字かな入力</h2>
 <div class="outline-text-2" id="text-3">
+
+<p>長江は「ことえり」や「IME」のような形態素解析をベースとした入力メソッドが苦手なので，SKK(Simple Kana to Kanji conversion program)を利用している．
+SKK は品詞解析を行なわないため，漢字にする箇所や送り仮名を自分で指定する必要がある．しかし，ひとたび慣れれば高速かつ直感的な入力が可能となる———上述のような入力メソッドが使えなくなるほど．
+Macの標準入力方式に代替できる <a href="http://aquaskk.sourceforge.jp">AquaSKK</a> と Emacs 上で動く <a href="http://openlab.ring.gr.jp/skk/ddskk-ja.html">DDSKK (Daredevil SKK)</a> とがあり，両方併用するのが吉．
+</p>
+</div>
+
+<div id="outline-container-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> DDSKK</h3>
+<div class="outline-text-3" id="text-3-1">
+
+<ol>
+<li>Emacs をインストールし終わっていて，
+   <code>/Applications/Emacs.app/Contents/MacOS/Emacs</code> が有効になっている必要がある．
+</li>
+<li>長江自作の Formula を用いれば Homebrew でインストール可能：
+
+
+
+<pre class="src src-screen">$ brew install https://gist.github.com/nagae/3009185/raw/ddskk.rb
+</pre>
+
+</li>
+</ol>
+
+</div>
+
+</div>
+
+<div id="outline-container-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> AquaSKK</h3>
+<div class="outline-text-3" id="text-3-2">
+
+<ol>
+<li><a href="http://aquaskk.sourceforge.jp/">http://aquaskk.sourceforge.jp/</a> の右側の「ダウンロード」の欄の「AquaSKK パッケー
+   ジ」から AquaSKK-4.1.dmg をダウンロードし，AquaSKK.pkg を実行．
+</li>
+<li>Mountain Lion の Gatekeeper が邪魔をする場合は，Ctrlを押しながらクリック→開く．
+</li>
+<li>言語環境に AquaSKK を登録
+<ul>
+<li>画面左上のリンゴマーク→システム環境設定→言語とテキスト
+     <img src="fig/setting_language_text.png"  alt="fig/setting_language_text.png" />
+</li>
+<li>入力ソースで Aqua SKK 統合にチェック
+     <img src="fig/Aqua_SKK-setting.png"  alt="fig/Aqua_SKK-setting.png" />
+</li>
+</ul>
+
+</li>
+<li>AquaSKK の環境設定
+   右上の入力方式から AquaSKK 統合を選択した上で「環境設定」を選択
+   <img src="fig/Aqua_SKK-env.png"  alt="fig/Aqua_SKK-env.png" />
+<ol>
+<li>辞書ファイル
+<ul>
+<li>ユーザー辞書: <code>~/Dropbox/.skk-aquaskk.skk-jisyo</code>
+</li>
+<li>SKK辞書: <code>~/Dropbox/.skk-ddskk.skk-jisyo</code>
+        <img src="fig/Aqua_SKK-dictionary.png"  alt="fig/Aqua_SKK-dictionary.png" />
+</li>
+</ul>
+
+</li>
+<li>その他
+<ul>
+<li>かな規則：「読点をカンマ(，)にする」「句点をピリオド(．)にする」にそれぞれ
+        チェック．
+        <img src="fig/Aqua_SKK-Kana.png"  alt="fig/Aqua_SKK-Kana.png" />
+</li>
+<li>skkserv:「有効にする」にチェック，ポート番号:1178
+        <img src="fig/Aqua_SKK-skkserv.png"  alt="fig/Aqua_SKK-skkserv.png" />
+</li>
+</ul>
+
+</li>
+</ol>
+
+</li>
+</ol>
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> 基本的な操作方法</h2>
+<div class="outline-text-2" id="text-4">
 
 
 </div>
 
-<div id="outline-container-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="section-number-3">3.1</span> 特殊キー</h3>
-<div class="outline-text-3" id="text-3-1">
+<div id="outline-container-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> 特殊キー</h3>
+<div class="outline-text-3" id="text-4-1">
 
 <p>上記の設定の下では，Emacs で用いる特殊キーは以下のように割当てられる．
 </p><table  border="2" cellspacing="0" cellpadding="6" rules="all" frame="hsides">
@@ -490,9 +585,9 @@ $ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git   <span style="colo
 
 </div>
 
-<div id="outline-container-3-2" class="outline-3">
-<h3 id="sec-3-2"><span class="section-number-3">3.2</span> 同時押しと順次押し</h3>
-<div class="outline-text-3" id="text-3-2">
+<div id="outline-container-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> 同時押しと順次押し</h3>
+<div class="outline-text-3" id="text-4-2">
 
 <p>Emacs では，特殊キーとそれ以外のキーの組み合わせ(キーバインド)によって多彩な操作が可能である．
 全てのキー操作は「同時押し」と「順次押し」で構成される．
@@ -526,9 +621,9 @@ $ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git   <span style="colo
 
 </div>
 
-<div id="outline-container-3-3" class="outline-3">
-<h3 id="sec-3-3"><span class="section-number-3">3.3</span> まずはパニック対応(<code>ESC, C-g</code>)</h3>
-<div class="outline-text-3" id="text-3-3">
+<div id="outline-container-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> まずはパニック対応(<code>ESC, C-g</code>)</h3>
+<div class="outline-text-3" id="text-4-3">
 
 <p>操作中に予期せぬ画面になってしまった時は，<code>ESC</code> か <code>C-g</code> (Control と g の同時押し)を押すことで，大抵，元の画面に戻ってこれる．
 </p><ol>
@@ -555,9 +650,9 @@ $ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git   <span style="colo
 
 </div>
 
-<div id="outline-container-3-4" class="outline-3">
-<h3 id="sec-3-4"><span class="section-number-3">3.4</span> カーソルの操作</h3>
-<div class="outline-text-3" id="text-3-4">
+<div id="outline-container-4-4" class="outline-3">
+<h3 id="sec-4-4"><span class="section-number-3">4.4</span> カーソルの操作</h3>
+<div class="outline-text-3" id="text-4-4">
 
 <p>Emacs では，十字キーではなく，キーバインドでもカーソルを操作できる．最初は十字キーの方が楽なように思うだろうが，慣れてくると十字キーに手を伸ばすのが億劫になってくるはずだ．最初の画面(eshell)で色々試してみよう．
 </p><table  border="2" cellspacing="0" cellpadding="6" rules="all" frame="hsides">
@@ -593,27 +688,27 @@ $ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git   <span style="colo
 
 </div>
 
-<div id="outline-container-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> 参考資料</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> 参考資料</h2>
+<div class="outline-text-2" id="text-5">
 
 <p>順次書いていきますが膨大なので，まずは <a href="http://www.amazon.co.jp/dp/4774150029">Emacs 実践入門</a> の§2.3以降を読みながら各自で慣れていって下さい．
 </p></div>
 
 </div>
 
-<div id="outline-container-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> 独自設定</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> 独自設定</h2>
+<div class="outline-text-2" id="text-6">
 
 <p><a href="https://bitbucket.org/nagae/.emacs.d">https://bitbucket.org/nagae/.emacs.d</a> で公開している設定ファイルでは，
 <a href="http://www.amazon.co.jp/dp/4774150029">Emacs 実践入門</a> に記載されていないような独自のキーバインドがいくつかある．
 </p>
 </div>
 
-<div id="outline-container-5-1" class="outline-3">
-<h3 id="sec-5-1"><span class="section-number-3">5.1</span> 基本操作</h3>
-<div class="outline-text-3" id="text-5-1">
+<div id="outline-container-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> 基本操作</h3>
+<div class="outline-text-3" id="text-6-1">
 
 <dl>
 <dt>ウィンドウの切り替え(<code>C-;</code>)</dt><dd><code>C-x o</code> だけでなく <code>C-;</code> でもウィンドウが切り替えられる．
@@ -630,9 +725,9 @@ $ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git   <span style="colo
 
 </div>
 
-<div id="outline-container-5-2" class="outline-3">
-<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Anything</h3>
-<div class="outline-text-3" id="text-5-2">
+<div id="outline-container-6-2" class="outline-3">
+<h3 id="sec-6-2"><span class="section-number-3">6.2</span> Anything</h3>
+<div class="outline-text-3" id="text-6-2">
 
 <dl>
 <dt><code>s-a</code> (option キーと a の同時押し)</dt><dd><code>s-a</code> でanything-for-files を起動
@@ -643,9 +738,9 @@ $ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git   <span style="colo
 
 </div>
 
-<div id="outline-container-5-3" class="outline-3">
-<h3 id="sec-5-3"><span class="section-number-3">5.3</span> もっとある</h3>
-<div class="outline-text-3" id="text-5-3">
+<div id="outline-container-6-3" class="outline-3">
+<h3 id="sec-6-3"><span class="section-number-3">6.3</span> もっとある</h3>
+<div class="outline-text-3" id="text-6-3">
 
 <p>便利な独自機能はまだ沢山あるが鋭意執筆中．
 </p>
@@ -670,7 +765,7 @@ $ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git   <span style="colo
 </div>
 
 <div id="postamble">
-<p class="date">&#26085;&#20184;: 2014-02-06T12:01+0900</p>
+<p class="date">&#26085;&#20184;: 2014-02-06T12:04+0900</p>
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

@@ -16,7 +16,7 @@
 
 #+STYLE: <link rel=stylesheet href="style.css" type="text/css">
 
-* インストール方法
+* Emacs のインストール方法
 1. 本体を Homebrew でインストール
    #+begin_src screen
      $ brew install --cocoa emacs
@@ -132,6 +132,39 @@ $ ls -a ~/
   #+END_SRC
   後は =.emacs.d.backup= の中身を適宜 =.emacs.d= に書き写していけばいい
 
+* SKK / AquaSKK --- シンプル漢字かな入力
+長江は「ことえり」や「IME」のような形態素解析をベースとした入力メソッドが苦手なので，SKK(Simple Kana to Kanji conversion program)を利用している．
+SKK は品詞解析を行なわないため，漢字にする箇所や送り仮名を自分で指定する必要がある．しかし，ひとたび慣れれば高速かつ直感的な入力が可能となる———上述のような入力メソッドが使えなくなるほど．
+Macの標準入力方式に代替できる [[http://aquaskk.sourceforge.jp][AquaSKK]] と Emacs 上で動く [[http://openlab.ring.gr.jp/skk/ddskk-ja.html][DDSKK (Daredevil SKK)]] とがあり，両方併用するのが吉．
+** DDSKK
+1. Emacs をインストールし終わっていて，
+   =/Applications/Emacs.app/Contents/MacOS/Emacs= が有効になっている必要がある．
+2. 長江自作の Formula を用いれば Homebrew でインストール可能：
+   #+BEGIN_SRC screen
+   $ brew install https://gist.github.com/nagae/3009185/raw/ddskk.rb
+   #+END_SRC
+** AquaSKK
+1. http://aquaskk.sourceforge.jp/ の右側の「ダウンロード」の欄の「AquaSKK パッケー
+   ジ」から AquaSKK-4.1.dmg をダウンロードし，AquaSKK.pkg を実行．
+2. Mountain Lion の Gatekeeper が邪魔をする場合は，Ctrlを押しながらクリック→開く．
+3. 言語環境に AquaSKK を登録
+   - 画面左上のリンゴマーク→システム環境設定→言語とテキスト
+     [[file:fig/setting_language_text.png]]
+   - 入力ソースで Aqua SKK 統合にチェック
+     [[file:fig/Aqua_SKK-setting.png]]
+4. AquaSKK の環境設定
+   右上の入力方式から AquaSKK 統合を選択した上で「環境設定」を選択
+   [[file:fig/Aqua_SKK-env.png]]
+   1. 辞書ファイル
+      - ユーザー辞書: =~/Dropbox/.skk-aquaskk.skk-jisyo=
+      - SKK辞書: =~/Dropbox/.skk-ddskk.skk-jisyo=
+        [[file:fig/Aqua_SKK-dictionary.png]]
+   2. その他
+      - かな規則：「読点をカンマ(，)にする」「句点をピリオド(．)にする」にそれぞれ
+	チェック．
+        [[file:fig/Aqua_SKK-Kana.png]]
+      - skkserv:「有効にする」にチェック，ポート番号:1178
+        [[file:fig/Aqua_SKK-skkserv.png]]
 * 基本的な操作方法
 ** 特殊キー
 上記の設定の下では，Emacs で用いる特殊キーは以下のように割当てられる．
