@@ -137,6 +137,11 @@ http://joernhees.de/blog/2013/06/08/mac-os-x-10-8-scientific-python-with-homebre
 に紹介されているパッケージを入れる．ただし，このサイトでは python の最新版を
 homebrew でインストールすることを前提としてるが，それだと Gurobi が動かない．
 
+OS X Mavericks にはデフォルトで =Python 2.7.5= と以下のモジュールが入っている：
+- numpy 1.6.2
+- scipy 0.11.0
+- matplotlib 1.1.1
+
 そこで，ここでは，Mac OS X デフォルトの Python 用の =pip= をインストールし，
 それを使ってパッケージを追加する方法を述べる．
 

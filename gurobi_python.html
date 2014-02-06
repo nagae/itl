@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Gurobi / Python で最適化"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-06T09:22+0900"/>
+<meta name="generated" content="2014-02-06T10:01+0900"/>
 <meta name="author" content="Takeshi Nagae"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -455,6 +455,18 @@ gurobipy.GurobiError: No Gurobi license found (user nagae, host iMac-Late2012.lo
 homebrew でインストールすることを前提としてるが，それだと Gurobi が動かない．
 </p>
 <p>
+OS X Mavericks にはデフォルトで <code>Python 2.7.5</code> と以下のモジュールが入っている：
+</p><ul>
+<li>numpy 1.6.2
+</li>
+<li>scipy 0.11.0
+</li>
+<li>matplotlib 1.1.1
+</li>
+</ul>
+
+
+<p>
 そこで，ここでは，Mac OS X デフォルトの Python 用の <code>pip</code> をインストールし，
 それを使ってパッケージを追加する方法を述べる．
 </p>
@@ -644,8 +656,8 @@ $                                   <span style="color: #00cd66;"># </span><span
 <h3 id="sec-2-2"><span class="section-number-3">2.2</span> 最小費用流問題を解いてみる</h3>
 <div class="outline-text-3" id="text-2-2">
 
-<p>次のようなネットワークを対象として起点(a)から終点(d)まで <img src="ltxpng/gurobi_python_13ba6e32d759419699e4b55b71501352e6f114a1.png" alt="$v=17$"/> 単位の製品を輸送
-する最小費用流を求める問題を考える(ただし，各リンクの <img src="ltxpng/gurobi_python_cd4701e0d84547c3f6766a9c2bc738c4a95eb1ab.png" alt="$c$"/> は輸送費用，<img src="ltxpng/gurobi_python_d2eee1d4fa383eb0ffda391f681e814658908e9e.png" alt="$a$"/> は容量を表す)．
+<p>次のようなネットワークを対象として起点(a)から終点(d)まで <img src="ltxpng/gurobi_python_2cfaaabc8c31d3bbe31a7812f215bd077efee30c.png" alt="$v=17$"/> 単位の製品を輸送
+する最小費用流を求める問題を考える(ただし，各リンクの <img src="ltxpng/gurobi_python_6caf19dd6d2471b128e64167a7bbd5404301d2ab.png" alt="$c$"/> は輸送費用，<img src="ltxpng/gurobi_python_1389692c7686b8063d66776811ccf4cec90dbce2.png" alt="$a$"/> は容量を表す)．
 </p>
 
 <p>
@@ -658,8 +670,8 @@ $                                   <span style="color: #00cd66;"># </span><span
 <h4 id="sec-2-2-1"><span class="section-number-4">2.2.1</span> モデルの定式化</h4>
 <div class="outline-text-4" id="text-2-2-1">
 
-<p>ノード集合 <img src="ltxpng/gurobi_python_a069f14f0557419fa2fe1826a022931c1fac660b.png" alt="$\ClN$"/> とリンク集合 <img src="ltxpng/gurobi_python_07eece7d93f61501822f8c78475ffdb1bda12f0c.png" alt="$\ClA$"/> を以下のように定義する：
-<img src="ltxpng/gurobi_python_8f6e9739d727ebc0558f9b95eacaa8752446231d.png" alt="\[
+<p>ノード集合 <img src="ltxpng/gurobi_python_c86b4e1c9de93ec18630e6188764376a9dfae200.png" alt="$\ClN$"/> とリンク集合 <img src="ltxpng/gurobi_python_8bef3827e79e93baea76da8a3a66a1752e86e8e3.png" alt="$\ClA$"/> を以下のように定義する：
+<img src="ltxpng/gurobi_python_22e0a010c2840150feb27f0966dae86b7a8aa92a.png" alt="\[
 \ClN = \{a, b, c, d\}, \ClA = \{(a, b), (a, c), (b, c), (b, d), (c, d)\}
 \]"/>
 </p>
@@ -669,26 +681,26 @@ $                                   <span style="color: #00cd66;"># </span><span
 <li>最小化すべき目的関数(総輸送費用)：
 
 <p>
-   <img src="ltxpng/gurobi_python_e9593abe6f9d3e447a5ffe4dae88969f31fd5e2d.png" alt="\[
+   <img src="ltxpng/gurobi_python_f7059f1f8cba7f7636377abfe5e0c8a6e1611b28.png" alt="\[
    \min_{\Vtx} \sum_{(i, j) \in \ClA} c_{i, j} x_{i, j}
    \]"/>
 </p></li>
 <li>制約条件その1(各ノードでのフロー保存則)：
 
 <p>   
-   <img src="ltxpng/gurobi_python_7ea72b1f3e8add697caa6e2bbec34ee26e81b242.png" alt="\[
+   <img src="ltxpng/gurobi_python_b24525c3d6a4d1dbdcbef0b6576b104a92a0829d.png" alt="\[
    \Subto{} \sum_{(i, n) \in \ClA} x_{i, n} - \sum_{(n, j) \in \ClA} 
    = b_{n}, \quad \forall n \in \ClN
    \]"/>
 </p>
 <p>   
-   ただし，<img src="ltxpng/gurobi_python_efcd896d2beef6d0ec7e635168c381b82d21a7a9.png" alt="$b_{n}$"/> は，<img src="ltxpng/gurobi_python_e1eafbbb90b24942cab44c19ba5416607f4125f0.png" alt="$n$"/> が起点(a)なら <img src="ltxpng/gurobi_python_d7823214876a34299f9f5a53cf816197514335ba.png" alt="$-v$"/>, <img src="ltxpng/gurobi_python_e1eafbbb90b24942cab44c19ba5416607f4125f0.png" alt="$n$"/> が終点なら<img src="ltxpng/gurobi_python_464bac5744bbfffc11bf85ebc6c0485cc4f0081c.png" alt="$v$"/>, それ以外なら0
+   ただし，<img src="ltxpng/gurobi_python_be6e34dba8140f4aea10309c34e4b6c1cfc67b45.png" alt="$b_{n}$"/> は，<img src="ltxpng/gurobi_python_f66aefb8d966ec4f8556fb285fbc109903088b70.png" alt="$n$"/> が起点(a)なら <img src="ltxpng/gurobi_python_c83e27b3b4e10e0ede9f8cfb00ad18bb9af0d57c.png" alt="$-v$"/>, <img src="ltxpng/gurobi_python_f66aefb8d966ec4f8556fb285fbc109903088b70.png" alt="$n$"/> が終点なら<img src="ltxpng/gurobi_python_bb82d55e53284da82d6a72d85bd15e92eda5096c.png" alt="$v$"/>, それ以外なら0
    となる定数．
 </p></li>
 <li>制約条件その2(非負制約)：
 
 <p>   
-   <img src="ltxpng/gurobi_python_4205b7e6945f245a238624b4337fa2ade886ad1c.png" alt="\[
+   <img src="ltxpng/gurobi_python_3a62355639ee108654a814fda531aa9cfdb20c39.png" alt="\[
    x_{i, j} \geq 0, \quad \forall (i, j) \in \ClA
    \]"/>
 </p></li>
@@ -960,7 +972,7 @@ Python からファイルを呼び出すには，ターミナルで
 </div>
 
 <div id="postamble">
-<p class="date">&#26085;&#20184;: 2014-02-06T09:22+0900</p>
+<p class="date">&#26085;&#20184;: 2014-02-06T10:01+0900</p>
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
