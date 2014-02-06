@@ -1,4 +1,4 @@
-#+TITLE:     ITL/Homebrew編
+#+TITLE:     ITL/Homebrew によるパッケージ管理
 #+AUTHOR:    Takeshi Nagae
 #+EMAIL:     nagae@m.tohoku.ac.jp
 #+LANGUAGE:  ja
@@ -16,8 +16,7 @@
 
 #+STYLE: <link rel=stylesheet href="style.css" type="text/css">
 
-* Homebrew によるパッケージ管理
-** 概要
+* 概要
 homebrew は研究環境に必要な様々な UNIX ツールをまとめて管理(インストール，
 ライブラリ依存関係のチェック，アンインストールなど)してくれるパッケージ管理システ
 ムである．
@@ -25,11 +24,11 @@ homebrew は研究環境に必要な様々な UNIX ツールをまとめて管�
 homebrew は同様の Mac 用パッケージ管理システムである macport に比べてインストール
 にかかる負荷が軽い．これは homebrew では「Mac OS X に標準でついてくるものまでわざ
 わざインストールしない」という方針が採用されているためである．
-** インストール
-*** 参考サイト
+* インストール
+** 参考サイト
 - 本家 :: http://mxcl.github.com/homebrew/
 - https://github.com/mxcl/homebrew/wiki/installation
-*** Command Line Tools for Xcode のインストール
+** Command Line Tools for Xcode のインストール
 - 事前に [[#Apple_ID][Apple ID]] の登録が必要．
 - https://developer.apple.com/downloads/index.action にアクセス．Apple ID での Sign in を求められる．
 - Command Line Tools (OS X Mavericks) for Xcode の最新版をクリックし，dmg ファイル(下図参照)をクリックしてダウンロード
@@ -38,44 +37,101 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
     #+ATTR_HTML: alt="Command Line Tools" align="center" width="600"
     [[file:fig/homebrew_Command_Line_Tools_Mountain_Lion.png]]
 - Download された dmg ファイルをマウントし，仮想ドライブ内の Command Line Tools (OS X 10.x).mpkg をダブルクリック
-*** Homebrew のインストール
-- 本体のダウンロード．ターミナルから以下を実行：
-  #+begin_src screen
-  $ ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
-  #+end_src
-  ダウンロードが始まる．
-- 診断する．ターミナルから以下を実行：
-  #+BEGIN_SRC screen
-  brew doctor
-  #+END_SRC
-  =Your system is ready to brew= と表示されれば OK.
-- =~/.bash_profile= (無ければ新たに作成し)に以下を追記：
-  #+begin_src screen
-  export PATH=/usr/local/bin:$PATH
-  #+end_src
-  上記を実行する方法は2通りある：
-  - ターミナル上で Emacs を起動して編集する方法 :: 
-    1) まず，ターミナル上で
-       #+BEGIN_SRC screen
-       $ emacs ~/.bash_profile
-       #+END_SRC
-       として，Emacs を起動する．
-    2) 上記をコピー＆ペーストする．
-    3) 保存(C-x C-s: Ctrlを押しながら x, s とタイプする)した後，
-       Emacs を終了(C-x C-c; Ctrl を押しながら x, cとタイプ)する．
-  - =pbpaste= から追記する方法 :: 
-    1) 上記をコピーする．
-    2) ターミナル上で
-       #+BEGIN_SRC screen
-       $ pbpaste >> ~/.bash_profile
-       #+END_SRC
-       とする．
-- OS X に標準で登載されているコマンドの最新版を提供する =homebrew/dupes= をリポジトリに追加：
-  #+BEGIN_SRC screen
-  $ brew tap homebrew/dupes
-  #+END_SRC
-** Homebrew の使い方
-*** ワークフロー
+** Homebrew のインストール
+1) 本体のダウンロード．ターミナルから以下を実行：
+   #+begin_src screen
+   $ ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
+   #+end_src
+   ダウンロードが始まる．
+2) 診断する．ターミナルから以下を実行：
+   #+BEGIN_SRC screen
+   brew doctor
+   #+END_SRC
+   =Your system is ready to brew= と表示されれば OK.
+3) =~/.bash_profile= (無ければ新たに作成し)に以下を追記：
+   #+begin_src screen
+   export PATH=/usr/local/bin:$PATH
+   #+end_src
+   上記を実行する方法は2通りある：
+   - ターミナル上で Emacs を起動して編集する方法 :: 
+     1) まず，ターミナル上で
+        #+BEGIN_SRC screen
+        $ emacs ~/.bash_profile
+        #+END_SRC
+        として，Emacs を起動する．
+     2) 上記をコピー＆ペーストする．
+     3) 保存(C-x C-s: Ctrlを押しながら x, s とタイプする)した後，
+        Emacs を終了(C-x C-c; Ctrl を押しながら x, cとタイプ)する．
+   - =pbpaste= から追記する方法 :: 
+     1) 上記をコピーする．
+     2) ターミナル上で
+        #+BEGIN_SRC screen
+        $ pbpaste >> ~/.bash_profile
+        #+END_SRC
+        とする．
+4) OS X に標準で登載されているコマンドの最新版を提供する =homebrew/dupes= と，
+   過去の version を提供する =homebrew/versions= をリポジトリに追加：
+   #+BEGIN_SRC sh
+     brew tap homebrew/dupes
+     brew tap homebrew/versions
+   #+END_SRC
+* Homebrew でインストールしておくべき UNIX ツール
+** 以下を実行する
+#+BEGIN_SRC screen
+  brew install rsync              # フォルダのバックアップや同期を取る．
+  brew install git                # 分散リポジトリバージョン管理システム．
+  brew install magit              # Emacs上で動く Git 用ツール
+  brew install ghostscript        # Postscript インタプリタ．Emacs上でPDFや画像ファイルを表示させる docview に必須．
+  # 以下は Emacs をインストールした後でのみ実行可能
+  brew install emacs --cocoa      # 最強のエディタ
+  brew linkapps                   # emacs へのシンボリックリンクを /Applications フォルダ下に作成
+  brew install https://gist.github.com/nagae/3009185/raw/ddskk.rb # 日本語入力 SKK
+#+END_SRC
+** COMMENT wget
+*** 概要
+HTTP や FTP 経由でファイルを取得する．Mac OS X 標準の =curl= よりも高機能．
+*** インストール
+#+begin_src screen
+$ brew install wget
+#+end_src
+** COMMENT rsync (http://rsync.samba.org)
+*** 機能概要
+フォルダのバックアップや同期を取る．
+*** インストール
+=homebrew/dupes= をリポジトリに追加していれば，以下でインストール可能：
+#+BEGIN_SRC screen
+$ brew install rsync
+#+END_SRC
+** COMMENT git (http://git-scm.com)
+*** 機能概要
+分散リポジトリバージョン管理システム．
+*** インストール
+#+BEGIN_SRC screen
+$ brew install git
+#+END_SRC
+** COMMENT magit (http://philjackson.github.io/magit/)
+*** 機能概要
+Emacs上で動く Git 用ツール
+*** インストール
+#+BEGIN_SRC screen
+$ brew install magit
+#+END_SRC
+** COMMENT auctex (http://www.gnu.org/software/auctex/)
+*** 機能概要
+EmacsでのTeXファイル編集を支援する．
+*** インストール
+#+BEGIN_SRC screen
+brew install --with-emacs=/Applications/Emacs.app/Contents/MacOS/Emacs auctex 
+#+END_SRC
+** COMMENT ghostscript (http://www.ghostscript.com)
+*** 機能概要
+Postscript インタプリタ．Emacs上でPDFや画像ファイルを表示させる docview に必須．
+*** インストール
+#+BEGIN_SRC screen
+brew install ghostscript
+#+END_SRC
+* Homebrew の使い方
+** ワークフロー
 - 必要なツールをインストール
   #+begin_src screen
   $ brew search foo             # foo という名前の formula を探す
@@ -88,7 +144,7 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
   $ brew outdated               # 更新された formula 一覧を表示
   $ brew upgrade                # 更新された formula をアップグレード
   #+end_src
-*** 基本コマンド
+** 基本コマンド
 #+ATTR_HTML: border=2 rules="all"
 | コマンド           | 機能                                                          |
 |--------------------+---------------------------------------------------------------|
@@ -106,7 +162,7 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
 | =brew unlink foo=  | foo へのシンボリックリンクを外す                              |
 | =brew remove foo=  | foo を削除する                                                |
 |--------------------+---------------------------------------------------------------|
-**** =brew update= すると =error: The following untracked working tree files would be overwritten by merge:= というエラーが出る(13.10.25)
+*** =brew update= すると =error: The following untracked working tree files would be overwritten by merge:= というエラーが出る(13.10.25)
 =brew update= しようとすると以下のようなエラーメッセージが出る場合の対処法：
 #+BEGIN_SRC screen
   $ brew update
@@ -128,59 +184,4 @@ mv apple-gcc42.rb .temporary_stack/
 あとはいつも通り =brew update= する
 #+BEGIN_SRC screen
 brew update
-#+END_SRC
-** Homebrew でインストールしておくべき UNIX ツール
-*** 以下を実行する
-#+BEGIN_SRC screen
-  brew install rsync              # フォルダのバックアップや同期を取る．
-  brew install git                # 分散リポジトリバージョン管理システム．
-  brew install magit              # Emacs上で動く Git 用ツール
-  brew install ghostscript        # Postscript インタプリタ．Emacs上でPDFや画像ファイルを表示させる docview に必須．
-  # 以下は Emacs をインストールした後でのみ実行可能
-  brew install emacs --cocoa      # 最強のエディタ
-  brew linkapps                   # emacs へのシンボリックリンクを /Applications フォルダ下に作成
-  brew install https://gist.github.com/nagae/3009185/raw/ddskk.rb # 日本語入力 SKK
-#+END_SRC
-*** COMMENT wget
-**** 概要
-HTTP や FTP 経由でファイルを取得する．Mac OS X 標準の =curl= よりも高機能．
-**** インストール
-#+begin_src screen
-$ brew install wget
-#+end_src
-*** COMMENT rsync (http://rsync.samba.org)
-**** 機能概要
-フォルダのバックアップや同期を取る．
-**** インストール
-=homebrew/dupes= をリポジトリに追加していれば，以下でインストール可能：
-#+BEGIN_SRC screen
-$ brew install rsync
-#+END_SRC
-*** COMMENT git (http://git-scm.com)
-**** 機能概要
-分散リポジトリバージョン管理システム．
-**** インストール
-#+BEGIN_SRC screen
-$ brew install git
-#+END_SRC
-*** COMMENT magit (http://philjackson.github.io/magit/)
-**** 機能概要
-Emacs上で動く Git 用ツール
-**** インストール
-#+BEGIN_SRC screen
-$ brew install magit
-#+END_SRC
-*** COMMENT auctex (http://www.gnu.org/software/auctex/)
-**** 機能概要
-EmacsでのTeXファイル編集を支援する．
-**** インストール
-#+BEGIN_SRC screen
-brew install --with-emacs=/Applications/Emacs.app/Contents/MacOS/Emacs auctex 
-#+END_SRC
-*** COMMENT ghostscript (http://www.ghostscript.com)
-**** 機能概要
-Postscript インタプリタ．Emacs上でPDFや画像ファイルを表示させる docview に必須．
-**** インストール
-#+BEGIN_SRC screen
-brew install ghostscript
 #+END_SRC
