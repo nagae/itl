@@ -17,6 +17,10 @@
 #+STYLE: <link rel=stylesheet href="style.css" type="text/css">
 #+latex_header:\usepackage{amsmath,rmss_math,rmss_color}
 
+* XQuartz のインストール
+XQuartz は OS X 上で動作する Xウィンドウシステム．
+- http://xquartz.macosforge.org/landing/ から最新版の dmg ファイルをダウンロード
+
 * Gurobi / Python の環境構築
 
 ** Python のバージョン確認
