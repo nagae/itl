@@ -7,21 +7,18 @@
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
 
-#+OPTIONS: toc:1 num:3
-
 #+INFOJS_OPT: path:org-info.js
-#+INFOJS_OPT: view:showall toc:nil sdepth:3 ltoc:2
+#+INFOJS_OPT: view:showall toc:t sdepth:2 ltoc:1
 #+INFOJS_OPT: toc:t tdepth:1 view:showall mouse:underline buttons:nil
 #+INFOJS_OPT: up:./ home:../
 
 #+STYLE: <link rel=stylesheet href="style.css" type="text/css">
 
-* LaTeX
+* TeXLive 2013 のインストール
 以下では， =texmf= ディレクトリを Dropbox 上に置く方法を示す．
-** TeXLive 2013 のインストール
-*** 参考
+** 参考
 - TeX Live を使おう --- Linux ユーザと Mac OS X ユーザのために --- :: http://www.fugenji.org/~thomas/texlive-guide/
-*** 2012 からのアップグレード
+** 2012 からのアップグレード
 1. TeXLive 2012 のバックアップ
    #+BEGIN_SRC sh
      mv /usr/local/texlive/2012/ /usr/local/texlive/.2012
@@ -36,7 +33,7 @@
      mktexlsr
    #+END_SRC
    とすれば TeXLive 2012 に戻せるはず．
-*** 本体のインストール
+** 本体のインストール
 1. インストーラと texlive.profile をダウンロード
 
    以下の texlive.profile では =TEXMFHOME= を =~/Dropbox/texmf:/usr/local/share/texmf= としている．
@@ -64,7 +61,7 @@
    brew install --with-emacs=/Applications/Emacs.app/Contents/MacOS/Emacs auctex # EmacsでのTeXファイル編集を支援する．
    #+END_SRC
 
-**** profile が上手く読めない場合やinteractive modeで自分で設定したい場合
+*** profile が上手く読めない場合やinteractive modeで自分で設定したい場合
 色々なカスタマイズが可能だが，以下では上記の =texlive2013.profile= と同じ設定にする方法を示す．
 1. 下記の main manu で =Enter command:= の後に =D RET= を入力(ディレクトリ)：
   #+BEGIN_SRC screen
@@ -158,13 +155,13 @@
       <Q> quit
    #+END_SRC
 
-**** インストールした後で TEXMFHOME を修正したい場合
+*** インストールした後で TEXMFHOME を修正したい場合
 =tlmgr= でも変更できる． 
 #+BEGIN_SRC sh
 tlmgr conf texmf TEXMFHOME ~/Dropbox/texmf:/usr/local/share/texmf
 #+END_SRC
 
-*** パスの設定
+* パスの設定
 5. =/usr/local/texbin= へシンボリックリンクを張っておく
    #+BEGIN_SRC sh
    ln -fs /usr/local/texlive/2013/bin/x86_64-darwin /usr/local/texbin
@@ -188,7 +185,7 @@ tlmgr conf texmf TEXMFHOME ~/Dropbox/texmf:/usr/local/share/texmf
    #+BEGIN_SRC screen
    source ~/.bash_profile
    #+END_SRC
-*** otf パッケージ用のフォントの設定
+* otf パッケージ用のフォントの設定
 下記の情報は少し古いかも(参照：http://www.fugenji.org/~thomas/texlive-guide/font_setup.html)
 1. フォントマップをコピーする：
    #+BEGIN_SRC sh
@@ -213,7 +210,7 @@ tlmgr conf texmf TEXMFHOME ~/Dropbox/texmf:/usr/local/share/texmf
    #+BEGIN_SRC sh
    mktexlsr
    #+END_SRC
-** コンパイルしてみる
+* コンパイルしてみる
 以下をターミナルから実行してみる
 #+BEGIN_SRC sh
   mkdir -p ~/Downloads/sampletex
@@ -223,25 +220,25 @@ tlmgr conf texmf TEXMFHOME ~/Dropbox/texmf:/usr/local/share/texmf
   dvipdfm -f hiragino-mini-embed sample 
   open sample.pdf
 #+END_SRC
-** tlmgr を使って常に最新の状態を保つ
+* tlmgr を使って常に最新の状態を保つ
 上述の方法によって tlmgr もインストールされる．これを使えば，TeX を常に最新の状態に保てる．
-*** リポジトリを登録
+** リポジトリを登録
 tlmgr が参照するリポジトリに =mirror.ctan.org= を指定しておく([[http://www.fugenji.org/~thomas/texlive-guide/tlmgr.html][参考]])．この操作は初回に一度行えばよい．
 #+BEGIN_SRC sh
 tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet
 #+END_SRC
-*** tlmgr 自身の更新
+** tlmgr 自身の更新
 - tlmgr 自身とシステムを同時に更新
   #+BEGIN_SRC sh
   tlmgr update --self --all
   #+END_SRC
-**** 知られている問題：
+*** 知られている問題：
 - 2013年9月頃 =Unknown docfile tag:=
   #+BEGIN_SRC sh
     Unknown docfile tag:  texmf-dist/doc/latex/pythontex/pythontex_quickstart.pdf details=""Quick start" documentation" at /usr/local/texlive/2013/tlpkg/TeXLive/TLPOBJ.pm line 127
   #+END_SRC
   というメッセージが出て止まる場合の対処法は http://tex.stackexchange.com/a/133690/36810
-** latexmk
+* latexmk
 latexmk は TeX の処理を自動化してくれるスクリプト．
 設定を =~/.latexmkrc= に記載しておくと，ターミナルから =latexmk= を呼ぶだけで色々な処理をしてくれる．
 例えば，以下のように =~/.latexmkrc= に書いておく，
@@ -261,23 +258,23 @@ $ latexmk -pv sample.tex
 #+END_SRC
 とすれば，その pdf ファイルを Preview.app で開いてくれる．
 
-** Emacs との連携
+* Emacs との連携
 Emacs 上でのLaTeX ソースの編集に支援ツールは必須
-*** auctex
-**** 特徴
+** auctex
+*** 特徴
 Emacs 上での LaTeX 編集を支援．C-c C-c で compile したり，C-c C-p C-d で preview 見たりできる．
-**** 参考
+*** 参考
 - 公式サイト :: http://www.gnu.org/software/auctex/
 - EmacsWiki :: http://emacswiki.org/emacs/AUCTeX
 - 奥村先生 :: http://oku.edu.mie-u.ac.jp/~okumura/texwiki/?AUCTeX
-**** インストール
+*** インストール
 - ELPA からインストール可能
 - Emacs を立ち上げ，以下を入力して RET
   #+BEGIN_SRC example
   M-x package-install auctex
   #+END_SRC
-**** 使い方
-***** 章・節，環境，マクロの入力
+*** 使い方
+**** 章・節，環境，マクロの入力
 - TABで補完が可能．
 - カーソルの上下(もしくは =M-p, M-n=)で履歴を選択可能．
 #+ATTR_HTML: border=2 rules="all"
@@ -286,7 +283,7 @@ Emacs 上での LaTeX 編集を支援．C-c C-c で compile したり，C-c C-p 
 | =C-c C-s=                | 章(=chapter=)，節(=section=)，小節(=subsection=)を入力 |
 | =C-c C-e=                | 環境(=\begin{}...\end{}=)を入力                        |
 | =C-c C-m= もしくは =C-c RET= | マクロ(eg. =\ret{}, \centering{}=)を挿入               |
-***** フォント変更
+**** フォント変更
 - 何も選択せずにショートカットを入力すると LaTeX コマンドだけを入力し，括弧内で待機
 - 文字列を選択してショートカットを入力すると，当該文字を LaTeX コマンド内に内挿
 #+ATTR_HTML: border=2 rules="all"
@@ -301,19 +298,19 @@ Emacs 上での LaTeX 編集を支援．C-c C-c で compile したり，C-c C-p 
 | =C-c C-f C-t=   | タイプライター =\texttt{*}=                                                   |
 | =C-c C-f C-c=   | スモールキャピタル(Small cap.)．小文字を「小さい大文字」で表記． =\textsc{*}= |
 | =C-c C-f C-d=  | フォント修飾を削除                                                            |
-***** コメント
+**** コメント
 #+ATTR_HTML: border=2 rules="all"
 | ショートカット | 機能                               |
 |----------------+------------------------------------|
 | =C-c ;=        | 選択したリージョンをコメントアウト |
 | =C-c %=        | 現在の段落をコメントアウト         |
-***** マーク
+**** マーク
 #+ATTR_HTML: border=2 rules="all"
 | ショートカット | 機能                     |
 |----------------+--------------------------|
 | =C-c *=        | 現在のセクションをマーク |
 | =C-c .=        | 現在の環境をマーク       |
-***** 処理
+**** 処理
 処理コマンドは TAB補完および上下(=M-p, M-n=)履歴表示が可能
 #+ATTR_HTML: border=2 rules="all"
 | ショートカット | 機能                           |
@@ -350,7 +347,7 @@ dvipdfmx 	latexmk 	pBibTeX 	pLaTeX
 | Spell     | スペルチェック                                                                               |
 |-----------+----------------------------------------------------------------------------------------------|
 
-***** COMMENT プレビュー
+**** COMMENT プレビュー
 C-c C-p C-p, 当該箇所のプレビュー
 preview-at-point
 Preview/Generate previews (or toggle) at point
@@ -442,10 +439,10 @@ Preview/Report Bug
 This is the preferred way of reporting bugs as it will fill in what version of preview-latex you are using as well as versions of relevant other software, and also some of the more important settings. Please use this method of reporting, if at all possible and before reporting a bug, have a look at Known problems.
 
 C-c C-k
-*** cdLaTeX
-**** 特徴
+** cdLaTeX
+*** 特徴
 auctex と同様の機能を持つが minor-mode のため，org-mode などと併用できる
-**** インストール
+*** インストール
 - ELPA のバージョン(4.0)は古くて使えないので，git から最新版を取ってくる必要がある．
 - ターミナルから以下を実行
   #+BEGIN_SRC screen

@@ -10,7 +10,7 @@
 #+OPTIONS: toc:1 num:3
 
 #+INFOJS_OPT: path:org-info.js
-#+INFOJS_OPT: view:showall toc:nil sdepth:3 ltoc:2
+#+INFOJS_OPT: view:showall toc:t sdepth:2 ltoc:1
 #+INFOJS_OPT: toc:t tdepth:1 view:showall mouse:underline buttons:nil
 #+INFOJS_OPT: up:./ home:../
 

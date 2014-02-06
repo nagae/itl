@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="ITL/セットアップ編"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-06T12:19+0900"/>
+<meta name="generated" content="2014-02-06T14:00+0900"/>
 <meta name="author" content="Takeshi Nagae"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -123,11 +123,11 @@ for the JavaScript code in this tag.
 org_html_manager.set("TOC_DEPTH", "1");
 org_html_manager.set("LINK_HOME", "../");
 org_html_manager.set("LINK_UP", "./");
-org_html_manager.set("LOCAL_TOC", "2");
+org_html_manager.set("LOCAL_TOC", "1");
 org_html_manager.set("VIEW_BUTTONS", "0");
 org_html_manager.set("MOUSE_HINT", "underline");
 org_html_manager.set("FIXED_TOC", "0");
-org_html_manager.set("TOC", "0");
+org_html_manager.set("TOC", "1");
 org_html_manager.set("VIEW", "showall");
 org_html_manager.setup();  // activate after the parameters are set
 /*]]>*///-->
@@ -200,80 +200,28 @@ for the JavaScript code in this tag.
 <li><a href="#sec-1">1 Mac のセットアップ</a>
 <ul>
 <li><a href="#sec-1-1">1.1 ソフトウェア・アップデートの実行</a></li>
-<li><a href="#sec-1-2">1.2 キーバインドの変更</a>
-<ul>
-<li><a href="#sec-1-2-1">1.2.1 ctrl と caps lock を入れ替える</a></li>
-<li><a href="#sec-1-2-2">1.2.2 spotlight のキーバインドを ctrl + shift + space に変更</a></li>
-</ul>
-</li>
+<li><a href="#sec-1-2">1.2 キーバインドの変更</a></li>
 <li><a href="#sec-1-3">1.3 Trackpad の設定</a></li>
-<li><a href="#sec-1-4">1.4 キーボード・ショートカット</a>
-<ul>
-<li><a href="#sec-1-4-1">1.4.1 覚えておくと便利なショートカット</a></li>
-</ul></li>
+<li><a href="#sec-1-4">1.4 キーボード・ショートカット</a></li>
 </ul>
 </li>
 <li><a href="#sec-2">2 ソフトウェアのインストール方法</a></li>
 <li><a href="#sec-3">3 BetterTouchTools のインストールと設定</a>
 <ul>
 <li><a href="#sec-3-1">3.1 BTT の特徴</a></li>
-<li><a href="#sec-3-2">3.2 インストール方法</a>
-<ul>
-<li><a href="#sec-3-2-1">3.2.1 マウスを使う場合</a></li>
-<li><a href="#sec-3-2-2">3.2.2 ターミナルだけでも行える</a></li>
-</ul>
-</li>
-<li><a href="#sec-3-3">3.3 設定例</a>
-<ul>
-<li><a href="#sec-3-3-1">3.3.1 ログインと同時に起動するように</a></li>
-<li><a href="#sec-3-3-2">3.3.2 Global</a></li>
-</ul></li>
+<li><a href="#sec-3-2">3.2 インストール方法</a></li>
+<li><a href="#sec-3-3">3.3 設定例</a></li>
 </ul>
 </li>
 <li><a href="#sec-4">4 各種サービスのアカウント作成とユーティリティのインストール</a>
 <ul>
-<li><a href="#sec-4-1">4.1 iCloud (https://www.icloud.com)</a>
-<ul>
-<li><a href="#sec-4-1-1">4.1.1 特徴</a></li>
-<li><a href="#sec-4-1-2">4.1.2 アカウント作成・ユーティリティ</a></li>
-</ul>
-</li>
-<li><a href="#sec-4-2">4.2 Dropbox (https://www.dropbox.com/)</a>
-<ul>
-<li><a href="#sec-4-2-1">4.2.1 特徴</a></li>
-<li><a href="#sec-4-2-2">4.2.2 アカウント作成・ユーティリティ</a></li>
-</ul>
-</li>
-<li><a href="#sec-4-3">4.3 Cloud.app (http://getcloudapp.com)</a>
-<ul>
-<li><a href="#sec-4-3-1">4.3.1 特徴</a></li>
-<li><a href="#sec-4-3-2">4.3.2 アカウント作成・ユーティリティ</a></li>
-<li><a href="#sec-4-3-3">4.3.3 参考サイト</a></li>
-</ul>
-</li>
-<li><a href="#sec-4-4">4.4 Github (https://github.com)</a>
-<ul>
-<li><a href="#sec-4-4-1">4.4.1 特徴</a></li>
-<li><a href="#sec-4-4-2">4.4.2 アカウント作成・ユーティリティ</a></li>
-<li><a href="#sec-4-4-3">4.4.3 参考サイト</a></li>
-</ul>
-</li>
-<li><a href="#sec-4-5">4.5 Bitbucket (https://bitbucket.org)</a>
-<ul>
-<li><a href="#sec-4-5-1">4.5.1 特徴</a></li>
-<li><a href="#sec-4-5-2">4.5.2 アカウント作成・ユーティリティ</a></li>
-<li><a href="#sec-4-5-3">4.5.3 参考サイト</a></li>
-</ul>
-</li>
+<li><a href="#sec-4-1">4.1 iCloud (https://www.icloud.com)</a></li>
+<li><a href="#sec-4-2">4.2 Dropbox (https://www.dropbox.com/)</a></li>
+<li><a href="#sec-4-3">4.3 Cloud.app (http://getcloudapp.com)</a></li>
+<li><a href="#sec-4-4">4.4 Github (https://github.com)</a></li>
+<li><a href="#sec-4-5">4.5 Bitbucket (https://bitbucket.org)</a></li>
 <li><a href="#sec-4-6">4.6 Evernote (必須ではない)</a></li>
-<li><a href="#sec-4-7">4.7 Github / Bitbucket に SSH で接続する</a>
-<ul>
-<li><a href="#sec-4-7-1">4.7.1 公開鍵と秘密鍵の作成</a></li>
-<li><a href="#sec-4-7-2">4.7.2 Bitbucket に SSH の公開鍵を登録する</a></li>
-<li><a href="#sec-4-7-3">4.7.3 Github に SSH の公開鍵を登録する</a></li>
-<li><a href="#sec-4-7-4">4.7.4 その他の SSH サーバーを登録する</a></li>
-</ul>
-</li>
+<li><a href="#sec-4-7">4.7 Github / Bitbucket に SSH で接続する</a></li>
 </ul>
 </li>
 </ul>
@@ -1064,7 +1012,7 @@ Connection to github.com closed.
 </div>
 
 <div id="postamble">
-<p class="date">&#26085;&#20184;: 2014-02-06T12:19+0900</p>
+<p class="date">&#26085;&#20184;: 2014-02-06T14:00+0900</p>
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
