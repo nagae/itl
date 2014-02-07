@@ -82,10 +82,6 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
   brew install git                # 分散リポジトリバージョン管理システム．
   brew install magit              # Emacs上で動く Git 用ツール
   brew install ghostscript        # Postscript インタプリタ．Emacs上でPDFや画像ファイルを表示させる docview に必須．
-  # 以下は Emacs をインストールした後でのみ実行可能
-  brew install emacs --cocoa      # 最強のエディタ
-  brew linkapps                   # emacs へのシンボリックリンクを /Applications フォルダ下に作成
-  brew install https://gist.github.com/nagae/3009185/raw/ddskk.rb # 日本語入力 SKK
 #+END_SRC
 ** COMMENT wget
 *** 概要

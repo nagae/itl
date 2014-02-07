@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="ITL/Emacs &mdash; 最強のエディタ"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-06T14:00+0900"/>
+<meta name="generated" content="2014-02-07T10:27+0900"/>
 <meta name="author" content="Takeshi Nagae"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -206,8 +206,7 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#sec-3">3 SKK / AquaSKK &mdash; シンプル漢字かな入力</a>
 <ul>
-<li><a href="#sec-3-1">3.1 DDSKK</a></li>
-<li><a href="#sec-3-2">3.2 AquaSKK</a></li>
+<li><a href="#sec-3-1">3.1 AquaSKKのインストール</a></li>
 </ul>
 </li>
 <li><a href="#sec-4">4 基本的な操作方法</a>
@@ -235,35 +234,25 @@ for the JavaScript code in this tag.
 <div class="outline-text-2" id="text-1">
 
 <ol>
-<li>本体を Homebrew でインストール
+<li>本体および関連するパッケージを Homebrew でインストール
+<ul>
+<li>ターミナルで以下を実行
 
 
 
-<pre class="src src-screen">$ brew install --cocoa emacs
-:
-:
-==&gt; Caveats A command line wrapper for the cocoa app was installed to:
- /usr/local/Cellar/emacs/24.3/bin/emacs
-
-.app bundles were installed to /usr/local/Cellar/emacs/24.3 (or libexec)<span style="color: #b0c4de;">.</span>
-Run brew linkapps to symlink these to /Applications.
-==&gt; Summary
- /usr/local/Cellar/emacs/24.3: 3909 files, 114M, built<span style="color: #ffffff; font-weight: bold;"> in</span> 3.3 minutes
+<pre class="src src-screen">brew install emacs --cocoa      <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#26368;&#24375;&#12398;&#12456;&#12487;&#12451;&#12479;</span>
+brew linkapps                   <span style="color: #00cd66;"># </span><span style="color: #00cd66;">emacs &#12408;&#12398;&#12471;&#12531;&#12508;&#12522;&#12483;&#12463;&#12522;&#12531;&#12463;&#12434; /Applications &#12501;&#12457;&#12523;&#12480;&#19979;&#12395;&#20316;&#25104;</span>
+brew install https://gist.github.com/nagae/3009185/raw/ddskk.rb <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#26085;&#26412;&#35486;&#20837;&#21147; SKK</span>
 </pre>
 
 </li>
-<li>上記の実行結果を参考に，アプリケーション・フォルダにシンボリックリンクを張る(以前に比べてコマンドが簡単になりました)．
-
-
-
-<pre class="src src-screen">$ brew linkapps
-</pre>
+</ul>
 
 </li>
 <li>Spotlight で呼び出せるように Automator でアプリケーションとして登録
-<ol>
+<ul>
 <li><a href="file:///Applications/Automator.app">Automator.app</a> を起動し，メニューから「アプリケーション」を選択
-      <img src="fig/emacs_Automator_1.png" alt="Automator設定画面" align="center" width="600" />
+     <img src="fig/emacs_Automator_1.png" alt="Automator設定画面" align="center" width="600" />
 </li>
 <li>検索窓に「シェルスクリプトを実行」と入力
 </li>
@@ -279,7 +268,7 @@ Run brew linkapps to symlink these to /Applications.
 </li>
 <li>ファイル名を <code>Emacs.app</code> として iCloud フォルダに保存する
 </li>
-</ol>
+</ul>
 
 </li>
 </ol>
@@ -465,33 +454,12 @@ $ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git   <span style="colo
 SKK は品詞解析を行なわないため，漢字にする箇所や送り仮名を自分で指定する必要がある．しかし，ひとたび慣れれば高速かつ直感的な入力が可能となる———上述のような入力メソッドが使えなくなるほど．
 Macの標準入力方式に代替できる <a href="http://aquaskk.sourceforge.jp">AquaSKK</a> と Emacs 上で動く <a href="http://openlab.ring.gr.jp/skk/ddskk-ja.html">DDSKK (Daredevil SKK)</a> とがあり，両方併用するのが吉．
 </p>
+
 </div>
 
 <div id="outline-container-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="section-number-3">3.1</span> DDSKK</h3>
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> AquaSKKのインストール</h3>
 <div class="outline-text-3" id="text-3-1">
-
-<ol>
-<li>Emacs をインストールし終わっていて，
-   <code>/Applications/Emacs.app/Contents/MacOS/Emacs</code> が有効になっている必要がある．
-</li>
-<li>長江自作の Formula を用いれば Homebrew でインストール可能：
-
-
-
-<pre class="src src-screen">$ brew install https://gist.github.com/nagae/3009185/raw/ddskk.rb
-</pre>
-
-</li>
-</ol>
-
-</div>
-
-</div>
-
-<div id="outline-container-3-2" class="outline-3">
-<h3 id="sec-3-2"><span class="section-number-3">3.2</span> AquaSKK</h3>
-<div class="outline-text-3" id="text-3-2">
 
 <ol>
 <li><a href="http://aquaskk.sourceforge.jp/">http://aquaskk.sourceforge.jp/</a> の右側の「ダウンロード」の欄の「AquaSKK パッケー
@@ -765,7 +733,7 @@ Macの標準入力方式に代替できる <a href="http://aquaskk.sourceforge.j
 </div>
 
 <div id="postamble">
-<p class="date">&#26085;&#20184;: 2014-02-06T14:00+0900</p>
+<p class="date">&#26085;&#20184;: 2014-02-07T10:27+0900</p>
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

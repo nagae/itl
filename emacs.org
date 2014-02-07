@@ -17,34 +17,24 @@
 #+STYLE: <link rel=stylesheet href="style.css" type="text/css">
 
 * Emacs のインストール方法
-1. 本体を Homebrew でインストール
-   #+begin_src screen
-     $ brew install --cocoa emacs
-     :
-     :
-     ==> Caveats A command line wrapper for the cocoa app was installed to:
-      /usr/local/Cellar/emacs/24.3/bin/emacs
-     
-     .app bundles were installed to /usr/local/Cellar/emacs/24.3 (or libexec).
-     Run brew linkapps to symlink these to /Applications.
-     ==> Summary
-      /usr/local/Cellar/emacs/24.3: 3909 files, 114M, built in 3.3 minutes
-   #+end_src
-2. 上記の実行結果を参考に，アプリケーション・フォルダにシンボリックリンクを張る(以前に比べてコマンドが簡単になりました)．
-   #+begin_src screen
-   $ brew linkapps
-   #+end_src
-3. Spotlight で呼び出せるように Automator でアプリケーションとして登録
-   1) [[file:/Applications/Automator.app][Automator.app]] を起動し，メニューから「アプリケーション」を選択
-      #+attr_html: alt="Automator設定画面" align="center" width="600"
-      [[file:fig/emacs_Automator_1.png]]
-   2) 検索窓に「シェルスクリプトを実行」と入力
-   3) 「シェルスクリプトを実行」と書かれたアイコンをダブルクリック
-   4) デフォルトで =cat= と書かれたシェルスクリプトを以下に変更：
-     #+begin_src screen
-     open -a /Applications/Emacs.app
-     #+end_src
-   5) ファイル名を =Emacs.app= として iCloud フォルダに保存する
+1. 本体および関連するパッケージを Homebrew でインストール
+   - ターミナルで以下を実行
+      #+begin_src screen
+        brew install emacs --cocoa      # 最強のエディタ
+        brew linkapps                   # emacs へのシンボリックリンクを /Applications フォルダ下に作成
+        brew install https://gist.github.com/nagae/3009185/raw/ddskk.rb # 日本語入力 SKK
+      #+end_src
+2. Spotlight で呼び出せるように Automator でアプリケーションとして登録
+   - [[file:/Applications/Automator.app][Automator.app]] を起動し，メニューから「アプリケーション」を選択
+     #+attr_html: alt="Automator設定画面" align="center" width="600"
+     [[file:fig/emacs_Automator_1.png]]
+   - 検索窓に「シェルスクリプトを実行」と入力
+   - 「シェルスクリプトを実行」と書かれたアイコンをダブルクリック
+   - デフォルトで =cat= と書かれたシェルスクリプトを以下に変更：
+    #+begin_src screen
+    open -a /Applications/Emacs.app
+    #+end_src
+   - ファイル名を =Emacs.app= として iCloud フォルダに保存する
 * 長江研 Emacs 設定方針
 Emacs は初期設定ファイル(=~/.emacs.d/init.el=)が極めて重要な役割を果たす[1]．同じ
 Emacs を使っていても，初期設定ファイルが違うと全く違うアプリケーションのように感
@@ -136,14 +126,14 @@ $ ls -a ~/
 長江は「ことえり」や「IME」のような形態素解析をベースとした入力メソッドが苦手なので，SKK(Simple Kana to Kanji conversion program)を利用している．
 SKK は品詞解析を行なわないため，漢字にする箇所や送り仮名を自分で指定する必要がある．しかし，ひとたび慣れれば高速かつ直感的な入力が可能となる———上述のような入力メソッドが使えなくなるほど．
 Macの標準入力方式に代替できる [[http://aquaskk.sourceforge.jp][AquaSKK]] と Emacs 上で動く [[http://openlab.ring.gr.jp/skk/ddskk-ja.html][DDSKK (Daredevil SKK)]] とがあり，両方併用するのが吉．
-** DDSKK
+** COMMENT DDSKKのインストール
 1. Emacs をインストールし終わっていて，
    =/Applications/Emacs.app/Contents/MacOS/Emacs= が有効になっている必要がある．
 2. 長江自作の Formula を用いれば Homebrew でインストール可能：
    #+BEGIN_SRC screen
    $ brew install https://gist.github.com/nagae/3009185/raw/ddskk.rb
    #+END_SRC
-** AquaSKK
+** AquaSKKのインストール
 1. http://aquaskk.sourceforge.jp/ の右側の「ダウンロード」の欄の「AquaSKK パッケー
    ジ」から AquaSKK-4.1.dmg をダウンロードし，AquaSKK.pkg を実行．
 2. Mountain Lion の Gatekeeper が邪魔をする場合は，Ctrlを押しながらクリック→開く．
