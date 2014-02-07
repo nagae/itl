@@ -56,11 +56,6 @@
      rm -rf install-tl*
    #+END_SRC
 
-4. 関連する homebrew パッケージのインストール
-   #+BEGIN_SRC sh
-   brew install --with-emacs=/Applications/Emacs.app/Contents/MacOS/Emacs auctex # EmacsでのTeXファイル編集を支援する．
-   #+END_SRC
-
 *** profile が上手く読めない場合やinteractive modeで自分で設定したい場合
 色々なカスタマイズが可能だが，以下では上記の =texlive2013.profile= と同じ設定にする方法を示す．
 1. 下記の main manu で =Enter command:= の後に =D RET= を入力(ディレクトリ)：
@@ -162,19 +157,15 @@ tlmgr conf texmf TEXMFHOME ~/Dropbox/texmf:/usr/local/share/texmf
 #+END_SRC
 
 * パスの設定
-5. =/usr/local/texbin= へシンボリックリンクを張っておく
-   #+BEGIN_SRC sh
-   ln -fs /usr/local/texlive/2013/bin/x86_64-darwin /usr/local/texbin
-   #+END_SRC
 6. TeX フォルダパスの設定
    =~/.bash_profile= に以下を追記：
    #+BEGIN_SRC sh
-     export PATH=/usr/local/texbin:$PATH
+     export PATH=/usr/local/texlive/2013/bin/x86_64-darwin:$PATH
      export MANPATH=/usr/local/texlive/2013/texmf/doc/man:$MANPATH
      export INFOPATH=/usr/local/texlive/2013/texmf-dist/doc/info:$INFOPATH
    #+END_SRC
 
-   TeXLive 2012 で既に =MANPATH= を設定済みなら，ターミナルから以下を実行すればよ
+   TeXLive 2012 で既に =PATH= などを設定済みなら，ターミナルから以下を実行すればよ
    い．
    #+BEGIN_SRC sh
    sed 's|/usr/local/texlive/2012|/usr/local/texlive/2013|g' ~/.bash_profile

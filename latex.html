@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="ITL/LaTeX編"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-06T14:00+0900"/>
+<meta name="generated" content="2014-02-07T17:35+0900"/>
 <meta name="author" content="Takeshi Nagae"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -316,15 +316,6 @@ tar -xzf install-tl-unx.tar.gz
 rm -rf install-tl*
 </pre>
 
-
-</li>
-<li>関連する homebrew パッケージのインストール
-
-
-
-<pre class="src src-sh">brew install --with-emacs=/Applications/Emacs.app/Contents/MacOS/Emacs auctex <span style="color: #00cd66;"># </span><span style="color: #00cd66;">Emacs&#12391;&#12398;TeX&#12501;&#12449;&#12452;&#12523;&#32232;&#38598;&#12434;&#25903;&#25588;&#12377;&#12427;&#65294;</span>
-</pre>
-
 </li>
 </ol>
 
@@ -344,7 +335,7 @@ rm -rf install-tl*
 
 <pre class="src src-screen">======================&gt; TeX Live installation procedure &lt;=====================
 
-=======&gt; Note: Letters/digits<span style="color: #ffffff; font-weight: bold;"> in</span> &lt;angle brackets&gt; indicate menu items &lt;=======
+=======&gt; Note: Letters/digits<span style="color: #ffffff;"> in</span> &lt;angle brackets&gt; indicate menu items &lt;=======
 =======&gt;       for commands or configurable options                   &lt;=======
 
  Detected platform: universal binaries for MacOSX/Darwin
@@ -430,7 +421,7 @@ Enter command:
 
 <pre class="src src-screen">======================&gt; TeX Live installation procedure &lt;=====================
 
-=======&gt; Note: Letters/digits<span style="color: #ffffff; font-weight: bold;"> in</span> &lt;angle brackets&gt; indicate menu items &lt;=======
+=======&gt; Note: Letters/digits<span style="color: #ffffff;"> in</span> &lt;angle brackets&gt; indicate menu items &lt;=======
 =======&gt;       for commands or configurable options                   &lt;=======
 
 (&#30465;&#30053;)
@@ -479,27 +470,19 @@ Actions:
 <div class="outline-text-2" id="text-2">
 
 <ol>
-<li><code>/usr/local/texbin</code> へシンボリックリンクを張っておく
-
-
-
-<pre class="src src-sh">ln -fs /usr/local/texlive/2013/bin/x86_64-darwin /usr/local/texbin
-</pre>
-
-</li>
 <li>TeX フォルダパスの設定
    <code>~/.bash_profile</code> に以下を追記：
 
 
 
-<pre class="src src-sh"><span style="color: #b0c4de;">export</span> <span style="color: #9acd32;">PATH</span>=/usr/local/texbin:$<span style="color: #9acd32;">PATH</span>
+<pre class="src src-sh"><span style="color: #b0c4de;">export</span> <span style="color: #9acd32;">PATH</span>=/usr/local/texlive/2013/bin/x86_64-darwin:$<span style="color: #9acd32;">PATH</span>
 <span style="color: #b0c4de;">export</span> <span style="color: #9acd32;">MANPATH</span>=/usr/local/texlive/2013/texmf/doc/man:$<span style="color: #9acd32;">MANPATH</span>
 <span style="color: #b0c4de;">export</span> <span style="color: #9acd32;">INFOPATH</span>=/usr/local/texlive/2013/texmf-dist/doc/info:$<span style="color: #9acd32;">INFOPATH</span>
 </pre>
 
 
 <p>
-   TeXLive 2012 で既に <code>MANPATH</code> を設定済みなら，ターミナルから以下を実行すればよ
+   TeXLive 2012 で既に <code>PATH</code> などを設定済みなら，ターミナルから以下を実行すればよ
    い．
 </p>
 
@@ -951,7 +934,7 @@ git submodule add git@github.com:emacsmirror/cdlatex.git lisp/cdlatex
 </div>
 
 <div id="postamble">
-<p class="date">&#26085;&#20184;: 2014-02-06T14:00+0900</p>
+<p class="date">&#26085;&#20184;: 2014-02-07T17:35+0900</p>
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
