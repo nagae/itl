@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="ITL/Homebrew によるパッケージ管理"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-07T10:27+0900"/>
+<meta name="generated" content="2014-02-07T11:29+0900"/>
 <meta name="author" content="Takeshi Nagae"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -293,7 +293,7 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
 
 
 
-<pre class="src src-screen">$ ruby -e <span style="color: #bdb76b;">"$(</span><span style="color: #fa8072;">curl</span><span style="color: #bdb76b;"> -fsSL https://raw.github.com/mxcl/homebrew/go/install)"</span>
+<pre class="src src-sh">ruby -e <span style="color: #bdb76b;">"$(</span><span style="color: #fa8072;">curl</span><span style="color: #bdb76b;"> -fsSL https://raw.github.com/mxcl/homebrew/go/install)"</span>
 </pre>
 
 <p>
@@ -303,7 +303,7 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
 
 
 
-<pre class="src src-screen">brew doctor
+<pre class="src src-sh">brew doctor
 </pre>
 
 <p>
@@ -325,7 +325,7 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
 
 
 
-<pre class="src src-screen">$ emacs ~/.bash_profile
+<pre class="src src-screen">emacs ~/.bash_profile
 </pre>
 
 <p>
@@ -347,7 +347,7 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
 
 
 
-<pre class="src src-screen">$ pbpaste &gt;&gt; ~/.bash_profile
+<pre class="src src-screen">pbpaste &gt;&gt; ~/.bash_profile
 </pre>
 
 <p>
@@ -521,7 +521,7 @@ mv apple-gcc42.rb .temporary_stack/
 </div>
 
 <div id="postamble">
-<p class="date">&#26085;&#20184;: 2014-02-07T10:27+0900</p>
+<p class="date">&#26085;&#20184;: 2014-02-07T11:29+0900</p>
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

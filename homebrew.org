@@ -39,12 +39,12 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
 - Download された dmg ファイルをマウントし，仮想ドライブ内の Command Line Tools (OS X 10.x).mpkg をダブルクリック
 ** Homebrew のインストール
 1) 本体のダウンロード．ターミナルから以下を実行：
-   #+begin_src screen
-   $ ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
+   #+begin_src sh
+   ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
    #+end_src
    ダウンロードが始まる．
 2) 診断する．ターミナルから以下を実行：
-   #+BEGIN_SRC screen
+   #+BEGIN_SRC sh
    brew doctor
    #+END_SRC
    =Your system is ready to brew= と表示されれば OK.
@@ -56,7 +56,7 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
    - ターミナル上で Emacs を起動して編集する方法 :: 
      1) まず，ターミナル上で
         #+BEGIN_SRC screen
-        $ emacs ~/.bash_profile
+        emacs ~/.bash_profile
         #+END_SRC
         として，Emacs を起動する．
      2) 上記をコピー＆ペーストする．
@@ -66,7 +66,7 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
      1) 上記をコピーする．
      2) ターミナル上で
         #+BEGIN_SRC screen
-        $ pbpaste >> ~/.bash_profile
+        pbpaste >> ~/.bash_profile
         #+END_SRC
         とする．
 4) OS X に標準で登載されているコマンドの最新版を提供する =homebrew/dupes= と，
