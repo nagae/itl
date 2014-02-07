@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Python + Gurobi による科学技術計算環境の構築"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-07T10:16+0900"/>
+<meta name="generated" content="2014-02-07T10:20+0900"/>
 <meta name="author" content="Takeshi Nagae"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -677,12 +677,12 @@ $                                   <span style="color: #00cd66;"># </span><span
 <h3 id="sec-4-2"><span class="section-number-3">4.2</span> 最小費用流問題を解いてみる</h3>
 <div class="outline-text-3" id="text-4-2">
 
-<p>次のようなネットワークを対象として起点(a)から終点(d)まで <img src="ltxpng/python_a3f3b83fef1e139535d32b51c79c2394507d3bc2.png" alt="$v=17$"/> 単位の製品を輸送
-する最小費用流を求める問題を考える(ただし，各リンクの <img src="ltxpng/python_181af9827a28ee0f6b75e2767e6afeb8931cc6a3.png" alt="$c$"/> は輸送費用，<img src="ltxpng/python_ecb88abfb3d774a069221fe1a84cbfdc4d1a2959.png" alt="$a$"/> は容量を表す)．
+<p>次のようなネットワークを対象として起点(a)から終点(d)まで <img src="ltxpng/python_858d20b4a2b84b2b44ab4088b05b1137fc3474a3.png" alt="$v=17$"/> 単位の製品を輸送
+する最小費用流を求める問題を考える(ただし，各リンクの <img src="ltxpng/python_f8ad9dc3b68f1d7c16c6a91c20d82210396cfb3d.png" alt="$c$"/> は輸送費用，<img src="ltxpng/python_3f19eb9ec77a45bb4bbff4778d9e1997d76a485b.png" alt="$a$"/> は容量を表す)．
 </p>
 
 <p>
-<img src="gurobi_python_MCF_network.png"  alt="gurobi_python_MCF_network.png" />
+<img src="fig/python_MCF_network.png"  alt="fig/python_MCF_network.png" />
 </p>
 
 </div>
@@ -691,8 +691,8 @@ $                                   <span style="color: #00cd66;"># </span><span
 <h4 id="sec-4-2-1"><span class="section-number-4">4.2.1</span> モデルの定式化</h4>
 <div class="outline-text-4" id="text-4-2-1">
 
-<p>ノード集合 <img src="ltxpng/python_f843e3cd48606385bbccaf91611aa709d8d765ef.png" alt="$\ClN$"/> とリンク集合 <img src="ltxpng/python_8d9ec03429a840e5326fe50e657e67b868ce4c04.png" alt="$\ClA$"/> を以下のように定義する：
-<img src="ltxpng/python_5c28ecaafb5988129ff8e3eb5d48d3edcec7413b.png" alt="\[
+<p>ノード集合 <img src="ltxpng/python_5673a1b57eef514805001089aa14a95e2354effa.png" alt="$\ClN$"/> とリンク集合 <img src="ltxpng/python_a0cb160175b105b90123f6f9726877c6125e79f9.png" alt="$\ClA$"/> を以下のように定義する：
+<img src="ltxpng/python_80d305c2df4e8b681b722f35aed6991e67442846.png" alt="\[
 \ClN = \{a, b, c, d\}, \ClA = \{(a, b), (a, c), (b, c), (b, d), (c, d)\}
 \]"/>
 </p>
@@ -702,20 +702,20 @@ $                                   <span style="color: #00cd66;"># </span><span
 <li>最小化すべき目的関数(総輸送費用)：
 
 <p>
-   <img src="ltxpng/python_fe46f7b2e9080fae5768401b406a2cec245f7adf.png" alt="\[
+   <img src="ltxpng/python_6c4aa11edd51cbcdea62b82040055f0cd2fb33a2.png" alt="\[
    \min_{\Vtx} \sum_{(i, j) \in \ClA} c_{i, j} x_{i, j}
    \]"/>
 </p></li>
 <li>制約条件その1(各ノードでのフロー保存則)：
 
 <p>   
-   <img src="ltxpng/python_b2e1f635707be462ced374b42bed1309085b9040.png" alt="\[
+   <img src="ltxpng/python_94aef7fd8423763a36e4c678e62f50933cf1bb21.png" alt="\[
    \Subto{} \sum_{(i, n) \in \ClA} x_{i, n} - \sum_{(n, j) \in \ClA} 
    = b_{n}, \quad \forall n \in \ClN
    \]"/>
 </p>
 <p>   
-   ただし，<img src="ltxpng/python_d15d3711fc8ae438b16831e1a814946391737759.png" alt="$b_{n}$"/> は，<img src="ltxpng/python_727de0a5b70ed7e10b16b5a08d9e1fd7ba970fa9.png" alt="$n$"/> が起点(a)なら <img src="ltxpng/python_23175eac9602eeb04e96f78e3ad43a1809619f59.png" alt="$-v$"/>, <img src="ltxpng/python_727de0a5b70ed7e10b16b5a08d9e1fd7ba970fa9.png" alt="$n$"/> が終点なら<img src="ltxpng/python_8155bfc4de8321b1227a08691eb9b5738d5277be.png" alt="$v$"/>, それ以外なら0
+   ただし，<img src="ltxpng/python_f6d0e84ea38d873379696e2aad0a5b00d2d7cf82.png" alt="$b_{n}$"/> は，<img src="ltxpng/python_cbcf456a13304547cc812100fbd6073da02f71af.png" alt="$n$"/> が起点(a)なら <img src="ltxpng/python_50381ea08ed0e692b4026a4bed2dc9450070ac6d.png" alt="$-v$"/>, <img src="ltxpng/python_cbcf456a13304547cc812100fbd6073da02f71af.png" alt="$n$"/> が終点なら<img src="ltxpng/python_575d49089f5e74f69883f6356dbeb303b2282d63.png" alt="$v$"/>, それ以外なら0
    となる定数．
 </p></li>
 <li>制約条件その2(非負制約)：
@@ -993,7 +993,7 @@ Python からファイルを呼び出すには，ターミナルで
 </div>
 
 <div id="postamble">
-<p class="date">&#26085;&#20184;: 2014-02-07T10:16+0900</p>
+<p class="date">&#26085;&#20184;: 2014-02-07T10:20+0900</p>
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

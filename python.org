@@ -278,7 +278,7 @@ Python のインタラクティブ・モードを終了するにはCtrl-D を入
 ** 最小費用流問題を解いてみる
 次のようなネットワークを対象として起点(a)から終点(d)まで $v=17$ 単位の製品を輸送
 する最小費用流を求める問題を考える(ただし，各リンクの $c$ は輸送費用，$a$ は容量を表す)．
-#+BEGIN_SRC dot :cmd neato :file gurobi_python_MCF_network.png :exports results
+#+BEGIN_SRC dot :cmd neato :file fig/python_MCF_network.png :exports results
   digraph G{
           a [pos="0,0!"];
           b [pos="1,1!"];
@@ -294,7 +294,7 @@ Python のインタラクティブ・モードを終了するにはCtrl-D を入
 #+END_SRC
 
 #+RESULTS:
-[[file:gurobi_python_MCF_network.png]]
+[[file:fig/python_MCF_network.png]]
 
 *** モデルの定式化
 ノード集合 $\ClN$ とリンク集合 $\ClA$ を以下のように定義する：
