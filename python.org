@@ -19,7 +19,8 @@
 
 * XQuartz のインストール
 XQuartz は OS X 上で動作する Xウィンドウシステム．
-- http://xquartz.macosforge.org/landing/ から最新版の dmg ファイルをダウンロード
+- http://xquartz.macosforge.org/landing/ から最新版の dmg ファイルをダウンロードし，pkg ファイルをダブルクリック
+- インストール後にログインし直す必要がある．
 
 * Python の環境構築
 ** Python のバージョン確認
