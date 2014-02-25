@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Python + Gurobi による科学技術計算環境の構築"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-07T13:50+0900"/>
+<meta name="generated" content="2014-02-25T09:35+0900"/>
 <meta name="author" content="Takeshi Nagae"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -330,12 +330,12 @@ OS X Mavericks にはデフォルトで <code>Python 2.7.5</code> と以下の�
 </pre>
 
 </li>
-<li>homebrew のリポジトリに <code>homebrew/science</code> と <code>homebrew/homebrew-python</code> を追加する：
+<li>homebrew のリポジトリに <code>homebrew/science</code> と <code>homebrew/python</code> を追加する：
 
 
 
 <pre class="src src-sh">brew tap homebrew/science <span style="color: #00cd66;"># </span><span style="color: #00cd66;">a lot of cool formulae for scientific tools</span>
-brew tap homebrew/homebrew-python <span style="color: #00cd66;"># </span><span style="color: #00cd66;">python libraries</span>
+brew tap homebrew/python <span style="color: #00cd66;"># </span><span style="color: #00cd66;">python libraries</span>
 brew update &amp;&amp; brew upgrade
 </pre>
 
@@ -680,8 +680,8 @@ $                                   <span style="color: #00cd66;"># </span><span
 <h3 id="sec-4-2"><span class="section-number-3">4.2</span> 最小費用流問題を解いてみる</h3>
 <div class="outline-text-3" id="text-4-2">
 
-<p>次のようなネットワークを対象として起点(a)から終点(d)まで <img src="ltxpng/python_858d20b4a2b84b2b44ab4088b05b1137fc3474a3.png" alt="$v=17$"/> 単位の製品を輸送
-する最小費用流を求める問題を考える(ただし，各リンクの <img src="ltxpng/python_f8ad9dc3b68f1d7c16c6a91c20d82210396cfb3d.png" alt="$c$"/> は輸送費用，<img src="ltxpng/python_3f19eb9ec77a45bb4bbff4778d9e1997d76a485b.png" alt="$a$"/> は容量を表す)．
+<p>次のようなネットワークを対象として起点(a)から終点(d)まで <img src="ltxpng/python_549ffb3fb126f271fe07e7786938d87e50ca013f.png" alt="$v=17$"/> 単位の製品を輸送
+する最小費用流を求める問題を考える(ただし，各リンクの <img src="ltxpng/python_5f475c8abcf340dfa4c502961afd166aae3e7dc8.png" alt="$c$"/> は輸送費用，<img src="ltxpng/python_2fae36c1ddbbe1b8f3fd410dc17828c0ddcb836c.png" alt="$a$"/> は容量を表す)．
 </p>
 
 <p>
@@ -694,8 +694,8 @@ $                                   <span style="color: #00cd66;"># </span><span
 <h4 id="sec-4-2-1"><span class="section-number-4">4.2.1</span> モデルの定式化</h4>
 <div class="outline-text-4" id="text-4-2-1">
 
-<p>ノード集合 <img src="ltxpng/python_5673a1b57eef514805001089aa14a95e2354effa.png" alt="$\ClN$"/> とリンク集合 <img src="ltxpng/python_a0cb160175b105b90123f6f9726877c6125e79f9.png" alt="$\ClA$"/> を以下のように定義する：
-<img src="ltxpng/python_80d305c2df4e8b681b722f35aed6991e67442846.png" alt="\[
+<p>ノード集合 <img src="ltxpng/python_123cbfc4303e8c63ad8f5c8315f33395dfe233d4.png" alt="$\ClN$"/> とリンク集合 <img src="ltxpng/python_54c8ed6c37358f54015d834c377a7a85a595f868.png" alt="$\ClA$"/> を以下のように定義する：
+<img src="ltxpng/python_e5d9a7fed64d4ad915e70f375faead42aa001ef2.png" alt="\[
 \ClN = \{a, b, c, d\}, \ClA = \{(a, b), (a, c), (b, c), (b, d), (c, d)\}
 \]"/>
 </p>
@@ -705,26 +705,26 @@ $                                   <span style="color: #00cd66;"># </span><span
 <li>最小化すべき目的関数(総輸送費用)：
 
 <p>
-   <img src="ltxpng/python_6c4aa11edd51cbcdea62b82040055f0cd2fb33a2.png" alt="\[
+   <img src="ltxpng/python_500799317bef4892ae07a9f29c44727872e83e36.png" alt="\[
    \min_{\Vtx} \sum_{(i, j) \in \ClA} c_{i, j} x_{i, j}
    \]"/>
 </p></li>
 <li>制約条件その1(各ノードでのフロー保存則)：
 
 <p>   
-   <img src="ltxpng/python_94aef7fd8423763a36e4c678e62f50933cf1bb21.png" alt="\[
+   <img src="ltxpng/python_f8a93a46f386964469d89bc73537e1455675e45f.png" alt="\[
    \Subto{} \sum_{(i, n) \in \ClA} x_{i, n} - \sum_{(n, j) \in \ClA} 
    = b_{n}, \quad \forall n \in \ClN
    \]"/>
 </p>
 <p>   
-   ただし，<img src="ltxpng/python_f6d0e84ea38d873379696e2aad0a5b00d2d7cf82.png" alt="$b_{n}$"/> は，<img src="ltxpng/python_cbcf456a13304547cc812100fbd6073da02f71af.png" alt="$n$"/> が起点(a)なら <img src="ltxpng/python_50381ea08ed0e692b4026a4bed2dc9450070ac6d.png" alt="$-v$"/>, <img src="ltxpng/python_cbcf456a13304547cc812100fbd6073da02f71af.png" alt="$n$"/> が終点なら<img src="ltxpng/python_575d49089f5e74f69883f6356dbeb303b2282d63.png" alt="$v$"/>, それ以外なら0
+   ただし，<img src="ltxpng/python_a870f4767acb265333cf4435a70eac488046879a.png" alt="$b_{n}$"/> は，<img src="ltxpng/python_243f5285c9ce53308e04a6c6bf95d5edfe49afce.png" alt="$n$"/> が起点(a)なら <img src="ltxpng/python_e61a1a4414b7b1ee3ff2731bc04364aec9a839e2.png" alt="$-v$"/>, <img src="ltxpng/python_243f5285c9ce53308e04a6c6bf95d5edfe49afce.png" alt="$n$"/> が終点なら<img src="ltxpng/python_133e9765f7aa5e929e71769f88108eac63d20612.png" alt="$v$"/>, それ以外なら0
    となる定数．
 </p></li>
 <li>制約条件その2(非負制約)：
 
 <p>   
-   <img src="ltxpng/python_5b69ed7c80b08e567c91609258aa8632f0612fc7.png" alt="\[
+   <img src="ltxpng/python_d7a1c4ce86c9ff705b98719b7329a99a34f65216.png" alt="\[
    x_{i, j} \geq 0, \quad \forall (i, j) \in \ClA
    \]"/>
 </p></li>
@@ -920,57 +920,57 @@ x_{c,d}:          8.0000
 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">*-* encoding: utf-8 *-*</span>
 
 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#12522;&#12531;&#12463;&#38598;&#21512;</span>
-<span style="color: #f5deb3; background-color: #000000;">links</span> = [(<span style="color: #bdb76b;">'a'</span>,<span style="color: #bdb76b;">'b'</span>), (<span style="color: #bdb76b;">'a'</span>,<span style="color: #bdb76b;">'c'</span>), (<span style="color: #bdb76b;">'b'</span>, <span style="color: #bdb76b;">'c'</span>), (<span style="color: #bdb76b;">'b'</span>,<span style="color: #bdb76b;">'d'</span>),(<span style="color: #bdb76b;">'c'</span>,<span style="color: #bdb76b;">'d'</span>)]
+<span style="color: #9acd32;">links</span> = [(<span style="color: #bdb76b;">'a'</span>,<span style="color: #bdb76b;">'b'</span>), (<span style="color: #bdb76b;">'a'</span>,<span style="color: #bdb76b;">'c'</span>), (<span style="color: #bdb76b;">'b'</span>, <span style="color: #bdb76b;">'c'</span>), (<span style="color: #bdb76b;">'b'</span>,<span style="color: #bdb76b;">'d'</span>),(<span style="color: #bdb76b;">'c'</span>,<span style="color: #bdb76b;">'d'</span>)]
 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#12494;&#12540;&#12489;&#38598;&#21512;</span>
-<span style="color: #f5deb3; background-color: #000000;">nodes</span> = [<span style="color: #bdb76b;">'a'</span>, <span style="color: #bdb76b;">'b'</span>, <span style="color: #bdb76b;">'c'</span>, <span style="color: #bdb76b;">'d'</span>]
-<span style="color: #f5deb3; background-color: #000000;">orig</span> = <span style="color: #bdb76b;">'a'</span>                      <span style="color: #00cd66;"># &#36215;&#28857;</span>
-<span style="color: #f5deb3; background-color: #000000;">dest</span> = <span style="color: #bdb76b;">'d'</span>                      <span style="color: #00cd66;"># &#32066;&#28857;</span>
+<span style="color: #9acd32;">nodes</span> = [<span style="color: #bdb76b;">'a'</span>, <span style="color: #bdb76b;">'b'</span>, <span style="color: #bdb76b;">'c'</span>, <span style="color: #bdb76b;">'d'</span>]
+<span style="color: #9acd32;">orig</span> = <span style="color: #bdb76b;">'a'</span>                      <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#36215;&#28857;</span>
+<span style="color: #9acd32;">dest</span> = <span style="color: #bdb76b;">'d'</span>                      <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#32066;&#28857;</span>
 
 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#21508;&#12522;&#12531;&#12463;&#12398;&#36664;&#36865;&#36027;&#29992;</span>
-<span style="color: #f5deb3; background-color: #000000;">cost</span> =<span style="color: #b0c4de;"> dict</span>(zip(links,[<span style="color: #f5deb3; background-color: #000000;">2</span>,<span style="color: #f5deb3; background-color: #000000;">8</span>,<span style="color: #f5deb3; background-color: #000000;">3</span>,<span style="color: #f5deb3; background-color: #000000;">8</span>,<span style="color: #f5deb3; background-color: #000000;">4</span>]))
+<span style="color: #9acd32;">cost</span> = <span style="color: #b0c4de;">dict</span>(<span style="color: #b0c4de;">zip</span>(links,[2,8,3,8,4]))
 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#21508;&#12522;&#12531;&#12463;&#12398;&#23481;&#37327;</span>
-<span style="color: #f5deb3; background-color: #000000;">capacity</span> =<span style="color: #b0c4de;"> dict</span>(zip(links, [<span style="color: #f5deb3; background-color: #000000;">10</span>, <span style="color: #f5deb3; background-color: #000000;">10</span>, <span style="color: #f5deb3; background-color: #000000;">3</span>, <span style="color: #f5deb3; background-color: #000000;">9</span>, <span style="color: #f5deb3; background-color: #000000;">8</span>]))
+<span style="color: #9acd32;">capacity</span> = <span style="color: #b0c4de;">dict</span>(<span style="color: #b0c4de;">zip</span>(links, [10, 10, 3, 9, 8]))
 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#36215;&#28857;&#12363;&#12425;&#32066;&#28857;&#12414;&#12391;&#12398;&#32207;&#36664;&#36865;&#37327;</span>
-<span style="color: #f5deb3; background-color: #000000;">total_volume</span> = <span style="color: #f5deb3; background-color: #000000;">17</span>
+<span style="color: #9acd32;">total_volume</span> = 17
 
 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">Gurobi &#12497;&#12483;&#12465;&#12540;&#12472;&#12434; grb &#12392;&#12356;&#12358;&#21517;&#21069;&#12391; import </span>
 <span style="color: #ffffff;">import</span> gurobipy <span style="color: #ffffff;">as</span> grb
 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">print "%s:\t%8.4f" % (x[i, j].VarName, x[i, j].X)</span>
-<span style="color: #f5deb3; background-color: #000000;">m</span> = grb.Model()
+<span style="color: #9acd32;">m</span> = grb.Model()
 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#26410;&#30693;&#22793;&#25968;&#12434; x &#12392;&#12356;&#12358;&#36766;&#26360;&#22411;&#22793;&#25968;&#12395;&#26684;&#32013;</span>
-<span style="color: #f5deb3; background-color: #000000;">x</span> = {}
+<span style="color: #9acd32;">x</span> = {}
 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">addVar() &#12392;&#12356;&#12358;&#38306;&#25968;&#12434;&#29992;&#12356;&#12390;&#12514;&#12487;&#12523;&#12395;&#22793;&#25968;&#12434;&#36861;&#21152;&#12377;&#12427;</span>
 <span style="color: #ffffff;">for</span> (i,j) <span style="color: #ffffff;">in</span> links:
-    <span style="color: #f5deb3; background-color: #000000;">x</span>[i, j] = m.addVar(vtype=grb.GRB.CONTINUOUS, name=<span style="color: #bdb76b;">"x_{%s,%s}"</span> % (i, j))
-m.update()                  <span style="color: #00cd66;"># &#12514;&#12487;&#12523;&#12395;&#22793;&#25968;&#12364;&#36861;&#21152;&#12373;&#12428;&#12383;&#12371;&#12392;&#12434;&#21453;&#26144;&#12373;&#12379;&#12427;</span>
+    <span style="color: #9acd32;">x</span>[i, j] = m.addVar(vtype=grb.GRB.CONTINUOUS, name=<span style="color: #bdb76b;">"x_{%s,%s}"</span> % (i, j))
+m.update()                  <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#12514;&#12487;&#12523;&#12395;&#22793;&#25968;&#12364;&#36861;&#21152;&#12373;&#12428;&#12383;&#12371;&#12392;&#12434;&#21453;&#26144;&#12373;&#12379;&#12427;</span>
 
 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#30446;&#30340;&#38306;&#25968;&#12434;&#35373;&#23450;&#12375;&#65292;&#26368;&#23567;&#21270;&#12434;&#34892;&#12358;&#12371;&#12392;&#12434;&#26126;&#31034;&#12377;&#12427;</span>
-m.setObjective(grb.quicksum(x[i, j]*cost[i, j] <span style="color: #ffffff;">for</span> (i, j) <span style="color: #ffffff;">in</span> links))<span style="color: #00cd66;"># &#30446;&#30340;&#38306;&#25968;</span>
+m.setObjective(grb.quicksum(x[i, j]*cost[i, j] <span style="color: #ffffff;">for</span> (i, j) <span style="color: #ffffff;">in</span> links))<span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#30446;&#30340;&#38306;&#25968;</span>
 m.setAttr(<span style="color: #bdb76b;">"ModelSense"</span>, grb.GRB.MINIMIZE)
 
 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#21508;&#12494;&#12540;&#12489;&#12391;&#12398;&#12501;&#12525;&#12540;&#20445;&#23384;&#21063;&#12434;&#36861;&#21152;&#12377;&#12427;</span>
-<span style="color: #f5deb3; background-color: #000000;">b</span> = {}                          <span style="color: #00cd66;"># &#12501;&#12525;&#12540;&#20445;&#23384;&#21063;&#12398;&#21491;&#36794;&#12398;&#23450;&#25968;&#12434;&#35373;&#23450;&#12377;&#12427;</span>
+<span style="color: #9acd32;">b</span> = {}                          <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#12501;&#12525;&#12540;&#20445;&#23384;&#21063;&#12398;&#21491;&#36794;&#12398;&#23450;&#25968;&#12434;&#35373;&#23450;&#12377;&#12427;</span>
 <span style="color: #ffffff;">for</span> n <span style="color: #ffffff;">in</span> nodes:
     <span style="color: #ffffff;">if</span> n == orig:
-        <span style="color: #f5deb3; background-color: #000000;">b</span>[n] = - total_volume
+        b[n] = - total_volume
     <span style="color: #ffffff;">elif</span> n == dest:
-        <span style="color: #f5deb3; background-color: #000000;">b</span>[n] = total_volume
+        b[n] = total_volume
     <span style="color: #ffffff;">else</span>:
-        <span style="color: #f5deb3; background-color: #000000;">b</span>[n] = <span style="color: #f5deb3; background-color: #000000;">0</span>
-    <span style="color: #00cd66;"># &#12494;&#12540;&#12489;&#12372;&#12392;&#12398;&#12501;&#12525;&#12540;&#20445;&#23384;&#21063;</span>
-    <span style="color: #00cd66;"># &#34892;&#39340;&#12395;&#12300;\&#12301;&#12434;&#12388;&#12369;&#12427;&#12392;1&#12388;&#12398;&#34892;&#12434;&#35079;&#25968;&#34892;&#12395;&#12414;&#12383;&#12364;&#12387;&#12390;&#35352;&#36848;&#12391;&#12365;&#12427;</span>
+        b[n] = 0
+    <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#12494;&#12540;&#12489;&#12372;&#12392;&#12398;&#12501;&#12525;&#12540;&#20445;&#23384;&#21063;</span>
+    <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#34892;&#39340;&#12395;&#12300;\&#12301;&#12434;&#12388;&#12369;&#12427;&#12392;1&#12388;&#12398;&#34892;&#12434;&#35079;&#25968;&#34892;&#12395;&#12414;&#12383;&#12364;&#12387;&#12390;&#35352;&#36848;&#12391;&#12365;&#12427;</span>
     m.addConstr(grb.quicksum(x[i, j] <span style="color: #ffffff;">for</span> (i, j) <span style="color: #ffffff;">in</span> links <span style="color: #ffffff;">if</span> j == n)\
                 - grb.quicksum(x[i, j] <span style="color: #ffffff;">for</span> (i, j) <span style="color: #ffffff;">in</span> links <span style="color: #ffffff;">if</span> i == n) \
-                == <span style="color: #f5deb3; background-color: #000000;">b</span>[n], name=<span style="color: #bdb76b;">"flow reservation at %s"</span> % n)
+                == b[n], name=<span style="color: #bdb76b;">"flow reservation at %s"</span> % n)
 
 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#21508;&#12494;&#12540;&#12489;&#12391;&#12398;&#38750;&#36000;&#21046;&#32004;&#12392;&#23481;&#37327;&#21046;&#32004;&#12434;&#36861;&#21152;&#12377;&#12427;</span>
 <span style="color: #ffffff;">for</span> (i, j) <span style="color: #ffffff;">in</span> links:
-    x[i, j].lb = <span style="color: #f5deb3; background-color: #000000;">0</span>.<span style="color: #f5deb3; background-color: #000000;">0</span>
+    x[i, j].lb = 0.0
     x[i, j].ub = capacity[i, j]
 
 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#12514;&#12487;&#12523;&#12395;&#21046;&#32004;&#26465;&#20214;&#12364;&#36861;&#21152;&#12373;&#12428;&#12383;&#12371;&#12392;&#12434;&#21453;&#26144;&#12373;&#12379;&#12427;</span>
 m.update()
-m.write(<span style="color: #bdb76b;">"mincostflow.lp"</span>)       <span style="color: #00cd66;"># mincostflow.lp &#12392;&#12356;&#12358;&#12501;&#12449;&#12452;&#12523;&#12395;&#23450;&#24335;&#21270;&#12373;&#12428;&#12383;&#12514;&#12487;&#12523;&#12434;&#20986;&#21147;&#12377;&#12427;</span>
+m.write(<span style="color: #bdb76b;">"mincostflow.lp"</span>)       <span style="color: #00cd66;"># </span><span style="color: #00cd66;">mincostflow.lp &#12392;&#12356;&#12358;&#12501;&#12449;&#12452;&#12523;&#12395;&#23450;&#24335;&#21270;&#12373;&#12428;&#12383;&#12514;&#12487;&#12523;&#12434;&#20986;&#21147;&#12377;&#12427;</span>
 
 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#26368;&#36969;&#21270;&#12434;&#34892;&#12356;&#65292;&#32080;&#26524;&#12434;&#34920;&#31034;&#12373;&#12379;&#12427;</span>
 m.optimize()
@@ -996,7 +996,7 @@ Python からファイルを呼び出すには，ターミナルで
 </div>
 
 <div id="postamble">
-<p class="date">&#26085;&#20184;: 2014-02-07T13:50+0900</p>
+<p class="date">&#26085;&#20184;: 2014-02-25T09:35+0900</p>
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

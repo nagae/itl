@@ -65,10 +65,10 @@ OS X Mavericks にはデフォルトで =Python 2.7.5= と以下のモジュー�
    #+BEGIN_SRC sh
    sudo easy_install pip
    #+END_SRC
-2. homebrew のリポジトリに =homebrew/science= と =homebrew/homebrew-python= を追加する：
+2. homebrew のリポジトリに =homebrew/science= と =homebrew/python= を追加する：
    #+BEGIN_SRC sh
      brew tap homebrew/science # a lot of cool formulae for scientific tools
-     brew tap homebrew/homebrew-python # python libraries
+     brew tap homebrew/python # python libraries
      brew update && brew upgrade
    #+END_SRC
 
