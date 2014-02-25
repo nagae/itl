@@ -24,6 +24,11 @@ homebrew は研究環境に必要な様々な UNIX ツールをまとめて管�
 homebrew は同様の Mac 用パッケージ管理システムである macport に比べてインストール
 にかかる負荷が軽い．これは homebrew では「Mac OS X に標準でついてくるものまでわざ
 わざインストールしない」という方針が採用されているためである．
+* XQuartz のインストール
+XQuartz は OS X 上で動作する Xウィンドウシステム．
+- http://xquartz.macosforge.org/landing/ から最新版の dmg ファイルをダウンロードし，pkg ファイルをダブルクリック
+- インストール後にログインし直す必要がある．
+
 * インストール
 ** 参考サイト
 - 本家 :: http://mxcl.github.com/homebrew/

@@ -17,11 +17,6 @@
 #+STYLE: <link rel=stylesheet href="style.css" type="text/css">
 #+latex_header:\usepackage{amsmath,rmss_math,rmss_color}
 
-* XQuartz のインストール
-XQuartz は OS X 上で動作する Xウィンドウシステム．
-- http://xquartz.macosforge.org/landing/ から最新版の dmg ファイルをダウンロードし，pkg ファイルをダブルクリック
-- インストール後にログインし直す必要がある．
-
 * Python の環境構築
 ** Python のバージョン確認
 - Gurobi は Mac OS X デフォルトの Python しかサポートしない([[https://groups.google.com/d/msg/gurobi/ghzhXNugDxs/mFNWanBl1fMJ][参考]])．まずは Python
