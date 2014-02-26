@@ -21,5 +21,5 @@
 - [[./homebrew.html][パッケージ管理システム homebrew の導入]]
 - [[./emacs.org][最強のエディタ，Emacs のインストール]]
 - [[./latex.org][LaTeX (文章執筆＆プレゼン作成用)のインストール]]
-- [[./hombrew-packages.org][homebrew でインストールしておくべきパッケージ群]] 
+- [[./homebrew-packages.org][homebrew でインストールしておくべきパッケージ群]] 
 - [[./python.org][Python + Gurobi による科学技術計算環境の構築]]
