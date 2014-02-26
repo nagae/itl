@@ -206,9 +206,8 @@ Mac OS X 用には =hiragino/otf-hiragino.map= あたりが使える(参照：ht
   cd ~/Downloads/sampletex
   curl -O https://gist.githubusercontent.com/nagae/1350983/raw/sample.tex
   platex sample.tex 
-  dvipdfmx sample -o sample1.pdf
-  dvipdfmx -f noEmbed sample -o sample2.pdf
-  open sample1.pdf; open sample2.pdf
+  dvipdfmx sample -o sample.pdf
+  open sample.pdf
 #+END_SRC
 * tlmgr を使って常に最新の状態を保つ
 上述の方法によって tlmgr もインストールされる．これを使えば，TeX を常に最新の状態に保てる．
