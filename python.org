@@ -79,7 +79,7 @@ OS X Mavericks にはデフォルトで =Python 2.7.5= と以下のモジュー�
      # 科学技術計算用(Numpy, Scipy)
      # pip install scipy が通らなくなったので，homebrew からインストールするようにした
      brew install numpy # NumPy は Python で科学計算を行うための基本パッケージ
-     brew install scipy --with-openblas # SciPy は科学・工学用モジュール群
+     brew install scipy # SciPy は科学・工学用モジュール群
      sudo pip isntall pyparsing # matplotlib のインストールに必要
      brew install matplotlib --with-tex --with-qtpy # matplotlib は Python で2Dグラフをプロットするためのライブラリ
      sudo pip install sympy # SymPy はシンボリックな数式処理のためのライブラリ
@@ -91,20 +91,20 @@ OS X Mavericks にはデフォルトで =Python 2.7.5= と以下のモジュー�
      # 画像処理
      sudo pip install pillow        # Pillow は Python の画像処理ライブラリ
      brew install imagemagick graphviz # imagemagick は画像の操作・表示のためのソフトウェア．graphviz はグラフ描画ソフトウェア．
-     brew install cairo --without-x # cairo はベクトルベースのフリーの2Dグラフィックスライブラリ
-     brew install py2cairo          # cairo 用の python 2.x バインディング
+     brew install cairo # cairo はベクトルベースのフリーの2Dグラフィックスライブラリ
+     brew install py2cairo           # cairo 用の python 2.x バインディング
      
      # デバッグ出力
-     sudo pip install q                   # q はお手軽なデバッグ出力用のパッケージ
+     sudo pip install q            # q はお手軽なデバッグ出力用のパッケージ
      
      # インタラクティブ・モードの強化
-     brew install qt pyqt            # Qt は GUIツールキット．pyqt はその Python バインディング
-     brew install zmq                # ZeroMQ は軽さがウリのMQ(message queuing, アプリケーション間データ交換方式の1つ)
-     sudo easy_install readline      # iPython で補完や履歴を表示させるのに必要
+     brew install qt pyqt # Qt は GUIツールキット．pyqt はその Python バインディング
+     brew install zmq # ZeroMQ は軽さがウリのMQ(message queuing, アプリケーション間データ交換方式の1つ)
+     sudo pip install readline   # iPython で補完や履歴を表示させるのに必要
      sudo pip install ipython[zmq,qtconsole,notebook,test] # iPython は Python のインタラクティブ・モードを進化させたもの
      
      # データ解析，自然言語処理
-     sudo pip install pandas nltk         # pandas はデータ解析ライブラリ，nltk は自然言語処理ツールキット，
+     sudo pip install pandas nltk # pandas はデータ解析ライブラリ，nltk は自然言語処理ツールキット，
    #+END_SRC
 5. Homebrew でインストールした Python モジュールへのパスを通す
    組み込み Python 下の pip でインストールしたライブラリと homebrew からインストー

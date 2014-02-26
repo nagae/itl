@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Python + Gurobi による科学技術計算環境の構築"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-26T15:24+0900"/>
+<meta name="generated" content="2014-02-26T16:34+0900"/>
 <meta name="author" content="Takeshi Nagae"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -341,7 +341,7 @@ sudo pip install virtualenv nose <span style="color: #00cd66;"># </span><span st
 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#31185;&#23398;&#25216;&#34899;&#35336;&#31639;&#29992;(Numpy, Scipy)</span>
 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">pip install scipy &#12364;&#36890;&#12425;&#12394;&#12367;&#12394;&#12387;&#12383;&#12398;&#12391;&#65292;homebrew &#12363;&#12425;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#12377;&#12427;&#12424;&#12358;&#12395;&#12375;&#12383;</span>
 brew install numpy <span style="color: #00cd66;"># </span><span style="color: #00cd66;">NumPy &#12399; Python &#12391;&#31185;&#23398;&#35336;&#31639;&#12434;&#34892;&#12358;&#12383;&#12417;&#12398;&#22522;&#26412;&#12497;&#12483;&#12465;&#12540;&#12472;</span>
-brew install scipy --with-openblas <span style="color: #00cd66;"># </span><span style="color: #00cd66;">SciPy &#12399;&#31185;&#23398;&#12539;&#24037;&#23398;&#29992;&#12514;&#12472;&#12517;&#12540;&#12523;&#32676;</span>
+brew install scipy <span style="color: #00cd66;"># </span><span style="color: #00cd66;">SciPy &#12399;&#31185;&#23398;&#12539;&#24037;&#23398;&#29992;&#12514;&#12472;&#12517;&#12540;&#12523;&#32676;</span>
 sudo pip isntall pyparsing <span style="color: #00cd66;"># </span><span style="color: #00cd66;">matplotlib &#12398;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#12395;&#24517;&#35201;</span>
 brew install matplotlib --with-tex --with-qtpy <span style="color: #00cd66;"># </span><span style="color: #00cd66;">matplotlib &#12399; Python &#12391;2D&#12464;&#12521;&#12501;&#12434;&#12503;&#12525;&#12483;&#12488;&#12377;&#12427;&#12383;&#12417;&#12398;&#12521;&#12452;&#12502;&#12521;&#12522;</span>
 sudo pip install sympy <span style="color: #00cd66;"># </span><span style="color: #00cd66;">SymPy &#12399;&#12471;&#12531;&#12508;&#12522;&#12483;&#12463;&#12394;&#25968;&#24335;&#20966;&#29702;&#12398;&#12383;&#12417;&#12398;&#12521;&#12452;&#12502;&#12521;&#12522;</span>
@@ -353,20 +353,20 @@ sudo pip install graphillion <span style="color: #00cd66;"># </span><span style=
 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#30011;&#20687;&#20966;&#29702;</span>
 sudo pip install pillow        <span style="color: #00cd66;"># </span><span style="color: #00cd66;">Pillow &#12399; Python &#12398;&#30011;&#20687;&#20966;&#29702;&#12521;&#12452;&#12502;&#12521;&#12522;</span>
 brew install imagemagick graphviz <span style="color: #00cd66;"># </span><span style="color: #00cd66;">imagemagick &#12399;&#30011;&#20687;&#12398;&#25805;&#20316;&#12539;&#34920;&#31034;&#12398;&#12383;&#12417;&#12398;&#12477;&#12501;&#12488;&#12454;&#12455;&#12450;&#65294;graphviz &#12399;&#12464;&#12521;&#12501;&#25551;&#30011;&#12477;&#12501;&#12488;&#12454;&#12455;&#12450;&#65294;</span>
-brew install cairo --without-x <span style="color: #00cd66;"># </span><span style="color: #00cd66;">cairo &#12399;&#12505;&#12463;&#12488;&#12523;&#12505;&#12540;&#12473;&#12398;&#12501;&#12522;&#12540;&#12398;2D&#12464;&#12521;&#12501;&#12451;&#12483;&#12463;&#12473;&#12521;&#12452;&#12502;&#12521;&#12522;</span>
-brew install py2cairo          <span style="color: #00cd66;"># </span><span style="color: #00cd66;">cairo &#29992;&#12398; python 2.x &#12496;&#12452;&#12531;&#12487;&#12451;&#12531;&#12464;</span>
+brew install cairo <span style="color: #00cd66;"># </span><span style="color: #00cd66;">cairo &#12399;&#12505;&#12463;&#12488;&#12523;&#12505;&#12540;&#12473;&#12398;&#12501;&#12522;&#12540;&#12398;2D&#12464;&#12521;&#12501;&#12451;&#12483;&#12463;&#12473;&#12521;&#12452;&#12502;&#12521;&#12522;</span>
+brew install py2cairo           <span style="color: #00cd66;"># </span><span style="color: #00cd66;">cairo &#29992;&#12398; python 2.x &#12496;&#12452;&#12531;&#12487;&#12451;&#12531;&#12464;</span>
 
 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#12487;&#12496;&#12483;&#12464;&#20986;&#21147;</span>
-sudo pip install q                   <span style="color: #00cd66;"># </span><span style="color: #00cd66;">q &#12399;&#12362;&#25163;&#36605;&#12394;&#12487;&#12496;&#12483;&#12464;&#20986;&#21147;&#29992;&#12398;&#12497;&#12483;&#12465;&#12540;&#12472;</span>
+sudo pip install q            <span style="color: #00cd66;"># </span><span style="color: #00cd66;">q &#12399;&#12362;&#25163;&#36605;&#12394;&#12487;&#12496;&#12483;&#12464;&#20986;&#21147;&#29992;&#12398;&#12497;&#12483;&#12465;&#12540;&#12472;</span>
 
 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#12452;&#12531;&#12479;&#12521;&#12463;&#12486;&#12451;&#12502;&#12539;&#12514;&#12540;&#12489;&#12398;&#24375;&#21270;</span>
-brew install qt pyqt            <span style="color: #00cd66;"># </span><span style="color: #00cd66;">Qt &#12399; GUI&#12484;&#12540;&#12523;&#12461;&#12483;&#12488;&#65294;pyqt &#12399;&#12381;&#12398; Python &#12496;&#12452;&#12531;&#12487;&#12451;&#12531;&#12464;</span>
-brew install zmq                <span style="color: #00cd66;"># </span><span style="color: #00cd66;">ZeroMQ &#12399;&#36605;&#12373;&#12364;&#12454;&#12522;&#12398;MQ(message queuing, &#12450;&#12503;&#12522;&#12465;&#12540;&#12471;&#12519;&#12531;&#38291;&#12487;&#12540;&#12479;&#20132;&#25563;&#26041;&#24335;&#12398;1&#12388;)</span>
-sudo easy_install readline      <span style="color: #00cd66;"># </span><span style="color: #00cd66;">iPython &#12391;&#35036;&#23436;&#12420;&#23653;&#27508;&#12434;&#34920;&#31034;&#12373;&#12379;&#12427;&#12398;&#12395;&#24517;&#35201;</span>
+brew install qt pyqt <span style="color: #00cd66;"># </span><span style="color: #00cd66;">Qt &#12399; GUI&#12484;&#12540;&#12523;&#12461;&#12483;&#12488;&#65294;pyqt &#12399;&#12381;&#12398; Python &#12496;&#12452;&#12531;&#12487;&#12451;&#12531;&#12464;</span>
+brew install zmq <span style="color: #00cd66;"># </span><span style="color: #00cd66;">ZeroMQ &#12399;&#36605;&#12373;&#12364;&#12454;&#12522;&#12398;MQ(message queuing, &#12450;&#12503;&#12522;&#12465;&#12540;&#12471;&#12519;&#12531;&#38291;&#12487;&#12540;&#12479;&#20132;&#25563;&#26041;&#24335;&#12398;1&#12388;)</span>
+sudo pip install readline   <span style="color: #00cd66;"># </span><span style="color: #00cd66;">iPython &#12391;&#35036;&#23436;&#12420;&#23653;&#27508;&#12434;&#34920;&#31034;&#12373;&#12379;&#12427;&#12398;&#12395;&#24517;&#35201;</span>
 sudo pip install ipython[zmq,qtconsole,notebook,test] <span style="color: #00cd66;"># </span><span style="color: #00cd66;">iPython &#12399; Python &#12398;&#12452;&#12531;&#12479;&#12521;&#12463;&#12486;&#12451;&#12502;&#12539;&#12514;&#12540;&#12489;&#12434;&#36914;&#21270;&#12373;&#12379;&#12383;&#12418;&#12398;</span>
 
 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#12487;&#12540;&#12479;&#35299;&#26512;&#65292;&#33258;&#28982;&#35328;&#35486;&#20966;&#29702;</span>
-sudo pip install pandas nltk         <span style="color: #00cd66;"># </span><span style="color: #00cd66;">pandas &#12399;&#12487;&#12540;&#12479;&#35299;&#26512;&#12521;&#12452;&#12502;&#12521;&#12522;&#65292;nltk &#12399;&#33258;&#28982;&#35328;&#35486;&#20966;&#29702;&#12484;&#12540;&#12523;&#12461;&#12483;&#12488;&#65292;</span>
+sudo pip install pandas nltk <span style="color: #00cd66;"># </span><span style="color: #00cd66;">pandas &#12399;&#12487;&#12540;&#12479;&#35299;&#26512;&#12521;&#12452;&#12502;&#12521;&#12522;&#65292;nltk &#12399;&#33258;&#28982;&#35328;&#35486;&#20966;&#29702;&#12484;&#12540;&#12523;&#12461;&#12483;&#12488;&#65292;</span>
 </pre>
 
 </li>
@@ -668,8 +668,8 @@ $                                   <span style="color: #00cd66;"># </span><span
 <h3 id="sec-3-2"><span class="section-number-3">3.2</span> 最小費用流問題を解いてみる</h3>
 <div class="outline-text-3" id="text-3-2">
 
-<p>次のようなネットワークを対象として起点(a)から終点(d)まで <img src="ltxpng/python_549ffb3fb126f271fe07e7786938d87e50ca013f.png" alt="$v=17$"/> 単位の製品を輸送
-する最小費用流を求める問題を考える(ただし，各リンクの <img src="ltxpng/python_5f475c8abcf340dfa4c502961afd166aae3e7dc8.png" alt="$c$"/> は輸送費用，<img src="ltxpng/python_2fae36c1ddbbe1b8f3fd410dc17828c0ddcb836c.png" alt="$a$"/> は容量を表す)．
+<p>次のようなネットワークを対象として起点(a)から終点(d)まで <img src="ltxpng/python_5af55eae6954fe31b835632dfbfa0b5e85572728.png" alt="$v=17$"/> 単位の製品を輸送
+する最小費用流を求める問題を考える(ただし，各リンクの <img src="ltxpng/python_fe31bbea0808c2c93e8c4b9a4c2272df84decd08.png" alt="$c$"/> は輸送費用，<img src="ltxpng/python_2f3ff76b504cd115f8ecba3aadd5ee40dff1d053.png" alt="$a$"/> は容量を表す)．
 </p>
 
 <p>
@@ -984,7 +984,7 @@ Python からファイルを呼び出すには，ターミナルで
 </div>
 
 <div id="postamble">
-<p class="date">&#26085;&#20184;: 2014-02-26T15:24+0900</p>
+<p class="date">&#26085;&#20184;: 2014-02-26T16:34+0900</p>
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
