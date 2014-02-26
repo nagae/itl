@@ -100,7 +100,7 @@ OS X Mavericks にはデフォルトで =Python 2.7.5= と以下のモジュー�
      # インタラクティブ・モードの強化
      brew install qt pyqt # Qt は GUIツールキット．pyqt はその Python バインディング
      brew install zmq # ZeroMQ は軽さがウリのMQ(message queuing, アプリケーション間データ交換方式の1つ)
-     sudo pip install readline   # iPython で補完や履歴を表示させるのに必要
+     sudo easy_install readline   # iPython で補完や履歴を表示させるのに必要(iPython では easy_install版が強く推奨されている)
      sudo pip install ipython[zmq,qtconsole,notebook,test] # iPython は Python のインタラクティブ・モードを進化させたもの
      
      # データ解析，自然言語処理
@@ -119,6 +119,34 @@ OS X Mavericks にはデフォルトで =Python 2.7.5= と以下のモジュー�
      #+BEGIN_SRC sh
      $ source ~/.bash_profile
      #+END_SRC
+
+* =matplotlib/basemap= のインストール
+Python のグラフ描画パッケージ =matplotlib= 上で地理情報データを表示できるサブモジュールが =basemap=.
+参考URL: http://blog.bluedackers.com/2012/11/13/installing-basemap-on-mac-os-x-mountain-lion/
+1. homebrew で GEOS(geometry engine open source) をインストール
+   #+BEGIN_SRC sh
+     brew install geos
+   #+END_SRC
+2. アーカイブを取得
+   - http://sourceforge.net/projects/matplotlib/files/matplotlib-toolkits/ から最新の =basemap-x.y.z.tar.gz= をダウンロード．
+   - 2014/2/26 時点では =basemap-1.0.7.tar.gz= が最新．
+3. アーカイブを展開
+   - ダウンロードフォルダに移動し，アーカイブを展開し，フォルダへ移動．
+     #+BEGIN_SRC sh
+       cd ~/Downloads
+       tar xf basemap-1.0.7.tar.gz
+       cd basemap*
+     #+END_SRC
+4. 環境変数 =GEOS_DIR= を作成
+   =/usr/local/Cellar/geos= の下の最新のバージョン(2014/2/26 時点では 3.4.2)を環境変数 =GEOS_DIR= として登録
+   #+BEGIN_SRC sh
+   export GEOS_DIR=/usr/local/Cellar/geos/3.4.2/
+   #+END_SRC
+5. インストーラを起動する
+   #+BEGIN_SRC sh
+     sudo python setup.py build
+     sudo python setup.py install
+   #+END_SRC
    
 * Gurobi / Python の環境構築
 ** Gurobi アカウントの作成とアカデミック・ライセンスの取得
