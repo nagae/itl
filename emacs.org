@@ -22,6 +22,7 @@
       #+begin_src screen
         brew install emacs --cocoa --japanese # 最強のエディタ
         brew linkapps # emacs へのシンボリックリンクを /Applications フォルダ下に作成
+        brew install magit                                              # Emacs 上の git フロントエンド
         brew install https://gist.github.com/nagae/3009185/raw/ddskk.rb # 日本語入力 SKK
       #+end_src
 2. Spotlight で呼び出せるように Automator でアプリケーションとして登録
