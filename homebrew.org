@@ -1,4 +1,4 @@
-#+TITLE:     ITL/Homebrew によるパッケージ管理
+#+TITLE:     ITL/パッケージ管理システム homebrew の導入
 #+AUTHOR:    Takeshi Nagae
 #+EMAIL:     nagae@m.tohoku.ac.jp
 #+LANGUAGE:  ja
@@ -24,12 +24,7 @@ homebrew は研究環境に必要な様々な UNIX ツールをまとめて管�
 homebrew は同様の Mac 用パッケージ管理システムである macport に比べてインストール
 にかかる負荷が軽い．これは homebrew では「Mac OS X に標準でついてくるものまでわざ
 わざインストールしない」という方針が採用されているためである．
-* XQuartz のインストール
-XQuartz は OS X 上で動作する Xウィンドウシステム．
-- http://xquartz.macosforge.org/landing/ から最新版の dmg ファイルをダウンロードし，pkg ファイルをダブルクリック
-- インストール後にログインし直す必要がある．
-
-* インストール
+* Homebrew 本体のインストール
 ** 参考サイト
 - 本家 :: http://mxcl.github.com/homebrew/
 - https://github.com/mxcl/homebrew/wiki/installation
@@ -82,63 +77,6 @@ XQuartz は OS X 上で動作する Xウィンドウシステム．
      brew tap homebrew/science
      brew tap homebrew/python
    #+END_SRC
-* Homebrew でインストールしておくべき UNIX ツール
-** 以下を実行する
-#+BEGIN_SRC screen
-  # 以下のパッケージは独立してインストールできる(他のパッケージに依存しない)
-  brew install git                # 分散リポジトリバージョン管理システム．
-  brew install nkf                # ファイルの文字コードを一括で変換できる
-  brew install ispell             # スペルチェッカー
-  brew install xpdf               # オープンソースの PDF ツール．PDFに埋め込まれたフォントを確認する pdffonts などに必要．
-  brew install geos               # GEOS(Geometry Engine, Open Source)．地理情報処理に必要．
-  # 以下のパッケージは他のパッケージに依存する
-  brew install rsync              # フォルダのバックアップや同期を取る．
-  brew install ghostscript        # Postscript インタプリタ．Emacs上でPDFや画像ファイルを表示させる docview に必須．
-#+END_SRC
-
-** COMMENT wget
-*** 概要
-HTTP や FTP 経由でファイルを取得する．Mac OS X 標準の =curl= よりも高機能．
-*** インストール
-#+begin_src screen
-$ brew install wget
-#+end_src
-** COMMENT rsync (http://rsync.samba.org)
-*** 機能概要
-フォルダのバックアップや同期を取る．
-*** インストール
-=homebrew/dupes= をリポジトリに追加していれば，以下でインストール可能：
-#+BEGIN_SRC screen
-$ brew install rsync
-#+END_SRC
-** COMMENT git (http://git-scm.com)
-*** 機能概要
-分散リポジトリバージョン管理システム．
-*** インストール
-#+BEGIN_SRC screen
-$ brew install git
-#+END_SRC
-** COMMENT magit (http://philjackson.github.io/magit/)
-*** 機能概要
-Emacs上で動く Git 用ツール
-*** インストール
-#+BEGIN_SRC screen
-$ brew install magit
-#+END_SRC
-** COMMENT auctex (http://www.gnu.org/software/auctex/)
-*** 機能概要
-EmacsでのTeXファイル編集を支援する．
-*** インストール
-#+BEGIN_SRC screen
-brew install --with-emacs=/Applications/Emacs.app/Contents/MacOS/Emacs auctex 
-#+END_SRC
-** COMMENT ghostscript (http://www.ghostscript.com)
-*** 機能概要
-Postscript インタプリタ．Emacs上でPDFや画像ファイルを表示させる docview に必須．
-*** インストール
-#+BEGIN_SRC screen
-brew install ghostscript
-#+END_SRC
 * Homebrew の使い方
 ** ワークフロー
 - 必要なツールをインストール

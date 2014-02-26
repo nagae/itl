@@ -3,11 +3,11 @@
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
-<title>Information Technology Literacy</title>
+<title>ITL/Homebrew でインストールするパッケージ</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="Information Technology Literacy"/>
+<meta name="title" content="ITL/Homebrew でインストールするパッケージ"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-26T09:07+0900"/>
+<meta name="generated" content="2014-02-26T09:05+0900"/>
 <meta name="author" content="Takeshi Nagae"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -122,12 +122,12 @@ for the JavaScript code in this tag.
 <!--/*--><![CDATA[/*><!--*/
 org_html_manager.set("TOC_DEPTH", "1");
 org_html_manager.set("LINK_HOME", "../");
-org_html_manager.set("LINK_UP", "../");
-org_html_manager.set("LOCAL_TOC", "2");
+org_html_manager.set("LINK_UP", "./");
+org_html_manager.set("LOCAL_TOC", "1");
 org_html_manager.set("VIEW_BUTTONS", "0");
 org_html_manager.set("MOUSE_HINT", "underline");
 org_html_manager.set("FIXED_TOC", "0");
-org_html_manager.set("TOC", "0");
+org_html_manager.set("TOC", "1");
 org_html_manager.set("VIEW", "showall");
 org_html_manager.setup();  // activate after the parameters are set
 /*]]>*///-->
@@ -187,8 +187,7 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="content">
-<h1 class="title">Information Technology Literacy</h1>
-
+<h1 class="title">ITL/Homebrew でインストールするパッケージ</h1>
 
 
 
@@ -197,36 +196,72 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#27425;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1 環境を整えよう</a></li>
+<li><a href="#sec-1">1 XQuartz のインストール</a></li>
+<li><a href="#sec-2">2 Homebrew でインストールしておくべき UNIX ツール</a>
+<ul>
+<li><a href="#sec-2-1">2.1 以下を実行する</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 
 <div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> 環境を整えよう</h2>
+<h2 id="sec-1"><span class="section-number-2">1</span> XQuartz のインストール</h2>
 <div class="outline-text-2" id="text-1">
 
-<ul>
-<li><a href="./setup.html">Mac のセットアップ，基本的なソフトウェアのインストール</a>
+<p>XQuartz は OS X 上で動作する Xウィンドウシステム．各種パッケージの際に必要となる．
+</p><ul>
+<li><a href="http://xquartz.macosforge.org/landing/">http://xquartz.macosforge.org/landing/</a> から最新版の dmg ファイルをダウンロードし，pkg ファイルをダブルクリック
 </li>
-<li><a href="./homebrew.html">パッケージ管理システム homebrew の導入</a>
-</li>
-<li><a href="./emacs.html">最強のエディタ，Emacs のインストール</a>
-</li>
-<li><a href="./latex.html">LaTeX (文章執筆＆プレゼン作成用)のインストール</a>
-</li>
-<li><a href="./hombrew-packages.html">homebrew でインストールしておくべきパッケージ群</a> 
-</li>
-<li><a href="./python.html">Python + Gurobi による科学技術計算環境の構築</a>
+<li>インストール後にログインし直す必要がある．
 </li>
 </ul>
 
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Homebrew でインストールしておくべき UNIX ツール</h2>
+<div class="outline-text-2" id="text-2">
+
+
+</div>
+
+<div id="outline-container-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> 以下を実行する</h3>
+<div class="outline-text-3" id="text-2-1">
+
+
+
+
+<pre class="src src-screen"><span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#20197;&#19979;&#12398;&#12497;&#12483;&#12465;&#12540;&#12472;&#12399;&#29420;&#31435;&#12375;&#12390;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#12391;&#12365;&#12427;(&#20182;&#12398;&#12497;&#12483;&#12465;&#12540;&#12472;&#12395;&#20381;&#23384;&#12375;&#12394;&#12356;)</span>
+brew install git                <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#20998;&#25955;&#12522;&#12509;&#12472;&#12488;&#12522;&#12496;&#12540;&#12472;&#12519;&#12531;&#31649;&#29702;&#12471;&#12473;&#12486;&#12512;&#65294;</span>
+brew install nkf                <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#12501;&#12449;&#12452;&#12523;&#12398;&#25991;&#23383;&#12467;&#12540;&#12489;&#12434;&#19968;&#25324;&#12391;&#22793;&#25563;&#12391;&#12365;&#12427;</span>
+brew install ispell             <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#12473;&#12506;&#12523;&#12481;&#12455;&#12483;&#12459;&#12540;</span>
+brew install xpdf               <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#12458;&#12540;&#12503;&#12531;&#12477;&#12540;&#12473;&#12398; PDF &#12484;&#12540;&#12523;&#65294;PDF&#12395;&#22475;&#12417;&#36796;&#12414;&#12428;&#12383;&#12501;&#12457;&#12531;&#12488;&#12434;&#30906;&#35469;&#12377;&#12427; pdffonts &#12394;&#12393;&#12395;&#24517;&#35201;&#65294;</span>
+brew install geos               <span style="color: #00cd66;"># </span><span style="color: #00cd66;">GEOS(Geometry Engine, Open Source)&#65294;&#22320;&#29702;&#24773;&#22577;&#20966;&#29702;&#12395;&#24517;&#35201;&#65294;</span>
+<span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#20197;&#19979;&#12398;&#12497;&#12483;&#12465;&#12540;&#12472;&#12399;&#20182;&#12398;&#12497;&#12483;&#12465;&#12540;&#12472;&#12395;&#20381;&#23384;&#12377;&#12427;</span>
+brew install rsync              <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#12501;&#12457;&#12523;&#12480;&#12398;&#12496;&#12483;&#12463;&#12450;&#12483;&#12503;&#12420;&#21516;&#26399;&#12434;&#21462;&#12427;&#65294;</span>
+brew install ghostscript        <span style="color: #00cd66;"># </span><span style="color: #00cd66;">Postscript &#12452;&#12531;&#12479;&#12503;&#12522;&#12479;&#65294;Emacs&#19978;&#12391;PDF&#12420;&#30011;&#20687;&#12501;&#12449;&#12452;&#12523;&#12434;&#34920;&#31034;&#12373;&#12379;&#12427; docview &#12395;&#24517;&#38920;&#65294;</span>
+</pre>
+
+
+
+
+
+
+
+
+</div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">&#26085;&#20184;: 2014-02-26T09:07+0900</p>
+<p class="date">&#26085;&#20184;: 2014-02-26T09:05+0900</p>
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
