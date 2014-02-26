@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="ITL/LaTeX編"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-07T17:35+0900"/>
+<meta name="generated" content="2014-02-26T11:23+0900"/>
 <meta name="author" content="Takeshi Nagae"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -511,19 +511,9 @@ Actions:
 <h2 id="sec-3"><span class="section-number-2">3</span> otf パッケージ用のフォントの設定</h2>
 <div class="outline-text-2" id="text-3">
 
-<p>下記の情報は少し古いかも(参照：<a href="http://www.fugenji.org/~thomas/texlive-guide/font_setup.html">http://www.fugenji.org/~thomas/texlive-guide/font_setup.html</a>)
+<p>TexLive 2013 からは <code>/usr/local/texlive/2013/texmf-dist/fonts/map/dvipdfmx/jfontmaps/</code> 以下に日本語フォントマップが入っている．
+Mac OS X 用には <code>hiragino/otf-hiragino.map</code> あたりが使える(参照：<a href="http://www.fugenji.org/~thomas/texlive-guide/font_setup.html">http://www.fugenji.org/~thomas/texlive-guide/font_setup.html</a>)
 </p><ol>
-<li>フォントマップをコピーする：
-
-
-
-<pre class="src src-sh">mkdir -p /usr/local/texlive/texmf-local/fonts/map/dvipdfm/
-<span style="color: #b0c4de;">cd</span>  /usr/local/texlive/texmf-local/fonts/map/dvipdfm/
-curl -O https://gist.github.com/nagae/1353863/raw/hiragino-mini-embed.map
-curl -O https://gist.github.com/nagae/1354092/raw/hiragino-embed.map
-</pre>
-
-</li>
 <li>ヒラギノフォントにシンボリックリンクを貼る：
 
 
@@ -548,6 +538,14 @@ ln -fs <span style="color: #bdb76b;">"/Library/Fonts/&#12498;&#12521;&#12462;&#1
 </pre>
 
 </li>
+<li>デフォルトのフォントマップを <code>otf-hiragino</code> にする
+
+
+
+<pre class="src src-sh">kanji-config-updmap hiragino
+</pre>
+
+</li>
 </ol>
 
 </div>
@@ -564,10 +562,11 @@ ln -fs <span style="color: #bdb76b;">"/Library/Fonts/&#12498;&#12521;&#12462;&#1
 
 <pre class="src src-sh">mkdir -p ~/Downloads/sampletex
 <span style="color: #b0c4de;">cd</span> ~/Downloads/sampletex
-curl -O https://gist.github.com/nagae/1350983/raw/sample.tex 
+curl -O https://gist.githubusercontent.com/nagae/1350983/raw/sample.tex
 platex sample.tex 
-dvipdfm -f hiragino-mini-embed sample 
-open sample.pdf
+dvipdfmx sample -o sample1.pdf
+dvipdfmx -f noEmbed sample -o sample2.pdf
+open sample1.pdf; open sample2.pdf
 </pre>
 
 </div>
@@ -934,7 +933,7 @@ git submodule add git@github.com:emacsmirror/cdlatex.git lisp/cdlatex
 </div>
 
 <div id="postamble">
-<p class="date">&#26085;&#20184;: 2014-02-07T17:35+0900</p>
+<p class="date">&#26085;&#20184;: 2014-02-26T11:23+0900</p>
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

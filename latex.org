@@ -177,15 +177,9 @@ tlmgr conf texmf TEXMFHOME ~/Dropbox/texmf:/usr/local/share/texmf
    source ~/.bash_profile
    #+END_SRC
 * otf パッケージ用のフォントの設定
-下記の情報は少し古いかも(参照：http://www.fugenji.org/~thomas/texlive-guide/font_setup.html)
-1. フォントマップをコピーする：
-   #+BEGIN_SRC sh
-     mkdir -p /usr/local/texlive/texmf-local/fonts/map/dvipdfm/
-     cd  /usr/local/texlive/texmf-local/fonts/map/dvipdfm/
-     curl -O https://gist.github.com/nagae/1353863/raw/hiragino-mini-embed.map
-     curl -O https://gist.github.com/nagae/1354092/raw/hiragino-embed.map
-   #+END_SRC
-2. ヒラギノフォントにシンボリックリンクを貼る：
+TexLive 2013 からは =/usr/local/texlive/2013/texmf-dist/fonts/map/dvipdfmx/jfontmaps/= 以下に日本語フォントマップが入っている．
+Mac OS X 用には =hiragino/otf-hiragino.map= あたりが使える(参照：http://www.fugenji.org/~thomas/texlive-guide/font_setup.html)
+1. ヒラギノフォントにシンボリックリンクを貼る：
    #+BEGIN_SRC sh
      mkdir -p /usr/local/texlive/texmf-local/fonts/opentype/public/hiragino/
      cd /usr/local/texlive/texmf-local/fonts/opentype/public/hiragino/
@@ -196,20 +190,25 @@ tlmgr conf texmf TEXMFHOME ~/Dropbox/texmf:/usr/local/share/texmf
      ln -fs "/Library/Fonts/ヒラギノ角ゴ Pro W6.otf" ./HiraKakuPro-W6.otf
      ln -fs "/Library/Fonts/ヒラギノ角ゴ Std W8.otf" ./HiraKakuStd-W8.otf
    #+END_SRC
-3. Tex用のパスを更新：
+2. Tex用のパスを更新：
    どのフォルダからでも構わないのでターミナルから以下を実行：
    #+BEGIN_SRC sh
    mktexlsr
+   #+END_SRC
+3. デフォルトのフォントマップを =otf-hiragino= にする
+   #+BEGIN_SRC sh
+   kanji-config-updmap hiragino
    #+END_SRC
 * コンパイルしてみる
 以下をターミナルから実行してみる
 #+BEGIN_SRC sh
   mkdir -p ~/Downloads/sampletex
   cd ~/Downloads/sampletex
-  curl -O https://gist.github.com/nagae/1350983/raw/sample.tex 
+  curl -O https://gist.githubusercontent.com/nagae/1350983/raw/sample.tex
   platex sample.tex 
-  dvipdfm -f hiragino-mini-embed sample 
-  open sample.pdf
+  dvipdfmx sample -o sample1.pdf
+  dvipdfmx -f noEmbed sample -o sample2.pdf
+  open sample1.pdf; open sample2.pdf
 #+END_SRC
 * tlmgr を使って常に最新の状態を保つ
 上述の方法によって tlmgr もインストールされる．これを使えば，TeX を常に最新の状態に保てる．
