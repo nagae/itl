@@ -67,7 +67,11 @@ OS X Mavericks にはデフォルトで =Python 2.7.5= と以下のモジュー�
      brew update && brew upgrade
    #+END_SRC
 
-3. 順番に色々入れていく：
+3. 環境変数 =PYTHONPATH= に homebrew のパスを加える
+   #+BEGIN_SRC sh
+   export PYTHONPATH=/usr/local/lib/python2.7/site-packages:/Library/Python/2.7/site-package:$PYTHONPATH
+   #+END_SRC
+4. 順番に色々入れていく：
    #+BEGIN_SRC sh
      # 仮想環境構築
      sudo pip install virtualenv nose # virtualenv は Python の仮想環境を構築するもの．nose は Python の単体テストを簡単にできるように拡張したもの
@@ -76,6 +80,9 @@ OS X Mavericks にはデフォルトで =Python 2.7.5= と以下のモジュー�
      # pip install scipy が通らなくなったので，homebrew からインストールするようにした
      brew install numpy # NumPy は Python で科学計算を行うための基本パッケージ
      brew install scipy --with-openblas # SciPy は科学・工学用モジュール群
+     sudo pip isntall pyparsing # matplotlib のインストールに必要
+     brew install matplotlib --with-tex --with-qtpy # matplotlib は Python で2Dグラフをプロットするためのライブラリ
+     sudo pip install sympy # SymPy はシンボリックな数式処理のためのライブラリ
      
      # ネットワーク分析
      sudo pip install networkx    # NetworkX はネットワーク分析用パッケージ
@@ -86,11 +93,6 @@ OS X Mavericks にはデフォルトで =Python 2.7.5= と以下のモジュー�
      brew install imagemagick graphviz # imagemagick は画像の操作・表示のためのソフトウェア．graphviz はグラフ描画ソフトウェア．
      brew install cairo --without-x # cairo はベクトルベースのフリーの2Dグラフィックスライブラリ
      brew install py2cairo          # cairo 用の python 2.x バインディング
-     
-     # 数式処理，グラフのプロット
-     sudo pip install sympy # SymPy はシンボリックな数式処理のためのライブラリ
-     sudo pip install pyparse        # matplotlib のインストールに必要
-     brew install matplotlib --with-tex # matplotlib は Python で2Dグラフをプロットするためのライブラリ
      
      # デバッグ出力
      sudo pip install q                   # q はお手軽なデバッグ出力用のパッケージ
@@ -104,7 +106,7 @@ OS X Mavericks にはデフォルトで =Python 2.7.5= と以下のモジュー�
      # データ解析，自然言語処理
      sudo pip install pandas nltk         # pandas はデータ解析ライブラリ，nltk は自然言語処理ツールキット，
    #+END_SRC
-4. Homebrew でインストールした Python モジュールへのパスを通す
+5. Homebrew でインストールした Python モジュールへのパスを通す
    組み込み Python 下の pip でインストールしたライブラリと homebrew からインストー
    ルした Python ライブラリを混在させる場合には，環境変数 =PYTHONPATH= に
    homebrew 下の =site-packages= へのパスを追記する必要がある．
