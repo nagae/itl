@@ -100,7 +100,7 @@ OS X Mavericks にはデフォルトで =Python 2.7.5= と以下のモジュー�
      # インタラクティブ・モードの強化
      brew install qt pyqt # Qt は GUIツールキット．pyqt はその Python バインディング
      brew install zmq # ZeroMQ は軽さがウリのMQ(message queuing, アプリケーション間データ交換方式の1つ)
-     sudo pip install readline   # iPython で補完や履歴を表示させるのに必要
+     sudo easy_install readline   # iPython で補完や履歴を表示させるのに必要(iPython では easy_install版が強く推奨されている)
      sudo pip install ipython[zmq,qtconsole,notebook,test] # iPython は Python のインタラクティブ・モードを進化させたもの
      
      # データ解析，自然言語処理
