@@ -149,7 +149,7 @@ Python のグラフ描画パッケージ =matplotlib= 上で地理情報デー�
      sudo python setup.py install
    #+END_SRC
 6. Python で以下のスクリプトを実行してみる
-   <script src="https://gist.github.com/nagae/9243923.js"></script>
+   #+HTML: <script src="https://gist.github.com/nagae/9243923.js"></script>   
    #+BEGIN_SRC sh
    cd ~/Downloads/
    curl -O https://gist.githubusercontent.com/nagae/9243923/raw/sample_wms_basemap.py
