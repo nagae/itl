@@ -68,6 +68,19 @@ OS X Mavericks にはデフォルトで =Python 2.7.5= と以下のモジュー�
    #+END_SRC
 
 3. 環境変数 =PYTHONPATH= に homebrew のパスを加える
+
+   組み込み Python 下の pip でインストールしたライブラリと homebrew からインストー
+   ルした Python ライブラリを混在させる場合には，環境変数 =PYTHONPATH= に
+   homebrew 下の =site-packages= へのパスを追記する必要がある．
+   - =~/.bash_profile= に 以下を追加する：
+     #+BEGIN_SRC profile
+     export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
+     #+END_SRC
+
+   - ターミナルで以下を実行する
+     #+BEGIN_SRC sh
+     $ source ~/.bash_profile
+     #+END_SRC
    #+BEGIN_SRC sh
    export PYTHONPATH=/usr/local/lib/python2.7/site-packages:/Library/Python/2.7/site-package:$PYTHONPATH
    #+END_SRC
@@ -106,19 +119,6 @@ OS X Mavericks にはデフォルトで =Python 2.7.5= と以下のモジュー�
      # データ解析，自然言語処理
      sudo pip install pandas nltk # pandas はデータ解析ライブラリ，nltk は自然言語処理ツールキット，
    #+END_SRC
-5. Homebrew でインストールした Python モジュールへのパスを通す
-   組み込み Python 下の pip でインストールしたライブラリと homebrew からインストー
-   ルした Python ライブラリを混在させる場合には，環境変数 =PYTHONPATH= に
-   homebrew 下の =site-packages= へのパスを追記する必要がある．
-   - =~/.bash_profile= に 以下を追加する：
-     #+BEGIN_SRC profile
-     export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
-     #+END_SRC
-
-   - ターミナルで以下を実行する
-     #+BEGIN_SRC sh
-     $ source ~/.bash_profile
-     #+END_SRC
 
 * =matplotlib/basemap= のインストール
 Python のグラフ描画パッケージ =matplotlib= 上で地理情報データを表示できるサブモジュールが =basemap=.

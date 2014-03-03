@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Python + Gurobi による科学技術計算環境の構築"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-03T12:38+0900"/>
+<meta name="generated" content="2014-03-03T12:47+0900"/>
 <meta name="author" content="Takeshi Nagae"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -326,6 +326,28 @@ brew update &amp;&amp; brew upgrade
 </li>
 <li>環境変数 <code>PYTHONPATH</code> に homebrew のパスを加える
 
+<p>
+   組み込み Python 下の pip でインストールしたライブラリと homebrew からインストー
+   ルした Python ライブラリを混在させる場合には，環境変数 <code>PYTHONPATH</code> に
+   homebrew 下の <code>site-packages</code> へのパスを追記する必要がある．
+</p><ul>
+<li><code>~/.bash_profile</code> に 以下を追加する：
+
+
+
+<pre class="src src-profile">export PYTHONPATH=<span style="color: #bdb76b;">"/usr/local/lib/python2.7/site-packages:$PYTHONPATH"</span>
+</pre>
+
+
+</li>
+<li>ターミナルで以下を実行する
+
+
+
+<pre class="src src-sh">$ source ~/.bash_profile
+</pre>
+
+
 
 
 <pre class="src src-sh"><span style="color: #b0c4de;">export</span> <span style="color: #9acd32;">PYTHONPATH</span>=/usr/local/lib/python2.7/site-packages:/Library/Python/2.7/site-package:$<span style="color: #9acd32;">PYTHONPATH</span>
@@ -369,31 +391,6 @@ sudo pip install ipython[zmq,qtconsole,notebook,test] <span style="color: #00cd6
 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#12487;&#12540;&#12479;&#35299;&#26512;&#65292;&#33258;&#28982;&#35328;&#35486;&#20966;&#29702;</span>
 sudo pip install pandas nltk <span style="color: #00cd66;"># </span><span style="color: #00cd66;">pandas &#12399;&#12487;&#12540;&#12479;&#35299;&#26512;&#12521;&#12452;&#12502;&#12521;&#12522;&#65292;nltk &#12399;&#33258;&#28982;&#35328;&#35486;&#20966;&#29702;&#12484;&#12540;&#12523;&#12461;&#12483;&#12488;&#65292;</span>
 </pre>
-
-</li>
-<li>Homebrew でインストールした Python モジュールへのパスを通す
-   組み込み Python 下の pip でインストールしたライブラリと homebrew からインストー
-   ルした Python ライブラリを混在させる場合には，環境変数 <code>PYTHONPATH</code> に
-   homebrew 下の <code>site-packages</code> へのパスを追記する必要がある．
-<ul>
-<li><code>~/.bash_profile</code> に 以下を追加する：
-
-
-
-<pre class="src src-profile">export PYTHONPATH=<span style="color: #bdb76b;">"/usr/local/lib/python2.7/site-packages:$PYTHONPATH"</span>
-</pre>
-
-
-</li>
-<li>ターミナルで以下を実行する
-
-
-
-<pre class="src src-sh">$ source ~/.bash_profile
-</pre>
-
-</li>
-</ul>
 
 </li>
 </ol>
@@ -1059,7 +1056,7 @@ Python からファイルを呼び出すには，ターミナルで
 </div>
 
 <div id="postamble">
-<p class="date">&#26085;&#20184;: 2014-03-03T12:38+0900</p>
+<p class="date">&#26085;&#20184;: 2014-03-03T12:47+0900</p>
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
