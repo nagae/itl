@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Python + Gurobi による科学技術計算環境の構築"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-03T12:36+0900"/>
+<meta name="generated" content="2014-03-03T12:38+0900"/>
 <meta name="author" content="Takeshi Nagae"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -420,7 +420,9 @@ sudo pip install owslib
 </pre>
 
 </li>
-<li><code>basemap- のアーカイブを取得    - http://sourceforge.net/projects/matplotlib/files/matplotlib-toolkits/ から最新の =basemap-x.y.z.tar.gz</code> をダウンロード．
+<li><code>basemap</code> のアーカイブを取得
+<ul>
+<li><a href="http://sourceforge.net/projects/matplotlib/files/matplotlib-toolkits/">http://sourceforge.net/projects/matplotlib/files/matplotlib-toolkits/</a> から最新の <code>basemap-x.y.z.tar.gz</code> をダウンロード．
 </li>
 <li>2014/2/26 時点では <code>basemap-1.0.7.tar.gz</code> が最新．
 </li>
@@ -741,8 +743,8 @@ $                                   <span style="color: #00cd66;"># </span><span
 <h3 id="sec-4-2"><span class="section-number-3">4.2</span> 最小費用流問題を解いてみる</h3>
 <div class="outline-text-3" id="text-4-2">
 
-<p>次のようなネットワークを対象として起点(a)から終点(d)まで <img src="ltxpng/python_5af55eae6954fe31b835632dfbfa0b5e85572728.png" alt="$v=17$"/> 単位の製品を輸送
-する最小費用流を求める問題を考える(ただし，各リンクの <img src="ltxpng/python_fe31bbea0808c2c93e8c4b9a4c2272df84decd08.png" alt="$c$"/> は輸送費用，<img src="ltxpng/python_2f3ff76b504cd115f8ecba3aadd5ee40dff1d053.png" alt="$a$"/> は容量を表す)．
+<p>次のようなネットワークを対象として起点(a)から終点(d)まで <img src="ltxpng/python_549ffb3fb126f271fe07e7786938d87e50ca013f.png" alt="$v=17$"/> 単位の製品を輸送
+する最小費用流を求める問題を考える(ただし，各リンクの <img src="ltxpng/python_5f475c8abcf340dfa4c502961afd166aae3e7dc8.png" alt="$c$"/> は輸送費用，<img src="ltxpng/python_2fae36c1ddbbe1b8f3fd410dc17828c0ddcb836c.png" alt="$a$"/> は容量を表す)．
 </p>
 
 <p>
@@ -755,8 +757,8 @@ $                                   <span style="color: #00cd66;"># </span><span
 <h4 id="sec-4-2-1"><span class="section-number-4">4.2.1</span> モデルの定式化</h4>
 <div class="outline-text-4" id="text-4-2-1">
 
-<p>ノード集合 <img src="ltxpng/python_eb451bb2efb32097bc6e2e2cfb3f0f199c33161b.png" alt="$\ClN$"/> とリンク集合 <img src="ltxpng/python_5bd5f4992713ec8f60bb93d6cfe32213b9967a2b.png" alt="$\ClA$"/> を以下のように定義する：
-<img src="ltxpng/python_d899674d8d99ad595a5b99241de22e84d7935db2.png" alt="\[
+<p>ノード集合 <img src="ltxpng/python_123cbfc4303e8c63ad8f5c8315f33395dfe233d4.png" alt="$\ClN$"/> とリンク集合 <img src="ltxpng/python_54c8ed6c37358f54015d834c377a7a85a595f868.png" alt="$\ClA$"/> を以下のように定義する：
+<img src="ltxpng/python_e5d9a7fed64d4ad915e70f375faead42aa001ef2.png" alt="\[
 \ClN = \{a, b, c, d\}, \ClA = \{(a, b), (a, c), (b, c), (b, d), (c, d)\}
 \]"/>
 </p>
@@ -766,14 +768,14 @@ $                                   <span style="color: #00cd66;"># </span><span
 <li>最小化すべき目的関数(総輸送費用)：
 
 <p>
-   <img src="ltxpng/python_268177ee865adf1f562da88292a4a4ff7b8c2f51.png" alt="\[
+   <img src="ltxpng/python_500799317bef4892ae07a9f29c44727872e83e36.png" alt="\[
    \min_{\Vtx} \sum_{(i, j) \in \ClA} c_{i, j} x_{i, j}
    \]"/>
 </p></li>
 <li>制約条件その1(各ノードでのフロー保存則)：
 
 <p>   
-   <img src="ltxpng/python_75ee9753238239b593fa30a162746dad40456287.png" alt="\[
+   <img src="ltxpng/python_f8a93a46f386964469d89bc73537e1455675e45f.png" alt="\[
    \Subto{} \sum_{(i, n) \in \ClA} x_{i, n} - \sum_{(n, j) \in \ClA} 
    = b_{n}, \quad \forall n \in \ClN
    \]"/>
@@ -1057,7 +1059,7 @@ Python からファイルを呼び出すには，ターミナルで
 </div>
 
 <div id="postamble">
-<p class="date">&#26085;&#20184;: 2014-03-03T12:36+0900</p>
+<p class="date">&#26085;&#20184;: 2014-03-03T12:38+0900</p>
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

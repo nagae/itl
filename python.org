@@ -128,7 +128,7 @@ Python のグラフ描画パッケージ =matplotlib= 上で地理情報デー�
      brew install geos
      sudo pip install owslib
    #+END_SRC
-2. =basemap- のアーカイブを取得
+2. =basemap= のアーカイブを取得
    - http://sourceforge.net/projects/matplotlib/files/matplotlib-toolkits/ から最新の =basemap-x.y.z.tar.gz= をダウンロード．
    - 2014/2/26 時点では =basemap-1.0.7.tar.gz= が最新．
 3. アーカイブを展開
