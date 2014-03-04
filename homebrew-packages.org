@@ -28,10 +28,12 @@ XQuartz は OS X 上で動作する Xウィンドウシステム．各種パッ�
   brew install nkf                # ファイルの文字コードを一括で変換できる
   brew install ispell             # スペルチェッカー
   brew install xpdf               # オープンソースの PDF ツール．PDFに埋め込まれたフォントを確認する pdffonts などに必要．
+  brew install lha                # .lhaや.lzh 形式を展開するのに必要
   brew install geos               # GEOS(Geometry Engine, Open Source)．地理情報処理に必要．
   # 以下のパッケージは他のパッケージに依存する
   brew install rsync              # フォルダのバックアップや同期を取る．
   brew install ghostscript        # Postscript インタプリタ．Emacs上でPDFや画像ファイルを表示させる docview に必須．
+  
 #+END_SRC
 
 ** COMMENT wget
