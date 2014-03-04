@@ -247,6 +247,10 @@ $ latexmk -pv sample.tex
 #+END_SRC
 とすれば，その pdf ファイルを Preview.app で開いてくれる．
 
+* 長江研標準 Tex ライブラリ
+長江研ではユーザー個別の TeX ライブラリの置き場 =TEXMFHOME= として
+=~/Dropbox/texmf/tex= を用いる．
+- 使い方は http://github.com/nagae/texmf から．
 * Emacs との連携
 Emacs 上でのLaTeX ソースの編集に支援ツールは必須
 ** auctex
