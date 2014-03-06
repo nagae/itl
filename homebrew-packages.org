@@ -33,8 +33,37 @@ XQuartz は OS X 上で動作する Xウィンドウシステム．各種パッ�
   # 以下のパッケージは他のパッケージに依存する
   brew install rsync              # フォルダのバックアップや同期を取る．
   brew install ghostscript        # Postscript インタプリタ．Emacs上でPDFや画像ファイルを表示させる docview に必須．
-  
+
 #+END_SRC
+** xpdf
+*** インストール
+#+BEGIN_SRC sh
+brew install xpdf
+#+END_SRC
+*** 日本語サポートパッケージの追加
+- 参考URL:
+  - http://ototorosama.hatenablog.com/entry/2013/02/14/055355
+  - http://d.hatena.ne.jp/rougeref/20070313
+- ターミナルで下記を入力[1]：
+#+BEGIN_SRC sh
+  pushd ~/Downloads
+  curl -O http://ftp.jaist.ac.jp/pub/CTAN/support/xpdf/xpdf-japanese.tar.gz # ftp.jaist.ac.jp の代わりに ftp.rikengo.jp, ftp.u-aizu.ac.jp, ftp.kd­di­l­abs.jp のどれかを使ってもよい
+  tar -xzvf xpdf-japanese.tar.gz
+  cd xpdf-japanese
+  ln -s /usr/local/opt/xpdf/share/ /usr/local/share/xpdf # xpdf/share へのシンボリックリンクを作成
+  mkdir /usr/local/share/xpdf/japanese                   # japanese ディレクトリを作成
+  cp -r * /usr/local/share/xpdf/japanese                 # xpdf-japanese の中身をコピー
+  cat /usr/local/share/xpdf/japanese/add-to-xpdfrc >> /usr/local/etc/xpdfrc # xpdfrc に追記
+  popd
+#+END_SRC
+[1] この方法だと =brew uninstall xpdf= とした時に =/usr/local/share/xpdf= が残ってしまうので，=brew prune= が必要．
+*** 使い方
+例えば，=sample.pdf= にどんなフォントが埋め込まれているか確認するには
+#+BEGIN_SRC sh
+pdffonts sample.pdf
+#+END_SRC
+とする．
+
 
 ** COMMENT wget
 *** 概要

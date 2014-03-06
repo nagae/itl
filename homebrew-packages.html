@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="ITL/Homebrew でインストールするパッケージ"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-04T16:14+0900"/>
+<meta name="generated" content="2014-03-06T15:40+0900"/>
 <meta name="author" content="Takeshi Nagae"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -200,6 +200,7 @@ for the JavaScript code in this tag.
 <li><a href="#sec-2">2 Homebrew でインストールしておくべき UNIX ツール</a>
 <ul>
 <li><a href="#sec-2-1">2.1 以下を実行する</a></li>
+<li><a href="#sec-2-2">2.2 xpdf</a></li>
 </ul>
 </li>
 </ul>
@@ -250,6 +251,88 @@ brew install ghostscript        <span style="color: #00cd66;"># </span><span sty
 
 </pre>
 
+</div>
+
+</div>
+
+<div id="outline-container-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> xpdf</h3>
+<div class="outline-text-3" id="text-2-2">
+
+
+</div>
+
+<div id="outline-container-2-2-1" class="outline-4">
+<h4 id="sec-2-2-1"><span class="section-number-4">2.2.1</span> インストール</h4>
+<div class="outline-text-4" id="text-2-2-1">
+
+
+
+
+<pre class="src src-sh">brew install xpdf
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-2-2-2" class="outline-4">
+<h4 id="sec-2-2-2"><span class="section-number-4">2.2.2</span> 日本語サポートパッケージの追加</h4>
+<div class="outline-text-4" id="text-2-2-2">
+
+<ul>
+<li>参考URL:
+<ul>
+<li><a href="http://ototorosama.hatenablog.com/entry/2013/02/14/055355">http://ototorosama.hatenablog.com/entry/2013/02/14/055355</a>
+</li>
+<li><a href="http://d.hatena.ne.jp/rougeref/20070313">http://d.hatena.ne.jp/rougeref/20070313</a>
+</li>
+</ul>
+
+</li>
+<li>ターミナルで下記を入力<sup><a class="footref" name="fnr-.1" href="#fn-.1">1</a></sup>：
+</li>
+</ul>
+
+
+
+
+<pre class="src src-sh"><span style="color: #b0c4de;">pushd</span> ~/Downloads
+curl -O http://ftp.jaist.ac.jp/pub/CTAN/support/xpdf/xpdf-japanese.tar.gz <span style="color: #00cd66;"># </span><span style="color: #00cd66;">ftp.jaist.ac.jp &#12398;&#20195;&#12431;&#12426;&#12395; ftp.rikengo.jp, ftp.u-aizu.ac.jp, ftp.kd&#173;di&#173;l&#173;abs.jp &#12398;&#12393;&#12428;&#12363;&#12434;&#20351;&#12387;&#12390;&#12418;&#12424;&#12356;</span>
+tar -xzvf xpdf-japanese.tar.gz
+<span style="color: #b0c4de;">cd</span> xpdf-japanese
+ln -s /usr/local/opt/xpdf/share/ /usr/local/share/xpdf <span style="color: #00cd66;"># </span><span style="color: #00cd66;">xpdf/share &#12408;&#12398;&#12471;&#12531;&#12508;&#12522;&#12483;&#12463;&#12522;&#12531;&#12463;&#12434;&#20316;&#25104;</span>
+mkdir /usr/local/share/xpdf/japanese                   <span style="color: #00cd66;"># </span><span style="color: #00cd66;">japanese &#12487;&#12451;&#12524;&#12463;&#12488;&#12522;&#12434;&#20316;&#25104;</span>
+cp -r * /usr/local/share/xpdf/japanese                 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">xpdf-japanese &#12398;&#20013;&#36523;&#12434;&#12467;&#12500;&#12540;</span>
+cat /usr/local/share/xpdf/japanese/add-to-xpdfrc &gt;&gt; /usr/local/etc/xpdfrc <span style="color: #00cd66;"># </span><span style="color: #00cd66;">xpdfrc &#12395;&#36861;&#35352;</span>
+<span style="color: #b0c4de;">popd</span>
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-2-2-3" class="outline-4">
+<h4 id="sec-2-2-3"><span class="section-number-4">2.2.3</span> 使い方</h4>
+<div class="outline-text-4" id="text-2-2-3">
+
+<p>例えば，<code>sample.pdf</code> にどんなフォントが埋め込まれているか確認するには
+</p>
+
+
+<pre class="src src-sh">pdffonts sample.pdf
+</pre>
+
+<p>
+とする．
+</p>
+<div id="footnotes">
+<h2 class="footnotes">&#33050;&#27880;: </h2>
+<div id="text-footnotes">
+<p class="footnote"><sup><a class="footnum" name="fn-.1" href="#fnr-.1">1</a></sup> この方法だと <code>brew uninstall xpdf</code> とした時に <code>/usr/local/share/xpdf</code> が残ってしまうので，<code>brew prune</code> が必要．
+</p>
+
+
 
 
 
@@ -258,12 +341,16 @@ brew install ghostscript        <span style="color: #00cd66;"># </span><span sty
 
 
 </div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">&#26085;&#20184;: 2014-03-04T16:14+0900</p>
+<p class="date">&#26085;&#20184;: 2014-03-06T15:40+0900</p>
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
