@@ -135,8 +135,10 @@ Preference -> Settings -> Launch BetterTouchTools on startup をチェック
 - gist システムやソースのWeb編集機能は無い
 - 公開/プライベートともに無制限にリポジトリを作成できる
 - 5人までならプライベート・リポジトリを共有できる．アカデミック・アカウントなら無制限に共有できる(!)
+- 長江研では [[https://bitbucket.org/nagaelab/weeklymeeting][メンバ・ページ]] を作って報告会の情報を共有している
 *** アカウント作成・ユーティリティ
 - https://bitbucket.org から sign up
+- アカウントを作成したら，長江に通知．
 - Mac 用のユーティリティとして http://www.sourcetreeapp.com が用意されている
 *** 参考サイト
 - サインアップ :: http://toruuetani.bitbucket.org/bitbucket.html#id2
