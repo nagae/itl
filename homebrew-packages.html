@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="ITL/Homebrew でインストールするパッケージ"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-06T15:40+0900"/>
+<meta name="generated" content="2014-03-07T13:29+0900"/>
 <meta name="author" content="Takeshi Nagae"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -200,7 +200,8 @@ for the JavaScript code in this tag.
 <li><a href="#sec-2">2 Homebrew でインストールしておくべき UNIX ツール</a>
 <ul>
 <li><a href="#sec-2-1">2.1 以下を実行する</a></li>
-<li><a href="#sec-2-2">2.2 xpdf</a></li>
+<li><a href="#sec-2-2">2.2 git</a></li>
+<li><a href="#sec-2-3">2.3 xpdf</a></li>
 </ul>
 </li>
 </ul>
@@ -256,7 +257,7 @@ brew install ghostscript        <span style="color: #00cd66;"># </span><span sty
 </div>
 
 <div id="outline-container-2-2" class="outline-3">
-<h3 id="sec-2-2"><span class="section-number-3">2.2</span> xpdf</h3>
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> git</h3>
 <div class="outline-text-3" id="text-2-2">
 
 
@@ -265,6 +266,57 @@ brew install ghostscript        <span style="color: #00cd66;"># </span><span sty
 <div id="outline-container-2-2-1" class="outline-4">
 <h4 id="sec-2-2-1"><span class="section-number-4">2.2.1</span> インストール</h4>
 <div class="outline-text-4" id="text-2-2-1">
+
+<ol>
+<li>git 本体をインストール
+
+
+
+<pre class="src src-sh">brew install git
+</pre>
+
+</li>
+<li>SourceTree のインストール
+   インストール方法や使い方については
+   <a href="http://www.backlog.jp/git-guide/">http://www.backlog.jp/git-guide/</a>
+   が参考になる．
+</li>
+</ol>
+
+</div>
+
+</div>
+
+<div id="outline-container-2-2-2" class="outline-4">
+<h4 id="sec-2-2-2"><span class="section-number-4">2.2.2</span> 各種設定</h4>
+<div class="outline-text-4" id="text-2-2-2">
+
+<ol>
+<li>プッシュのデフォルト方式を <code>simple</code> (現在のブランチと同じ名前のブランチがリモートにある場合にのみプッシュ)にする(<a href="http://qiita.com/yaotti/items/a8e9f5de8dcca81d3214">参考</a>)．
+
+
+
+<pre class="src src-sh">git config --global push.default.simple
+</pre>
+
+</li>
+</ol>
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> xpdf</h3>
+<div class="outline-text-3" id="text-2-3">
+
+
+</div>
+
+<div id="outline-container-2-3-1" class="outline-4">
+<h4 id="sec-2-3-1"><span class="section-number-4">2.3.1</span> インストール</h4>
+<div class="outline-text-4" id="text-2-3-1">
 
 
 
@@ -276,9 +328,9 @@ brew install ghostscript        <span style="color: #00cd66;"># </span><span sty
 
 </div>
 
-<div id="outline-container-2-2-2" class="outline-4">
-<h4 id="sec-2-2-2"><span class="section-number-4">2.2.2</span> 日本語サポートパッケージの追加</h4>
-<div class="outline-text-4" id="text-2-2-2">
+<div id="outline-container-2-3-2" class="outline-4">
+<h4 id="sec-2-3-2"><span class="section-number-4">2.3.2</span> 日本語サポートパッケージの追加</h4>
+<div class="outline-text-4" id="text-2-3-2">
 
 <ul>
 <li>参考URL:
@@ -312,9 +364,9 @@ cat /usr/local/share/xpdf/japanese/add-to-xpdfrc &gt;&gt; /usr/local/etc/xpdfrc 
 
 </div>
 
-<div id="outline-container-2-2-3" class="outline-4">
-<h4 id="sec-2-2-3"><span class="section-number-4">2.2.3</span> 使い方</h4>
-<div class="outline-text-4" id="text-2-2-3">
+<div id="outline-container-2-3-3" class="outline-4">
+<h4 id="sec-2-3-3"><span class="section-number-4">2.3.3</span> 使い方</h4>
+<div class="outline-text-4" id="text-2-3-3">
 
 <p>例えば，<code>sample.pdf</code> にどんなフォントが埋め込まれているか確認するには
 </p>
@@ -350,7 +402,7 @@ cat /usr/local/share/xpdf/japanese/add-to-xpdfrc &gt;&gt; /usr/local/etc/xpdfrc 
 </div>
 
 <div id="postamble">
-<p class="date">&#26085;&#20184;: 2014-03-06T15:40+0900</p>
+<p class="date">&#26085;&#20184;: 2014-03-07T13:29+0900</p>
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

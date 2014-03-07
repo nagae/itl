@@ -35,6 +35,21 @@ XQuartz は OS X 上で動作する Xウィンドウシステム．各種パッ�
   brew install ghostscript        # Postscript インタプリタ．Emacs上でPDFや画像ファイルを表示させる docview に必須．
 
 #+END_SRC
+** git
+*** インストール
+1) git 本体をインストール
+   #+BEGIN_SRC sh
+     brew install git
+   #+END_SRC
+2) SourceTree のインストール
+   インストール方法や使い方については
+   http://www.backlog.jp/git-guide/
+   が参考になる．
+*** 各種設定
+1) プッシュのデフォルト方式を =simple= (現在のブランチと同じ名前のブランチがリモートにある場合にのみプッシュ)にする([[http://qiita.com/yaotti/items/a8e9f5de8dcca81d3214][参考]])．
+   #+BEGIN_SRC sh
+     git config --global push.default.simple
+   #+END_SRC
 ** xpdf
 *** インストール
 #+BEGIN_SRC sh
