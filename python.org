@@ -3,32 +3,25 @@
 #+EMAIL:     nagae@m.tohoku.ac.jp
 #+LANGUAGE:  ja
 #+OPTIONS:   H:3 num:3 toc:2 \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t author:t creator:t
-#+OPTIONS:   TeX:t LaTeX:dvipng skip:nil d:nil todo:nil pri:nil tags:not-in-toc timestamp:t
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
 
 #+OPTIONS: toc:1 num:3
 
-#+INFOJS_OPT: path:org-info.js
-#+INFOJS_OPT: view:showall toc:t sdepth:2 ltoc:1
-#+INFOJS_OPT: toc:t tdepth:1 view:showall mouse:underline buttons:nil
-#+INFOJS_OPT: up:./ home:../
-
-#+STYLE: <link rel=stylesheet href="style.css" type="text/css">
-#+latex_header:\usepackage{amsmath,rmss_math,rmss_color}
-
 #+OPTIONS: html-link-use-abs-url:nil html-postamble:auto html-preamble:t
-#+OPTIONS: html-scripts:t html-style:t html5-fancy:nil tex:t
+#+OPTIONS: html-scripts:t html-style:t html5-fancy:nil tex:imagemagick
 #+CREATOR: <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)
 #+HTML_CONTAINER: div
 #+HTML_DOCTYPE: xhtml-strict
-#+HTML_HEAD:
+#+HTML_HEAD:<link rel=stylesheet href="style.css" type="text/css">
 #+HTML_HEAD_EXTRA:
 #+HTML_LINK_HOME:
 #+HTML_LINK_UP:
 #+HTML_MATHJAX:
-#+INFOJS_OPT:
-#+LATEX_HEADER:
+#+INFOJS_OPT: view:showall toc:t sdepth:2 ltoc:1
+#+INFOJS_OPT: toc:t tdepth:1 view:showall mouse:underline buttons:nil
+#+INFOJS_OPT: up:./ home:../
+#+LATEX_HEADER:\usepackage{amsmath,rmss_math,rmss_color}
 
 * Python の環境構築
 ** Python のバージョン確認
