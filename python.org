@@ -17,6 +17,19 @@
 #+STYLE: <link rel=stylesheet href="style.css" type="text/css">
 #+latex_header:\usepackage{amsmath,rmss_math,rmss_color}
 
+#+OPTIONS: html-link-use-abs-url:nil html-postamble:auto html-preamble:t
+#+OPTIONS: html-scripts:t html-style:t html5-fancy:nil tex:t
+#+CREATOR: <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)
+#+HTML_CONTAINER: div
+#+HTML_DOCTYPE: xhtml-strict
+#+HTML_HEAD:
+#+HTML_HEAD_EXTRA:
+#+HTML_LINK_HOME:
+#+HTML_LINK_UP:
+#+HTML_MATHJAX:
+#+INFOJS_OPT:
+#+LATEX_HEADER:
+
 * Python の環境構築
 ** Python のバージョン確認
 - Gurobi は Mac OS X デフォルトの Python しかサポートしない([[https://groups.google.com/d/msg/gurobi/ghzhXNugDxs/mFNWanBl1fMJ][参考]])．まずは Python
@@ -119,7 +132,12 @@ OS X Mavericks にはデフォルトで =Python 2.7.5= と以下のモジュー�
      # データ解析，自然言語処理
      sudo pip install pandas nltk # pandas はデータ解析ライブラリ，nltk は自然言語処理ツールキット，
    #+END_SRC
-
+5. パッケージ設定：
+   Python で =site-packages= を探せるようにする：
+   #+BEGIN_SRC sh
+     mkdir -p ~/Library/Python/2.7/lib/python/site-packages
+     echo '/usr/local/lib/python2.7/site-packages' >> ~/Library/Python/2.7/lib/python/site-packages/homebrew.pth
+   #+END_SRC
 * =matplotlib/basemap= のインストール
 Python のグラフ描画パッケージ =matplotlib= 上で地理情報データを表示できるサブモジュールが =basemap=.
 参考URL: http://blog.bluedackers.com/2012/11/13/installing-basemap-on-mac-os-x-mountain-lion/
