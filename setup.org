@@ -9,12 +9,16 @@
 
 #+OPTIONS: toc:1 num:3
 
-#+INFOJS_OPT: path:org-info.js
+#+OPTIONS: html-link-use-abs-url:nil html-postamble:auto html-preamble:t
+#+OPTIONS: html-scripts:t html-style:t html5-fancy:nil tex:imagemagick
+#+CREATOR: <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)
+#+HTML_CONTAINER: div
+#+HTML_DOCTYPE: xhtml-strict
+#+HTML_HEAD:<link rel=stylesheet href="style.css" type="text/css">
 #+INFOJS_OPT: view:showall toc:t sdepth:2 ltoc:1
 #+INFOJS_OPT: toc:t tdepth:1 view:showall mouse:underline buttons:nil
 #+INFOJS_OPT: up:./ home:../
-
-#+STYLE: <link rel=stylesheet href="style.css" type="text/css">
+#+LATEX_HEADER:\usepackage{amsmath,rmss_math,rmss_color}
 
 * Mac のセットアップ
 ** ソフトウェア・アップデートの実行
@@ -29,13 +33,13 @@ Mac に入っている OS が最新のものになっていない場合，後述
 - システム環境設定→spotlight を開いて設定
 ** Trackpad の設定
 - システム環境設定→トラックパッド
-#+ATTR_HTML: alt="trackpad設定" align="center" width="600"
+#+ATTR_HTML: :alt "trackpad設定" :align center :width 600
 [[file:fig/setup_trackpad.png]]
 ** キーボード・ショートカット
 - Mac では ⌘ (command), control, shift, option のキーとアルファベットや数字キーを組み合わえることで様々な機能を呼び出せる．
   http://support.apple.com/kb/HT1343?viewlocale=ja_JP
 *** 覚えておくと便利なショートカット
-#+ATTR_HTML: ID="align_left" rules="all"
+#+ATTR_HTML: :ID align_left :rules all
 | ショートカット        | 機能                         |
 |-----------------------+------------------------------|
 | ⌘+c                   | コピー                       |
@@ -72,19 +76,28 @@ rm -r BetterTouchTool.app
 *** ログインと同時に起動するように
 Preference -> Settings -> Launch BetterTouchTools on startup をチェック
 *** Global
-#+ATTR_HTML: ID="align_left" rules="all"
-| ジェスチャー                  | 機能                         | 解説                                                                                                                  |
-|-------------------------------+------------------------------+-----------------------------------------------------------------------------------------------------------------------|
-| Corner Click Bottom Right     | Sleep Display                | Trackpadの右下をクリック : ディスプレイをスリープ                                                                     |
-| Three Finger Click            | Lookup word under cursor     | 3本指クリック: カーソル下の単語を調べる                                                                               |
-| Three Finger Clickswipe Down  | Restore old window size      | 3本指で下へクリック・スワイプ : ウィンドウのサイズを元に戻す                                                          |
-| Three Finger Clickswipe Left  | Maximize Window Left         | 3本指で左へクリック・スワイプ : ウィンドウを画面の左半分にスナップ・最大化                                            |
-| Three Finger Clickswipe Right | Maximize Window Right        | 3本指で右へクリック・スワイプ : ウィンドウを画面の右半分にスナップ・最大化                                            |
-| Three Finger Clickswipe Up    | Maximize Window              | 3本指で上へクリック・スワイプ : ウィンドウを最大化                                                                    |
-| Three Finger Swipe Up         | End (end of the page)        | 3本指で上へスワイプ : ページの最後へ（Endと同じ）                                                                     |
-| Three Finger Swipe Down       | Home (beginning of the page) | 3本指で下へスワイプ : ページの先頭へ（fn + ←と同じ）                                                                 |
-| Three Finger Swipe Left       | ⌘⇧]                          | 3本指で右から左へスワイプ : 右のタブへ(Safari.app, Terminal.app, Firefox.app, Google Chrome.app などで共通に利用可能) |
-| Three Finger Swipe Right      | ⌘⇧[                          | 3本指で左から右へスワイプ : 左のタブへ                                                                                |
+#+ATTR_HTML: :ID align_left :rules all
+| ジェスチャー                          | 機能                                         | 解説                                                                                                                  |
+|---------------------------------------+----------------------------------------------+-----------------------------------------------------------------------------------------------------------------------|
+| Corner Click Bottom Right             | Sleep Display                                | Trackpadの右下をクリック : ディスプレイをスリープ                                                                     |
+| Three Finger Click                    | Lookup word under cursor                     | 3本指クリック: カーソル下の単語を調べる                                                                               |
+| Three Finger Clickswipe Down          | Restore old window size                      | 3本指で下へクリック・スワイプ : ウィンドウのサイズを元に戻す                                                          |
+| Three Finger Clickswipe Left          | Maximize Window Left                         | 3本指で左へクリック・スワイプ : ウィンドウを画面の左半分にスナップ・最大化                                            |
+| Three Finger Clickswipe Right         | Maximize Window Right                        | 3本指で右へクリック・スワイプ : ウィンドウを画面の右半分にスナップ・最大化                                            |
+| Three Finger Clickswipe Up            | Maximize Window                              | 3本指で上へクリック・スワイプ : ウィンドウを最大化                                                                    |
+| Three Finger Clickswipe Left + Shift  | Resize Window to Top Left Quarter/Corner     | シフト+3本指で左へクリックスワイプ：ウィンドウを左上4分の1にスナップ                                                  |
+| Three Finger Clickswipe Left + fn     | Resize Window to Bottom Left Quarter/Corner  | fn +3本指で左へクリックスワイプ：ウィンドウを左下4分の1にスナップ                                                     |
+| Three Finger Clickswipe Right + Shift | Resize Window to Top Right Quarter/Corner    | シフト+3本指で右へクリックスワイプ：ウィンドウを右上4分の1にスナップ                                                  |
+| Three Finger Clickswipe Right + fn    | Resize Window to Bottom Right Quarter/Corner | fn +3本指で右へクリックスワイプ：ウィンドウを右下4分の1にスナップ                                                     |
+|---------------------------------------+----------------------------------------------+-----------------------------------------------------------------------------------------------------------------------|
+| TipTap Left                           | Page Up                                      | 2本の指を置いた後，左側の指をタップ：上スクロール                                                                     |
+| TipTap Right                          | Page Down                                    | 2本の指を置いた後，右側の指をタップ：上スクロール                                                                     |
+| Two Finger TipTap Right               | End (end of the page)                        | 3本の指を置いた後，一番右側の指でタップ：ページの最後へ（fn + →と同じ）                                              |
+| Two Finger TipTap Left                | Home (beginning of the page)                 | 3本の指を置いた後，一番左の指でタップ：ページの先頭へ（fn + ←と同じ）                                                |
+| Three Finger Swipe Left               | ⌘⇧]                                          | 3本指で右から左へスワイプ : 右のタブへ(Safari.app, Terminal.app, Firefox.app, Google Chrome.app などで共通に利用可能) |
+| Three Finger Swipe Right              | ⌘⇧[                                          | 3本指で左から右へスワイプ : 左のタブへ                                                                                |
+|---------------------------------------+----------------------------------------------+-----------------------------------------------------------------------------------------------------------------------|
+#+TBLFM: 
 
 * 各種サービスのアカウント作成とユーティリティのインストール
 ** iCloud (https://www.icloud.com)
@@ -161,17 +174,17 @@ Preference -> Settings -> Launch BetterTouchTools on startup をチェック
   #+END_SRC
 *** Bitbucket に SSH の公開鍵を登録する
 - [[https://bitbucket.org/][Bitbucket]] の右上のアバターから「Manage account」を選ぶ
-  #+ATTR_HTML: align="center" width="600"
+  #+ATTR_HTML: :align center :width 600
   [[file:fig/Bitbucket-icon.png]]
 - 左側のメニューから「SSH keys」を選び，「Add Key」をクリック
-  #+ATTR_HTML: align="center" width="600"
+  #+ATTR_HTML: :align center :width 600
   [[file:fig/Bitbucket-SSH_keys.png]]
 - 適当なラベルを与えたあと，公開鍵を Keys にコピーする．ターミナル上で
   #+begin_src screen
   pbcopy < ~/.ssh/id_rsa.pub
   #+end_src
   としてから Key のところでペーストすると簡単．
-  #+ATTR_HTML: align="center" width="600"
+  #+ATTR_HTML: :align center :width 600
   [[file:fig/Bitbucket-Add_key.png]]
 - =~/.ssh/config= に以下を記載
   #+BEGIN_SRC text
@@ -225,14 +238,14 @@ Preference -> Settings -> Launch BetterTouchTools on startup をチェック
 
 *** Github に SSH の公開鍵を登録する
 - [[https://github.com/][github.com]] の右上のユーザー名をクリック
-  #+attr_HTML: align="center" width="600"
+  #+ATTR_HTML: :align center :width 600
   [[file:fig/Github-icon.png]]
 - ダッシュボード画面で右上の「Edit Your Profile」をクリック
-  #+attr_HTML: align="center" width="600"
+  #+ATTR_HTML: :align center :width 600
   [[file:fig/Github-edit_profile.png]]
 - 左側のメニューから「SSH Keys」を選び，「Add SSH Key」をクリック．
 - 編集画面が開くので，Title に適当なラベルを与え(省略可能)，公開鍵を Key にペーストし「Add Key」をクリック．
-  #+attr_HTML: align="center" width="600"
+  #+ATTR_HTML: :align center :width 600
   [[file:fig/Github-Add_SSH_key.png]]
 - 公開鍵をペーストする簡単な方法：ターミナル上で
   #+begin_src screen
