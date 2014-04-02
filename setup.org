@@ -81,7 +81,7 @@ dmg ファイルをダブルクリックすると，新しいドライブが認�
 *** ターミナルだけでも行える
 #+BEGIN_SRC screen
 cd ~/Downloads/
-curl -O http://bettertouchtool.net/BetterTouchTool.zip
+curl -LO http://bettertouchtool.net/BetterTouchTool.zip
 unzip -o BetterTouchTool.zip
 cp -r BetterTouchTool.app/ /Applications/
 rm -r BetterTouchTool.app
