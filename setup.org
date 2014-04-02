@@ -83,14 +83,30 @@ dmg ファイルをダブルクリックすると，新しいドライブが認�
 cd ~/Downloads/
 curl -LO http://bettertouchtool.net/BetterTouchTool.zip
 unzip -o BetterTouchTool.zip
-cp -r BetterTouchTool.app/ /Applications/
-rm -r BetterTouchTool.app
+mv BetterTouchTool.app/ /Applications/
 #+END_SRC
+** Window Snapping の設定
+- "Do you want to activate Window Snapping (...)?" というメッセージが出るので
+  「Yes, activate the window snapping!」を選択
+  #+ATTR_HTML: :align center :width 600
+  [[file:fig/BTT-WindowSnap.png]]
+- しばらく待つと「"BetterTouchTool"はアクセシビリティ機能を使用してこのコンピュータを制御することを求めています。」というダイアログが出るので「"システム環境設定"を開く」を選択
+  #+ATTR_HTML: :align center :width 600
+  [[file:fig/BTT-Accessibility1.png]]
+- 設定を変更するために右下の鍵マークをクリックし，パスワードを入力
+  #+ATTR_HTML: :align center :width 600
+  [[file:fig/BTT-Accessibility2.png]]
+- 「下のアプリケーションにコンピュータの制御を許可。」欄にある BetterTouchTool の横のチェックボックスをチェック．
+  #+ATTR_HTML: :align center :width 600
+  [[file:fig/BTT-Accessibility3.png]]
 ** 設定例
 *** ログインと同時に起動するように
 Preference -> Settings -> Launch BetterTouchTools on startup をチェック
 *** Global Setting
-[[file:btt_setting][設定ファイル]] をダウンロードしてインポートしてもよい
+- [[file:btt_setting][設定ファイル]] をダウンロード
+- BetterTouchTool の左メニューから「Import」を選択し，ダウンロードしたファイルを選択
+  #+ATTR_HTML: :align center :width 600
+  [[file:fig/BTT-Import.png]]
 #+ATTR_HTML: :ID align_left :rules all
 | ジェスチャー                          | 機能                                         | 解説                                                                                                                  |
 |---------------------------------------+----------------------------------------------+-----------------------------------------------------------------------------------------------------------------------|
