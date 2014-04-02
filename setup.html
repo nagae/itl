@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
 <title>ITL/セットアップ編</title>
-<!-- 2014-04-02 Wed 11:51 -->
+<!-- 2014-04-02 Wed 13:50 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Takeshi Nagae" />
@@ -224,22 +224,28 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#sec-2">2. ソフトウェアのインストール方法</a></li>
-<li><a href="#sec-3">3. BetterTouchTools のインストールと設定</a>
+<li><a href="#sec-3">3. セキュリティソフトウェアのインストール</a>
 <ul>
-<li><a href="#sec-3-1">3.1. BTT の特徴</a></li>
-<li><a href="#sec-3-2">3.2. インストール方法</a></li>
-<li><a href="#sec-3-3">3.3. 設定例</a></li>
+<li><a href="#sec-3-1">3.1. エフセキュアのインストール</a></li>
+<li><a href="#sec-3-2">3.2. ライセンスコードの取得</a></li>
 </ul>
 </li>
-<li><a href="#sec-4">4. 各種サービスのアカウント作成とユーティリティのインストール</a>
+<li><a href="#sec-4">4. BetterTouchTools のインストールと設定</a>
 <ul>
-<li><a href="#sec-4-1">4.1. iCloud ()</a></li>
-<li><a href="#sec-4-2">4.2. Dropbox ()</a></li>
-<li><a href="#sec-4-3">4.3. Cloud.app ()</a></li>
-<li><a href="#sec-4-4">4.4. Github ()</a></li>
-<li><a href="#sec-4-5">4.5. Bitbucket ()</a></li>
-<li><a href="#sec-4-6">4.6. Evernote (必須ではない)</a></li>
-<li><a href="#sec-4-7">4.7. Github / Bitbucket に SSH で接続する</a></li>
+<li><a href="#sec-4-1">4.1. BTT の特徴</a></li>
+<li><a href="#sec-4-2">4.2. インストール方法</a></li>
+<li><a href="#sec-4-3">4.3. 設定例</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. 各種サービスのアカウント作成とユーティリティのインストール</a>
+<ul>
+<li><a href="#sec-5-1">5.1. iCloud ()</a></li>
+<li><a href="#sec-5-2">5.2. Dropbox ()</a></li>
+<li><a href="#sec-5-3">5.3. Cloud.app ()</a></li>
+<li><a href="#sec-5-4">5.4. Github ()</a></li>
+<li><a href="#sec-5-5">5.5. Bitbucket ()</a></li>
+<li><a href="#sec-5-6">5.6. Evernote (必須ではない)</a></li>
+<li><a href="#sec-5-7">5.7. Github / Bitbucket に SSH で接続する</a></li>
 </ul>
 </li>
 </ul>
@@ -391,23 +397,62 @@ Mac に入っている OS が最新のものになっていない場合，後述
 <p>
 Mac ではソフトウェアのインストール方法に3通りある．
 </p>
-<ul class="org-ul">
+<ol class="org-ol">
 <li>App Store からインストールする
 </li>
 <li>.app ファイルをアプリケーション・フォルダに移動させる
 </li>
 <li>.pkg ファイルをダブルクリックする
 </li>
-</ul>
+</ol>
+
+<p>
+2や3の方法の場合，必要となるファイルが dmg (仮想ドライブイメージ)ファイルとして提供されている場合がある．
+dmg ファイルをダブルクリックすると，新しいドライブが認識される．その中に .app ファイルが入っていたり，.pkg ファイルが入っていたりする．
+</p>
 </div>
 </div>
 
 <div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> BetterTouchTools のインストールと設定</h2>
+<h2 id="sec-3"><span class="section-number-2">3</span> セキュリティソフトウェアのインストール</h2>
 <div class="outline-text-2" id="text-3">
 </div><div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="section-number-3">3.1</span> BTT の特徴</h3>
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> エフセキュアのインストール</h3>
 <div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>TAINS のホームページからセキュリティ対策ソフトウェア-&gt;エフセキュアを選択：
+<a href="https://www2.tains.tohoku.ac.jp/fw/dfw/INFO/modules/pico/index.php?content_id=16">https://www2.tains.tohoku.ac.jp/fw/dfw/INFO/modules/pico/index.php?content_id=16</a>
+</li>
+<li>「ダウンロード」ボタンから dmg  ファイルをダウンロードする
+</li>
+<li>dmg ファイルをマウントし，F-Secure****.mpkg というファイルをダブルクリック
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> ライセンスコードの取得</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>同じページから「ライセンスキーコードを取得する」ボタンをクリック
+</li>
+<li>「ご了解，ご注意事項」を読んだ後「同意する」ボタンをクリック
+</li>
+<li>ライセンスコードがいくつか表示されるので，その中の1つ(どれでもいい)を
+エフセキュアのライセンスコード入力欄にコピー＆ペースト
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> BetterTouchTools のインストールと設定</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> BTT の特徴</h3>
+<div class="outline-text-3" id="text-4-1">
 <ul class="org-ul">
 <li>Trackpad による様々なジェスチャーを各種機能に設定できる
 </li>
@@ -415,12 +460,12 @@ Mac ではソフトウェアのインストール方法に3通りある．
 </div>
 </div>
 
-<div id="outline-container-sec-3-2" class="outline-3">
-<h3 id="sec-3-2"><span class="section-number-3">3.2</span> インストール方法</h3>
-<div class="outline-text-3" id="text-3-2">
-</div><div id="outline-container-sec-3-2-1" class="outline-4">
-<h4 id="sec-3-2-1"><span class="section-number-4">3.2.1</span> マウスを使う場合</h4>
-<div class="outline-text-4" id="text-3-2-1">
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> インストール方法</h3>
+<div class="outline-text-3" id="text-4-2">
+</div><div id="outline-container-sec-4-2-1" class="outline-4">
+<h4 id="sec-4-2-1"><span class="section-number-4">4.2.1</span> マウスを使う場合</h4>
+<div class="outline-text-4" id="text-4-2-1">
 <ul class="org-ul">
 <li><a href="http://www.boastr.de/">http://www.boastr.de/</a> から BetterTouchTool.zip をダウンロード
 </li>
@@ -432,9 +477,9 @@ Mac ではソフトウェアのインストール方法に3通りある．
 </div>
 </div>
 
-<div id="outline-container-sec-3-2-2" class="outline-4">
-<h4 id="sec-3-2-2"><span class="section-number-4">3.2.2</span> ターミナルだけでも行える</h4>
-<div class="outline-text-4" id="text-3-2-2">
+<div id="outline-container-sec-4-2-2" class="outline-4">
+<h4 id="sec-4-2-2"><span class="section-number-4">4.2.2</span> ターミナルだけでも行える</h4>
+<div class="outline-text-4" id="text-4-2-2">
 <div class="org-src-container">
 
 <pre class="src src-screen"><span style="color: #b0c4de;">cd</span> ~/Downloads/
@@ -448,21 +493,21 @@ rm -r BetterTouchTool.app
 </div>
 </div>
 
-<div id="outline-container-sec-3-3" class="outline-3">
-<h3 id="sec-3-3"><span class="section-number-3">3.3</span> 設定例</h3>
-<div class="outline-text-3" id="text-3-3">
-</div><div id="outline-container-sec-3-3-1" class="outline-4">
-<h4 id="sec-3-3-1"><span class="section-number-4">3.3.1</span> ログインと同時に起動するように</h4>
-<div class="outline-text-4" id="text-3-3-1">
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> 設定例</h3>
+<div class="outline-text-3" id="text-4-3">
+</div><div id="outline-container-sec-4-3-1" class="outline-4">
+<h4 id="sec-4-3-1"><span class="section-number-4">4.3.1</span> ログインと同時に起動するように</h4>
+<div class="outline-text-4" id="text-4-3-1">
 <p>
 Preference -&gt; Settings -&gt; Launch BetterTouchTools on startup をチェック
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-3-3-2" class="outline-4">
-<h4 id="sec-3-3-2"><span class="section-number-4">3.3.2</span> Global Setting</h4>
-<div class="outline-text-4" id="text-3-3-2">
+<div id="outline-container-sec-4-3-2" class="outline-4">
+<h4 id="sec-4-3-2"><span class="section-number-4">4.3.2</span> Global Setting</h4>
+<div class="outline-text-4" id="text-4-3-2">
 <p>
 <a href="btt_setting">設定ファイル</a> をダウンロードしてインポートしてもよい
 </p>
@@ -586,15 +631,15 @@ Preference -&gt; Settings -&gt; Launch BetterTouchTools on startup をチェッ�
 </div>
 </div>
 </div>
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> 各種サービスのアカウント作成とユーティリティのインストール</h2>
-<div class="outline-text-2" id="text-4">
-</div><div id="outline-container-sec-4-1" class="outline-3">
-<h3 id="sec-4-1"><span class="section-number-3">4.1</span> iCloud (<a href="https://www.icloud.com">https://www.icloud.com</a>)</h3>
-<div class="outline-text-3" id="text-4-1">
-</div><div id="outline-container-sec-4-1-1" class="outline-4">
-<h4 id="sec-4-1-1"><span class="section-number-4">4.1.1</span> 特徴</h4>
-<div class="outline-text-4" id="text-4-1-1">
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> 各種サービスのアカウント作成とユーティリティのインストール</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> iCloud (<a href="https://www.icloud.com">https://www.icloud.com</a>)</h3>
+<div class="outline-text-3" id="text-5-1">
+</div><div id="outline-container-sec-5-1-1" class="outline-4">
+<h4 id="sec-5-1-1"><span class="section-number-4">5.1.1</span> 特徴</h4>
+<div class="outline-text-4" id="text-5-1-1">
 <ul class="org-ul">
 <li>無料で5GBのクラウドストレージ．
 </li>
@@ -606,9 +651,9 @@ Preference -&gt; Settings -&gt; Launch BetterTouchTools on startup をチェッ�
 </div>
 </div>
 
-<div id="outline-container-sec-4-1-2" class="outline-4">
-<h4 id="sec-4-1-2"><span class="section-number-4">4.1.2</span> アカウント作成・ユーティリティ</h4>
-<div class="outline-text-4" id="text-4-1-2">
+<div id="outline-container-sec-5-1-2" class="outline-4">
+<h4 id="sec-5-1-2"><span class="section-number-4">5.1.2</span> アカウント作成・ユーティリティ</h4>
+<div class="outline-text-4" id="text-5-1-2">
 <ul class="org-ul">
 <li><a href="http://www.apple.com/jp/icloud/setup/mac.html">http://www.apple.com/jp/icloud/setup/mac.html</a> を参考に
 </li>
@@ -617,12 +662,12 @@ Preference -&gt; Settings -&gt; Launch BetterTouchTools on startup をチェッ�
 </div>
 </div>
 
-<div id="outline-container-sec-4-2" class="outline-3">
-<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Dropbox (<a href="https://www.dropbox.com/">https://www.dropbox.com/</a>)</h3>
-<div class="outline-text-3" id="text-4-2">
-</div><div id="outline-container-sec-4-2-1" class="outline-4">
-<h4 id="sec-4-2-1"><span class="section-number-4">4.2.1</span> 特徴</h4>
-<div class="outline-text-4" id="text-4-2-1">
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Dropbox (<a href="https://www.dropbox.com/">https://www.dropbox.com/</a>)</h3>
+<div class="outline-text-3" id="text-5-2">
+</div><div id="outline-container-sec-5-2-1" class="outline-4">
+<h4 id="sec-5-2-1"><span class="section-number-4">5.2.1</span> 特徴</h4>
+<div class="outline-text-4" id="text-5-2-1">
 <ul class="org-ul">
 <li>無料で2GBのクラウドストレージ．
 </li>
@@ -638,9 +683,9 @@ Preference -&gt; Settings -&gt; Launch BetterTouchTools on startup をチェッ�
 </div>
 </div>
 
-<div id="outline-container-sec-4-2-2" class="outline-4">
-<h4 id="sec-4-2-2"><span class="section-number-4">4.2.2</span> アカウント作成・ユーティリティ</h4>
-<div class="outline-text-4" id="text-4-2-2">
+<div id="outline-container-sec-5-2-2" class="outline-4">
+<h4 id="sec-5-2-2"><span class="section-number-4">5.2.2</span> アカウント作成・ユーティリティ</h4>
+<div class="outline-text-4" id="text-5-2-2">
 <ul class="org-ul">
 <li><a href="http://db.tt/pqpSl9b">http://db.tt/pqpSl9b</a> からアカウントを作成
 </li>
@@ -651,12 +696,12 @@ Preference -&gt; Settings -&gt; Launch BetterTouchTools on startup をチェッ�
 </div>
 </div>
 
-<div id="outline-container-sec-4-3" class="outline-3">
-<h3 id="sec-4-3"><span class="section-number-3">4.3</span> Cloud.app (<a href="http://getcloudapp.com">http://getcloudapp.com</a>)</h3>
-<div class="outline-text-3" id="text-4-3">
-</div><div id="outline-container-sec-4-3-1" class="outline-4">
-<h4 id="sec-4-3-1"><span class="section-number-4">4.3.1</span> 特徴</h4>
-<div class="outline-text-4" id="text-4-3-1">
+<div id="outline-container-sec-5-3" class="outline-3">
+<h3 id="sec-5-3"><span class="section-number-3">5.3</span> Cloud.app (<a href="http://getcloudapp.com">http://getcloudapp.com</a>)</h3>
+<div class="outline-text-3" id="text-5-3">
+</div><div id="outline-container-sec-5-3-1" class="outline-4">
+<h4 id="sec-5-3-1"><span class="section-number-4">5.3.1</span> 特徴</h4>
+<div class="outline-text-4" id="text-5-3-1">
 <ul class="org-ul">
 <li>ファイルの共有機能に特化．
 </li>
@@ -670,9 +715,9 @@ Preference -&gt; Settings -&gt; Launch BetterTouchTools on startup をチェッ�
 </div>
 </div>
 
-<div id="outline-container-sec-4-3-2" class="outline-4">
-<h4 id="sec-4-3-2"><span class="section-number-4">4.3.2</span> アカウント作成・ユーティリティ</h4>
-<div class="outline-text-4" id="text-4-3-2">
+<div id="outline-container-sec-5-3-2" class="outline-4">
+<h4 id="sec-5-3-2"><span class="section-number-4">5.3.2</span> アカウント作成・ユーティリティ</h4>
+<div class="outline-text-4" id="text-5-3-2">
 <ul class="org-ul">
 <li><a href="http://getcloudapp.com">http://getcloudapp.com</a> からアカウント作成＆ユーティリティをダウンロード
 </li>
@@ -682,9 +727,9 @@ Preference -&gt; Settings -&gt; Launch BetterTouchTools on startup をチェッ�
 </div>
 </div>
 
-<div id="outline-container-sec-4-3-3" class="outline-4">
-<h4 id="sec-4-3-3"><span class="section-number-4">4.3.3</span> 参考サイト</h4>
-<div class="outline-text-4" id="text-4-3-3">
+<div id="outline-container-sec-5-3-3" class="outline-4">
+<h4 id="sec-5-3-3"><span class="section-number-4">5.3.3</span> 参考サイト</h4>
+<div class="outline-text-4" id="text-5-3-3">
 <ul class="org-ul">
 <li><a href="http://www.dtp-transit.jp/utility/post_1650.html">http://www.dtp-transit.jp/utility/post_1650.html</a>
 </li>
@@ -695,12 +740,12 @@ Preference -&gt; Settings -&gt; Launch BetterTouchTools on startup をチェッ�
 </div>
 </div>
 
-<div id="outline-container-sec-4-4" class="outline-3">
-<h3 id="sec-4-4"><span class="section-number-3">4.4</span> Github (<a href="https://github.com">https://github.com</a>)</h3>
-<div class="outline-text-3" id="text-4-4">
-</div><div id="outline-container-sec-4-4-1" class="outline-4">
-<h4 id="sec-4-4-1"><span class="section-number-4">4.4.1</span> 特徴</h4>
-<div class="outline-text-4" id="text-4-4-1">
+<div id="outline-container-sec-5-4" class="outline-3">
+<h3 id="sec-5-4"><span class="section-number-3">5.4</span> Github (<a href="https://github.com">https://github.com</a>)</h3>
+<div class="outline-text-3" id="text-5-4">
+</div><div id="outline-container-sec-5-4-1" class="outline-4">
+<h4 id="sec-5-4-1"><span class="section-number-4">5.4.1</span> 特徴</h4>
+<div class="outline-text-4" id="text-5-4-1">
 <ul class="org-ul">
 <li>Bitbucket と同じ git リポジトリ
 </li>
@@ -716,9 +761,9 @@ Preference -&gt; Settings -&gt; Launch BetterTouchTools on startup をチェッ�
 </div>
 </div>
 
-<div id="outline-container-sec-4-4-2" class="outline-4">
-<h4 id="sec-4-4-2"><span class="section-number-4">4.4.2</span> アカウント作成・ユーティリティ</h4>
-<div class="outline-text-4" id="text-4-4-2">
+<div id="outline-container-sec-5-4-2" class="outline-4">
+<h4 id="sec-5-4-2"><span class="section-number-4">5.4.2</span> アカウント作成・ユーティリティ</h4>
+<div class="outline-text-4" id="text-5-4-2">
 <ul class="org-ul">
 <li><a href="https://github.com">https://github.com</a> から Sign up
 </li>
@@ -728,9 +773,9 @@ Preference -&gt; Settings -&gt; Launch BetterTouchTools on startup をチェッ�
 </div>
 </div>
 
-<div id="outline-container-sec-4-4-3" class="outline-4">
-<h4 id="sec-4-4-3"><span class="section-number-4">4.4.3</span> 参考サイト</h4>
-<div class="outline-text-4" id="text-4-4-3">
+<div id="outline-container-sec-5-4-3" class="outline-4">
+<h4 id="sec-5-4-3"><span class="section-number-4">5.4.3</span> 参考サイト</h4>
+<div class="outline-text-4" id="text-5-4-3">
 <ul class="org-ul">
 <li><a href="http://qiita.com/items/4272209ad80380933000">http://qiita.com/items/4272209ad80380933000</a>
 </li>
@@ -741,12 +786,12 @@ Preference -&gt; Settings -&gt; Launch BetterTouchTools on startup をチェッ�
 </div>
 </div>
 
-<div id="outline-container-sec-4-5" class="outline-3">
-<h3 id="sec-4-5"><span class="section-number-3">4.5</span> Bitbucket (<a href="https://bitbucket.org">https://bitbucket.org</a>)</h3>
-<div class="outline-text-3" id="text-4-5">
-</div><div id="outline-container-sec-4-5-1" class="outline-4">
-<h4 id="sec-4-5-1"><span class="section-number-4">4.5.1</span> 特徴</h4>
-<div class="outline-text-4" id="text-4-5-1">
+<div id="outline-container-sec-5-5" class="outline-3">
+<h3 id="sec-5-5"><span class="section-number-3">5.5</span> Bitbucket (<a href="https://bitbucket.org">https://bitbucket.org</a>)</h3>
+<div class="outline-text-3" id="text-5-5">
+</div><div id="outline-container-sec-5-5-1" class="outline-4">
+<h4 id="sec-5-5-1"><span class="section-number-4">5.5.1</span> 特徴</h4>
+<div class="outline-text-4" id="text-5-5-1">
 <ul class="org-ul">
 <li>Github と同様の git リポジトリ
 </li>
@@ -762,9 +807,9 @@ Preference -&gt; Settings -&gt; Launch BetterTouchTools on startup をチェッ�
 </div>
 </div>
 
-<div id="outline-container-sec-4-5-2" class="outline-4">
-<h4 id="sec-4-5-2"><span class="section-number-4">4.5.2</span> アカウント作成・ユーティリティ</h4>
-<div class="outline-text-4" id="text-4-5-2">
+<div id="outline-container-sec-5-5-2" class="outline-4">
+<h4 id="sec-5-5-2"><span class="section-number-4">5.5.2</span> アカウント作成・ユーティリティ</h4>
+<div class="outline-text-4" id="text-5-5-2">
 <ul class="org-ul">
 <li><a href="https://bitbucket.org">https://bitbucket.org</a> から sign up
 </li>
@@ -776,9 +821,9 @@ Preference -&gt; Settings -&gt; Launch BetterTouchTools on startup をチェッ�
 </div>
 </div>
 
-<div id="outline-container-sec-4-5-3" class="outline-4">
-<h4 id="sec-4-5-3"><span class="section-number-4">4.5.3</span> 参考サイト</h4>
-<div class="outline-text-4" id="text-4-5-3">
+<div id="outline-container-sec-5-5-3" class="outline-4">
+<h4 id="sec-5-5-3"><span class="section-number-4">5.5.3</span> 参考サイト</h4>
+<div class="outline-text-4" id="text-5-5-3">
 <dl class="org-dl">
 <dt> サインアップ </dt><dd><a href="http://toruuetani.bitbucket.org/bitbucket.html#id2">http://toruuetani.bitbucket.org/bitbucket.html#id2</a>
 </dd>
@@ -787,15 +832,15 @@ Preference -&gt; Settings -&gt; Launch BetterTouchTools on startup をチェッ�
 </div>
 </div>
 
-<div id="outline-container-sec-4-6" class="outline-3">
-<h3 id="sec-4-6"><span class="section-number-3">4.6</span> Evernote (必須ではない)</h3>
+<div id="outline-container-sec-5-6" class="outline-3">
+<h3 id="sec-5-6"><span class="section-number-3">5.6</span> Evernote (必須ではない)</h3>
 </div>
-<div id="outline-container-sec-4-7" class="outline-3">
-<h3 id="sec-4-7"><span class="section-number-3">4.7</span> Github / Bitbucket に SSH で接続する</h3>
-<div class="outline-text-3" id="text-4-7">
-</div><div id="outline-container-sec-4-7-1" class="outline-4">
-<h4 id="sec-4-7-1"><span class="section-number-4">4.7.1</span> 公開鍵と秘密鍵の作成</h4>
-<div class="outline-text-4" id="text-4-7-1">
+<div id="outline-container-sec-5-7" class="outline-3">
+<h3 id="sec-5-7"><span class="section-number-3">5.7</span> Github / Bitbucket に SSH で接続する</h3>
+<div class="outline-text-3" id="text-5-7">
+</div><div id="outline-container-sec-5-7-1" class="outline-4">
+<h4 id="sec-5-7-1"><span class="section-number-4">5.7.1</span> 公開鍵と秘密鍵の作成</h4>
+<div class="outline-text-4" id="text-5-7-1">
 <ul class="org-ul">
 <li><code>~/.ssh</code> にSSH用の公開鍵と秘密鍵を作る
 <div class="org-src-container">
@@ -821,9 +866,9 @@ $ chmod 600 ~/.ssh/id_rsa.pub
 </div>
 </div>
 
-<div id="outline-container-sec-4-7-2" class="outline-4">
-<h4 id="sec-4-7-2"><span class="section-number-4">4.7.2</span> Bitbucket に SSH の公開鍵を登録する</h4>
-<div class="outline-text-4" id="text-4-7-2">
+<div id="outline-container-sec-5-7-2" class="outline-4">
+<h4 id="sec-5-7-2"><span class="section-number-4">5.7.2</span> Bitbucket に SSH の公開鍵を登録する</h4>
+<div class="outline-text-4" id="text-5-7-2">
 <ul class="org-ul">
 <li><a href="https://bitbucket.org/">Bitbucket</a> の右上のアバターから「Manage account」を選ぶ
 
@@ -942,9 +987,9 @@ Connection to bitbucket.org closed.
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-4-7-3" class="outline-4">
-<h4 id="sec-4-7-3"><span class="section-number-4">4.7.3</span> Github に SSH の公開鍵を登録する</h4>
-<div class="outline-text-4" id="text-4-7-3">
+<div id="outline-container-sec-5-7-3" class="outline-4">
+<h4 id="sec-5-7-3"><span class="section-number-4">5.7.3</span> Github に SSH の公開鍵を登録する</h4>
+<div class="outline-text-4" id="text-5-7-3">
 <ul class="org-ul">
 <li><a href="https://github.com/">github.com</a> の右上のユーザー名をクリック
 
@@ -1031,9 +1076,9 @@ Connection to github.com closed.
 </div>
 </div>
 
-<div id="outline-container-sec-4-7-4" class="outline-4">
-<h4 id="sec-4-7-4"><span class="section-number-4">4.7.4</span> その他の SSH サーバーを登録する</h4>
-<div class="outline-text-4" id="text-4-7-4">
+<div id="outline-container-sec-5-7-4" class="outline-4">
+<h4 id="sec-5-7-4"><span class="section-number-4">5.7.4</span> その他の SSH サーバーを登録する</h4>
+<div class="outline-text-4" id="text-5-7-4">
 <p>
 上述の方法を応用すれば，他の SSH サーバーにもSSH公開鍵を登録できる．
 例えば，=username@remote.to= というサーバーに登録したい場合は，以下のようにターミナルから入力する．
@@ -1064,7 +1109,7 @@ Connection to github.com closed.
 </div>
 <div id="postamble" class="status">
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
-<p class="date">Created: 2014-04-02 Wed 11:51</p>
+<p class="date">Created: 2014-04-02 Wed 13:50</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
