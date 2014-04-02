@@ -46,7 +46,9 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
    #+begin_src sh
    ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
    #+end_src
-   ダウンロードが始まる．
+   - Press RETURN to continue or any other 何か訊かれたら RETURN を押す．
+   - パスワードの入力を求められたら入力する．
+   - ダウンロードが始まる．
 2) 診断する．ターミナルから以下を実行：
    #+BEGIN_SRC sh
    brew doctor
