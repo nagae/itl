@@ -75,9 +75,9 @@ brew install xpdf
   cat /usr/local/share/xpdf/japanese/add-to-xpdfrc >> /usr/local/etc/xpdfrc # xpdfrc に追記
   popd
 #+END_SRC
-[1] この方法だと =brew uninstall xpdf= とした時に =/usr/local/share/xpdf= が残ってしまうので，=brew prune= が必要．
+[1] この方法だと =brew uninstall xpdf= とした時に =/usr/local/share/xpdf= が残ってしまうので， =brew prune= が必要．
 *** 使い方
-例えば，=sample.pdf= にどんなフォントが埋め込まれているか確認するには
+例えば， =sample.pdf= にどんなフォントが埋め込まれているか確認するには
 #+BEGIN_SRC sh
 pdffonts sample.pdf
 #+END_SRC
