@@ -210,7 +210,7 @@ Mac OS X 用には =hiragino/otf-hiragino.map= あたりが使える(参照：ht
   cd ~/Downloads/sampletex
   curl -O https://gist.githubusercontent.com/nagae/1350983/raw/sample.tex
   platex sample.tex 
-  dvipdfmx sample -o sample.pdf
+  dvipdfmx -o sample.pdf sample
   open sample.pdf
 #+END_SRC
 * tlmgr を使って常に最新の状態を保つ
