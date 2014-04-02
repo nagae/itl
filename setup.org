@@ -15,9 +15,9 @@
 #+HTML_CONTAINER: div
 #+HTML_DOCTYPE: xhtml-strict
 #+HTML_HEAD:<link rel=stylesheet href="style.css" type="text/css">
-#+INFOJS_OPT: view:showall toc:t sdepth:2 ltoc:1
-#+INFOJS_OPT: toc:t tdepth:1 view:showall mouse:underline buttons:nil
-#+INFOJS_OPT: up:./ home:../
+#+INFOJS_OPT: view:showall toc:t sdepth:2 ltoc:1 mouse:nil buttons:nil
+#+INFOJS_OPT: up:./
+#+INFOJS_OPT: home:../
 #+LATEX_HEADER:\usepackage{amsmath,rmss_math,rmss_color}
 
 * Mac のセットアップ
