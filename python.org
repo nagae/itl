@@ -14,10 +14,6 @@
 #+HTML_CONTAINER: div
 #+HTML_DOCTYPE: xhtml-strict
 #+HTML_HEAD:<link rel=stylesheet href="style.css" type="text/css">
-#+HTML_HEAD_EXTRA:
-#+HTML_LINK_HOME:
-#+HTML_LINK_UP:
-#+HTML_MATHJAX:
 #+INFOJS_OPT: view:showall toc:t sdepth:2 ltoc:1
 #+INFOJS_OPT: toc:t tdepth:1 view:showall mouse:underline buttons:nil
 #+INFOJS_OPT: up:./ home:../
@@ -182,18 +178,18 @@ Gurobi のアカデミック・ライセンスは以下の制約の下で利用�
 
 *** アカウント作成，ライセンスの取得および認証の方法
 1. http://www.gurobi.com にアクセスし，Register for Free をクリック
-   #+ATTR_HTML: width=720
+   #+ATTR_HTML: :width 720
    [[file:fig/grb_register.png]]
 2. Account Type は「Academic」とし，Email は =tohoku.ac.jp= で終わるアドレスを利
    用．Company/University には「Tohoku University」とする
 3. http://www.gurobi.com のメニューバーから Download > Licenses に移動し，FREE
    ACADEMIC のページに移動．2箇所をチェックして Request License する
-   #+ATTR_HTML: width=720
+   #+ATTR_HTML: :width 720
    [[file:fig/grb_academic_license.png]]
 4. ライセンスが発行される．Gurobi をインストールした後，ここで表示される
    =grbgetkey= 以下のコマンドをターミナルで入力するとライセンスファイルが生成さ
    れる．
-   #+ATTR_HTML: width=720
+   #+ATTR_HTML: :width 720
    [[file:fig/grb_license_detail.png]]
 *** Gurobi のダウンロードとインストール
 1. http://www.gurobi.com のメニューバーから Download > Gurobi Optimizer のページ
