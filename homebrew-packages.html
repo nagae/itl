@@ -1,75 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
 <title>ITL/Homebrew でインストールするパッケージ</title>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="ITL/Homebrew でインストールするパッケージ"/>
-<meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-13T23:43+0900"/>
-<meta name="author" content="Takeshi Nagae"/>
-<meta name="description" content=""/>
-<meta name="keywords" content=""/>
+<!-- 2014-04-02 Wed 15:12 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Takeshi Nagae" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
   .title  { text-align: center; }
-  .todo   { color: red; }
+  .todo   { font-family: monospace; color: red; }
   .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
   }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
   dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
     background: #ffffcc;
   }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
   textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
   /*]]>*/-->
 </style>
 <link rel=stylesheet href="style.css" type="text/css">
-<script type="text/javascript" src="org-info.js">
+
+<script type="text/javascript" src="http://orgmode.org/org-info.js">
 /**
  *
- * @source: org-info.js
+ * @source: http://orgmode.org/org-info.js
  *
  * @licstart  The following is the entire license notice for the
- *  JavaScript code in org-info.js.
+ *  JavaScript code in http://orgmode.org/org-info.js.
  *
- * Copyright (C) 2012-2013  Sebastian Rose
+ * Copyright (C) 2012-2013 Free Software Foundation, Inc.
  *
  *
  * The JavaScript code in this tag is free software: you can
@@ -87,7 +116,7 @@
  * through which recipients can access the Corresponding Source.
  *
  * @licend  The above is the entire license notice
- * for the JavaScript code in org-info.js.
+ * for the JavaScript code in http://orgmode.org/org-info.js.
  *
  */
 </script>
@@ -121,11 +150,11 @@ for the JavaScript code in this tag.
 
 <!--/*--><![CDATA[/*><!--*/
 org_html_manager.set("TOC_DEPTH", "1");
-org_html_manager.set("LINK_HOME", "../");
-org_html_manager.set("LINK_UP", "./");
+org_html_manager.set("LINK_HOME", "https://nagae.github.io");
+org_html_manager.set("LINK_UP", "https://nagae.github.io/itl");
 org_html_manager.set("LOCAL_TOC", "1");
 org_html_manager.set("VIEW_BUTTONS", "0");
-org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("MOUSE_HINT", "0");
 org_html_manager.set("FIXED_TOC", "0");
 org_html_manager.set("TOC", "1");
 org_html_manager.set("VIEW", "showall");
@@ -178,66 +207,50 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
-
 </head>
 <body>
-
-<div id="preamble">
-
-</div>
-
-<div id="content">
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="https://nagae.github.io/itl"> UP </a>
+ |
+ <a accesskey="H" href="https://nagae.github.io"> HOME </a>
+</div><div id="content">
 <h1 class="title">ITL/Homebrew でインストールするパッケージ</h1>
-
-
-
-
 <div id="table-of-contents">
 <h2>&#30446;&#27425;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1 XQuartz のインストール</a></li>
-<li><a href="#sec-2">2 Homebrew でインストールしておくべき UNIX ツール</a>
+<li><a href="#sec-1">1. XQuartz のインストール</a></li>
+<li><a href="#sec-2">2. Homebrew でインストールしておくべき UNIX ツール</a>
 <ul>
-<li><a href="#sec-2-1">2.1 以下を実行する</a></li>
-<li><a href="#sec-2-2">2.2 git</a></li>
-<li><a href="#sec-2-3">2.3 xpdf</a></li>
+<li><a href="#sec-2-1">2.1. 以下を実行する</a></li>
+<li><a href="#sec-2-2">2.2. git</a></li>
+<li><a href="#sec-2-3">2.3. xpdf</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-1" class="outline-2">
+<div id="outline-container-sec-1" class="outline-2">
 <h2 id="sec-1"><span class="section-number-2">1</span> XQuartz のインストール</h2>
 <div class="outline-text-2" id="text-1">
-
-<p>XQuartz は OS X 上で動作する Xウィンドウシステム．各種パッケージの際に必要となる．
-</p><ul>
+<p>
+XQuartz は OS X 上で動作する Xウィンドウシステム．各種パッケージの際に必要となる．
+</p>
+<ul class="org-ul">
 <li><a href="http://xquartz.macosforge.org/landing/">http://xquartz.macosforge.org/landing/</a> から最新版の dmg ファイルをダウンロードし，pkg ファイルをダブルクリック
 </li>
 <li>インストール後にログインし直す必要がある．
 </li>
 </ul>
-
-
 </div>
-
 </div>
-
-<div id="outline-container-2" class="outline-2">
+<div id="outline-container-sec-2" class="outline-2">
 <h2 id="sec-2"><span class="section-number-2">2</span> Homebrew でインストールしておくべき UNIX ツール</h2>
 <div class="outline-text-2" id="text-2">
-
-
-</div>
-
-<div id="outline-container-2-1" class="outline-3">
+</div><div id="outline-container-sec-2-1" class="outline-3">
 <h3 id="sec-2-1"><span class="section-number-3">2.1</span> 以下を実行する</h3>
 <div class="outline-text-3" id="text-2-1">
-
-
-
+<div class="org-src-container">
 
 <pre class="src src-screen"><span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#20197;&#19979;&#12398;&#12497;&#12483;&#12465;&#12540;&#12472;&#12399;&#29420;&#31435;&#12375;&#12390;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#12391;&#12365;&#12427;(&#20182;&#12398;&#12497;&#12483;&#12465;&#12540;&#12472;&#12395;&#20381;&#23384;&#12375;&#12394;&#12356;)</span>
 brew install git                <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#20998;&#25955;&#12522;&#12509;&#12472;&#12488;&#12522;&#12496;&#12540;&#12472;&#12519;&#12531;&#31649;&#29702;&#12471;&#12473;&#12486;&#12512;&#65294;</span>
@@ -251,103 +264,79 @@ brew install rsync              <span style="color: #00cd66;"># </span><span sty
 brew install ghostscript        <span style="color: #00cd66;"># </span><span style="color: #00cd66;">Postscript &#12452;&#12531;&#12479;&#12503;&#12522;&#12479;&#65294;Emacs&#19978;&#12391;PDF&#12420;&#30011;&#20687;&#12501;&#12449;&#12452;&#12523;&#12434;&#34920;&#31034;&#12373;&#12379;&#12427; docview &#12395;&#24517;&#38920;&#65294;</span>
 brew install wget               <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#12454;&#12455;&#12502;&#12469;&#12540;&#12496;&#12540;&#12363;&#12425;&#12467;&#12531;&#12486;&#12531;&#12484;&#12434;&#12480;&#12454;&#12531;&#12525;&#12540;&#12489;&#65294;curl &#12424;&#12426;&#39640;&#27231;&#33021;</span>
 </pre>
-
+</div>
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-2-2" class="outline-3">
+<div id="outline-container-sec-2-2" class="outline-3">
 <h3 id="sec-2-2"><span class="section-number-3">2.2</span> git</h3>
 <div class="outline-text-3" id="text-2-2">
-
-
-</div>
-
-<div id="outline-container-2-2-1" class="outline-4">
+</div><div id="outline-container-sec-2-2-1" class="outline-4">
 <h4 id="sec-2-2-1"><span class="section-number-4">2.2.1</span> インストール</h4>
 <div class="outline-text-4" id="text-2-2-1">
-
-<ol>
+<ol class="org-ol">
 <li>git 本体をインストール
-
-
+<div class="org-src-container">
 
 <pre class="src src-sh">brew install git
 </pre>
-
+</div>
 </li>
 <li>SourceTree のインストール
-   インストール方法や使い方については
-   <a href="http://www.backlog.jp/git-guide/">http://www.backlog.jp/git-guide/</a>
-   が参考になる．
+インストール方法や使い方については
+<a href="http://www.backlog.jp/git-guide/">http://www.backlog.jp/git-guide/</a>
+が参考になる．
 </li>
 </ol>
-
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-2-2-2" class="outline-4">
+<div id="outline-container-sec-2-2-2" class="outline-4">
 <h4 id="sec-2-2-2"><span class="section-number-4">2.2.2</span> 各種設定</h4>
 <div class="outline-text-4" id="text-2-2-2">
-
-<ol>
+<ol class="org-ol">
 <li>プッシュのデフォルト方式を <code>simple</code> (現在のブランチと同じ名前のブランチがリモートにある場合にのみプッシュ)にする(<a href="http://qiita.com/yaotti/items/a8e9f5de8dcca81d3214">参考</a>)．
-
-
+<div class="org-src-container">
 
 <pre class="src src-sh">git config --global push.default.simple
 </pre>
-
+</div>
 </li>
 </ol>
-
 </div>
 </div>
-
 </div>
 
-<div id="outline-container-2-3" class="outline-3">
+<div id="outline-container-sec-2-3" class="outline-3">
 <h3 id="sec-2-3"><span class="section-number-3">2.3</span> xpdf</h3>
 <div class="outline-text-3" id="text-2-3">
-
-
-</div>
-
-<div id="outline-container-2-3-1" class="outline-4">
+</div><div id="outline-container-sec-2-3-1" class="outline-4">
 <h4 id="sec-2-3-1"><span class="section-number-4">2.3.1</span> インストール</h4>
 <div class="outline-text-4" id="text-2-3-1">
-
-
-
+<div class="org-src-container">
 
 <pre class="src src-sh">brew install xpdf
 </pre>
-
+</div>
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-2-3-2" class="outline-4">
+<div id="outline-container-sec-2-3-2" class="outline-4">
 <h4 id="sec-2-3-2"><span class="section-number-4">2.3.2</span> 日本語サポートパッケージの追加</h4>
 <div class="outline-text-4" id="text-2-3-2">
-
-<ul>
+<ul class="org-ul">
 <li>参考URL:
-<ul>
+<ul class="org-ul">
 <li><a href="http://ototorosama.hatenablog.com/entry/2013/02/14/055355">http://ototorosama.hatenablog.com/entry/2013/02/14/055355</a>
 </li>
 <li><a href="http://d.hatena.ne.jp/rougeref/20070313">http://d.hatena.ne.jp/rougeref/20070313</a>
 </li>
 </ul>
-
 </li>
-<li>ターミナルで下記を入力<sup><a class="footref" name="fnr-.1" href="#fn-.1">1</a></sup>：
+<li>ターミナルで下記を入力<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>：
 </li>
 </ul>
-
-
-
+<div class="org-src-container">
 
 <pre class="src src-sh"><span style="color: #b0c4de;">pushd</span> ~/Downloads
 curl -O http://ftp.jaist.ac.jp/pub/CTAN/support/xpdf/xpdf-japanese.tar.gz <span style="color: #00cd66;"># </span><span style="color: #00cd66;">ftp.jaist.ac.jp &#12398;&#20195;&#12431;&#12426;&#12395; ftp.rikengo.jp, ftp.u-aizu.ac.jp, ftp.kd&#173;di&#173;l&#173;abs.jp &#12398;&#12393;&#12428;&#12363;&#12434;&#20351;&#12387;&#12390;&#12418;&#12424;&#12356;</span>
@@ -359,54 +348,44 @@ cp -r * /usr/local/share/xpdf/japanese                 <span style="color: #00cd
 cat /usr/local/share/xpdf/japanese/add-to-xpdfrc &gt;&gt; /usr/local/etc/xpdfrc <span style="color: #00cd66;"># </span><span style="color: #00cd66;">xpdfrc &#12395;&#36861;&#35352;</span>
 <span style="color: #b0c4de;">popd</span>
 </pre>
-
+</div>
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-2-3-3" class="outline-4">
+<div id="outline-container-sec-2-3-3" class="outline-4">
 <h4 id="sec-2-3-3"><span class="section-number-4">2.3.3</span> 使い方</h4>
 <div class="outline-text-4" id="text-2-3-3">
-
-<p>例えば，<code>sample.pdf</code> にどんなフォントが埋め込まれているか確認するには
+<p>
+例えば，=sample.pdf= にどんなフォントが埋め込まれているか確認するには
 </p>
-
+<div class="org-src-container">
 
 <pre class="src src-sh">pdffonts sample.pdf
 </pre>
-
+</div>
 <p>
 とする．
 </p>
+</div>
+</div>
+</div>
+</div>
 <div id="footnotes">
 <h2 class="footnotes">&#33050;&#27880;: </h2>
 <div id="text-footnotes">
-<p class="footnote"><sup><a class="footnum" name="fn-.1" href="#fnr-.1">1</a></sup> この方法だと <code>brew uninstall xpdf</code> とした時に <code>/usr/local/share/xpdf</code> が残ってしまうので，<code>brew prune</code> が必要．
-</p>
 
-
-
-
-
-
-
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara">
+この方法だと <code>brew uninstall xpdf</code> とした時に <code>/usr/local/share/xpdf</code> が残ってしまうので，=brew prune= が必要．
+</p></div>
 
 
 </div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-</div>
-
-<div id="postamble">
-<p class="date">&#26085;&#20184;: 2014-03-13T23:43+0900</p>
+</div></div>
+<div id="postamble" class="status">
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
-
+<p class="date">Created: 2014-04-02 Wed 15:12</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>

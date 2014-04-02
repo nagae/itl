@@ -15,7 +15,7 @@
 #+HTML_CONTAINER: div
 #+HTML_DOCTYPE: xhtml-strict
 #+HTML_HEAD:<link rel=stylesheet href="style.css" type="text/css">
-#+HTML_LINK_UP: ./
+#+HTML_LINK_UP: https://nagae.github.io/itl
 #+HTML_LINK_HOME: https://nagae.github.io
 #+INFOJS_OPT: view:showall toc:t sdepth:2 ltoc:1 mouse:nil buttons:nil
 #+LATEX_HEADER:\usepackage{amsmath,rmss_math,rmss_color}
