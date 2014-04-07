@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
 <title>Python + Gurobi による科学技術計算環境の構築</title>
-<!-- 2014-04-02 Wed 15:31 -->
+<!-- 2014-04-07 Mon 14:31 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Takeshi Nagae" />
@@ -345,7 +345,7 @@ homebrew 下の <code>site-packages</code> へのパスを追記する必要が�
 <li><code>~/.bash_profile</code> に 以下を追加する：
 <div class="org-src-container">
 
-<pre class="src src-profile">export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
+<pre class="src src-sh"><span style="color: #b0c4de;">export</span> <span style="color: #9acd32;">PYTHONPATH</span>=/usr/local/lib/python2.7/site-packages:/Library/Python/2.7/site-package:$<span style="color: #9acd32;">PYTHONPATH</span>
 </pre>
 </div>
 </li>
@@ -358,11 +358,6 @@ homebrew 下の <code>site-packages</code> へのパスを追記する必要が�
 </div>
 </li>
 </ul>
-<div class="org-src-container">
-
-<pre class="src src-sh"><span style="color: #b0c4de;">export</span> <span style="color: #9acd32;">PYTHONPATH</span>=/usr/local/lib/python2.7/site-packages:/Library/Python/2.7/site-package:$<span style="color: #9acd32;">PYTHONPATH</span>
-</pre>
-</div>
 </li>
 <li>順番に色々入れていく：
 <div class="org-src-container">
@@ -372,7 +367,7 @@ sudo pip install virtualenv nose <span style="color: #00cd66;"># </span><span st
 
 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#31185;&#23398;&#25216;&#34899;&#35336;&#31639;&#29992;(Numpy, Scipy)</span>
 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">pip install scipy &#12364;&#36890;&#12425;&#12394;&#12367;&#12394;&#12387;&#12383;&#12398;&#12391;&#65292;homebrew &#12363;&#12425;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#12377;&#12427;&#12424;&#12358;&#12395;&#12375;&#12383;</span>
-brew install numpy <span style="color: #00cd66;"># </span><span style="color: #00cd66;">NumPy &#12399; Python &#12391;&#31185;&#23398;&#35336;&#31639;&#12434;&#34892;&#12358;&#12383;&#12417;&#12398;&#22522;&#26412;&#12497;&#12483;&#12465;&#12540;&#12472;</span>
+brew install numpy --without-python <span style="color: #00cd66;"># </span><span style="color: #00cd66;">NumPy &#12399; Python &#12391;&#31185;&#23398;&#35336;&#31639;&#12434;&#34892;&#12358;&#12383;&#12417;&#12398;&#22522;&#26412;&#12497;&#12483;&#12465;&#12540;&#12472;</span>
 brew install scipy <span style="color: #00cd66;"># </span><span style="color: #00cd66;">SciPy &#12399;&#31185;&#23398;&#12539;&#24037;&#23398;&#29992;&#12514;&#12472;&#12517;&#12540;&#12523;&#32676;</span>
 sudo pip isntall pyparsing <span style="color: #00cd66;"># </span><span style="color: #00cd66;">matplotlib &#12398;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#12395;&#24517;&#35201;</span>
 brew install matplotlib --with-tex --with-qtpy <span style="color: #00cd66;"># </span><span style="color: #00cd66;">matplotlib &#12399; Python &#12391;2D&#12464;&#12521;&#12501;&#12434;&#12503;&#12525;&#12483;&#12488;&#12377;&#12427;&#12383;&#12417;&#12398;&#12521;&#12452;&#12502;&#12521;&#12522;</span>
@@ -1043,7 +1038,7 @@ Python からファイルを呼び出すには，ターミナルで
 </div>
 <div id="postamble" class="status">
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
-<p class="date">Created: 2014-04-02 Wed 15:31</p>
+<p class="date">Created: 2014-04-07 Mon 14:31</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

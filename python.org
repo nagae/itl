@@ -75,17 +75,14 @@ OS X Mavericks にはデフォルトで =Python 2.7.5= と以下のモジュー�
    ルした Python ライブラリを混在させる場合には，環境変数 =PYTHONPATH= に
    homebrew 下の =site-packages= へのパスを追記する必要がある．
    - =~/.bash_profile= に 以下を追加する：
-     #+BEGIN_SRC profile
-     export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
+     #+BEGIN_SRC sh
+     export PYTHONPATH=/usr/local/lib/python2.7/site-packages:/Library/Python/2.7/site-package:$PYTHONPATH
      #+END_SRC
 
    - ターミナルで以下を実行する
      #+BEGIN_SRC sh
      $ source ~/.bash_profile
      #+END_SRC
-   #+BEGIN_SRC sh
-   export PYTHONPATH=/usr/local/lib/python2.7/site-packages:/Library/Python/2.7/site-package:$PYTHONPATH
-   #+END_SRC
 4. 順番に色々入れていく：
    #+BEGIN_SRC sh
      # 仮想環境構築
@@ -93,7 +90,7 @@ OS X Mavericks にはデフォルトで =Python 2.7.5= と以下のモジュー�
      
      # 科学技術計算用(Numpy, Scipy)
      # pip install scipy が通らなくなったので，homebrew からインストールするようにした
-     brew install numpy # NumPy は Python で科学計算を行うための基本パッケージ
+     brew install numpy --without-python # NumPy は Python で科学計算を行うための基本パッケージ
      brew install scipy # SciPy は科学・工学用モジュール群
      sudo pip isntall pyparsing # matplotlib のインストールに必要
      brew install matplotlib --with-tex --with-qtpy # matplotlib は Python で2Dグラフをプロットするためのライブラリ
