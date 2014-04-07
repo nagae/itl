@@ -83,41 +83,48 @@ OS X Mavericks にはデフォルトで =Python 2.7.5= と以下のモジュー�
      #+BEGIN_SRC sh
      $ source ~/.bash_profile
      #+END_SRC
+
 4. 順番に色々入れていく：
    #+BEGIN_SRC sh
      # 仮想環境構築
      sudo pip install virtualenv nose # virtualenv は Python の仮想環境を構築するもの．nose は Python の単体テストを簡単にできるように拡張したもの
-     
+
      # 科学技術計算用(Numpy, Scipy)
      # pip install scipy が通らなくなったので，homebrew からインストールするようにした
-     brew install numpy --without-python # NumPy は Python で科学計算を行うための基本パッケージ
-     brew install scipy # SciPy は科学・工学用モジュール群
+     # → Homebrew 版は numpy 1.8.1 から python 2.7.6 に依存するようになったので再び pip 版に
+     sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future pip install -U numpy # NumPy は Python で科学計算を行うための基本パッケージ
+
+     brew install freetype
+     ln -s ln -s /usr/local/opt/freetype/include/freetype2 /usr/local/include/freetype # http://stackoverflow.com/a/20576003/3506176
+     sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future pip install -U scipy # SciPy は科学・工学用モジュール群
+      
      sudo pip isntall pyparsing # matplotlib のインストールに必要
-     brew install matplotlib --with-tex --with-qtpy # matplotlib は Python で2Dグラフをプロットするためのライブラリ
-     sudo pip install sympy # SymPy はシンボリックな数式処理のためのライブラリ
-     
+     sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future pip install -U matplotlib # matplotlib は Python で2Dグラフをプロットするためのライブラリ
+     sudo pip install -U sympy # SymPy はシンボリックな数式処理のためのライブラリ
+
      # ネットワーク分析
-     sudo pip install networkx    # NetworkX はネットワーク分析用パッケージ
-     sudo pip install graphillion # Graphillion は「数え上げお姉さん」を救うパッケージ
+     sudo pip install -U networkx    # NetworkX はネットワーク分析用パッケージ
+     sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future pip install -U graphillion # Graphillion は「数え上げお姉さん」を救うパッケージ
           
      # 画像処理
-     sudo pip install pillow        # Pillow は Python の画像処理ライブラリ
+     sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future pip install pillow        # Pillow は Python の画像処理ライブラリ
      brew install imagemagick graphviz # imagemagick は画像の操作・表示のためのソフトウェア．graphviz はグラフ描画ソフトウェア．
      brew install cairo # cairo はベクトルベースのフリーの2Dグラフィックスライブラリ
      brew install py2cairo           # cairo 用の python 2.x バインディング
-     
+
      # デバッグ出力
      sudo pip install q            # q はお手軽なデバッグ出力用のパッケージ
-     
+
      # インタラクティブ・モードの強化
      brew install qt pyqt # Qt は GUIツールキット．pyqt はその Python バインディング
      brew install zmq # ZeroMQ は軽さがウリのMQ(message queuing, アプリケーション間データ交換方式の1つ)
      sudo easy_install readline   # iPython で補完や履歴を表示させるのに必要(iPython では easy_install版が強く推奨されている)
      sudo pip install ipython[zmq,qtconsole,notebook,test] # iPython は Python のインタラクティブ・モードを進化させたもの
-     
+
      # データ解析，自然言語処理
-     sudo pip install pandas nltk # pandas はデータ解析ライブラリ，nltk は自然言語処理ツールキット，
+     sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future pip install pandas nltk # pandas はデータ解析ライブラリ，nltk は自然言語処理ツールキット，
    #+END_SRC
+
 5. パッケージ設定：
    Python で =site-packages= を探せるようにする：
    #+BEGIN_SRC sh
@@ -149,8 +156,8 @@ Python のグラフ描画パッケージ =matplotlib= 上で地理情報デー�
    #+END_SRC
 5. インストーラを起動する
    #+BEGIN_SRC sh
-     sudo python setup.py build
-     sudo python setup.py install
+     sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future python setup.py build
+     sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future python setup.py install
    #+END_SRC
 6. Python で以下のスクリプトを実行してみる
    #+HTML: <script src="https://gist.github.com/nagae/9243923.js"></script>   
