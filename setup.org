@@ -60,16 +60,30 @@ Mac ではソフトウェアのインストール方法に3通りある．
 2や3の方法の場合，必要となるファイルが dmg (仮想ドライブイメージ)ファイルとして提供されている場合がある．
 dmg ファイルをダブルクリックすると，新しいドライブが認識される．その中に .app ファイルが入っていたり，.pkg ファイルが入っていたりする．
 * セキュリティソフトウェアのインストール
-** エフセキュアのインストール
+SEPの方が安定
+** Symantec Endpoint Protection (SEP)
+*** インストール方法
+- TAIN のホームページからセキュリティ対策ソフトウェア->シマンテックを選択：
+  https://www2.tains.tohoku.ac.jp/fw/dfw/INFO/modules/pico/index.php?content_id=3
+- MacOS X (32/64ビット)からダウンロードをクリック
+- dmg ファイルをマウントし「Symantec Endpoint Protection Installer」というファイルをダブルクリック
+- 指示に従って再起動する
+** f-secure
+*** インストール方法
 - TAINS のホームページからセキュリティ対策ソフトウェア->エフセキュアを選択：
   https://www2.tains.tohoku.ac.jp/fw/dfw/INFO/modules/pico/index.php?content_id=16
 - 「ダウンロード」ボタンから dmg  ファイルをダウンロードする
 - dmg ファイルをマウントし，F-Secure****.mpkg というファイルをダブルクリック
-** ライセンスコードの取得
+*** ライセンスコードの取得
 - 同じページから「ライセンスキーコードを取得する」ボタンをクリック
 - 「ご了解，ご注意事項」を読んだ後「同意する」ボタンをクリック
 - ライセンスコードがいくつか表示されるので，その中の1つ(どれでもいい)を
   エフセキュアのライセンスコード入力欄にコピー＆ペースト
+*** アンインストール方法
+- コマンドラインから以下を実行([[http://community.f-secure.com/t5/PC-Mac/Mac-%E7%89%88%E3%82%92%E3%82%A2%E3%83%B3%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B%E3%81%AB%E3%81%AF%E3%81%A9%E3%81%86%E3%81%99%E3%82%8C%E3%81%B0%E8%89%AF%E3%81%84%E3%81%A7%E3%81%99%E3%81%8B/ta-p/19814][参考]])：
+  #+BEGIN_SRC sh
+  sudo /usr/local/f-secure/bin/uninstall_MacProtection 
+  #+END_SRC
 * BetterTouchTools のインストールと設定
 ** BTT の特徴
 - Trackpad による様々なジェスチャーを各種機能に設定できる
