@@ -92,14 +92,12 @@ OS X Mavericks にはデフォルトで =Python 2.7.5= と以下のモジュー�
      # 科学技術計算用(Numpy, Scipy)
      # pip install scipy が通らなくなったので，homebrew からインストールするようにした
      # → Homebrew 版は numpy 1.8.1 から python 2.7.6 に依存するようになったので再び pip 版に
-     sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future pip install -U numpy # NumPy は Python で科学計算を行うための基本パッケージ
-
-     brew install freetype
-     ln -s ln -s /usr/local/opt/freetype/include/freetype2 /usr/local/include/freetype # http://stackoverflow.com/a/20576003/3506176
-     sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future pip install -U scipy # SciPy は科学・工学用モジュール群
-      
+     # → Homebrew 版の依存問題は解決
+     brew install numpy
+     brew install scipy
      sudo pip isntall pyparsing # matplotlib のインストールに必要
-     sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future pip install -U matplotlib # matplotlib は Python で2Dグラフをプロットするためのライブラリ
+
+     brew install matplotlib --with-tex --with-ghostscript
      sudo pip install -U sympy # SymPy はシンボリックな数式処理のためのライブラリ
 
      # ネットワーク分析
