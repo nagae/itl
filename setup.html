@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
 <title>ITL/セットアップ編</title>
-<!-- 2014-04-02 Wed 16:54 -->
+<!-- 2014-04-08 Tue 09:46 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Takeshi Nagae" />
@@ -894,13 +894,13 @@ Preference -&gt; Settings -&gt; Launch BetterTouchTools on startup をチェッ�
 <li><code>~/.ssh</code> にSSH用の公開鍵と秘密鍵を作る
 <div class="org-src-container">
 
-<pre class="src src-screen">$ mkdir ~/.ssh                    <span style="color: #00cd66;"># </span><span style="color: #00cd66;">ssh&#29992;&#12398;&#12487;&#12451;&#12524;&#12463;&#12488;&#12522;&#12434;&#20316;&#12427;</span>
-$ cd ~/.ssh
-$ ssh-keygen -t rsa -f id_rsa     <span style="color: #00cd66;"># </span><span style="color: #00cd66;">id_rsa &#12392;&#12356;&#12358;&#31192;&#23494;&#37749;&#12392; id_rsa.pub &#12392;&#12356;&#12358;&#20844;&#38283;&#37749;&#12434;&#20316;&#12427;</span>
+<pre class="src src-screen">mkdir ~/.ssh                    <span style="color: #00cd66;"># </span><span style="color: #00cd66;">ssh&#29992;&#12398;&#12487;&#12451;&#12524;&#12463;&#12488;&#12522;&#12434;&#20316;&#12427;</span>
+<span style="color: #b0c4de;">cd</span> ~/.ssh                       <span style="color: #00cd66;"># </span><span style="color: #00cd66;">.ssh &#12487;&#12451;&#12524;&#12463;&#12488;&#12522;ni&#31227;&#21205;</span>
+ssh-keygen -t rsa -f id_rsa     <span style="color: #00cd66;"># </span><span style="color: #00cd66;">id_rsa &#12392;&#12356;&#12358;&#31192;&#23494;&#37749;&#12392; id_rsa.pub &#12392;&#12356;&#12358;&#20844;&#38283;&#37749;&#12434;&#20316;&#12427;</span>
 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#12497;&#12473;&#12501;&#12524;&#12540;&#12474;&#12434;&#20837;&#21147;&#12375;&#12383;&#24460;&#65292;&#21516;&#12376;&#12418;&#12398;&#12434;&#12418;&#12358;&#19968;&#24230;&#20837;&#21147;&#65294;</span>
 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#12371;&#12371;&#12391;&#20837;&#21147;&#12377;&#12427;&#12497;&#12473;&#12501;&#12524;&#12540;&#12474;&#12399;&#65292;Mac &#26412;&#20307;&#12408;&#12398;&#12525;&#12464;&#12452;&#12531;&#29992;&#12392;&#21516;&#12376;&#12395;&#12375;&#12390;&#12418;&#21839;&#38988;&#28961;&#12356;&#65294;</span>
-$ chmod 700 ~/.ssh
-$ chmod 600 ~/.ssh/id_rsa.pub
+chmod 700 ~/.ssh                <span style="color: #00cd66;"># </span><span style="color: #00cd66;">.ssh &#12487;&#12451;&#12524;&#12463;&#12488;&#12522;&#12398;&#12450;&#12463;&#12475;&#12473;&#27177;&#12434;&#12300;&#31649;&#29702;&#32773;&#12398;&#12415;&#35501;&#12415;&#26360;&#12365;&#23455;&#34892;&#21487;&#12301;&#12395;&#22793;&#26356;</span>
+chmod 600 ~/.ssh/id_rsa.pub     <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#20844;&#38283;&#37749;&#12398;&#12450;&#12463;&#12475;&#12473;&#27177;&#12434;&#12300;&#31649;&#29702;&#32773;&#12398;&#12415;&#35501;&#12415;&#26360;&#12365;&#21487;&#12301;&#12395;&#22793;&#26356;</span>
 </pre>
 </div>
 </li>
@@ -968,7 +968,7 @@ $ chmod 600 ~/.ssh/id_rsa.pub
 <li>まず，ターミナル上で
 <div class="org-src-container">
 
-<pre class="src src-screen">$ emacs ~/.ssh/config
+<pre class="src src-sh">emacs ~/.ssh/config
 </pre>
 </div>
 <p>
@@ -988,8 +988,8 @@ Emacs を終了(C-x C-c; Ctrl を押しながら x, cとタイプ)する．
 <li>ターミナル上で以下を入力：
 <div class="org-src-container">
 
-<pre class="src src-screen">$ pbpaste &gt;&gt; ~/.ssh/config
-$ echo &gt;&gt; ~/.ssh/config         <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#25913;&#34892;&#12434;&#21152;&#12360;&#12427;</span>
+<pre class="src src-sh">pbpaste &gt;&gt; ~/.ssh/config
+<span style="color: #b0c4de;">echo</span> &gt;&gt; ~/.ssh/config         <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#25913;&#34892;&#12434;&#21152;&#12360;&#12427;</span>
 </pre>
 </div>
 </li>
@@ -998,11 +998,11 @@ $ echo &gt;&gt; ~/.ssh/config         <span style="color: #00cd66;"># </span><sp
 <dt> 確認 </dt><dd>追記したら，うまく記載できているか確認．ターミナル上で
 <div class="org-src-container">
 
-<pre class="src src-screen">$ less ~/.ssh/config
+<pre class="src src-sh">less ~/.ssh/config
 </pre>
 </div>
 <p>
-とする．less は <code>q</code> で終了できる．思った通りに記載できていなかったら emacs などで編集．
+とする． <code>less</code> は <code>q</code> で終了できる．思った通りに記載できていなかったら emacs などで編集．
 </p>
 </dd>
 </dl>
@@ -1017,13 +1017,13 @@ Are you sure you want to continue connecting (yes/no)?
 </pre>
 </div>
 <p>
-と表示されたら，=yes= を入力．
+と表示されたら， <code>yes</code> を入力．
 </p>
 <div class="org-src-container">
 
-<pre class="src src-screen"><span style="color: #00cd66;"># </span><span style="color: #00cd66;">(Warning &#12364;&#20986;&#12427;&#12371;&#12392;&#12418;&#12354;&#12427;)</span>
+<pre class="src src-text"># (Warning &#12364;&#20986;&#12427;&#12371;&#12392;&#12418;&#12354;&#12427;)
 PTY allocation request failed on channel 0
-conq: logged<span style="color: #ffffff;"> in</span> as ****.        <span style="color: #00cd66;"># </span><span style="color: #00cd66;">**** &#12395;&#12399; bitbucket.org &#12398;&#12450;&#12459;&#12454;&#12531;&#12488;&#21517;&#12364;&#20837;&#12427;</span>
+conq: logged in as ****.        # **** &#12395;&#12399; bitbucket.org &#12398;&#12450;&#12459;&#12454;&#12531;&#12488;&#21517;&#12364;&#20837;&#12427;
 
 You can use git or hg to connect to Bitbucket. Shell access is disabled.
 Connection to bitbucket.org closed.
@@ -1158,7 +1158,7 @@ Connection to github.com closed.
 </div>
 <div id="postamble" class="status">
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
-<p class="date">Created: 2014-04-02 Wed 16:54</p>
+<p class="date">Created: 2014-04-08 Tue 09:46</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

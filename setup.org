@@ -191,13 +191,13 @@ Preference -> Settings -> Launch BetterTouchTools on startup をチェック
 *** 公開鍵と秘密鍵の作成
 - =~/.ssh= にSSH用の公開鍵と秘密鍵を作る
   #+begin_src screen
-    $ mkdir ~/.ssh                    # ssh用のディレクトリを作る
-    $ cd ~/.ssh
-    $ ssh-keygen -t rsa -f id_rsa     # id_rsa という秘密鍵と id_rsa.pub という公開鍵を作る
+    mkdir ~/.ssh                    # ssh用のディレクトリを作る
+    cd ~/.ssh                       # .ssh ディレクトリni移動
+    ssh-keygen -t rsa -f id_rsa     # id_rsa という秘密鍵と id_rsa.pub という公開鍵を作る
     # パスフレーズを入力した後，同じものをもう一度入力．
     # ここで入力するパスフレーズは，Mac 本体へのログイン用と同じにしても問題無い．
-    $ chmod 700 ~/.ssh
-    $ chmod 600 ~/.ssh/id_rsa.pub 
+    chmod 700 ~/.ssh                # .ssh ディレクトリのアクセス権を「管理者のみ読み書き実行可」に変更
+    chmod 600 ~/.ssh/id_rsa.pub     # 公開鍵のアクセス権を「管理者のみ読み書き可」に変更
   #+end_src
 - ここで作成した公開鍵/秘密鍵のパスフレーズは，以下のコマンドで後から変更できる：
   #+BEGIN_SRC sh
@@ -230,8 +230,8 @@ Preference -> Settings -> Launch BetterTouchTools on startup をチェック
   これを実現する方法は2つある
   - ターミナル上で Emacs を起動して編集する方法 :: 
     1) まず，ターミナル上で
-       #+BEGIN_SRC screen
-       $ emacs ~/.ssh/config
+       #+BEGIN_SRC sh
+       emacs ~/.ssh/config
        #+END_SRC
        として，Emacs を起動する．
     2) 上記をコピー＆ペーストする．
@@ -240,15 +240,15 @@ Preference -> Settings -> Launch BetterTouchTools on startup をチェック
   - =pbpaste= から追記する方法 :: 
     1) 上記をコピーする．
     2) ターミナル上で以下を入力：
-       #+BEGIN_SRC screen
-         $ pbpaste >> ~/.ssh/config
-         $ echo >> ~/.ssh/config         # 改行を加える
+       #+BEGIN_SRC sh
+         pbpaste >> ~/.ssh/config
+         echo >> ~/.ssh/config         # 改行を加える
        #+END_SRC
   - 確認 :: 追記したら，うまく記載できているか確認．ターミナル上で
-    #+BEGIN_SRC screen
-    $ less ~/.ssh/config
+    #+BEGIN_SRC sh
+    less ~/.ssh/config
     #+END_SRC
-    とする．less は =q= で終了できる．思った通りに記載できていなかったら emacs などで編集．
+    とする． =less= は =q= で終了できる．思った通りに記載できていなかったら emacs などで編集．
 - SSH接続を試してみる．ターミナル上で =ssh git@bitbucket.org= としてみる．
   #+BEGIN_SRC text
     $ ssh git@bitbucket.org
@@ -256,8 +256,8 @@ Preference -> Settings -> Launch BetterTouchTools on startup をチェック
     RSA key fingerprint is 97:8c:1b:f2:.....
     Are you sure you want to continue connecting (yes/no)? 
   #+END_SRC
-  と表示されたら，=yes= を入力．
-  #+BEGIN_SRC screen
+  と表示されたら， =yes= を入力．
+  #+BEGIN_SRC text
     # (Warning が出ることもある)
     PTY allocation request failed on channel 0
     conq: logged in as ****.        # **** には bitbucket.org のアカウント名が入る
