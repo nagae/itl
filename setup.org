@@ -60,14 +60,8 @@ Mac ではソフトウェアのインストール方法に3通りある．
 2や3の方法の場合，必要となるファイルが dmg (仮想ドライブイメージ)ファイルとして提供されている場合がある．
 dmg ファイルをダブルクリックすると，新しいドライブが認識される．その中に .app ファイルが入っていたり，.pkg ファイルが入っていたりする．
 * セキュリティソフトウェアのインストール
-SEPの方が安定
-** Symantec Endpoint Protection (SEP)
-*** インストール方法
-- TAIN のホームページからセキュリティ対策ソフトウェア->シマンテックを選択：
-  https://www2.tains.tohoku.ac.jp/fw/dfw/INFO/modules/pico/index.php?content_id=3
-- MacOS X (32/64ビット)からダウンロードをクリック
-- dmg ファイルをマウントし「Symantec Endpoint Protection Installer」というファイルをダブルクリック
-- 指示に従って再起動する
+- f-secure は後述する homebrew のパッケージディレクトリ(=/usr/local/=)を「汚染」しない．
+- SEPの方が安定しているようだが =/usr/local/lib/= の下に =.dylib= を作るので面倒．
 ** f-secure
 *** インストール方法
 - TAINS のホームページからセキュリティ対策ソフトウェア->エフセキュアを選択：
@@ -84,6 +78,13 @@ SEPの方が安定
   #+BEGIN_SRC sh
   sudo /usr/local/f-secure/bin/uninstall_MacProtection 
   #+END_SRC
+** Symantec Endpoint Protection (SEP)
+*** インストール方法
+- TAIN のホームページからセキュリティ対策ソフトウェア->シマンテックを選択：
+  https://www2.tains.tohoku.ac.jp/fw/dfw/INFO/modules/pico/index.php?content_id=3
+- MacOS X (32/64ビット)からダウンロードをクリック
+- dmg ファイルをマウントし「Symantec Endpoint Protection Installer」というファイルをダブルクリック
+- 指示に従って再起動する
 * BetterTouchTools のインストールと設定
 ** BTT の特徴
 - Trackpad による様々なジェスチャーを各種機能に設定できる
