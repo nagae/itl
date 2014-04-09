@@ -38,7 +38,7 @@ XQuartz は OS X 上で動作する Xウィンドウシステム．各種パッ�
   brew install rsync              # フォルダのバックアップや同期を取る．
   brew install ghostscript        # Postscript インタプリタ．Emacs上でPDFや画像ファイルを表示させる docview に必須．
   brew install wget               # ウェブサーバーからコンテンツをダウンロード．curl より高機能
-  brew install imagemagick --with-ghostscript # 画像操作・表示用ソフトウェア
+  brew install imagemagick --with-tex # 画像操作・表示用ソフトウェア
 #+END_SRC
 ** git
 *** インストール
