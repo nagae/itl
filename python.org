@@ -100,7 +100,7 @@ OS X Mavericks にはデフォルトで =Python 2.7.5= と以下のモジュー�
    - 2014.04.09 :: パッケージを少し減らした
    #+BEGIN_SRC sh
      # 仮想環境構築
-     sudo pip install virtualenv nose # virtualenv は Python の仮想環境を構築するもの．nose は Python の単体テストを簡単にできるように拡張したもの
+     pip install virtualenv --no-use-whell # virtualenv は Python の仮想環境を構築するもの．
 
      # 科学技術計算用(Numpy, Scipy)
      # pip install scipy が通らなくなったので，homebrew からインストールするようにした
