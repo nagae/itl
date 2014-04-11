@@ -39,6 +39,33 @@
     #+BEGIN_SRC sh
       $ brew uninstall python            # /usr/loca/bin/python を完全に消去する
     #+END_SRC
+** Homebrew と System Python が「共存」できる環境を用意する
+参考： https://github.com/Homebrew/homebrew/wiki/Gems,-Eggs-and-Perl-Modules
+
+これまでの設定方法だと，Python パッケージをインストールするには =sudo= が必要．
+しかし， =sudo= は管理者権限を要求するため危険を伴う．
+パッケージが =/Library/Python/x.y/= 以下を「汚染」するのも好ましくない．
+そこで， =easy_install= や =pip= 管理者権限を要求せずに
+パッケージを =~/Library/Python/x.y/lib/python/site-packages= 以下にインストール方法を示す．
+
+1) 環境変数 =PYTHONPATH= に homebrew 下の =site-packages= へのパスを追記する．
+   - =~/.bash_profile= に 以下を追加する：
+     #+BEGIN_SRC sh
+     export PYTHONPATH=/usr/local/lib/python2.7/site-packages
+     #+END_SRC
+2) Python パッケージを格納するディレクトリを作成し， =homebrew= 下の =site-packages= を読みに行くように設定
+   - 以下を実行
+     #+BEGIN_SRC sh
+       mkdir -p ~/Library/Python/2.7/lib/python/site-packages
+       echo '/usr/local/lib/python2.7/site-packages' >> ~/Library/Python/2.7/lib/python/site-packages/homebrew.pth
+     #+END_SRC
+3) Python 側にパッケージのインストール先を指定
+   - =~/.pydistutils.cfg= に以下を記述：
+     #+BEGIN_SRC conf
+       [install]
+       install_lib = ~/Library/Python/$py_version_short/lib/python/site-packages
+     #+END_SRC
+
 
 ** pip と homebrew を使って Python のパッケージを充実させる
 http://joernhees.de/blog/2013/06/08/mac-os-x-10-8-scientific-python-with-homebrew/
@@ -68,21 +95,6 @@ OS X Mavericks にはデフォルトで =Python 2.7.5= と以下のモジュー�
      brew tap homebrew/python # python libraries
      brew update && brew upgrade
    #+END_SRC
-
-3. 環境変数 =PYTHONPATH= に homebrew のパスを加える
-
-   組み込み Python 下の pip でインストールしたライブラリと homebrew からインストー
-   ルした Python ライブラリを混在させる場合には，環境変数 =PYTHONPATH= に
-   homebrew 下の =site-packages= へのパスを追記する必要がある．
-   - =~/.bash_profile= に 以下を追加する：
-     #+BEGIN_SRC sh
-     export PYTHONPATH=/usr/local/lib/python2.7/site-packages:/Library/Python/2.7/site-package:$PYTHONPATH
-     #+END_SRC
-
-   - ターミナルで以下を実行する
-     #+BEGIN_SRC sh
-     $ source ~/.bash_profile
-     #+END_SRC
 
 4. 順番に色々入れていく：
    - 2014.04.09 :: パッケージを少し減らした
@@ -119,13 +131,7 @@ OS X Mavericks にはデフォルトで =Python 2.7.5= と以下のモジュー�
      sudo easy_install readline   # iPython で補完や履歴を表示させるのに必要(iPython では easy_install版が強く推奨されている)
      sudo pip install ipython[zmq,qtconsole,notebook,test] # iPython は Python のインタラクティブ・モードを進化させたもの
    #+END_SRC
-
-5. パッケージ設定：
-   Python で =site-packages= を探せるようにする：
-   #+BEGIN_SRC sh
-     mkdir -p ~/Library/Python/2.7/lib/python/site-packages
-     echo '/usr/local/lib/python2.7/site-packages' >> ~/Library/Python/2.7/lib/python/site-packages/homebrew.pth
-   #+END_SRC
+   
 * =matplotlib/basemap= のインストール
 Python のグラフ描画パッケージ =matplotlib= 上で地理情報データを表示できるサブモジュールが =basemap=.
 参考URL: http://blog.bluedackers.com/2012/11/13/installing-basemap-on-mac-os-x-mountain-lion/
