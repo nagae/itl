@@ -83,7 +83,7 @@ OS X Mavericks にはデフォルトで =Python 2.7.5= と以下のモジュー�
    pip は Python 用のパッケージインストーラである．homebrew 版 python には pip
    も含まれるが，Mac OS X デフォルト版にはそれが無いのでインストールする．
    #+BEGIN_SRC sh
-   easy_install pip
+   easy_install --install-dir=~/Library/Python/2.7/lib/python/site-packages --script-dir=~/Library/Python/2.7/bin pip
    #+END_SRC
 2. homebrew のリポジトリに =homebrew/science= と =homebrew/python= を追加する：
    #+BEGIN_SRC sh
@@ -123,7 +123,7 @@ OS X Mavericks にはデフォルトで =Python 2.7.5= と以下のモジュー�
      brew install qt pyqt # Qt は GUIツールキット．pyqt はその Python バインディング
      brew linkapps        # qt のツールを /Application フォルダにコピー
      brew install zmq # ZeroMQ は軽さがウリのMQ(message queuing, アプリケーション間データ交換方式の1つ)
-     easy_install readline   # iPython で補完や履歴を表示させるのに必要(iPython では easy_install版が強く推奨されている)
+     easy_install --install-dir=~/Library/Python/2.7/lib/python/site-packages --script-dir=~/Library/Python/2.7/bin readline    # iPython で補完や履歴を表示させるのに必要(iPython では easy_install版が強く推奨されている)
      pip install --user -U ipython[zmq,qtconsole,notebook,test] # iPython は Python のインタラクティブ・モードを進化させたもの
    #+END_SRC
    
