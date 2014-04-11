@@ -85,6 +85,26 @@ dmg ファイルをダブルクリックすると，新しいドライブが認�
 - MacOS X (32/64ビット)からダウンロードをクリック
 - dmg ファイルをマウントし「Symantec Endpoint Protection Installer」というファイルをダブルクリック
 - 指示に従って再起動する
+* Terminal.app の起動と設定
+以降では，ターミナル(=Terminal.app=)をよく使う．
+以下の設定ファイルを作成/編集することで，より便利に使えるようになる．
+#+BEGIN_SRC sh
+  ~/.bash_profile                 # PATH や よく使うコマンドの別名(alias)など
+  ~/.inputrc                      # 入力のカスタマイズ
+#+END_SRC
+** =~/.inputrc= の設定
+ターミナルでは，上下キーや =Ctrl-n / Ctrl-p= によって過去に入力した履歴を表示させられる．
+さらに，=~/.inputrc= に以下を記載しておくと，最初の数文字を入力してから上下キーや =Ctrl-n/Ctrl-p= を押すと，
+その文字で始まる履歴のみを表示させられる．
+#+BEGIN_SRC sh
+"\C-n": history-search-forward
+"\C-p": history-search-backward
+"\e[A": history-search-backward
+"\e[0A": history-search-backward
+"\e[B": history-search-forward
+"\e[0B": history-search-forward
+#+END_SRC
+
 * BetterTouchTools のインストールと設定
 ** BTT の特徴
 - Trackpad による様々なジェスチャーを各種機能に設定できる
