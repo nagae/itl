@@ -16,6 +16,8 @@
 
 #+STYLE: <link rel=stylesheet href="style.css" type="text/css">
 
+* 安全なパスワードを設定しよう
+- [[./password.org][少しはマシなパスワードの設定方法]]
 * 環境を整えよう
 - [[./setup.org][Mac のセットアップ，基本的なソフトウェアのインストール]]
 - [[./homebrew.html][パッケージ管理システム homebrew の導入]]
