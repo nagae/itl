@@ -98,6 +98,12 @@ dmg ファイルをダブルクリックすると，新しいドライブが認�
 その文字で始まる履歴のみを表示させられる．
 #+HTML: <script src="https://gist.github.com/nagae/10461176.js"></script>
 
+ターミナルで以下のように入力すれば， =~/.initrc= を作成できる．
+#+BEGIN_SRC sh
+cd ~/
+curl -O https://gist.githubusercontent.com/nagae/10461176/raw/.inputrc
+#+END_SRC
+
 * BetterTouchTools のインストールと設定
 ** BTT の特徴
 - Trackpad による様々なジェスチャーを各種機能に設定できる
