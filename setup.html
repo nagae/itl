@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
 <title>ITL/セットアップ編</title>
-<!-- 2014-04-11 Fri 20:37 -->
+<!-- 2014-04-11 Fri 20:42 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Takeshi Nagae" />
@@ -526,16 +526,7 @@ dmg ファイルをダブルクリックすると，新しいドライブが認�
 さらに，<code>~/.inputrc</code> に以下を記載しておくと，最初の数文字を入力してから上下キーや <code>Ctrl-n/Ctrl-p</code> を押すと，
 その文字で始まる履歴のみを表示させられる．
 </p>
-<div class="org-src-container">
-
-<pre class="src src-sh"><span style="color: #bdb76b;">"\C-n"</span>: history-search-forward
-<span style="color: #bdb76b;">"\C-p"</span>: history-search-backward
-<span style="color: #bdb76b;">"\e[A"</span>: history-search-backward
-<span style="color: #bdb76b;">"\e[0A"</span>: history-search-backward
-<span style="color: #bdb76b;">"\e[B"</span>: history-search-forward
-<span style="color: #bdb76b;">"\e[0B"</span>: history-search-forward
-</pre>
-</div>
+<script src="https://gist.github.com/nagae/10461176.js"></script>
 </div>
 </div>
 </div>
@@ -1245,7 +1236,7 @@ Connection to github.com closed.
 </div>
 <div id="postamble" class="status">
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
-<p class="date">Created: 2014-04-11 Fri 20:37</p>
+<p class="date">Created: 2014-04-11 Fri 20:42</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
