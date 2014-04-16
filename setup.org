@@ -352,7 +352,7 @@ Preference -> Settings -> Launch BetterTouchTools on startup をチェック
 上述の方法を応用すれば，他の SSH サーバーにもSSH公開鍵を登録できる．
 例えば， =username@remote.to= というサーバーに登録したい場合は，まず，以下のようにターミナルから入力する．
 #+BEGIN_SRC sh
-cat id_rsa.pub | ssh username@remote.to "cat>>.ssh/authorized_keys"
+  cat ~/.ssh/id_rsa.pub | ssh username@remote.to "cat>>.ssh/authorized_keys"
 #+END_SRC
 次に =~/.ssh/config= に以下を追記する：
 #+BEGIN_SRC text
