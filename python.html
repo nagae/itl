@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
 <title>Python + Gurobi による科学技術計算環境の構築</title>
-<!-- 2014-04-15 Tue 02:26 -->
+<!-- 2014-05-21 Wed 10:57 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Takeshi Nagae" />
@@ -251,7 +251,7 @@ for the JavaScript code in this tag.
 <h3 id="sec-1-1"><span class="section-number-3">1.1</span> Python のバージョン確認</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
-<li>Gurobi は Mac OS X デフォルトの Python しかサポートしない(<a href="https://groups.google.com/d/msg/gurobi/ghzhXNugDxs/mFNWanBl1fMJ">参考</a>)．まずは Python
+<li>Gurobi は Mac OS X デフォルトの Python しかサポートしない(<a href="https:groups.google.com/d/msg/gurobi/ghzhXNugDxs/mFNWanBl1fMJ">参考</a>)．まずは Python
 のバージョンを確認：
 <div class="org-src-container">
 
@@ -284,12 +284,11 @@ Python 2.7.5                    <span style="color: #00cd66;"># </span><span sty
 </ul>
 </div>
 </div>
-
 <div id="outline-container-sec-1-2" class="outline-3">
 <h3 id="sec-1-2"><span class="section-number-3">1.2</span> Homebrew と System Python が「共存」できる環境を用意する</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
-参考： <a href="https://github.com/Homebrew/homebrew/wiki/Gems,-Eggs-and-Perl-Modules">https://github.com/Homebrew/homebrew/wiki/Gems,-Eggs-and-Perl-Modules</a>
+参考： <a href="https:github.com/Homebrew/homebrew/wiki/Gems,-Eggs-and-Perl-Modules">https:github.com/Homebrew/homebrew/wiki/Gems,-Eggs-and-Perl-Modules</a>
 </p>
 
 <p>
@@ -332,11 +331,12 @@ Python 2.7.5                    <span style="color: #00cd66;"># </span><span sty
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-1-3" class="outline-3">
 <h3 id="sec-1-3"><span class="section-number-3">1.3</span> pip と homebrew を使って Python のパッケージを充実させる</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
-<a href="http://joernhees.de/blog/2013/06/08/mac-os-x-10-8-scientific-python-with-homebrew/">http://joernhees.de/blog/2013/06/08/mac-os-x-10-8-scientific-python-with-homebrew/</a>
+<a href="http:joernhees.de/blog/2013/06/08/mac-os-x-10-8-scientific-python-with-homebrew/">http:joernhees.de/blog/2013/06/08/mac-os-x-10-8-scientific-python-with-homebrew/</a>
 に紹介されているパッケージを入れる．ただし，このサイトでは python の最新版を
 homebrew でインストールすることを前提としてるが，それだと Gurobi が動かない．
 </p>
@@ -359,7 +359,7 @@ OS X Mavericks にはデフォルトで <code>Python 2.7.5</code> と以下の�
 </p>
 
 <p>
-また，<code>pip</code> でインストールできる(i.e. Python関係)パッケージは極力 <code>pip</code> を用いる
+また，=pip= でインストールできる(i.e. Python関係)パッケージは極力 <code>pip</code> を用いる
 こととした．
 </p>
 
@@ -427,12 +427,13 @@ pip install --user -U ipython[zmq,qtconsole,notebook,test] <span style="color: #
 </div>
 </div>
 </div>
+
 <div id="outline-container-sec-2" class="outline-2">
 <h2 id="sec-2"><span class="section-number-2">2</span> <code>matplotlib/basemap</code> のインストール</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Python のグラフ描画パッケージ <code>matplotlib</code> 上で地理情報データを表示できるサブモジュールが <code>basemap</code>.
-参考URL: <a href="http://blog.bluedackers.com/2012/11/13/installing-basemap-on-mac-os-x-mountain-lion/">http://blog.bluedackers.com/2012/11/13/installing-basemap-on-mac-os-x-mountain-lion/</a>
+参考URL: <a href="http:blog.bluedackers.com/2012/11/13/installing-basemap-on-mac-os-x-mountain-lion/">http:blog.bluedackers.com/2012/11/13/installing-basemap-on-mac-os-x-mountain-lion/</a>
 </p>
 <ol class="org-ol">
 <li>GEOS(geometry engine open source) および OWSlib をインストール
@@ -452,7 +453,7 @@ pip install --user owslib
 </div>
 </li>
 <li><code>basemap-x.y.z</code> のダウンロード
-<a href="http://sourceforge.net/projects/matplotlib/files/matplotlib-toolkits/">http://sourceforge.net/projects/matplotlib/files/matplotlib-toolkits/</a> から最新の <code>basemap-x.y.z.tar.gz</code> をダウンロード．
+<a href="http:sourceforge.net/projects/matplotlib/files/matplotlib-toolkits/">http:sourceforge.net/projects/matplotlib/files/matplotlib-toolkits/</a> から最新の <code>basemap-x.y.z.tar.gz</code> をダウンロード．
 
 <p>
 ターミナルから <code>basemap-1.0.7.tar.gz</code> をダウンロードする場合，以下のように入力：
@@ -485,6 +486,7 @@ python sample_wms_basemap.py
 </ol>
 </div>
 </div>
+
 <div id="outline-container-sec-3" class="outline-2">
 <h2 id="sec-3"><span class="section-number-2">3</span> Gurobi / Python の環境構築</h2>
 <div class="outline-text-2" id="text-3">
@@ -493,7 +495,7 @@ python sample_wms_basemap.py
 <div class="outline-text-3" id="text-3-1">
 <p>
 以下の情報は
-<a href="http://www.gurobi.com/products/licensing-and-pricing/academic-licensing">http://www.gurobi.com/products/licensing-and-pricing/academic-licensing</a> に基づい
+<a href="http:www.gurobi.com/products/licensing-and-pricing/academic-licensing">http:www.gurobi.com/products/licensing-and-pricing/academic-licensing</a> に基づい
 ている．
 </p>
 </div>
@@ -515,11 +517,12 @@ Gurobi のアカデミック・ライセンスは以下の制約の下で利用�
 </ul>
 </div>
 </div>
+
 <div id="outline-container-sec-3-1-2" class="outline-4">
 <h4 id="sec-3-1-2"><span class="section-number-4">3.1.2</span> アカウント作成，ライセンスの取得および認証の方法</h4>
 <div class="outline-text-4" id="text-3-1-2">
 <ol class="org-ol">
-<li><a href="http://www.gurobi.com">http://www.gurobi.com</a> にアクセスし，Register for Free をクリック
+<li><a href="http:www.gurobi.com">http:www.gurobi.com</a> にアクセスし，Register for Free をクリック
 
 <div class="figure">
 <p><img src="fig/grb_register.png" alt="grb_register.png" width="720" />
@@ -529,7 +532,7 @@ Gurobi のアカデミック・ライセンスは以下の制約の下で利用�
 <li>Account Type は「Academic」とし，Email は <code>tohoku.ac.jp</code> で終わるアドレスを利
 用．Company/University には「Tohoku University」とする
 </li>
-<li><a href="http://www.gurobi.com">http://www.gurobi.com</a> のメニューバーから Download &gt; Licenses に移動し，FREE
+<li><a href="http:www.gurobi.com">http:www.gurobi.com</a> のメニューバーから Download &gt; Licenses に移動し，FREE
 ACADEMIC のページに移動．2箇所をチェックして Request License する
 
 <div class="figure">
@@ -549,13 +552,12 @@ ACADEMIC のページに移動．2箇所をチェックして Request License �
 </ol>
 </div>
 </div>
-
 <div id="outline-container-sec-3-1-3" class="outline-4">
 <h4 id="sec-3-1-3"><span class="section-number-4">3.1.3</span> Gurobi のダウンロードとインストール</h4>
 <div class="outline-text-4" id="text-3-1-3">
 <ol class="org-ol">
-<li><a href="http://www.gurobi.com">http://www.gurobi.com</a> のメニューバーから Download &gt; Gurobi Optimizer のページ
-に移動し，Current version: 5.6.0 の Mac OS 版と READ ME を選択してDownload する．
+<li><a href="http:www.gurobi.com">http:www.gurobi.com</a> のメニューバーから Download &gt; Gurobi Optimizer のページ
+に移動し，Current version: 5.6.3 の Mac OS 版と READ ME を選択してDownload する．
 
 <div class="figure">
 <p><img src="fig/grb_Mac_OS_Download.png" alt="grb_Mac_OS_Download.png" />
@@ -566,13 +568,15 @@ ACADEMIC のページに移動．2箇所をチェックして Request License �
 クすればインストールできる)．実行ファイルなどは
 <div class="org-src-container">
 
-<pre class="src src-example">/Library/gurobi562/mac64
+<pre class="src src-example">/Library/gurobi***/mac64
 </pre>
 </div>
 <p>
-以下にインストールされる．
+以下にインストールされる．ここで, <code>***</code> は Gurobi のバージョンによって変わる．
+バージョンが <code>5.6.3</code> なら，パスは <code>/Library/gurobi563/mac64</code> になる．
 </p>
 </li>
+
 <li>ターミナルを立ち上げ，上記のライセンス取得コマンドを実行する：
 <div class="org-src-container">
 
@@ -586,7 +590,7 @@ Gurobi のサーバーに接続して認証が完了すると，ライセンス�
 </p>
 <div class="org-src-container">
 
-<pre class="src src-sh">   Gurobi license key client (version 5.6.0)
+<pre class="src src-sh">   Gurobi license key client (version x.x.x) <span style="color: #00cd66;"># </span><span style="color: #00cd66;">x.x.x &#12399;&#12496;&#12540;&#12472;&#12519;&#12531;&#12395;&#12424;&#12387;&#12390;&#22793;&#12431;&#12427;</span>
 <span style="color: #98fb98;">Copyright</span> (c) 2012, Gurobi Optimization, Inc.
 
 -------------------------------
@@ -612,11 +616,11 @@ In which directory would you like to store the Gurobi license key file?
 <div class="org-src-container">
 
 <pre class="src src-sh">$ gurobi.sh                     <span style="color: #00cd66;"># </span><span style="color: #00cd66;">gurobi.sh &#12434;&#23455;&#34892;</span>
-Python 2.7.2 (default, Oct 11 2012, 20:14:37) 
-[GCC 4.2.1 Compatible Apple Clang 4.0 (tags/Apple/clang-418.0.60)] on darwin
+Python 2.7.5 (default, Aug 25 2013, 00:04:04) 
+[GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
 Type <span style="color: #bdb76b;">"help"</span>, <span style="color: #bdb76b;">"copyright"</span>, <span style="color: #bdb76b;">"credits"</span> or <span style="color: #bdb76b;">"license"</span> for more information.
 
-Gurobi Interactive Shell (mac64), Version 5.6.0
+Gurobi Interactive Shell (mac64), Version 5.6.3
 <span style="color: #98fb98;">Copyright</span> (c) 2013, Gurobi Optimization, Inc.
 Type <span style="color: #bdb76b;">"help()"</span> for help
 </pre>
@@ -651,7 +655,6 @@ gurobipy.GurobiError: No Gurobi license found (user nagae, host iMac-Late2012.lo
 </div>
 </div>
 </div>
-
 <div id="outline-container-sec-3-2" class="outline-3">
 <h3 id="sec-3-2"><span class="section-number-3">3.2</span> Gurobi をアップグレードする場合</h3>
 <div class="outline-text-3" id="text-3-2">
@@ -740,6 +743,7 @@ $                                   <span style="color: #00cd66;"># </span><span
 </div>
 </div>
 </div>
+
 <div id="outline-container-sec-4-2" class="outline-3">
 <h3 id="sec-4-2"><span class="section-number-3">4.2</span> 最小費用流問題を解いてみる</h3>
 <div class="outline-text-3" id="text-4-2">
@@ -801,6 +805,7 @@ $                                   <span style="color: #00cd66;"># </span><span
 </ol>
 </div>
 </div>
+
 <div id="outline-container-sec-4-2-2" class="outline-4">
 <h4 id="sec-4-2-2"><span class="section-number-4">4.2.2</span> Gurobi で表現してみる</h4>
 <div class="outline-text-4" id="text-4-2-2">
@@ -955,7 +960,6 @@ x_{c,d}:          8.0000
 </div>
 </div>
 </div>
-
 <div id="outline-container-sec-4-3" class="outline-3">
 <h3 id="sec-4-3"><span class="section-number-3">4.3</span> インタラクティブ・モードに疲れたら</h3>
 <div class="outline-text-3" id="text-4-3">
@@ -1046,7 +1050,7 @@ Python からファイルを呼び出すには，ターミナルで
 </div>
 <div id="postamble" class="status">
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
-<p class="date">Created: 2014-04-15 Tue 02:26</p>
+<p class="date">Created: 2014-05-21 Wed 10:57</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

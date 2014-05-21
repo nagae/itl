@@ -191,15 +191,17 @@ Gurobi のアカデミック・ライセンスは以下の制約の下で利用�
    [[file:fig/grb_license_detail.png]]
 *** Gurobi のダウンロードとインストール
 1. http://www.gurobi.com のメニューバーから Download > Gurobi Optimizer のページ
-   に移動し，Current version: 5.6.0 の Mac OS 版と READ ME を選択してDownload する．
+   に移動し，Current version: 5.6.3 の Mac OS 版と READ ME を選択してDownload する．
    #+ATTR_HTML: width=720
    [[file:fig/grb_Mac_OS_Download.png]]
 2. README.txt に従ってインストールする(ダウンロードした pkg ファイルをダブルクリッ
    クすればインストールできる)．実行ファイルなどは
    #+BEGIN_SRC example
-   /Library/gurobi562/mac64
+   /Library/gurobi***/mac64
    #+END_SRC
-   以下にインストールされる．
+   以下にインストールされる．ここで, =***= は Gurobi のバージョンによって変わる．
+   バージョンが =5.6.3= なら，パスは =/Library/gurobi563/mac64= になる．
+   
 3. ターミナルを立ち上げ，上記のライセンス取得コマンドを実行する：
    #+BEGIN_SRC sh
      grbgetkey ae36ac20-16e6-acd2-f242-4da6e765fa0a # このキーは実際には使用できない
@@ -208,7 +210,7 @@ Gurobi のアカデミック・ライセンスは以下の制約の下で利用�
    Gurobi のサーバーに接続して認証が完了すると，ライセンスファイルの生成場所を尋
    ねてくる：
    #+BEGIN_SRC sh
-   Gurobi license key client (version 5.6.0)
+   Gurobi license key client (version x.x.x) # x.x.x はバージョンによって変わる
 Copyright (c) 2012, Gurobi Optimization, Inc.
 
 -------------------------------
@@ -229,11 +231,11 @@ In which directory would you like to store the Gurobi license key file?
 4. ターミナルで =gurobi.sh= を実行してエラーが出なければOK:
    #+BEGIN_SRC sh
      $ gurobi.sh                     # gurobi.sh を実行
-     Python 2.7.2 (default, Oct 11 2012, 20:14:37) 
-     [GCC 4.2.1 Compatible Apple Clang 4.0 (tags/Apple/clang-418.0.60)] on darwin
+     Python 2.7.5 (default, Aug 25 2013, 00:04:04) 
+     [GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
      Type "help", "copyright", "credits" or "license" for more information.
-     
-     Gurobi Interactive Shell (mac64), Version 5.6.0
+
+     Gurobi Interactive Shell (mac64), Version 5.6.3
      Copyright (c) 2013, Gurobi Optimization, Inc.
      Type "help()" for help
    #+END_SRC
@@ -256,7 +258,6 @@ In which directory would you like to store the Gurobi license key file?
    この場合も終了させるには Ctrl-D．
 ** Gurobi をアップグレードする場合
 新しいパッケージをダウンロード→インストールする．ライセンスの更新は不要．
-
 
 * Gurobi を使ってみる
 ** Python を起動
