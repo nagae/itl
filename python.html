@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
 <title>Python + Gurobi による科学技術計算環境の構築</title>
-<!-- 2014-05-21 Wed 10:57 -->
+<!-- 2014-07-15 Tue 11:03 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Takeshi Nagae" />
@@ -436,40 +436,22 @@ Python のグラフ描画パッケージ <code>matplotlib</code> 上で地理情
 参考URL: <a href="http:blog.bluedackers.com/2012/11/13/installing-basemap-on-mac-os-x-mountain-lion/">http:blog.bluedackers.com/2012/11/13/installing-basemap-on-mac-os-x-mountain-lion/</a>
 </p>
 <ol class="org-ol">
-<li>GEOS(geometry engine open source) および OWSlib をインストール
+<li>GEOS(geometry engine open source), matplotlib-basemap および OWSlib をインストール
 <div class="org-src-container">
 
 <pre class="src src-sh">brew install geos
+brew install matplotlib-basemap
 pip install --user owslib
 </pre>
 </div>
-</li>
-<li>環境変数 <code>GEOS_DIR</code> を作成
-<code>/usr/local/Cellar/geos</code> の下の最新のバージョン(2014/2/26 時点では 3.4.2)を環境変数 <code>GEOS_DIR</code> として登録
-<div class="org-src-container">
-
-<pre class="src src-sh"><span style="color: #b0c4de;">export</span> <span style="color: #9acd32;">GEOS_DIR</span>=/usr/local/Cellar/geos/3.4.2/
-</pre>
-</div>
-</li>
-<li><code>basemap-x.y.z</code> のダウンロード
-<a href="http:sourceforge.net/projects/matplotlib/files/matplotlib-toolkits/">http:sourceforge.net/projects/matplotlib/files/matplotlib-toolkits/</a> から最新の <code>basemap-x.y.z.tar.gz</code> をダウンロード．
-
 <p>
-ターミナルから <code>basemap-1.0.7.tar.gz</code> をダウンロードする場合，以下のように入力：
+Homebrew で <code>matplotlib-basemap</code> が提供されたため，インストールが劇的に簡単になった(参考:<a href="https:github.com/Homebrew/homebrew-python/issues/112">https:github.com/Homebrew/homebrew-python/issues/112</a>)
+<code>pip</code> 経由でインストールしてうまく動かなかった人は,
 </p>
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #b0c4de;">cd</span> ~/Downloads/
-curl -LO http://sourceforge.net/projects/matplotlib/files/matplotlib-toolkits/basemap-1.0.7/basemap-1.0.7.tar.gz/download
-</pre>
-</div>
-</li>
-<li><code>basemap</code> をインストール
-<div class="org-src-container">
-
-<pre class="src src-sh"><span style="color: #9acd32;">ARCHFLAGS</span>=-Wno-error=unused-command-line-argument-hard-error-in-future <span style="color: #bdb76b;">\</span>
-    pip install --user -U ~/Downloads/basemap-1.0.7.tar.gz
+<pre class="src src-sh">pip uninstall basemap
+brew install matplotlib-basemap
 </pre>
 </div>
 </li>
@@ -1050,7 +1032,7 @@ Python からファイルを呼び出すには，ターミナルで
 </div>
 <div id="postamble" class="status">
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
-<p class="date">Created: 2014-05-21 Wed 10:57</p>
+<p class="date">Created: 2014-07-15 Tue 11:03</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
