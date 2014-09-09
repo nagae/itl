@@ -130,30 +130,19 @@ OS X Mavericks にはデフォルトで =Python 2.7.5= と以下のモジュー�
 * =matplotlib/basemap= のインストール
 Python のグラフ描画パッケージ =matplotlib= 上で地理情報データを表示できるサブモジュールが =basemap=.
 参考URL: http://blog.bluedackers.com/2012/11/13/installing-basemap-on-mac-os-x-mountain-lion/
-1. GEOS(geometry engine open source) および OWSlib をインストール
+1. GEOS(geometry engine open source), matplotlib-basemap および OWSlib をインストール
    #+BEGIN_SRC sh
      brew install geos
+     brew install matplotlib-basemap
      pip install --user owslib
    #+END_SRC
-2. 環境変数 =GEOS_DIR= を作成
-   =/usr/local/Cellar/geos= の下の最新のバージョン(2014/2/26 時点では 3.4.2)を環境変数 =GEOS_DIR= として登録
+   Homebrew で =matplotlib-basemap= が提供されたため，インストールが劇的に簡単になった(参考:https://github.com/Homebrew/homebrew-python/issues/112)
+   =pip= 経由でインストールしてうまく動かなかった人は,
    #+BEGIN_SRC sh
-   export GEOS_DIR=/usr/local/Cellar/geos/3.4.2/
+     pip uninstall basemap
+     brew install matplotlib-basemap
    #+END_SRC
-3. =basemap-x.y.z= のダウンロード
-   http://sourceforge.net/projects/matplotlib/files/matplotlib-toolkits/ から最新の =basemap-x.y.z.tar.gz= をダウンロード．
-
-   ターミナルから =basemap-1.0.7.tar.gz= をダウンロードする場合，以下のように入力：
-   #+BEGIN_SRC sh
-     cd ~/Downloads/
-     curl -LO http://sourceforge.net/projects/matplotlib/files/matplotlib-toolkits/basemap-1.0.7/basemap-1.0.7.tar.gz/download
-   #+END_SRC
-4. =basemap= をインストール
-   #+BEGIN_SRC sh
-     ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future \
-         pip install --user -U ~/Downloads/basemap-1.0.7.tar.gz
-   #+END_SRC
-5. Python で以下のスクリプトを実行してみる
+2. Python で以下のスクリプトを実行してみる
    #+HTML: <script src="https://gist.github.com/nagae/9243923.js"></script>   
    #+BEGIN_SRC sh
    cd ~/Downloads/

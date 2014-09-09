@@ -18,25 +18,26 @@
 #+INFOJS_OPT: view:showall toc:t sdepth:2 ltoc:1 mouse:nil buttons:nil
 #+LATEX_HEADER:\usepackage{amsmath,rmss_math,rmss_color}
 
-* TeXLive 2013 のインストール
+* TeXLive 2014 のインストール
 以下では， =texmf= ディレクトリを Dropbox 上に置く方法を示す．
 ** 参考
 - TeX Live を使おう --- Linux ユーザと Mac OS X ユーザのために --- :: http://www.fugenji.org/~thomas/texlive-guide/
-** 2012 からのアップグレード
-1. TeXLive 2012 のバックアップ
+** 旧バージョンからのアップグレード
+1. TeXLive 20** のバックアップ
+   ** の部分はバックアップしたいバージョンに合わせて適宜変更(=2012, 2013= など)
    #+BEGIN_SRC sh
-     mv /usr/local/texlive/2012/ /usr/local/texlive/.2012
+     mv /usr/local/texlive/20**/ /usr/local/texlive/.20**
    #+END_SRC
    
-   TeXLive 2013 でうまく動かなくなったら，
+   TeXLive 2014 でうまく動かなくなったら，
    #+BEGIN_SRC sh
-     mv /usr/local/texlive/2013 /usr/local/texlive/.2013
-     mv /usr/local/texlive/.2012 /usr/local/texlive/2012
-     sed 's|/usr/local/texlive/2013|/usr/local/texlive/2012|g' ~/.bash_profile
+     mv /usr/local/texlive/2014 /usr/local/texlive/.2014
+     mv /usr/local/texlive/.20** /usr/local/texlive/20**
+     sed 's|/usr/local/texlive/2014|/usr/local/texlive/20**|g' ~/.bash_profile
      source ~/.bash_profile
      mktexlsr
    #+END_SRC
-   とすれば TeXLive 2012 に戻せるはず．
+   とすれば TeXLive 20** に戻せるはず．
 ** 本体のインストール
 1. インストーラと texlive.profile をダウンロード
 
