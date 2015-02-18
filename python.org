@@ -76,14 +76,14 @@ OS X Mavericks にはデフォルトで =Python 2.7.5= と以下のモジュー�
 そこで，ここでは，Mac OS X デフォルトの Python 用の =pip= をインストールし，
 それを使ってパッケージを追加する方法を述べる．
 
-また，=pip= でインストールできる(i.e. Python関係)パッケージは極力 =pip= を用いる
+また, =pip= でインストールできる(i.e. Python関係)パッケージは極力 =pip= を用いる
 こととした．
 
 1. pip のインストール
    pip は Python 用のパッケージインストーラである．homebrew 版 python には pip
    も含まれるが，Mac OS X デフォルト版にはそれが無いのでインストールする．
    #+BEGIN_SRC sh
-     curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py | sudo python
+     curl https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py | sudo python
    #+END_SRC
 2. homebrew のリポジトリに =homebrew/science= と =homebrew/python= を追加する：
    #+BEGIN_SRC sh

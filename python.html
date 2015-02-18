@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
 <title>Python + Gurobi による科学技術計算環境の構築</title>
-<!-- 2014-07-15 Tue 11:03 -->
+<!-- 2015-02-18 Wed 13:21 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Takeshi Nagae" />
@@ -251,7 +251,7 @@ for the JavaScript code in this tag.
 <h3 id="sec-1-1"><span class="section-number-3">1.1</span> Python のバージョン確認</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
-<li>Gurobi は Mac OS X デフォルトの Python しかサポートしない(<a href="https:groups.google.com/d/msg/gurobi/ghzhXNugDxs/mFNWanBl1fMJ">参考</a>)．まずは Python
+<li>Gurobi は Mac OS X デフォルトの Python しかサポートしない(<a href="https://groups.google.com/d/msg/gurobi/ghzhXNugDxs/mFNWanBl1fMJ">参考</a>)．まずは Python
 のバージョンを確認：
 <div class="org-src-container">
 
@@ -288,7 +288,7 @@ Python 2.7.5                    <span style="color: #00cd66;"># </span><span sty
 <h3 id="sec-1-2"><span class="section-number-3">1.2</span> Homebrew と System Python が「共存」できる環境を用意する</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
-参考： <a href="https:github.com/Homebrew/homebrew/wiki/Gems,-Eggs-and-Perl-Modules">https:github.com/Homebrew/homebrew/wiki/Gems,-Eggs-and-Perl-Modules</a>
+参考： <a href="https://github.com/Homebrew/homebrew/wiki/Gems,-Eggs-and-Perl-Modules">https://github.com/Homebrew/homebrew/wiki/Gems,-Eggs-and-Perl-Modules</a>
 </p>
 
 <p>
@@ -336,7 +336,7 @@ Python 2.7.5                    <span style="color: #00cd66;"># </span><span sty
 <h3 id="sec-1-3"><span class="section-number-3">1.3</span> pip と homebrew を使って Python のパッケージを充実させる</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
-<a href="http:joernhees.de/blog/2013/06/08/mac-os-x-10-8-scientific-python-with-homebrew/">http:joernhees.de/blog/2013/06/08/mac-os-x-10-8-scientific-python-with-homebrew/</a>
+<a href="http://joernhees.de/blog/2013/06/08/mac-os-x-10-8-scientific-python-with-homebrew/">http://joernhees.de/blog/2013/06/08/mac-os-x-10-8-scientific-python-with-homebrew/</a>
 に紹介されているパッケージを入れる．ただし，このサイトでは python の最新版を
 homebrew でインストールすることを前提としてるが，それだと Gurobi が動かない．
 </p>
@@ -359,7 +359,7 @@ OS X Mavericks にはデフォルトで <code>Python 2.7.5</code> と以下の�
 </p>
 
 <p>
-また，=pip= でインストールできる(i.e. Python関係)パッケージは極力 <code>pip</code> を用いる
+また, <code>pip</code> でインストールできる(i.e. Python関係)パッケージは極力 <code>pip</code> を用いる
 こととした．
 </p>
 
@@ -369,7 +369,7 @@ pip は Python 用のパッケージインストーラである．homebrew 版 p
 も含まれるが，Mac OS X デフォルト版にはそれが無いのでインストールする．
 <div class="org-src-container">
 
-<pre class="src src-sh">curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py | sudo python
+<pre class="src src-sh">curl https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py | sudo python
 </pre>
 </div>
 </li>
@@ -433,7 +433,7 @@ pip install --user -U ipython[zmq,qtconsole,notebook,test] <span style="color: #
 <div class="outline-text-2" id="text-2">
 <p>
 Python のグラフ描画パッケージ <code>matplotlib</code> 上で地理情報データを表示できるサブモジュールが <code>basemap</code>.
-参考URL: <a href="http:blog.bluedackers.com/2012/11/13/installing-basemap-on-mac-os-x-mountain-lion/">http:blog.bluedackers.com/2012/11/13/installing-basemap-on-mac-os-x-mountain-lion/</a>
+参考URL: <a href="http://blog.bluedackers.com/2012/11/13/installing-basemap-on-mac-os-x-mountain-lion/">http://blog.bluedackers.com/2012/11/13/installing-basemap-on-mac-os-x-mountain-lion/</a>
 </p>
 <ol class="org-ol">
 <li>GEOS(geometry engine open source), matplotlib-basemap および OWSlib をインストール
@@ -445,7 +445,7 @@ pip install --user owslib
 </pre>
 </div>
 <p>
-Homebrew で <code>matplotlib-basemap</code> が提供されたため，インストールが劇的に簡単になった(参考:<a href="https:github.com/Homebrew/homebrew-python/issues/112">https:github.com/Homebrew/homebrew-python/issues/112</a>)
+Homebrew で <code>matplotlib-basemap</code> が提供されたため，インストールが劇的に簡単になった(参考:<a href="https://github.com/Homebrew/homebrew-python/issues/112">https://github.com/Homebrew/homebrew-python/issues/112</a>)
 <code>pip</code> 経由でインストールしてうまく動かなかった人は,
 </p>
 <div class="org-src-container">
@@ -477,7 +477,7 @@ python sample_wms_basemap.py
 <div class="outline-text-3" id="text-3-1">
 <p>
 以下の情報は
-<a href="http:www.gurobi.com/products/licensing-and-pricing/academic-licensing">http:www.gurobi.com/products/licensing-and-pricing/academic-licensing</a> に基づい
+<a href="http://www.gurobi.com/products/licensing-and-pricing/academic-licensing">http://www.gurobi.com/products/licensing-and-pricing/academic-licensing</a> に基づい
 ている．
 </p>
 </div>
@@ -504,7 +504,7 @@ Gurobi のアカデミック・ライセンスは以下の制約の下で利用�
 <h4 id="sec-3-1-2"><span class="section-number-4">3.1.2</span> アカウント作成，ライセンスの取得および認証の方法</h4>
 <div class="outline-text-4" id="text-3-1-2">
 <ol class="org-ol">
-<li><a href="http:www.gurobi.com">http:www.gurobi.com</a> にアクセスし，Register for Free をクリック
+<li><a href="http://www.gurobi.com">http://www.gurobi.com</a> にアクセスし，Register for Free をクリック
 
 <div class="figure">
 <p><img src="fig/grb_register.png" alt="grb_register.png" width="720" />
@@ -514,7 +514,7 @@ Gurobi のアカデミック・ライセンスは以下の制約の下で利用�
 <li>Account Type は「Academic」とし，Email は <code>tohoku.ac.jp</code> で終わるアドレスを利
 用．Company/University には「Tohoku University」とする
 </li>
-<li><a href="http:www.gurobi.com">http:www.gurobi.com</a> のメニューバーから Download &gt; Licenses に移動し，FREE
+<li><a href="http://www.gurobi.com">http://www.gurobi.com</a> のメニューバーから Download &gt; Licenses に移動し，FREE
 ACADEMIC のページに移動．2箇所をチェックして Request License する
 
 <div class="figure">
@@ -538,7 +538,7 @@ ACADEMIC のページに移動．2箇所をチェックして Request License �
 <h4 id="sec-3-1-3"><span class="section-number-4">3.1.3</span> Gurobi のダウンロードとインストール</h4>
 <div class="outline-text-4" id="text-3-1-3">
 <ol class="org-ol">
-<li><a href="http:www.gurobi.com">http:www.gurobi.com</a> のメニューバーから Download &gt; Gurobi Optimizer のページ
+<li><a href="http://www.gurobi.com">http://www.gurobi.com</a> のメニューバーから Download &gt; Gurobi Optimizer のページ
 に移動し，Current version: 5.6.3 の Mac OS 版と READ ME を選択してDownload する．
 
 <div class="figure">
@@ -730,8 +730,8 @@ $                                   <span style="color: #00cd66;"># </span><span
 <h3 id="sec-4-2"><span class="section-number-3">4.2</span> 最小費用流問題を解いてみる</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
-次のようなネットワークを対象として起点(a)から終点(d)まで <img src="ltxpng/python_a07e52b2d41c440ac0387048058da92f75f17998.png" alt="$v=17$" /> 単位の製品を輸送
-する最小費用流を求める問題を考える(ただし，各リンクの <img src="ltxpng/python_3d1a8d968d0a5b46b44318a43de0be9f23919877.png" alt="$c$" /> は輸送費用，<img src="ltxpng/python_556f8a6832e82953626abab56746139cf6205b4c.png" alt="$a$" /> は容量を表す)．
+次のようなネットワークを対象として起点(a)から終点(d)まで <img src="ltxpng/python_f691f1d19b858858cfe2e4df9b0ec8277f123a6c.png" alt="$v=17$" /> 単位の製品を輸送
+する最小費用流を求める問題を考える(ただし，各リンクの <img src="ltxpng/python_6d627b0b7c3f5ca76e8aa72a6463fee8acf449b5.png" alt="$c$" /> は輸送費用，<img src="ltxpng/python_7bababe3eb4cd8f43df499c59c62890ccd827a7d.png" alt="$a$" /> は容量を表す)．
 </p>
 
 <div class="figure">
@@ -744,8 +744,8 @@ $                                   <span style="color: #00cd66;"># </span><span
 <h4 id="sec-4-2-1"><span class="section-number-4">4.2.1</span> モデルの定式化</h4>
 <div class="outline-text-4" id="text-4-2-1">
 <p>
-ノード集合 <img src="ltxpng/python_354e8f78236f0dc7329dd918c8c30350151f57d6.png" alt="$\ClN$" /> とリンク集合 <img src="ltxpng/python_d5e16d967b94713d8bb8a102b0c07534fdb367b3.png" alt="$\ClA$" /> を以下のように定義する：
-<img src="ltxpng/python_fedc828ae045cb83c69d3aaa2545f4f661e69448.png" alt="\[
+ノード集合 <img src="ltxpng/python_8faea5fd3640e8ba6014a2424284273a588c0f03.png" alt="$\ClN$" /> とリンク集合 <img src="ltxpng/python_d208474e3b02c576ca41cd5f0acff2fb79af0d31.png" alt="$\ClA$" /> を以下のように定義する：
+<img src="ltxpng/python_0930244a687cd25524b915c85e36b1af187afeea.png" alt="\[
 \ClN = \{a, b, c, d\}, \ClA = \{(a, b), (a, c), (b, c), (b, d), (c, d)\}
 \]" />
 </p>
@@ -757,7 +757,7 @@ $                                   <span style="color: #00cd66;"># </span><span
 <li>最小化すべき目的関数(総輸送費用)：
 
 <p>
-<img src="ltxpng/python_d24068be8567ac8c3c0ae500873861b5418115da.png" alt="\[
+<img src="ltxpng/python_f0c2069d3759eed1ab47a06e1fc92bd416a1999e.png" alt="\[
    \min_{\Vtx} \sum_{(i, j) \in \ClA} c_{i, j} x_{i, j}
    \]" />
 </p>
@@ -765,21 +765,21 @@ $                                   <span style="color: #00cd66;"># </span><span
 <li>制約条件その1(各ノードでのフロー保存則)：
 
 <p>
-<img src="ltxpng/python_e1cc436b537795e79b890cc0b8212a4fc0c563f2.png" alt="\[
+<img src="ltxpng/python_afb93286031f1104db448dcef2b71f14930cd0df.png" alt="\[
    \Subto{} \sum_{(i, n) \in \ClA} x_{i, n} - \sum_{(n, j) \in \ClA} 
    = b_{n}, \quad \forall n \in \ClN
    \]" />
 </p>
 
 <p>
-ただし，<img src="ltxpng/python_05fc1b4ab5f5512b13dcf24a5a0401c8675c9063.png" alt="$b_{n}$" /> は，<img src="ltxpng/python_b77987b84e3395148e5dfa519efa035179c187e4.png" alt="$n$" /> が起点(a)なら <img src="ltxpng/python_32223431308b9398277d05bf16af04183645816e.png" alt="$-v$" />, <img src="ltxpng/python_b77987b84e3395148e5dfa519efa035179c187e4.png" alt="$n$" /> が終点なら<img src="ltxpng/python_33d13f78316b42d88a1a03736885374bd06f15ba.png" alt="$v$" />, それ以外なら0
+ただし，<img src="ltxpng/python_77901ab3f67f5e3b2f412bfe3c0b0ae41c0cf789.png" alt="$b_{n}$" /> は，<img src="ltxpng/python_a035d417e680e67f279d7d95362b43e74414002d.png" alt="$n$" /> が起点(a)なら <img src="ltxpng/python_c3b6c58434564f308516a6f1c3a18ef00bf24b48.png" alt="$-v$" />, <img src="ltxpng/python_a035d417e680e67f279d7d95362b43e74414002d.png" alt="$n$" /> が終点なら<img src="ltxpng/python_11e1cee212438a21bcc4c9a8947d50ad3a363c51.png" alt="$v$" />, それ以外なら0
 となる定数．
 </p>
 </li>
 <li>制約条件その2(非負制約)：
 
 <p>
-<img src="ltxpng/python_f2e9334213f7bb54af970488c9627269ac7c7106.png" alt="\[
+<img src="ltxpng/python_f92e890dd71ee4b5f05f653f8cc2575fbe4c3147.png" alt="\[
    x_{i, j} \geq 0, \quad \forall (i, j) \in \ClA
    \]" />
 </p>
@@ -987,11 +987,11 @@ m.setAttr(<span style="color: #bdb76b;">"ModelSense"</span>, grb.GRB.MINIMIZE)
 <span style="color: #9acd32;">b</span> = {}                          <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#12501;&#12525;&#12540;&#20445;&#23384;&#21063;&#12398;&#21491;&#36794;&#12398;&#23450;&#25968;&#12434;&#35373;&#23450;&#12377;&#12427;</span>
 <span style="color: #ffffff;">for</span> n <span style="color: #ffffff;">in</span> nodes:
     <span style="color: #ffffff;">if</span> n == orig:
-        b[n] = - total_volume
+        <span style="color: #9acd32;">b</span>[n] = - total_volume
     <span style="color: #ffffff;">elif</span> n == dest:
-        b[n] = total_volume
+        <span style="color: #9acd32;">b</span>[n] = total_volume
     <span style="color: #ffffff;">else</span>:
-        b[n] = 0
+        <span style="color: #9acd32;">b</span>[n] = 0
     <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#12494;&#12540;&#12489;&#12372;&#12392;&#12398;&#12501;&#12525;&#12540;&#20445;&#23384;&#21063;</span>
     <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#34892;&#39340;&#12395;&#12300;\&#12301;&#12434;&#12388;&#12369;&#12427;&#12392;1&#12388;&#12398;&#34892;&#12434;&#35079;&#25968;&#34892;&#12395;&#12414;&#12383;&#12364;&#12387;&#12390;&#35352;&#36848;&#12391;&#12365;&#12427;</span>
     m.addConstr(grb.quicksum(x[i, j] <span style="color: #ffffff;">for</span> (i, j) <span style="color: #ffffff;">in</span> links <span style="color: #ffffff;">if</span> j == n)\
@@ -1000,8 +1000,8 @@ m.setAttr(<span style="color: #bdb76b;">"ModelSense"</span>, grb.GRB.MINIMIZE)
 
 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#21508;&#12494;&#12540;&#12489;&#12391;&#12398;&#38750;&#36000;&#21046;&#32004;&#12392;&#23481;&#37327;&#21046;&#32004;&#12434;&#36861;&#21152;&#12377;&#12427;</span>
 <span style="color: #ffffff;">for</span> (i, j) <span style="color: #ffffff;">in</span> links:
-    x[i, j].lb = 0.0
-    x[i, j].ub = capacity[i, j]
+    x[i, j]<span style="color: #9acd32;">.lb</span> = 0.0
+    x[i, j]<span style="color: #9acd32;">.ub</span> = capacity[i, j]
 
 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#12514;&#12487;&#12523;&#12395;&#21046;&#32004;&#26465;&#20214;&#12364;&#36861;&#21152;&#12373;&#12428;&#12383;&#12371;&#12392;&#12434;&#21453;&#26144;&#12373;&#12379;&#12427;</span>
 m.update()
@@ -1032,7 +1032,7 @@ Python からファイルを呼び出すには，ターミナルで
 </div>
 <div id="postamble" class="status">
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
-<p class="date">Created: 2014-07-15 Tue 11:03</p>
+<p class="date">Created: 2015-02-18 Wed 13:21</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
