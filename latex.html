@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
 <title>ITL/LaTeX編</title>
-<!-- 2014-04-02 Wed 18:59 -->
+<!-- 2015-04-06 Mon 15:35 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Takeshi Nagae" />
@@ -219,10 +219,10 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#27425;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. TeXLive 2013 のインストール</a>
+<li><a href="#sec-1">1. TeXLive 2014 のインストール</a>
 <ul>
 <li><a href="#sec-1-1">1.1. 参考</a></li>
-<li><a href="#sec-1-2">1.2. 2012 からのアップグレード</a></li>
+<li><a href="#sec-1-2">1.2. 旧バージョンからのアップグレード</a></li>
 <li><a href="#sec-1-3">1.3. 本体のインストール</a></li>
 </ul>
 </li>
@@ -248,7 +248,7 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> TeXLive 2013 のインストール</h2>
+<h2 id="sec-1"><span class="section-number-2">1</span> TeXLive 2014 のインストール</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 以下では， <code>texmf</code> ディレクトリを Dropbox 上に置く方法を示す．
@@ -263,46 +263,45 @@ for the JavaScript code in this tag.
 </dl>
 </div>
 </div>
-
 <div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 2012 からのアップグレード</h3>
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 旧バージョンからのアップグレード</h3>
 <div class="outline-text-3" id="text-1-2">
 <ol class="org-ol">
-<li>TeXLive 2012 のバックアップ
+<li>TeXLive 20** のバックアップ
+** の部分はバックアップしたいバージョンに合わせて適宜変更(<code>2012, 2013</code> など)
 <div class="org-src-container">
 
-<pre class="src src-sh">mv /usr/local/texlive/2012/ /usr/local/texlive/.2012
+<pre class="src src-sh">mv /usr/local/texlive/20**/ /usr/local/texlive/.20**
 </pre>
 </div>
 
 <p>
-TeXLive 2013 でうまく動かなくなったら，
+TeXLive 2014 でうまく動かなくなったら，
 </p>
 <div class="org-src-container">
 
-<pre class="src src-sh">mv /usr/local/texlive/2013 /usr/local/texlive/.2013
-mv /usr/local/texlive/.2012 /usr/local/texlive/2012
-sed <span style="color: #bdb76b;">'s|/usr/local/texlive/2013|/usr/local/texlive/2012|g'</span> ~/.bash_profile
+<pre class="src src-sh">mv /usr/local/texlive/2014 /usr/local/texlive/.2014
+mv /usr/local/texlive/.20** /usr/local/texlive/20**
+sed <span style="color: #bdb76b;">'s|/usr/local/texlive/2014|/usr/local/texlive/20**|g'</span> ~/.bash_profile
 <span style="color: #b0c4de;">source</span> ~/.bash_profile
 mktexlsr
 </pre>
 </div>
 <p>
-とすれば TeXLive 2012 に戻せるはず．
+とすれば TeXLive 20** に戻せるはず．
 </p>
 </li>
 </ol>
 </div>
 </div>
-
 <div id="outline-container-sec-1-3" class="outline-3">
 <h3 id="sec-1-3"><span class="section-number-3">1.3</span> 本体のインストール</h3>
 <div class="outline-text-3" id="text-1-3">
 <ol class="org-ol">
-<li>インストーラと texlive.profile をダウンロード
+<li>インストーラをダウンロード
 
 <p>
-以下の texlive.profile では <code>TEXMFHOME</code> を <code>~/Dropbox/texmf:/usr/local/share/texmf</code> としている．
+長江研では <code>TEXMFHOME</code> を <code>~/Dropbox/texmf:/usr/local/share/texmf</code> とすることを推奨している．
 なお， <code>/usr/local/share/texmf</code> は後述する auctex で利用．
 </p>
 <div class="org-src-container">
@@ -317,10 +316,12 @@ tar -xzf install-tl-unx.tar.gz
 <li>インストーラを起動
 <div class="org-src-container">
 
-<pre class="src src-sh">curl -LO https://gist.github.com/nagae/6533236/raw/texlive2013.profile
-./install-tl --profile texlive2013.profile
+<pre class="src src-sh">./install-tl
 </pre>
 </div>
+<p>
+設定画面で <code>TEXMFHOME</code> を <code>~/Dropbox/texmf:/usr/local/share/texmf</code> に変更．その方法は後述．
+</p>
 </li>
 
 <li>不要なファイルを消去
@@ -335,11 +336,8 @@ rm -rf install-tl*
 </div>
 
 <div id="outline-container-sec-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> profile が上手く読めない場合やinteractive modeで自分で設定したい場合</h4>
+<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> <code>install-tl</code> で <code>TEXMFHOME</code> を <code>~/Dropbox/texmf</code> に変更する方法</h4>
 <div class="outline-text-4" id="text-1-3-1">
-<p>
-色々なカスタマイズが可能だが，以下では上記の <code>texlive2013.profile</code> と同じ設定にする方法を示す．
-</p>
 <ol class="org-ol">
 <li>下記の main manu で <code>Enter command:</code> の後に <code>D RET</code> を入力(ディレクトリ)：
 <div class="org-src-container">
@@ -450,6 +448,7 @@ Actions:
 </ol>
 </div>
 </div>
+
 <div id="outline-container-sec-1-3-2" class="outline-4">
 <h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> インストールした後で TEXMFHOME を修正したい場合</h4>
 <div class="outline-text-4" id="text-1-3-2">
@@ -465,6 +464,7 @@ Actions:
 </div>
 </div>
 </div>
+
 <div id="outline-container-sec-2" class="outline-2">
 <h2 id="sec-2"><span class="section-number-2">2</span> パスの設定</h2>
 <div class="outline-text-2" id="text-2">
@@ -473,19 +473,19 @@ Actions:
 <code>~/.bash_profile</code> に以下を追記：
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #b0c4de;">export</span> <span style="color: #9acd32;">PATH</span>=/usr/local/texlive/2013/bin/x86_64-darwin:$<span style="color: #9acd32;">PATH</span>
-<span style="color: #b0c4de;">export</span> <span style="color: #9acd32;">MANPATH</span>=/usr/local/texlive/2013/texmf/doc/man:$<span style="color: #9acd32;">MANPATH</span>
-<span style="color: #b0c4de;">export</span> <span style="color: #9acd32;">INFOPATH</span>=/usr/local/texlive/2013/texmf-dist/doc/info:$<span style="color: #9acd32;">INFOPATH</span>
+<pre class="src src-sh"><span style="color: #b0c4de;">export</span> <span style="color: #9acd32;">PATH</span>=/usr/local/texlive/2014/bin/x86_64-darwin:$<span style="color: #9acd32;">PATH</span>
+<span style="color: #b0c4de;">export</span> <span style="color: #9acd32;">MANPATH</span>=/usr/local/texlive/2014/texmf/doc/man:$<span style="color: #9acd32;">MANPATH</span>
+<span style="color: #b0c4de;">export</span> <span style="color: #9acd32;">INFOPATH</span>=/usr/local/texlive/2014/texmf-dist/doc/info:$<span style="color: #9acd32;">INFOPATH</span>
 </pre>
 </div>
 
 <p>
-TeXLive 2012 で既に <code>PATH</code> などを設定済みなら，ターミナルから以下を実行すればよ
+TeXLive 2013 で既に <code>PATH</code> などを設定済みなら，ターミナルから以下を実行すればよ
 い．
 </p>
 <div class="org-src-container">
 
-<pre class="src src-sh">sed <span style="color: #bdb76b;">'s|/usr/local/texlive/2012|/usr/local/texlive/2013|g'</span> ~/.bash_profile
+<pre class="src src-sh">sed <span style="color: #bdb76b;">'s|/usr/local/texlive/2013|/usr/local/texlive/2014|g'</span> ~/.bash_profile
 </pre>
 </div>
 </li>
@@ -501,12 +501,11 @@ TeXLive 2012 で既に <code>PATH</code> などを設定済みなら，ターミ
 </ol>
 </div>
 </div>
-
 <div id="outline-container-sec-3" class="outline-2">
 <h2 id="sec-3"><span class="section-number-2">3</span> otf パッケージ用のフォントの設定</h2>
 <div class="outline-text-2" id="text-3">
 <p>
-TexLive 2013 からは <code>/usr/local/texlive/2013/texmf-dist/fonts/map/dvipdfmx/jfontmaps/</code> 以下に日本語フォントマップが入っている．
+TexLive 2013 からは <code>/usr/local/texlive/20**/texmf-dist/fonts/map/dvipdfmx/jfontmaps/</code> 以下に日本語フォントマップが入っている．
 Mac OS X 用には <code>hiragino/otf-hiragino.map</code> あたりが使える(参照：<a href="http://www.fugenji.org/~thomas/texlive-guide/font_setup.html">http://www.fugenji.org/~thomas/texlive-guide/font_setup.html</a>)
 </p>
 <ol class="org-ol">
@@ -542,7 +541,6 @@ ln -fs <span style="color: #bdb76b;">"/Library/Fonts/&#12498;&#12521;&#12462;&#1
 </ol>
 </div>
 </div>
-
 <div id="outline-container-sec-4" class="outline-2">
 <h2 id="sec-4"><span class="section-number-2">4</span> コンパイルしてみる</h2>
 <div class="outline-text-2" id="text-4">
@@ -561,7 +559,6 @@ open sample.pdf
 </div>
 </div>
 </div>
-
 <div id="outline-container-sec-5" class="outline-2">
 <h2 id="sec-5"><span class="section-number-2">5</span> tlmgr を使って常に最新の状態を保つ</h2>
 <div class="outline-text-2" id="text-5">
@@ -582,7 +579,6 @@ tlmgr が参照するリポジトリに <code>mirror.ctan.org</code> を指定�
 </div>
 </div>
 </div>
-
 <div id="outline-container-sec-5-2" class="outline-3">
 <h3 id="sec-5-2"><span class="section-number-3">5.2</span> tlmgr 自身の更新</h3>
 <div class="outline-text-3" id="text-5-2">
@@ -615,7 +611,6 @@ tlmgr が参照するリポジトリに <code>mirror.ctan.org</code> を指定�
 </div>
 </div>
 </div>
-
 <div id="outline-container-sec-6" class="outline-2">
 <h2 id="sec-6"><span class="section-number-2">6</span> latexmk</h2>
 <div class="outline-text-2" id="text-6">
@@ -655,6 +650,7 @@ curl -LO curl -LO https://gist.github.com/nagae/3293112/raw/.latexmkrc
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-7" class="outline-2">
 <h2 id="sec-7"><span class="section-number-2">7</span> 長江研標準 Tex ライブラリ</h2>
 <div class="outline-text-2" id="text-7">
@@ -668,7 +664,6 @@ curl -LO curl -LO https://gist.github.com/nagae/3293112/raw/.latexmkrc
 </ul>
 </div>
 </div>
-
 <div id="outline-container-sec-8" class="outline-2">
 <h2 id="sec-8"><span class="section-number-2">8</span> Emacs との連携</h2>
 <div class="outline-text-2" id="text-8">
@@ -687,7 +682,6 @@ Emacs 上での LaTeX 編集を支援．C-c C-c で compile したり，C-c C-p 
 </p>
 </div>
 </div>
-
 <div id="outline-container-sec-8-1-2" class="outline-4">
 <h4 id="sec-8-1-2"><span class="section-number-4">8.1.2</span> 参考</h4>
 <div class="outline-text-4" id="text-8-1-2">
@@ -701,7 +695,6 @@ Emacs 上での LaTeX 編集を支援．C-c C-c で compile したり，C-c C-p 
 </dl>
 </div>
 </div>
-
 <div id="outline-container-sec-8-1-3" class="outline-4">
 <h4 id="sec-8-1-3"><span class="section-number-4">8.1.3</span> インストール</h4>
 <div class="outline-text-4" id="text-8-1-3">
@@ -718,11 +711,10 @@ Emacs 上での LaTeX 編集を支援．C-c C-c で compile したり，C-c C-p 
 </ul>
 </div>
 </div>
-
 <div id="outline-container-sec-8-1-4" class="outline-4">
 <h4 id="sec-8-1-4"><span class="section-number-4">8.1.4</span> 使い方</h4>
 <div class="outline-text-4" id="text-8-1-4">
-</div><ul class="org-ul"><li>章・節，環境，マクロの入力<br  /><div class="outline-text-5" id="text-8-1-4-1">
+</div><ul class="org-ul"><li><a id="sec-8-1-4-1" name="sec-8-1-4-1"></a>章・節，環境，マクロの入力<br  /><div class="outline-text-5" id="text-8-1-4-1">
 <ul class="org-ul">
 <li>TABで補完が可能．
 </li>
@@ -762,8 +754,7 @@ Emacs 上での LaTeX 編集を支援．C-c C-c で compile したり，C-c C-p 
 </table>
 </div>
 </li>
-
-<li>フォント変更<br  /><div class="outline-text-5" id="text-8-1-4-2">
+<li><a id="sec-8-1-4-2" name="sec-8-1-4-2"></a>フォント変更<br  /><div class="outline-text-5" id="text-8-1-4-2">
 <ul class="org-ul">
 <li>何も選択せずにショートカットを入力すると LaTeX コマンドだけを入力し，括弧内で待機
 </li>
@@ -833,8 +824,7 @@ Emacs 上での LaTeX 編集を支援．C-c C-c で compile したり，C-c C-p 
 </table>
 </div>
 </li>
-
-<li>コメント<br  /><div class="outline-text-5" id="text-8-1-4-3">
+<li><a id="sec-8-1-4-3" name="sec-8-1-4-3"></a>コメント<br  /><div class="outline-text-5" id="text-8-1-4-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -863,8 +853,7 @@ Emacs 上での LaTeX 編集を支援．C-c C-c で compile したり，C-c C-p 
 </table>
 </div>
 </li>
-
-<li>マーク<br  /><div class="outline-text-5" id="text-8-1-4-4">
+<li><a id="sec-8-1-4-4" name="sec-8-1-4-4"></a>マーク<br  /><div class="outline-text-5" id="text-8-1-4-4">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -893,8 +882,7 @@ Emacs 上での LaTeX 編集を支援．C-c C-c で compile したり，C-c C-p 
 </table>
 </div>
 </li>
-
-<li>処理<br  /><div class="outline-text-5" id="text-8-1-4-5">
+<li><a id="sec-8-1-4-5" name="sec-8-1-4-5"></a>処理<br  /><div class="outline-text-5" id="text-8-1-4-5">
 <p>
 処理コマンドは TAB補完および上下(<code>M-p, M-n</code>)履歴表示が可能
 </p>
@@ -1032,7 +1020,6 @@ dvipdfmx 	latexmk 	pBibTeX 	pLaTeX
 </li></ul>
 </div>
 </div>
-
 <div id="outline-container-sec-8-2" class="outline-3">
 <h3 id="sec-8-2"><span class="section-number-3">8.2</span> cdLaTeX</h3>
 <div class="outline-text-3" id="text-8-2">
@@ -1044,7 +1031,6 @@ auctex と同様の機能を持つが minor-mode のため，org-mode などと�
 </p>
 </div>
 </div>
-
 <div id="outline-container-sec-8-2-2" class="outline-4">
 <h4 id="sec-8-2-2"><span class="section-number-4">8.2.2</span> インストール</h4>
 <div class="outline-text-4" id="text-8-2-2">
@@ -1067,7 +1053,7 @@ git submodule add git@github.com:emacsmirror/cdlatex.git lisp/cdlatex
 </div>
 <div id="postamble" class="status">
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
-<p class="date">Created: 2014-04-02 Wed 18:59</p>
+<p class="date">Created: 2015-04-06 Mon 15:35</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
