@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
 <title>ITL/Emacs &#x2014; 最強のエディタ</title>
-<!-- 2014-04-02 Wed 15:24 -->
+<!-- 2015-04-06 Mon 17:01 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Takeshi Nagae" />
@@ -296,7 +296,6 @@ brew install https://gist.github.com/nagae/3009185/raw/ddskk.rb <span style="col
 </ol>
 </div>
 </div>
-
 <div id="outline-container-sec-2" class="outline-2">
 <h2 id="sec-2"><span class="section-number-2">2</span> 長江研 Emacs 設定方針</h2>
 <div class="outline-text-2" id="text-2">
@@ -409,7 +408,6 @@ $ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git
 </ol>
 </div>
 </div>
-
 <div id="outline-container-sec-2-2" class="outline-3">
 <h3 id="sec-2-2"><span class="section-number-3">2.2</span> 初期設定ファイルの更新</h3>
 <div class="outline-text-3" id="text-2-2">
@@ -449,23 +447,23 @@ $ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git   <span style="colo
 </div>
 </div>
 </div>
+
 <div id="outline-container-sec-3" class="outline-2">
 <h2 id="sec-3"><span class="section-number-2">3</span> SKK / AquaSKK &#x2014; シンプル漢字かな入力</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 長江は「ことえり」や「IME」のような形態素解析をベースとした入力メソッドが苦手なので，SKK(Simple Kana to Kanji conversion program)を利用している．
 SKK は品詞解析を行なわないため，漢字にする箇所や送り仮名を自分で指定する必要がある．しかし，ひとたび慣れれば高速かつ直感的な入力が可能となる———上述のような入力メソッドが使えなくなるほど．
-Macの標準入力方式に代替できる <a href="http://aquaskk.sourceforge.jp">AquaSKK</a> と Emacs 上で動く <a href="http://openlab.ring.gr.jp/skk/ddskk-ja.html">DDSKK (Daredevil SKK)</a> とがあり，両方併用するのが吉．
+Macの標準入力方式に代替できる <a href="https://github.com/codefirst/aquaskk/releases">AquaSKK</a> (<a href="http://aquaskk.sourceforge.jp">旧サイト</a>)と Emacs 上で動く <a href="http://openlab.ring.gr.jp/skk/ddskk-ja.html">DDSKK (Daredevil SKK)</a> とがあり，両方併用するのが吉．
 </p>
 </div>
 <div id="outline-container-sec-3-1" class="outline-3">
 <h3 id="sec-3-1"><span class="section-number-3">3.1</span> AquaSKKのインストール</h3>
 <div class="outline-text-3" id="text-3-1">
 <ol class="org-ol">
-<li><a href="http://aquaskk.sourceforge.jp/">http://aquaskk.sourceforge.jp/</a> の右側の「ダウンロード」の欄の「AquaSKK パッケー
-ジ」から AquaSKK-4.1.dmg をダウンロードし，AquaSKK.pkg を実行．
+<li><a href="https://github.com/codefirst/aquaskk/releases">https://github.com/codefirst/aquaskk/releases</a> から最新のバージョン (2015/4/6時点では AsuaSKK-4.2.4.dmg) をダウンロードし，AquaSKK.pkg を実行．
 </li>
-<li>Mountain Lion の Gatekeeper が邪魔をする場合は，Ctrlを押しながらクリック→開く．
+<li>Mac OS X の Gatekeeper が邪魔をする場合は，Ctrlを押しながらクリック→開く．
 </li>
 <li>言語環境に AquaSKK を登録
 <ul class="org-ul">
@@ -507,7 +505,6 @@ Macの標準入力方式に代替できる <a href="http://aquaskk.sourceforge.j
 </div>
 </div>
 </div>
-
 <div id="outline-container-sec-4" class="outline-2">
 <h2 id="sec-4"><span class="section-number-2">4</span> 基本的な操作方法</h2>
 <div class="outline-text-2" id="text-4">
@@ -590,7 +587,6 @@ Macの標準入力方式に代替できる <a href="http://aquaskk.sourceforge.j
 </p>
 </div>
 </div>
-
 <div id="outline-container-sec-4-2" class="outline-3">
 <h3 id="sec-4-2"><span class="section-number-3">4.2</span> 同時押しと順次押し</h3>
 <div class="outline-text-3" id="text-4-2">
@@ -625,7 +621,6 @@ Emacs では，特殊キーとそれ以外のキーの組み合わせ(キーバ�
 </p>
 </div>
 </div>
-
 <div id="outline-container-sec-4-3" class="outline-3">
 <h3 id="sec-4-3"><span class="section-number-3">4.3</span> まずはパニック対応(<code>ESC, C-g</code>)</h3>
 <div class="outline-text-3" id="text-4-3">
@@ -665,7 +660,6 @@ Emacs では，特殊キーとそれ以外のキーの組み合わせ(キーバ�
 </ol>
 </div>
 </div>
-
 <div id="outline-container-sec-4-4" class="outline-3">
 <h3 id="sec-4-4"><span class="section-number-3">4.4</span> カーソルの操作</h3>
 <div class="outline-text-3" id="text-4-4">
@@ -763,7 +757,6 @@ Emacs では，十字キーではなく，キーバインドでもカーソル�
 </div>
 </div>
 </div>
-
 <div id="outline-container-sec-5" class="outline-2">
 <h2 id="sec-5"><span class="section-number-2">5</span> 参考資料</h2>
 <div class="outline-text-2" id="text-5">
@@ -772,7 +765,6 @@ Emacs では，十字キーではなく，キーバインドでもカーソル�
 </p>
 </div>
 </div>
-
 <div id="outline-container-sec-6" class="outline-2">
 <h2 id="sec-6"><span class="section-number-2">6</span> 独自設定</h2>
 <div class="outline-text-2" id="text-6">
@@ -796,7 +788,6 @@ Emacs では，十字キーではなく，キーバインドでもカーソル�
 </dl>
 </div>
 </div>
-
 <div id="outline-container-sec-6-2" class="outline-3">
 <h3 id="sec-6-2"><span class="section-number-3">6.2</span> Anything</h3>
 <div class="outline-text-3" id="text-6-2">
@@ -806,7 +797,6 @@ Emacs では，十字キーではなく，キーバインドでもカーソル�
 </dl>
 </div>
 </div>
-
 <div id="outline-container-sec-6-3" class="outline-3">
 <h3 id="sec-6-3"><span class="section-number-3">6.3</span> もっとある</h3>
 <div class="outline-text-3" id="text-6-3">
@@ -836,7 +826,7 @@ Emacs では，十字キーではなく，キーバインドでもカーソル�
 </div></div>
 <div id="postamble" class="status">
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
-<p class="date">Created: 2014-04-02 Wed 15:24</p>
+<p class="date">Created: 2015-04-06 Mon 17:01</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
