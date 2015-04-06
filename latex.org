@@ -39,9 +39,9 @@
    #+END_SRC
    とすれば TeXLive 20** に戻せるはず．
 ** 本体のインストール
-1. インストーラと texlive.profile をダウンロード
+1. インストーラをダウンロード
 
-   以下の texlive.profile では =TEXMFHOME= を =~/Dropbox/texmf:/usr/local/share/texmf= としている．
+   長江研では =TEXMFHOME= を =~/Dropbox/texmf:/usr/local/share/texmf= とすることを推奨している．
    なお， =/usr/local/share/texmf= は後述する auctex で利用．
    #+BEGIN_SRC sh
      cd ~/Downloads
@@ -51,9 +51,9 @@
    #+END_SRC
 2. インストーラを起動
    #+BEGIN_SRC sh
-     curl -LO https://gist.github.com/nagae/6533236/raw/texlive2013.profile
-     ./install-tl --profile texlive2013.profile
+     ./install-tl
    #+END_SRC
+   設定画面で =TEXMFHOME= を =~/Dropbox/texmf:/usr/local/share/texmf= に変更．その方法は後述．
 
 3. 不要なファイルを消去
    #+BEGIN_SRC sh
@@ -61,8 +61,7 @@
      rm -rf install-tl*
    #+END_SRC
 
-*** profile が上手く読めない場合やinteractive modeで自分で設定したい場合
-色々なカスタマイズが可能だが，以下では上記の =texlive2013.profile= と同じ設定にする方法を示す．
+*** =install-tl= で =TEXMFHOME= を =~/Dropbox/texmf= に変更する方法
 1. 下記の main manu で =Enter command:= の後に =D RET= を入力(ディレクトリ)：
   #+BEGIN_SRC screen
     ======================> TeX Live installation procedure <=====================
@@ -165,15 +164,15 @@ tlmgr conf texmf TEXMFHOME ~/Dropbox/texmf:/usr/local/share/texmf
 6. TeX フォルダパスの設定
    =~/.bash_profile= に以下を追記：
    #+BEGIN_SRC sh
-     export PATH=/usr/local/texlive/2013/bin/x86_64-darwin:$PATH
-     export MANPATH=/usr/local/texlive/2013/texmf/doc/man:$MANPATH
-     export INFOPATH=/usr/local/texlive/2013/texmf-dist/doc/info:$INFOPATH
+     export PATH=/usr/local/texlive/2014/bin/x86_64-darwin:$PATH
+     export MANPATH=/usr/local/texlive/2014/texmf/doc/man:$MANPATH
+     export INFOPATH=/usr/local/texlive/2014/texmf-dist/doc/info:$INFOPATH
    #+END_SRC
 
-   TeXLive 2012 で既に =PATH= などを設定済みなら，ターミナルから以下を実行すればよ
+   TeXLive 2013 で既に =PATH= などを設定済みなら，ターミナルから以下を実行すればよ
    い．
    #+BEGIN_SRC sh
-   sed 's|/usr/local/texlive/2012|/usr/local/texlive/2013|g' ~/.bash_profile
+   sed 's|/usr/local/texlive/2013|/usr/local/texlive/2014|g' ~/.bash_profile
    #+END_SRC
 
 7. パスを反映
@@ -182,7 +181,7 @@ tlmgr conf texmf TEXMFHOME ~/Dropbox/texmf:/usr/local/share/texmf
    source ~/.bash_profile
    #+END_SRC
 * otf パッケージ用のフォントの設定
-TexLive 2013 からは =/usr/local/texlive/2013/texmf-dist/fonts/map/dvipdfmx/jfontmaps/= 以下に日本語フォントマップが入っている．
+TexLive 2013 からは =/usr/local/texlive/20**/texmf-dist/fonts/map/dvipdfmx/jfontmaps/= 以下に日本語フォントマップが入っている．
 Mac OS X 用には =hiragino/otf-hiragino.map= あたりが使える(参照：http://www.fugenji.org/~thomas/texlive-guide/font_setup.html)
 1. ヒラギノフォントにシンボリックリンクを貼る：
    #+BEGIN_SRC sh
