@@ -28,14 +28,55 @@
   brew install nkf                # ファイルの文字コードを一括で変換できる
   brew install ispell             # スペルチェッカー
   brew install lha                # .lhaや.lzh 形式を展開するのに必要
-  brew install geos               # GEOS(Geometry Engine, Open Source)．地理情報処理に必要．
   # 以下のパッケージは他のパッケージに依存する
   brew install rsync              # フォルダのバックアップや同期を取る．
   brew install ghostscript        # Postscript インタプリタ．Emacs上でPDFや画像ファイルを表示させる docview に必須．
   brew install wget               # ウェブサーバーからコンテンツをダウンロード．curl より高機能
   brew install imagemagick --with-tex # 画像操作・表示用ソフトウェア
+  brew install xpdf                   # PDF用ユーティリティ
 #+END_SRC
-** git
+** xpdf に日本語サポートパッケージを追加する
+*** 日本語サポートパッケージの追加
+- 参考URL:
+  - http://ototorosama.hatenablog.com/entry/2013/02/14/055355
+  - http://d.hatena.ne.jp/rougeref/20070313
+- ターミナルで下記を入力[1]：
+#+BEGIN_SRC sh
+  pushd ~/Downloads
+  curl -O http://ftp.jaist.ac.jp/pub/CTAN/support/xpdf/xpdf-japanese.tar.gz # ftp.jaist.ac.jp の代わりに ftp.rikengo.jp, ftp.u-aizu.ac.jp, ftp.kd­di­l­abs.jp のどれかを使ってもよい
+  tar -xzvf xpdf-japanese.tar.gz
+  cd xpdf-japanese
+  ln -s /usr/local/opt/xpdf/share/ /usr/local/share/xpdf # xpdf/share へのシンボリックリンクを作成
+  mkdir /usr/local/share/xpdf/japanese                   # japanese ディレクトリを作成
+  cp -r * /usr/local/share/xpdf/japanese                 # xpdf-japanese の中身をコピー
+  cat /usr/local/share/xpdf/japanese/add-to-xpdfrc >> /usr/local/etc/xpdfrc # xpdfrc に追記
+  popd
+#+END_SRC
+- =/usr/local/etc/xpdfrc= を編集する:
+
+  Emacs や テキストエディットなどで =/usr/local/etc/xpdfrc= を開き, 
+  =textEncoding= の行を探してコメントアウトを解除(行頭の =#= を削除)する.
+
+  修正前:
+  #+BEGIN_SRC text
+  # textEncoding		UTF-8
+  #+END_SRC
+  修正後:
+  #+BEGIN_SRC text
+  textEncoding		UTF-8
+  #+END_SRC
+
+[1] この方法だと =brew uninstall xpdf= とした時に =/usr/local/share/xpdf= が残ってしまうので， =brew prune= が必要．
+
+*** 使い方
+例えば， =sample.pdf= に対して, ターミナルから以下のような処理が行なえる:
+#+BEGIN_SRC sh
+  pdfinfo sample.pdf              # PDFの文書情報を標示
+  pdftops sample.pdf              # PDFを PostScript に変換
+  pdffonts sample.pdf             # 埋め込まれているフォントの確認
+  pdftotext sample.pdf            # PDFからテキストを抽出
+#+END_SRC
+** COMMENT git
 *** インストール
 1) git 本体をインストール
    #+BEGIN_SRC sh
@@ -95,35 +136,14 @@ brew install ghostscript
 #+END_SRC
 * XQuartz のインストール
 XQuartz は OS X 上で動作する Xウィンドウシステム．各種パッケージの際に必要となる．
+- ターミナルで下記を入力:
+  #+BEGIN_SRC sh
+  brew cask install xquartz
+  #+END_SRC
+  必要に応じて管理者パスワードを入力.
+** COMMENT
 - http://xquartz.macosforge.org/landing/ から最新版の dmg ファイルをダウンロードし，pkg ファイルをダブルクリック
 - インストール後にログインし直す必要がある．
-** xpdf のインストール
-*** インストール
-#+BEGIN_SRC sh
-brew install xpdf
-#+END_SRC
-*** 日本語サポートパッケージの追加
-- 参考URL:
-  - http://ototorosama.hatenablog.com/entry/2013/02/14/055355
-  - http://d.hatena.ne.jp/rougeref/20070313
-- ターミナルで下記を入力[1]：
-#+BEGIN_SRC sh
-  pushd ~/Downloads
-  curl -O http://ftp.jaist.ac.jp/pub/CTAN/support/xpdf/xpdf-japanese.tar.gz # ftp.jaist.ac.jp の代わりに ftp.rikengo.jp, ftp.u-aizu.ac.jp, ftp.kd­di­l­abs.jp のどれかを使ってもよい
-  tar -xzvf xpdf-japanese.tar.gz
-  cd xpdf-japanese
-  ln -s /usr/local/opt/xpdf/share/ /usr/local/share/xpdf # xpdf/share へのシンボリックリンクを作成
-  mkdir /usr/local/share/xpdf/japanese                   # japanese ディレクトリを作成
-  cp -r * /usr/local/share/xpdf/japanese                 # xpdf-japanese の中身をコピー
-  cat /usr/local/share/xpdf/japanese/add-to-xpdfrc >> /usr/local/etc/xpdfrc # xpdfrc に追記
-  popd
-#+END_SRC
-[1] この方法だと =brew uninstall xpdf= とした時に =/usr/local/share/xpdf= が残ってしまうので， =brew prune= が必要．
-*** 使い方
-例えば， =sample.pdf= にどんなフォントが埋め込まれているか確認するには
-#+BEGIN_SRC sh
-pdffonts sample.pdf
-#+END_SRC
-とする．
+
 
 
