@@ -64,7 +64,7 @@
   ターミナルから以下を入力
   #+BEGIN_SRC sh
     pyenv install anaconda2-4.2.0 # 上で確認した最新版を入力
-    echo 'export PATH="$PYENV_ROOT/versions/anaconda2-4.2.0/bin/:$PATH"' >> ~/.bash_profile
+    echo 'export PATH="$PYENV_ROOT/versions/anaconda2-4.2.0/bin:$PATH"' >> ~/.bash_profile
     source ~/.bash_profile
   #+END_SRC
 

@@ -19,6 +19,8 @@
 #+INFOJS_OPT: view:showall toc:t sdepth:2 ltoc:1 mouse:nil buttons:nil
 #+LATEX_HEADER:\usepackage{amsmath,rmss_math,rmss_color}
 
+*この内容は [[file:anaconda-gurobi.org][Anaconda + Gurobi]] に移行しました*
+
 * Python の環境構築
 ** Python のバージョン確認
 - Gurobi は Mac OS X デフォルトの Python しかサポートしない([[https://groups.google.com/d/msg/gurobi/ghzhXNugDxs/mFNWanBl1fMJ][参考]])．まずは Python
