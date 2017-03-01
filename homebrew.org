@@ -32,7 +32,7 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
 ** 参考サイト
 - 本家 :: http://mxcl.github.com/homebrew/
 - https://github.com/mxcl/homebrew/wiki/installation
-** Command Line Tools for Xcode のインストール
+** COMMENT Command Line Tools for Xcode のインストール
 - 事前に [[https://appleid.apple.com/][Apple ID]] の登録が必要．
 - https://developer.apple.com/downloads/index.action にアクセス．Apple ID での Sign in を求められる．
 - Command Line Tools (OS X Mavericks) for Xcode の最新版をクリックし，dmg ファイル(下図参照)をクリックしてダウンロード
@@ -44,7 +44,7 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
 ** Homebrew のインストール
 1) 本体のダウンロード．ターミナルから以下を実行：
    #+begin_src sh
-   ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
+   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
    #+end_src
    - Press RETURN to continue or any other 何か訊かれたら RETURN を押す．
    - パスワードの入力を求められたら入力する．
