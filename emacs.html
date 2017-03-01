@@ -3,23 +3,30 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
+<!-- 2017-03-01 Wed 14:06 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ITL/Emacs &#x2014; 最強のエディタ</title>
-<!-- 2015-04-06 Mon 17:01 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Takeshi Nagae" />
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Takeshi Nagae" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
   .todo   { font-family: monospace; color: red; }
-  .done   { color: green; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -46,27 +53,110 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.right  { text-align: center;  }
-  th.left   { text-align: center;   }
-  th.center { text-align: center; }
-  td.right  { text-align: right;  }
-  td.left   { text-align: left;   }
-  td.center { text-align: center; }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara:nth-child(2) { display: inline; }
-  .footpara { display: block; }
+  .footpara { display: inline; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -86,6 +176,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel=stylesheet href="style.css" type="text/css">
@@ -219,136 +310,138 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#27425;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. Emacs のインストール方法</a></li>
-<li><a href="#sec-2">2. 長江研 Emacs 設定方針</a>
+<li><a href="#org65cc050">1. Emacs のインストール方法</a></li>
+<li><a href="#org87d6700">2. 長江研 Emacs 設定方針</a>
 <ul>
-<li><a href="#sec-2-1">2.1. Emacs の初期設定</a></li>
-<li><a href="#sec-2-2">2.2. 初期設定ファイルの更新</a></li>
+<li><a href="#org468d4ed">2.1. Emacs の初期設定</a></li>
+<li><a href="#org9d07324">2.2. 初期設定ファイルの更新</a></li>
 </ul>
 </li>
-<li><a href="#sec-3">3. SKK / AquaSKK &#x2014; シンプル漢字かな入力</a>
+<li><a href="#org0325539">3. SKK / AquaSKK &#x2014; シンプル漢字かな入力</a>
 <ul>
-<li><a href="#sec-3-1">3.1. AquaSKKのインストール</a></li>
+<li><a href="#orgd7ff1f4">3.1. DDSKKのインストール</a></li>
+<li><a href="#org50ec3f3">3.2. AquaSKKのインストール</a></li>
 </ul>
 </li>
-<li><a href="#sec-4">4. 基本的な操作方法</a>
+<li><a href="#orgf4054a0">4. 基本的な操作方法</a>
 <ul>
-<li><a href="#sec-4-1">4.1. 特殊キー</a></li>
-<li><a href="#sec-4-2">4.2. 同時押しと順次押し</a></li>
-<li><a href="#sec-4-3">4.3. まずはパニック対応(<code>ESC, C-g</code>)</a></li>
-<li><a href="#sec-4-4">4.4. カーソルの操作</a></li>
+<li><a href="#org0709990">4.1. 特殊キー</a></li>
+<li><a href="#org35b0646">4.2. 同時押しと順次押し</a></li>
+<li><a href="#orgbe196b9">4.3. まずはパニック対応(<code>ESC, C-g</code>)</a></li>
+<li><a href="#orgbbc9380">4.4. カーソルの操作</a></li>
 </ul>
 </li>
-<li><a href="#sec-5">5. 参考資料</a></li>
-<li><a href="#sec-6">6. 独自設定</a>
+<li><a href="#org00f8ba2">5. 参考資料</a></li>
+<li><a href="#org4993bd8">6. 独自設定</a>
 <ul>
-<li><a href="#sec-6-1">6.1. 基本操作</a></li>
-<li><a href="#sec-6-2">6.2. Anything</a></li>
-<li><a href="#sec-6-3">6.3. もっとある</a></li>
+<li><a href="#org45d5a50">6.1. 基本操作</a></li>
+<li><a href="#org5cead2a">6.2. Anything</a></li>
+<li><a href="#orgffc6162">6.3. もっとある</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Emacs のインストール方法</h2>
+<div id="outline-container-org65cc050" class="outline-2">
+<h2 id="org65cc050"><span class="section-number-2">1</span> Emacs のインストール方法</h2>
 <div class="outline-text-2" id="text-1">
 <ol class="org-ol">
 <li>本体および関連するパッケージを Homebrew でインストール
 <ul class="org-ul">
-<li>ターミナルで以下を実行
+<li><p>
+ターミナルで以下を実行
+</p>
 <div class="org-src-container">
-
-<pre class="src src-screen">brew install emacs --cocoa --japanese <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#26368;&#24375;&#12398;&#12456;&#12487;&#12451;&#12479;</span>
-brew linkapps <span style="color: #00cd66;"># </span><span style="color: #00cd66;">emacs &#12408;&#12398;&#12471;&#12531;&#12508;&#12522;&#12483;&#12463;&#12522;&#12531;&#12463;&#12434; /Applications &#12501;&#12457;&#12523;&#12480;&#19979;&#12395;&#20316;&#25104;</span>
-brew install magit                                              <span style="color: #00cd66;"># </span><span style="color: #00cd66;">Emacs &#19978;&#12398; git &#12501;&#12525;&#12531;&#12488;&#12456;&#12531;&#12489;</span>
-brew install https://gist.github.com/nagae/3009185/raw/ddskk.rb <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#26085;&#26412;&#35486;&#20837;&#21147; SKK</span>
+<pre class="src src-screen">brew cask install emacs <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#26368;&#24375;&#12398;&#12456;&#12487;&#12451;&#12479;</span>
+brew install skktools <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#26085;&#26412;&#35486;&#20837;&#21147; SKK</span>
 </pre>
-</div>
-</li>
-</ul>
-</li>
+</div></li>
+</ul></li>
 <li>Spotlight で呼び出せるように Automator でアプリケーションとして登録
 <ul class="org-ul">
-<li><a href="file:///Applications/Automator.app">Automator.app</a> を起動し，メニューから「アプリケーション」を選択
+<li><p>
+<a href="file:///Applications/Automator.app">Automator.app</a> を起動し，メニューから「アプリケーション」を選択
+</p>
 
 <div class="figure">
 <p><img src="fig/emacs_Automator_1.png" alt="emacs_Automator_1.png" />
 </p>
-</div>
-</li>
-<li>検索窓に「シェルスクリプトを実行」と入力
-</li>
-<li>「シェルスクリプトを実行」と書かれたアイコンをダブルクリック
-</li>
-<li>デフォルトで <code>cat</code> と書かれたシェルスクリプトを以下に変更：
+</div></li>
+<li>検索窓に「シェルスクリプトを実行」と入力</li>
+<li>「シェルスクリプトを実行」と書かれたアイコンをダブルクリック</li>
+<li><p>
+デフォルトで <code>cat</code> と書かれたシェルスクリプトを以下に変更：
+</p>
 <div class="org-src-container">
-
 <pre class="src src-screen">open -a /Applications/Emacs.app
 </pre>
-</div>
-</li>
-<li>ファイル名を <code>Emacs.app</code> として iCloud フォルダに保存する
-</li>
-</ul>
-</li>
+</div></li>
+<li>ファイル名を <code>Emacs.app</code> として iCloud フォルダに保存する</li>
+</ul></li>
 </ol>
 </div>
 </div>
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> 長江研 Emacs 設定方針</h2>
+<div id="outline-container-org87d6700" class="outline-2">
+<h2 id="org87d6700"><span class="section-number-2">2</span> 長江研 Emacs 設定方針</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-Emacs は初期設定ファイル(<code>~/.emacs.d/init.el</code>)が極めて重要な役割を果たす<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>．同じ
+Emacs は初期設定ファイル(<code>~/.emacs.d/init.el</code>)が極めて重要な役割を果たす[1]．同じ
 Emacs を使っていても，初期設定ファイルが違うと全く違うアプリケーションのように感
 じる．そのため，マシンごとに別々の初期設定ファイルを用いると，複数のマシンで作業
 する(eg. 研究室の作業を自宅で引き継ぐ)際に作業効率が著しく低下する．そこで，以下
 では，次のポリシーに従った設定方法を述べる：
 </p>
 <ul class="org-ul">
-<li>環境変数や homebrew のパスなど，マシン固有の設定はローカル上の <code>~/.emacs.d/init.el</code> に記述
-</li>
-<li>それ以外の初期設定ファイルは Dropbox上の <code>~/Dropbox/.emacs.d/</code> 以下に置く
-</li>
-<li>ELPA(Emacs Lisp Package Archives)を積極的に利用．通常，これらのファイルはローカルの <code>~/.emacs.d/elpa/</code> 以下に置かれるが，ここでは，これをDropbox 上の <code>~/Dropbox/.emacs.d/elpa</code> へのシンボリックリンクとして設定．
-</li>
-<li>ELPAでインストールできないlispファイル群は Dropbox 上の <code>~/Dropbox/.emacs.d/lisp</code> 以下に置く．
-</li>
+<li>環境変数や homebrew のパスなど，マシン固有の設定はローカル上の <code>~/.emacs.d/init.el</code> に記述</li>
+<li>それ以外の初期設定ファイルは Dropbox上の <code>~/Dropbox/.emacs.d/</code> 以下に置く</li>
+<li>ELPA(Emacs Lisp Package Archives)を積極的に利用．通常，これらのファイルはローカルの <code>~/.emacs.d/elpa/</code> 以下に置かれるが，ここでは，これをDropbox 上の <code>~/Dropbox/.emacs.d/elpa</code> へのシンボリックリンクとして設定．</li>
+<li>ELPAでインストールできないlispファイル群は Dropbox 上の <code>~/Dropbox/.emacs.d/lisp</code> 以下に置く．</li>
 </ul>
-</div>
-<div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Emacs の初期設定</h3>
-<div class="outline-text-3" id="text-2-1">
-<ol class="org-ol">
-<li>ローカルの初期設定フォルダを作成：
-<div class="org-src-container">
 
-<pre class="src src-screen">$ mkdir ~/.emacs.d/
+<p>
+[1] <code>.emacs.d</code> のように先頭に <code>.</code> のついたファイルやフォルダは隠しファイル/隠しフォ
+ルダであり，普段はFinder や <code>ls</code> コマンドで見ることはできない．これらを見るには，
+ターミナルから以下のように入力する：
+</p>
+<div class="org-src-container">
+<pre class="src src-screen">$ ls -a ~/
 </pre>
 </div>
-</li>
-<li><code>~/.emacs.d/init.el</code> を以下のように設定する：
+</div>
+<div id="outline-container-org468d4ed" class="outline-3">
+<h3 id="org468d4ed"><span class="section-number-3">2.1</span> Emacs の初期設定</h3>
+<div class="outline-text-3" id="text-2-1">
+<ol class="org-ol">
+<li><p>
+ローカルの初期設定フォルダを作成：
+</p>
+<div class="org-src-container">
+<pre class="src src-screen">$ mkdir ~/.emacs.d/
+</pre>
+</div></li>
+<li><p>
+<code>~/.emacs.d/init.el</code> を以下のように設定する：
+</p>
 <script src="https://gist.github.com/nagae/5269225.js"></script>
 
 <p>
 なお，上記ファイルは以下の手順でダウンロードすることも可能：
 </p>
 <div class="org-src-container">
-
 <pre class="src src-screen">$ cd ~/.emacs.d
 $ curl -O https://gist.github.com/nagae/5269225/raw/init.el
 </pre>
 </div>
 <p>
 <code>curl -O foo</code> は指定されたインターネット上のファイルを同じ名前で現在のディレクトリに保存するコマンド．
-</p>
-</li>
+</p></li>
 <li>リポジトリからDropbox 上に設定ファイルを読み込む：
 <ol class="org-ol">
-<li>Bitbucket と Github に SSH 公開鍵アクセスが可能か調べる
+<li><p>
+Bitbucket と Github に SSH 公開鍵アクセスが可能か調べる
+</p>
 <div class="org-src-container">
-
 <pre class="src src-text">$ ssh git@bitbucket.org
 PTY allocation request failed on channel 0
 conq: logged in as ***.
@@ -361,7 +454,6 @@ Connection to bitbucket.org closed.
 <code>You can use git or hg to connect to Bitbucket.</code> と表示されれば OK.
 </p>
 <div class="org-src-container">
-
 <pre class="src src-text">$ ssh git@github.com
 PTY allocation request failed on channel 0
 Hi ****! You've successfully authenticated, but GitHub does not provide shell access.
@@ -370,70 +462,65 @@ Connection to github.com closed.
 </div>
 <p>
 <code>Hi ****! You've successfully authenticated</code> と表示されればOK(****は Github.com のアカウント名)．
-</p>
-</li>
+</p></li>
 <li>アクセスできない場合は以下の手順を試してみる：
 <ul class="org-ul">
-<li><i>Github / Bitbucket に SSH で接続する</i> の設定を確認
-</li>
-<li><code>~/.ssh/known_host</code> から <code>github.com</code> や <code>bitbucket.org</code> を含む行を削除する
-</li>
-<li>秘密鍵を指定してSSHでアクセスしてみる: 具体的には，ターミナルから以下を入力
+<li><a href="https://nagae.github.io/itl/setup.html#org9174e41">Github / Bitbucket に SSH で接続する</a> の設定を確認</li>
+<li><code>~/.ssh/known_host</code> から <code>github.com</code> や <code>bitbucket.org</code> を含む行を削除する</li>
+<li><p>
+秘密鍵を指定してSSHでアクセスしてみる: 具体的には，ターミナルから以下を入力
+</p>
 <div class="org-src-container">
-
 <pre class="src src-screen">$ ssh -i ~/.ssh/id_rsa git@bitbucket.org
 $ ssh -i ~/.ssh/id_rsa git@github.com
 </pre>
-</div>
-</li>
-</ul>
-</li>
-<li>Bitbucket / Github にアクセスできることを確認したら，ターミナルから以下を実行：
+</div></li>
+</ul></li>
+<li><p>
+Bitbucket / Github にアクセスできることを確認したら，ターミナルから以下を実行：
+</p>
 <div class="org-src-container">
-
 <pre class="src src-screen">$ cd ~/Dropbox/
 $ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git
 </pre>
-</div>
-</li>
-</ol>
-</li>
-<li>Dropbox のlisp用フォルダへのシンボリックリンクをローカルの設定フォルダ <code>~/.emacs.d/</code> に置く：
+</div></li>
+</ol></li>
+<li><p>
+Dropbox のlisp用フォルダへのシンボリックリンクをローカルの設定フォルダ <code>~/.emacs.d/</code> に置く：
+</p>
 <div class="org-src-container">
-
 <pre class="src src-screen">$ ln -s ~/Dropbox/.emacs.d/elpa ~/.emacs.d <span style="color: #00cd66;"># </span><span style="color: #00cd66;">Dropbox&#19978;&#12398; elpa &#12501;&#12457;&#12523;&#12480;&#12408;&#12398;&#12471;&#12531;&#12508;&#12522;&#12483;&#12463;&#12522;&#12531;&#12463;&#12434;&#24373;&#12427;</span>
 </pre>
-</div>
-</li>
+</div></li>
 </ol>
 </div>
 </div>
-<div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2"><span class="section-number-3">2.2</span> 初期設定ファイルの更新</h3>
+<div id="outline-container-org9d07324" class="outline-3">
+<h3 id="org9d07324"><span class="section-number-3">2.2</span> 初期設定ファイルの更新</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
-<li>上記の初期設定ファイルは適宜更新される．更新を反映するにはターミナルから以下を実行する：
+<li><p>
+上記の初期設定ファイルは適宜更新される．更新を反映するにはターミナルから以下を実行する：
+</p>
 <div class="org-src-container">
-
 <pre class="src src-screen">$ cd ~/Dropbox/.emacs.d
 $ git pull
 </pre>
-</div>
-</li>
-<li><code>lisp/spaces</code> など，一部の lisp は別のリポジトリを(submodule として)取り込んでいるので，以下で最新のものに更新できる(はず)：
+</div></li>
+<li><p>
+<code>lisp/spaces</code> など，一部の lisp は別のリポジトリを(submodule として)取り込んでいるので，以下で最新のものに更新できる(はず)：
+</p>
 <div class="org-src-container">
-
 <pre class="src src-screen">$ cd ~/Dropbox/.emacs.d
 $ git submodule update --init --recursive
 $ git submodule update --recursive
 </pre>
-</div>
-</li>
-<li><code>--init</code> オプションをつけると初期化のみを行うようです(<a href="http://stackoverflow.com/questions/10168449/git-update-submodule-recursive">参考</a>)．
-</li>
-<li><code>git pull</code> あたりでどうにもうまく行かないときは，=~/Dropbox/.emacs.d= 自体を clone し直してみる：
+</div></li>
+<li><code>--init</code> オプションをつけると初期化のみを行うようです(<a href="http://stackoverflow.com/questions/10168449/git-update-submodule-recursive">参考</a>)．</li>
+<li><p>
+<code>git pull</code> あたりでどうにもうまく行かないときは，=~/Dropbox/.emacs.d= 自体を clone し直してみる：
+</p>
 <div class="org-src-container">
-
 <pre class="src src-screen">$ cd ~/Dropbox                  <span style="color: #00cd66;"># </span><span style="color: #00cd66;">~/Dropbox &#12395;&#31227;&#21205;</span>
 $ mv .emacs.d .emacs.d.backup   <span style="color: #00cd66;"># </span><span style="color: #00cd66;">.emacs.d &#12434;&#21029;&#21517;&#12391;&#36864;&#36991;</span>
 $ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git   <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#26368;&#26032;&#29256;&#12434; clone</span>
@@ -441,75 +528,76 @@ $ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git   <span style="colo
 </div>
 <p>
 後は <code>.emacs.d.backup</code> の中身を適宜 <code>.emacs.d</code> に書き写していけばいい
-</p>
-</li>
+</p></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> SKK / AquaSKK &#x2014; シンプル漢字かな入力</h2>
+<div id="outline-container-org0325539" class="outline-2">
+<h2 id="org0325539"><span class="section-number-2">3</span> SKK / AquaSKK &#x2014; シンプル漢字かな入力</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 長江は「ことえり」や「IME」のような形態素解析をベースとした入力メソッドが苦手なので，SKK(Simple Kana to Kanji conversion program)を利用している．
 SKK は品詞解析を行なわないため，漢字にする箇所や送り仮名を自分で指定する必要がある．しかし，ひとたび慣れれば高速かつ直感的な入力が可能となる———上述のような入力メソッドが使えなくなるほど．
-Macの標準入力方式に代替できる <a href="https://github.com/codefirst/aquaskk/releases">AquaSKK</a> (<a href="http://aquaskk.sourceforge.jp">旧サイト</a>)と Emacs 上で動く <a href="http://openlab.ring.gr.jp/skk/ddskk-ja.html">DDSKK (Daredevil SKK)</a> とがあり，両方併用するのが吉．
+Macの標準入力方式に代替できる <a href="https://github.com/codefirst/aquaskk/releases">AquaSKK</a> (<a href="http://aquaskk.sourceforge.jp/">旧サイト</a>)と Emacs 上で動く <a href="http://openlab.ring.gr.jp/skk/ddskk-ja.html">DDSKK (Daredevil SKK)</a> とがあり，両方併用するのが吉．
 </p>
 </div>
-<div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="section-number-3">3.1</span> AquaSKKのインストール</h3>
+<div id="outline-container-orgd7ff1f4" class="outline-3">
+<h3 id="orgd7ff1f4"><span class="section-number-3">3.1</span> DDSKKのインストール</h3>
 <div class="outline-text-3" id="text-3-1">
 <ol class="org-ol">
-<li><a href="https://github.com/codefirst/aquaskk/releases">https://github.com/codefirst/aquaskk/releases</a> から最新のバージョン (2015/4/6時点では AsuaSKK-4.2.4.dmg) をダウンロードし，AquaSKK.pkg を実行．
-</li>
-<li>Mac OS X の Gatekeeper が邪魔をする場合は，Ctrlを押しながらクリック→開く．
-</li>
+<li>Emacs の package に MELPA を入れておけば,
+<code>M-x package install [RET] ddskk</code> でインストール可能になった.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org50ec3f3" class="outline-3">
+<h3 id="org50ec3f3"><span class="section-number-3">3.2</span> AquaSKKのインストール</h3>
+<div class="outline-text-3" id="text-3-2">
+<ol class="org-ol">
+<li><p>
+<code>brew cask</code> でインストールできるようになっている:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">brew cask install aquaskk
+</pre>
+</div></li>
 <li>言語環境に AquaSKK を登録
 <ul class="org-ul">
 <li>画面左上のリンゴマーク→システム環境設定→言語とテキスト
-<img src="fig/setting_language_text.png" alt="setting_language_text.png" />
-</li>
+<img src="fig/setting_language_text.png" alt="setting_language_text.png" /></li>
 <li>入力ソースで Aqua SKK 統合にチェック
-<img src="fig/Aqua_SKK-setting.png" alt="Aqua_SKK-setting.png" />
-</li>
-</ul>
-</li>
+<img src="fig/Aqua_SKK-setting.png" alt="Aqua_SKK-setting.png" /></li>
+</ul></li>
 <li>AquaSKK の環境設定
 右上の入力方式から AquaSKK 統合を選択した上で「環境設定」を選択
 <img src="fig/Aqua_SKK-env.png" alt="Aqua_SKK-env.png" />
 <ol class="org-ol">
 <li>辞書ファイル
 <ul class="org-ul">
-<li>ユーザー辞書: <code>~/Dropbox/.skk-aquaskk.skk-jisyo</code>
-</li>
+<li>ユーザー辞書: <code>~/Dropbox/.skk-aquaskk.skk-jisyo</code></li>
 <li>SKK辞書: <code>~/Dropbox/.skk-ddskk.skk-jisyo</code>
-        <img src="fig/Aqua_SKK-dictionary.png" alt="Aqua_SKK-dictionary.png" />
-</li>
-</ul>
-</li>
+<img src="fig/Aqua_SKK-dictionary.png" alt="Aqua_SKK-dictionary.png" /></li>
+</ul></li>
 <li>その他
 <ul class="org-ul">
 <li>かな規則：「読点をカンマ(，)にする」「句点をピリオド(．)にする」にそれぞれ
 チェック．
-<img src="fig/Aqua_SKK-Kana.png" alt="Aqua_SKK-Kana.png" />
-</li>
+<img src="fig/Aqua_SKK-Kana.png" alt="Aqua_SKK-Kana.png" /></li>
 <li>skkserv:「有効にする」にチェック，ポート番号:1178
-<img src="fig/Aqua_SKK-skkserv.png" alt="Aqua_SKK-skkserv.png" />
-</li>
-</ul>
-</li>
-</ol>
-</li>
+<img src="fig/Aqua_SKK-skkserv.png" alt="Aqua_SKK-skkserv.png" /></li>
+</ul></li>
+</ol></li>
 </ol>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> 基本的な操作方法</h2>
+<div id="outline-container-orgf4054a0" class="outline-2">
+<h2 id="orgf4054a0"><span class="section-number-2">4</span> 基本的な操作方法</h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-sec-4-1" class="outline-3">
-<h3 id="sec-4-1"><span class="section-number-3">4.1</span> 特殊キー</h3>
+</div><div id="outline-container-org0709990" class="outline-3">
+<h3 id="org0709990"><span class="section-number-3">4.1</span> 特殊キー</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 上記の設定の下では，Emacs で用いる特殊キーは以下のように割当てられる．
@@ -518,61 +606,61 @@ Macの標準入力方式に代替できる <a href="https://github.com/codefirst
 
 
 <colgroup>
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="left" />
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="left">特殊キー名</th>
-<th scope="col" class="left">省略表記</th>
-<th scope="col" class="left">キーボード上のキー</th>
+<th scope="col" class="org-left">特殊キー名</th>
+<th scope="col" class="org-left">省略表記</th>
+<th scope="col" class="org-left">キーボード上のキー</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="left">Control</td>
-<td class="left">C-</td>
-<td class="left">caps lock</td>
+<td class="org-left">Control</td>
+<td class="org-left">C-</td>
+<td class="org-left">caps lock</td>
 </tr>
 
 <tr>
-<td class="left">Meta</td>
-<td class="left">M-</td>
-<td class="left">command (⌘)</td>
+<td class="org-left">Meta</td>
+<td class="org-left">M-</td>
+<td class="org-left">command (⌘)</td>
 </tr>
 
 <tr>
-<td class="left">Super</td>
-<td class="left">s-</td>
-<td class="left">option (alt)</td>
+<td class="org-left">Super</td>
+<td class="org-left">s-</td>
+<td class="org-left">option (alt)</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
-<td class="left">Return</td>
-<td class="left">RET</td>
-<td class="left">return (enter)</td>
+<td class="org-left">Return</td>
+<td class="org-left">RET</td>
+<td class="org-left">return (enter)</td>
 </tr>
 
 <tr>
-<td class="left">Tab</td>
-<td class="left">TAB</td>
-<td class="left">tab</td>
+<td class="org-left">Tab</td>
+<td class="org-left">TAB</td>
+<td class="org-left">tab</td>
 </tr>
 
 <tr>
-<td class="left">Delete</td>
-<td class="left">DEL</td>
-<td class="left">delete</td>
+<td class="org-left">Delete</td>
+<td class="org-left">DEL</td>
+<td class="org-left">delete</td>
 </tr>
 
 <tr>
-<td class="left">Esc</td>
-<td class="left">ESC</td>
-<td class="left">esc</td>
+<td class="org-left">Esc</td>
+<td class="org-left">ESC</td>
+<td class="org-left">esc</td>
 </tr>
 </tbody>
 </table>
@@ -587,81 +675,72 @@ Macの標準入力方式に代替できる <a href="https://github.com/codefirst
 </p>
 </div>
 </div>
-<div id="outline-container-sec-4-2" class="outline-3">
-<h3 id="sec-4-2"><span class="section-number-3">4.2</span> 同時押しと順次押し</h3>
+<div id="outline-container-org35b0646" class="outline-3">
+<h3 id="org35b0646"><span class="section-number-3">4.2</span> 同時押しと順次押し</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 Emacs では，特殊キーとそれ以外のキーの組み合わせ(キーバインド)によって多彩な操作が可能である．
 全てのキー操作は「同時押し」と「順次押し」で構成される．
 </p>
 <dl class="org-dl">
-<dt> 同時押し </dt><dd>特殊キーとそれ以外のキーを <b>同時</b> に押すこと．ハイフン(-)で表現される．
+<dt>同時押し</dt><dd>特殊キーとそれ以外のキーを <b>同時</b> に押すこと．ハイフン(-)で表現される．
 <dl class="org-dl">
-<dt> <code>C-g</code> </dt><dd>Control と g を同時に押す
-</dd>
-<dt> <code>M-x</code> </dt><dd>Meta と x を同時に押す
-</dd>
-<dt> <code>C-x-n</code> </dt><dd>Control と Meta と n を同時に押す
-</dd>
-</dl>
-</dd>
-<dt> 順次押し </dt><dd>あるキーや同時押しの <b>後で</b>, 別のキーや同時押しを入力すること．空白記号で区切って表現される．
+<dt><code>C-g</code></dt><dd>Control と g を同時に押す</dd>
+<dt><code>M-x</code></dt><dd>Meta と x を同時に押す</dd>
+<dt><code>C-x-n</code></dt><dd>Control と Meta と n を同時に押す</dd>
+</dl></dd>
+<dt>順次押し</dt><dd>あるキーや同時押しの <b>後で</b>, 別のキーや同時押しを入力すること．空白記号で区切って表現される．
 <dl class="org-dl">
-<dt> <code>C-x C-s</code> </dt><dd>C-x の後で C-s を入力する
-</dd>
-<dt> <code>M-x info</code> </dt><dd>M-x の後で「info」と入力する
-</dd>
-<dt> <code>C-x RET f</code> </dt><dd>C-x, リターンキー, f の順に入力する
-</dd>
-</dl>
-</dd>
+<dt><code>C-x C-s</code></dt><dd>C-x の後で C-s を入力する</dd>
+<dt><code>M-x info</code></dt><dd>M-x の後で「info」と入力する</dd>
+<dt><code>C-x RET f</code></dt><dd>C-x, リターンキー, f の順に入力する</dd>
+</dl></dd>
 </dl>
 <p>
 特殊キーと
 </p>
 </div>
 </div>
-<div id="outline-container-sec-4-3" class="outline-3">
-<h3 id="sec-4-3"><span class="section-number-3">4.3</span> まずはパニック対応(<code>ESC, C-g</code>)</h3>
+<div id="outline-container-orgbe196b9" class="outline-3">
+<h3 id="orgbe196b9"><span class="section-number-3">4.3</span> まずはパニック対応(<code>ESC, C-g</code>)</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
 操作中に予期せぬ画面になってしまった時は，=ESC= か <code>C-g</code> (Control と g の同時押し)を押すことで，大抵，元の画面に戻ってこれる．
 </p>
 <ol class="org-ol">
-<li>Emacs を起動すると，最初はこのような画面(eshell)が現れるはずだ．
+<li><p>
+Emacs を起動すると，最初はこのような画面(eshell)が現れるはずだ．
+</p>
 
 <div class="figure">
 <p><img src="fig/Emacs/initial_window.png" alt="initial_window.png" />
 </p>
-</div>
-</li>
-<li><code>C-h C-h</code> (Controlキー と h の同時押しを2回)を入力する．
-</li>
-<li>こんな画面になってしまう
+</div></li>
+<li><code>C-h C-h</code> (Controlキー と h の同時押しを2回)を入力する．</li>
+<li><p>
+こんな画面になってしまう
+</p>
 
 <div class="figure">
 <p><img src="fig/Emacs/C-h_C-h_window.png" alt="C-h_C-h_window.png" />
 </p>
-</div>
-</li>
-<li>慌てずに <code>ESC</code> を押せば，元の画面に戻る．
-</li>
-<li>今度は <code>C-x C-u</code> (Control キーと x の同時押しの後，Control と u の同時押し)を入力する．
-</li>
-<li>こんな画面になるはずだ
+</div></li>
+<li>慌てずに <code>ESC</code> を押せば，元の画面に戻る．</li>
+<li>今度は <code>C-x C-u</code> (Control キーと x の同時押しの後，Control と u の同時押し)を入力する．</li>
+<li><p>
+こんな画面になるはずだ
+</p>
 
 <div class="figure">
 <p><img src="fig/Emacs/C-x_C-u_window.png" alt="C-x_C-u_window.png" />
 </p>
-</div>
-</li>
-<li>この画面は <code>ESC</code> を入力しても消えてくれない．そんな時も慌てず <code>C-g</code> を入力すれば，元の画面に戻る．
-</li>
+</div></li>
+<li>この画面は <code>ESC</code> を入力しても消えてくれない．そんな時も慌てず <code>C-g</code> を入力すれば，元の画面に戻る．</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-sec-4-4" class="outline-3">
-<h3 id="sec-4-4"><span class="section-number-3">4.4</span> カーソルの操作</h3>
+<div id="outline-container-orgbbc9380" class="outline-3">
+<h3 id="orgbbc9380"><span class="section-number-3">4.4</span> カーソルの操作</h3>
 <div class="outline-text-3" id="text-4-4">
 <p>
 Emacs では，十字キーではなく，キーバインドでもカーソルを操作できる．最初は十字キーの方が楽なように思うだろうが，慣れてくると十字キーに手を伸ばすのが億劫になってくるはずだ．最初の画面(eshell)で色々試してみよう．
@@ -670,135 +749,130 @@ Emacs では，十字キーではなく，キーバインドでもカーソル�
 
 
 <colgroup>
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="left" />
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="left">キーバインド</th>
-<th scope="col" class="left">動作</th>
+<th scope="col" class="org-left">キーバインド</th>
+<th scope="col" class="org-left">動作</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="left"><code>C-f</code></td>
-<td class="left">カーソルを右(前)へ</td>
+<td class="org-left"><code>C-f</code></td>
+<td class="org-left">カーソルを右(前)へ</td>
 </tr>
 
 <tr>
-<td class="left"><code>C-b</code></td>
-<td class="left">カーソルを左(後)へ</td>
+<td class="org-left"><code>C-b</code></td>
+<td class="org-left">カーソルを左(後)へ</td>
 </tr>
 
 <tr>
-<td class="left"><code>C-n</code></td>
-<td class="left">カーソルを下(次の行)へ</td>
+<td class="org-left"><code>C-n</code></td>
+<td class="org-left">カーソルを下(次の行)へ</td>
 </tr>
 
 <tr>
-<td class="left"><code>C-p</code></td>
-<td class="left">カーソルを上(前の行)へ</td>
+<td class="org-left"><code>C-p</code></td>
+<td class="org-left">カーソルを上(前の行)へ</td>
 </tr>
 
 <tr>
-<td class="left"><code>C-a</code></td>
-<td class="left">カーソルを行の先頭へ</td>
+<td class="org-left"><code>C-a</code></td>
+<td class="org-left">カーソルを行の先頭へ</td>
 </tr>
 
 <tr>
-<td class="left"><code>C-e</code></td>
-<td class="left">カーソルを行の末尾へ</td>
+<td class="org-left"><code>C-e</code></td>
+<td class="org-left">カーソルを行の末尾へ</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
-<td class="left"><code>M-f</code></td>
-<td class="left">カーソルを1単語右(前)へ</td>
+<td class="org-left"><code>M-f</code></td>
+<td class="org-left">カーソルを1単語右(前)へ</td>
 </tr>
 
 <tr>
-<td class="left"><code>M-b</code></td>
-<td class="left">カーソルを1単語左(後)へ</td>
+<td class="org-left"><code>M-b</code></td>
+<td class="org-left">カーソルを1単語左(後)へ</td>
 </tr>
 
 <tr>
-<td class="left"><code>C-v</code></td>
-<td class="left">カーソルを1画面下(次の画面)へ</td>
+<td class="org-left"><code>C-v</code></td>
+<td class="org-left">カーソルを1画面下(次の画面)へ</td>
 </tr>
 
 <tr>
-<td class="left"><code>M-v</code></td>
-<td class="left">カーソルを1画面上(前の画面)へ</td>
+<td class="org-left"><code>M-v</code></td>
+<td class="org-left">カーソルを1画面上(前の画面)へ</td>
 </tr>
 
 <tr>
-<td class="left"><code>M-&lt;</code></td>
-<td class="left">カーソルをバッファの先頭へ</td>
+<td class="org-left"><code>M-&lt;</code></td>
+<td class="org-left">カーソルをバッファの先頭へ</td>
 </tr>
 
 <tr>
-<td class="left"><code>M-&gt;</code></td>
-<td class="left">カーソルをバッファの末尾へ</td>
+<td class="org-left"><code>M-&gt;</code></td>
+<td class="org-left">カーソルをバッファの末尾へ</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
-<td class="left"><code>DEL</code></td>
-<td class="left">カーソルの <b>前</b> の1文字を消去</td>
+<td class="org-left"><code>DEL</code></td>
+<td class="org-left">カーソルの <b>前</b> の1文字を消去</td>
 </tr>
 
 <tr>
-<td class="left"><code>C-d</code></td>
-<td class="left">カーソルの <b>後</b> の1文字を消去</td>
+<td class="org-left"><code>C-d</code></td>
+<td class="org-left">カーソルの <b>後</b> の1文字を消去</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> 参考資料</h2>
+<div id="outline-container-org00f8ba2" class="outline-2">
+<h2 id="org00f8ba2"><span class="section-number-2">5</span> 参考資料</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 順次書いていきますが膨大なので，まずは <a href="http://www.amazon.co.jp/dp/4774150029">Emacs 実践入門</a> の§2.3以降を読みながら各自で慣れていって下さい．
 </p>
 </div>
 </div>
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6"><span class="section-number-2">6</span> 独自設定</h2>
+<div id="outline-container-org4993bd8" class="outline-2">
+<h2 id="org4993bd8"><span class="section-number-2">6</span> 独自設定</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 <a href="https://bitbucket.org/nagae/.emacs.d">https://bitbucket.org/nagae/.emacs.d</a> で公開している設定ファイルでは，
 <a href="http://www.amazon.co.jp/dp/4774150029">Emacs 実践入門</a> に記載されていないような独自のキーバインドがいくつかある．
 </p>
 </div>
-<div id="outline-container-sec-6-1" class="outline-3">
-<h3 id="sec-6-1"><span class="section-number-3">6.1</span> 基本操作</h3>
+<div id="outline-container-org45d5a50" class="outline-3">
+<h3 id="org45d5a50"><span class="section-number-3">6.1</span> 基本操作</h3>
 <div class="outline-text-3" id="text-6-1">
 <dl class="org-dl">
-<dt> ウィンドウの切り替え(<code>C-;</code>) </dt><dd><code>C-x o</code> だけでなく <code>C-;</code> でもウィンドウが切り替えられる．
-</dd>
-<dt> 指定行への移動(<code>M-g</code>) </dt><dd><code>M-x goto-line</code> を <code>M-g</code> だけで起動できる
-</dd>
-<dt> バッファ切り替え(<code>C-x b</code>) </dt><dd><code>C-x b</code> で <a href="http://www.bookshelf.jp/soft/meadow_28.html#SEC370">iswitchb</a> を起動できる．カーソルの左右と <code>C-f, C-b</code> で次のバッファ/前のバッファを選択できる．
-</dd>
-<dt> 前後のバッファへの瞬時切り替え(<code>C-&lt;, C-&gt;</code>) </dt><dd>バッファ切り替えを立ち上げなくても <code>C-&lt;</code> で前のバッファ， <code>C-&gt;</code> で後のバッファに切り替えられる
-</dd>
+<dt>ウィンドウの切り替え(<code>C-;</code>)</dt><dd><code>C-x o</code> だけでなく <code>C-;</code> でもウィンドウが切り替えられる．</dd>
+<dt>指定行への移動(<code>M-g</code>)</dt><dd><code>M-x goto-line</code> を <code>M-g</code> だけで起動できる</dd>
+<dt>バッファ切り替え(<code>C-x b</code>)</dt><dd><code>C-x b</code> で <a href="http://www.bookshelf.jp/soft/meadow_28.html#SEC370">iswitchb</a> を起動できる．カーソルの左右と <code>C-f, C-b</code> で次のバッファ/前のバッファを選択できる．</dd>
+<dt>前後のバッファへの瞬時切り替え(<code>C-&lt;, C-&gt;</code>)</dt><dd>バッファ切り替えを立ち上げなくても <code>C-&lt;</code> で前のバッファ， <code>C-&gt;</code> で後のバッファに切り替えられる</dd>
 </dl>
 </div>
 </div>
-<div id="outline-container-sec-6-2" class="outline-3">
-<h3 id="sec-6-2"><span class="section-number-3">6.2</span> Anything</h3>
+<div id="outline-container-org5cead2a" class="outline-3">
+<h3 id="org5cead2a"><span class="section-number-3">6.2</span> Anything</h3>
 <div class="outline-text-3" id="text-6-2">
 <dl class="org-dl">
-<dt> <code>s-a</code> (option キーと a の同時押し) </dt><dd><code>s-a</code> でanything-for-files を起動
-</dd>
+<dt><code>s-a</code> (option キーと a の同時押し)</dt><dd><code>s-a</code> でanything-for-files を起動</dd>
 </dl>
 </div>
 </div>
-<div id="outline-container-sec-6-3" class="outline-3">
-<h3 id="sec-6-3"><span class="section-number-3">6.3</span> もっとある</h3>
+<div id="outline-container-orgffc6162" class="outline-3">
+<h3 id="orgffc6162"><span class="section-number-3">6.3</span> もっとある</h3>
 <div class="outline-text-3" id="text-6-3">
 <p>
 便利な独自機能はまだ沢山あるが鋭意執筆中．
@@ -806,27 +880,10 @@ Emacs では，十字キーではなく，キーバインドでもカーソル�
 </div>
 </div>
 </div>
-<div id="footnotes">
-<h2 class="footnotes">&#33050;&#27880;: </h2>
-<div id="text-footnotes">
-
-<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara">
-<code>.emacs.d</code> のように先頭に <code>.</code> のついたファイルやフォルダは隠しファイル/隠しフォ
-ルダであり，普段はFinder や <code>ls</code> コマンドで見ることはできない．これらを見るには，
-ターミナルから以下のように入力する：
-</p>
-<div class="org-src-container">
-
-<pre class="src src-screen">$ ls -a ~/
-</pre>
-</div></div>
-
-
 </div>
-</div></div>
 <div id="postamble" class="status">
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
-<p class="date">Created: 2015-04-06 Mon 17:01</p>
+<p class="date">Created: 2017-03-01 Wed 14:06</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

@@ -24,10 +24,8 @@
 1. 本体および関連するパッケージを Homebrew でインストール
    - ターミナルで以下を実行
       #+begin_src screen
-        brew install emacs --cocoa --japanese # 最強のエディタ
-        brew linkapps # emacs へのシンボリックリンクを /Applications フォルダ下に作成
-        brew install magit                                              # Emacs 上の git フロントエンド
-        brew install https://gist.github.com/nagae/3009185/raw/ddskk.rb # 日本語入力 SKK
+        brew cask install emacs # 最強のエディタ
+        brew install skktools # 日本語入力 SKK
       #+end_src
 2. Spotlight で呼び出せるように Automator でアプリケーションとして登録
    - [[file:/Applications/Automator.app][Automator.app]] を起動し，メニューから「アプリケーション」を選択
@@ -90,7 +88,7 @@ $ ls -a ~/
       #+END_SRC
       =Hi ****! You've successfully authenticated= と表示されればOK(****は Github.com のアカウント名)．
    2) アクセスできない場合は以下の手順を試してみる：
-      - [[Github%20/%20Bitbucket%20%E3%81%AB%20SSH%20%E3%81%A7%E6%8E%A5%E7%B6%9A%E3%81%99%E3%82%8B][Github / Bitbucket に SSH で接続する]] の設定を確認
+      - [[https://nagae.github.io/itl/setup.html#org9174e41][Github / Bitbucket に SSH で接続する]] の設定を確認
       - =~/.ssh/known_host= から =github.com= や =bitbucket.org= を含む行を削除する
       - 秘密鍵を指定してSSHでアクセスしてみる: 具体的には，ターミナルから以下を入力
         #+BEGIN_SRC screen
@@ -106,7 +104,7 @@ $ ls -a ~/
    #+BEGIN_SRC screen
       $ ln -s ~/Dropbox/.emacs.d/elpa ~/.emacs.d # Dropbox上の elpa フォルダへのシンボリックリンクを張る
    #+END_SRC
-** 初期設定ファイルの更新
+** TODO 初期設定ファイルの更新
 - 上記の初期設定ファイルは適宜更新される．更新を反映するにはターミナルから以下を実行する：
   #+BEGIN_SRC screen
     $ cd ~/Dropbox/.emacs.d
@@ -131,16 +129,14 @@ $ ls -a ~/
 長江は「ことえり」や「IME」のような形態素解析をベースとした入力メソッドが苦手なので，SKK(Simple Kana to Kanji conversion program)を利用している．
 SKK は品詞解析を行なわないため，漢字にする箇所や送り仮名を自分で指定する必要がある．しかし，ひとたび慣れれば高速かつ直感的な入力が可能となる———上述のような入力メソッドが使えなくなるほど．
 Macの標準入力方式に代替できる [[https://github.com/codefirst/aquaskk/releases][AquaSKK]] ([[http://aquaskk.sourceforge.jp][旧サイト]])と Emacs 上で動く [[http://openlab.ring.gr.jp/skk/ddskk-ja.html][DDSKK (Daredevil SKK)]] とがあり，両方併用するのが吉．
-** COMMENT DDSKKのインストール
-1. Emacs をインストールし終わっていて，
-   =/Applications/Emacs.app/Contents/MacOS/Emacs= が有効になっている必要がある．
-2. 長江自作の Formula を用いれば Homebrew でインストール可能：
-   #+BEGIN_SRC screen
-   $ brew install https://gist.github.com/nagae/3009185/raw/ddskk.rb
-   #+END_SRC
+** DDSKKのインストール
+1. Emacs の package に MELPA を入れておけば,
+   =M-x package install [RET] ddskk= でインストール可能になった.
 ** AquaSKKのインストール
-1. https://github.com/codefirst/aquaskk/releases から最新のバージョン (2015/4/6時点では AsuaSKK-4.2.4.dmg) をダウンロードし，AquaSKK.pkg を実行．
-2. Mac OS X の Gatekeeper が邪魔をする場合は，Ctrlを押しながらクリック→開く．
+1. =brew cask= でインストールできるようになっている:
+   #+BEGIN_SRC sh
+   brew cask install aquaskk
+   #+END_SRC
 3. 言語環境に AquaSKK を登録
    - 画面左上のリンゴマーク→システム環境設定→言語とテキスト
      [[file:fig/setting_language_text.png]]

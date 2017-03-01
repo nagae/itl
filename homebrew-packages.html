@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
-<!-- 2017-02-01 Wed 09:37 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 2017-03-01 Wed 14:01 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ITL/Homebrew でインストールするパッケージ</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Takeshi Nagae" />
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Takeshi Nagae" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -53,13 +53,97 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
@@ -92,6 +176,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel=stylesheet href="style.css" type="text/css">
@@ -225,45 +310,43 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#27425;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline5">1. Homebrew でインストールしておくべき UNIX ツール</a>
+<li><a href="#org60a88f7">1. Homebrew でインストールしておくべき UNIX ツール</a>
 <ul>
-<li><a href="#orgheadline1">1.1. 以下を実行する</a></li>
-<li><a href="#orgheadline4">1.2. xpdf に日本語サポートパッケージを追加する</a></li>
+<li><a href="#orgbee3465">1.1. 以下を実行する</a></li>
+<li><a href="#org5a18d10">1.2. xpdf に日本語サポートパッケージを追加する</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline6">2. XQuartz のインストール</a></li>
+<li><a href="#org7aa1b01">2. XQuartz のインストール</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="orgheadline5"><span class="section-number-2">1</span> Homebrew でインストールしておくべき UNIX ツール</h2>
+<div id="outline-container-org60a88f7" class="outline-2">
+<h2 id="org60a88f7"><span class="section-number-2">1</span> Homebrew でインストールしておくべき UNIX ツール</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-orgheadline1" class="outline-3">
-<h3 id="orgheadline1"><span class="section-number-3">1.1</span> 以下を実行する</h3>
+</div><div id="outline-container-orgbee3465" class="outline-3">
+<h3 id="orgbee3465"><span class="section-number-3">1.1</span> 以下を実行する</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
-
 <pre class="src src-screen"><span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#20197;&#19979;&#12398;&#12497;&#12483;&#12465;&#12540;&#12472;&#12399;&#29420;&#31435;&#12375;&#12390;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#12391;&#12365;&#12427;(&#20182;&#12398;&#12497;&#12483;&#12465;&#12540;&#12472;&#12395;&#20381;&#23384;&#12375;&#12394;&#12356;)</span>
-brew install git                <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#20998;&#25955;&#12522;&#12509;&#12472;&#12488;&#12522;&#12496;&#12540;&#12472;&#12519;&#12531;&#31649;&#29702;&#12471;&#12473;&#12486;&#12512;&#65294;</span>
+brew install git git-lfs  <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#20998;&#25955;&#12522;&#12509;&#12472;&#12488;&#12522;&#12496;&#12540;&#12472;&#12519;&#12531;&#31649;&#29702;&#12471;&#12473;&#12486;&#12512;&#65294;</span>
+git lfs install
 brew install nkf                <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#12501;&#12449;&#12452;&#12523;&#12398;&#25991;&#23383;&#12467;&#12540;&#12489;&#12434;&#19968;&#25324;&#12391;&#22793;&#25563;&#12391;&#12365;&#12427;</span>
-brew install ispell             <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#12473;&#12506;&#12523;&#12481;&#12455;&#12483;&#12459;&#12540;</span>
+brew install aspell --with-en-lang <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#12473;&#12506;&#12523;&#12481;&#12455;&#12483;&#12459;&#12540;</span>
 brew install lha                <span style="color: #00cd66;"># </span><span style="color: #00cd66;">.lha&#12420;.lzh &#24418;&#24335;&#12434;&#23637;&#38283;&#12377;&#12427;&#12398;&#12395;&#24517;&#35201;</span>
 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#20197;&#19979;&#12398;&#12497;&#12483;&#12465;&#12540;&#12472;&#12399;&#20182;&#12398;&#12497;&#12483;&#12465;&#12540;&#12472;&#12395;&#20381;&#23384;&#12377;&#12427;</span>
 brew install rsync              <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#12501;&#12457;&#12523;&#12480;&#12398;&#12496;&#12483;&#12463;&#12450;&#12483;&#12503;&#12420;&#21516;&#26399;&#12434;&#21462;&#12427;&#65294;</span>
-brew install ghostscript        <span style="color: #00cd66;"># </span><span style="color: #00cd66;">Postscript &#12452;&#12531;&#12479;&#12503;&#12522;&#12479;&#65294;Emacs&#19978;&#12391;PDF&#12420;&#30011;&#20687;&#12501;&#12449;&#12452;&#12523;&#12434;&#34920;&#31034;&#12373;&#12379;&#12427; docview &#12395;&#24517;&#38920;&#65294;</span>
 brew install wget               <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#12454;&#12455;&#12502;&#12469;&#12540;&#12496;&#12540;&#12363;&#12425;&#12467;&#12531;&#12486;&#12531;&#12484;&#12434;&#12480;&#12454;&#12531;&#12525;&#12540;&#12489;&#65294;curl &#12424;&#12426;&#39640;&#27231;&#33021;</span>
-brew install imagemagick --with-tex <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#30011;&#20687;&#25805;&#20316;&#12539;&#34920;&#31034;&#29992;&#12477;&#12501;&#12488;&#12454;&#12455;&#12450;</span>
 brew install xpdf                   <span style="color: #00cd66;"># </span><span style="color: #00cd66;">PDF&#29992;&#12518;&#12540;&#12486;&#12451;&#12522;&#12486;&#12451;</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4"><span class="section-number-3">1.2</span> xpdf に日本語サポートパッケージを追加する</h3>
+<div id="outline-container-org5a18d10" class="outline-3">
+<h3 id="org5a18d10"><span class="section-number-3">1.2</span> xpdf に日本語サポートパッケージを追加する</h3>
 <div class="outline-text-3" id="text-1-2">
-</div><div id="outline-container-orgheadline2" class="outline-4">
-<h4 id="orgheadline2"><span class="section-number-4">1.2.1</span> 日本語サポートパッケージの追加</h4>
+</div><div id="outline-container-org4eec3b1" class="outline-4">
+<h4 id="org4eec3b1"><span class="section-number-4">1.2.1</span> 日本語サポートパッケージの追加</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <ul class="org-ul">
 <li>参考URL:
@@ -271,10 +354,9 @@ brew install xpdf                   <span style="color: #00cd66;"># </span><span
 <li><a href="http://ototorosama.hatenablog.com/entry/2013/02/14/055355">http://ototorosama.hatenablog.com/entry/2013/02/14/055355</a></li>
 <li><a href="http://d.hatena.ne.jp/rougeref/20070313">http://d.hatena.ne.jp/rougeref/20070313</a></li>
 </ul></li>
-<li>ターミナルで下記を入力<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>：</li>
+<li>ターミナルで下記を入力[1]：</li>
 </ul>
 <div class="org-src-container">
-
 <pre class="src src-sh"><span style="color: #b0c4de;">pushd</span> ~/Downloads
 curl -O http://ftp.jaist.ac.jp/pub/CTAN/support/xpdf/xpdf-japanese.tar.gz <span style="color: #00cd66;"># </span><span style="color: #00cd66;">ftp.jaist.ac.jp &#12398;&#20195;&#12431;&#12426;&#12395; ftp.rikengo.jp, ftp.u-aizu.ac.jp, ftp.kd&#173;di&#173;l&#173;abs.jp &#12398;&#12393;&#12428;&#12363;&#12434;&#20351;&#12387;&#12390;&#12418;&#12424;&#12356;</span>
 tar -xzvf xpdf-japanese.tar.gz
@@ -300,30 +382,31 @@ Emacs や テキストエディットなどで <code>/usr/local/etc/xpdfrc</code
 修正前:
 </p>
 <div class="org-src-container">
-
-<pre class="src src-text"># textEncoding                UTF-8
+<pre class="src src-text"># textEncoding          UTF-8
 </pre>
 </div>
 <p>
 修正後:
 </p>
 <div class="org-src-container">
-
-<pre class="src src-text">textEncoding          UTF-8
+<pre class="src src-text">textEncoding            UTF-8
 </pre>
 </div></li>
 </ul>
+
+<p>
+[1] この方法だと <code>brew uninstall xpdf</code> とした時に <code>/usr/local/share/xpdf</code> が残ってしまうので， <code>brew prune</code> が必要．
+</p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-4">
-<h4 id="orgheadline3"><span class="section-number-4">1.2.2</span> 使い方</h4>
+<div id="outline-container-org709a45d" class="outline-4">
+<h4 id="org709a45d"><span class="section-number-4">1.2.2</span> 使い方</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 例えば， <code>sample.pdf</code> に対して, ターミナルから以下のような処理が行なえる:
 </p>
 <div class="org-src-container">
-
 <pre class="src src-sh">pdfinfo sample.pdf              <span style="color: #00cd66;"># </span><span style="color: #00cd66;">PDF&#12398;&#25991;&#26360;&#24773;&#22577;&#12434;&#27161;&#31034;</span>
 pdftops sample.pdf              <span style="color: #00cd66;"># </span><span style="color: #00cd66;">PDF&#12434; PostScript &#12395;&#22793;&#25563;</span>
 pdffonts sample.pdf             <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#22475;&#12417;&#36796;&#12414;&#12428;&#12390;&#12356;&#12427;&#12501;&#12457;&#12531;&#12488;&#12398;&#30906;&#35469;</span>
@@ -334,8 +417,8 @@ pdftotext sample.pdf            <span style="color: #00cd66;"># </span><span sty
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="orgheadline6"><span class="section-number-2">2</span> XQuartz のインストール</h2>
+<div id="outline-container-org7aa1b01" class="outline-2">
+<h2 id="org7aa1b01"><span class="section-number-2">2</span> XQuartz のインストール</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 XQuartz は OS X 上で動作する Xウィンドウシステム．各種パッケージの際に必要となる．
@@ -345,7 +428,6 @@ XQuartz は OS X 上で動作する Xウィンドウシステム．各種パッ�
 ターミナルで下記を入力:
 </p>
 <div class="org-src-container">
-
 <pre class="src src-sh">brew cask install xquartz
 </pre>
 </div>
@@ -355,20 +437,10 @@ XQuartz は OS X 上で動作する Xウィンドウシステム．各種パッ�
 </ul>
 </div>
 </div>
-<div id="footnotes">
-<h2 class="footnotes">&#33050;&#27880;: </h2>
-<div id="text-footnotes">
-
-<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
-この方法だと <code>brew uninstall xpdf</code> とした時に <code>/usr/local/share/xpdf</code> が残ってしまうので， <code>brew prune</code> が必要．
-</p></div></div>
-
-
 </div>
-</div></div>
 <div id="postamble" class="status">
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
-<p class="date">Created: 2017-02-01 Wed 09:37</p>
+<p class="date">Created: 2017-03-01 Wed 14:01</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
