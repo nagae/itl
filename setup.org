@@ -364,4 +364,10 @@ Host alias
  TCPKeepAlive yes
  IdentitiesOnly yes
 #+END_SRC
+*** Mac の keychain にパスワードを記録する
+SSH 用のパスワードを毎回入力するのはかなり面倒. 下記をターミナルから実行しておくことで,
+Mac の keychain にSSHパスワードを記録しておける.
+#+BEGIN_SRC sh
+ssh-keygen -f ~/.ssh/id_rsa -p
+#+END_SRC
 

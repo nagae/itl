@@ -3,23 +3,30 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
+<!-- 2017-03-01 Wed 11:32 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ITL/セットアップ編</title>
-<!-- 2014-04-16 Wed 11:02 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Takeshi Nagae" />
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Takeshi Nagae" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
   .todo   { font-family: monospace; color: red; }
-  .done   { color: green; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -46,27 +53,110 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.right  { text-align: center;  }
-  th.left   { text-align: center;   }
-  th.center { text-align: center; }
-  td.right  { text-align: right;  }
-  td.left   { text-align: left;   }
-  td.center { text-align: center; }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara:nth-child(2) { display: inline; }
-  .footpara { display: block; }
+  .footpara { display: inline; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -86,6 +176,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel=stylesheet href="style.css" type="text/css">
@@ -219,101 +310,94 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#27425;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. Mac のセットアップ</a>
+<li><a href="#orgd787792">1. Mac のセットアップ</a>
 <ul>
-<li><a href="#sec-1-1">1.1. ソフトウェア・アップデートの実行</a></li>
-<li><a href="#sec-1-2">1.2. キーバインドの変更</a></li>
-<li><a href="#sec-1-3">1.3. Trackpad の設定</a></li>
-<li><a href="#sec-1-4">1.4. キーボード・ショートカット</a></li>
+<li><a href="#orgfcc8b4b">1.1. ソフトウェア・アップデートの実行</a></li>
+<li><a href="#orga703932">1.2. キーバインドの変更</a></li>
+<li><a href="#org2d54900">1.3. Trackpad の設定</a></li>
+<li><a href="#orgc7a7f74">1.4. キーボード・ショートカット</a></li>
 </ul>
 </li>
-<li><a href="#sec-2">2. ソフトウェアのインストール方法</a></li>
-<li><a href="#sec-3">3. セキュリティソフトウェアのインストール</a>
+<li><a href="#org0af2d7b">2. ソフトウェアのインストール方法</a></li>
+<li><a href="#orgfea7eda">3. セキュリティソフトウェアのインストール</a>
 <ul>
-<li><a href="#sec-3-1">3.1. f-secure</a></li>
-<li><a href="#sec-3-2">3.2. Symantec Endpoint Protection (SEP)</a></li>
+<li><a href="#orgf172c26">3.1. f-secure</a></li>
+<li><a href="#org27cc42f">3.2. Symantec Endpoint Protection (SEP)</a></li>
 </ul>
 </li>
-<li><a href="#sec-4">4. Terminal.app の起動と設定</a>
+<li><a href="#org297026f">4. Terminal.app の起動と設定</a>
 <ul>
-<li><a href="#sec-4-1">4.1. <code>~/.inputrc</code> の設定</a></li>
+<li><a href="#orgf064208">4.1. <code>~/.inputrc</code> の設定</a></li>
 </ul>
 </li>
-<li><a href="#sec-5">5. BetterTouchTools のインストールと設定</a>
+<li><a href="#orgb30be05">5. BetterTouchTools のインストールと設定</a>
 <ul>
-<li><a href="#sec-5-1">5.1. BTT の特徴</a></li>
-<li><a href="#sec-5-2">5.2. インストール方法</a></li>
-<li><a href="#sec-5-3">5.3. Window Snapping の設定</a></li>
-<li><a href="#sec-5-4">5.4. 設定例</a></li>
+<li><a href="#orgba1fab3">5.1. BTT の特徴</a></li>
+<li><a href="#org7c5f98f">5.2. インストール方法</a></li>
+<li><a href="#org5e8dbd8">5.3. Window Snapping の設定</a></li>
+<li><a href="#org307f349">5.4. 設定例</a></li>
 </ul>
 </li>
-<li><a href="#sec-6">6. 各種サービスのアカウント作成とユーティリティのインストール</a>
+<li><a href="#orga0967ff">6. 各種サービスのアカウント作成とユーティリティのインストール</a>
 <ul>
-<li><a href="#sec-6-1">6.1. iCloud ()</a></li>
-<li><a href="#sec-6-2">6.2. Dropbox ()</a></li>
-<li><a href="#sec-6-3">6.3. Cloud.app ()</a></li>
-<li><a href="#sec-6-4">6.4. Github ()</a></li>
-<li><a href="#sec-6-5">6.5. Bitbucket ()</a></li>
-<li><a href="#sec-6-6">6.6. Evernote (必須ではない)</a></li>
-<li><a href="#sec-6-7">6.7. Github / Bitbucket に SSH で接続する</a></li>
+<li><a href="#org8353683">6.1. iCloud ()</a></li>
+<li><a href="#org9ab5085">6.2. Dropbox ()</a></li>
+<li><a href="#org50747e8">6.3. Cloud.app ()</a></li>
+<li><a href="#org5e47f22">6.4. Github ()</a></li>
+<li><a href="#orge8e3390">6.5. Bitbucket ()</a></li>
+<li><a href="#orga399696">6.6. Evernote (必須ではない)</a></li>
+<li><a href="#org9174e41">6.7. Github / Bitbucket に SSH で接続する</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Mac のセットアップ</h2>
+<div id="outline-container-orgd787792" class="outline-2">
+<h2 id="orgd787792"><span class="section-number-2">1</span> Mac のセットアップ</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-sec-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> ソフトウェア・アップデートの実行</h3>
+</div><div id="outline-container-orgfcc8b4b" class="outline-3">
+<h3 id="orgfcc8b4b"><span class="section-number-3">1.1</span> ソフトウェア・アップデートの実行</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Mac に入っている OS が最新のものになっていない場合，後述する機能が使えない可能性があるばかりか，悪意のある攻撃に対する脆弱性が修正されていないかもしれない．
 </p>
 <ul class="org-ul">
-<li>メニューバー左上のリンゴマーク→ソフトウェア・アップデートを実行
-</li>
+<li>メニューバー左上のリンゴマーク→ソフトウェア・アップデートを実行</li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> キーバインドの変更</h3>
+<div id="outline-container-orga703932" class="outline-3">
+<h3 id="orga703932"><span class="section-number-3">1.2</span> キーバインドの変更</h3>
 <div class="outline-text-3" id="text-1-2">
-</div><div id="outline-container-sec-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> ctrl と caps lock を入れ替える</h4>
+</div><div id="outline-container-org9d90cd2" class="outline-4">
+<h4 id="org9d90cd2"><span class="section-number-4">1.2.1</span> ctrl と caps lock を入れ替える</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 本研究室では ctrl を多用するので，あまり使わない caps lock と入れ替える．
 </p>
 <ul class="org-ul">
-<li>システム環境設定→キーボード→修飾キー を開いて設定
-</li>
+<li>システム環境設定→キーボード→修飾キー を開いて設定</li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-sec-1-2-2" class="outline-4">
-<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> spotlight のキーバインドを ctrl + shift + space に変更</h4>
+<div id="outline-container-org203bd71" class="outline-4">
+<h4 id="org203bd71"><span class="section-number-4">1.2.2</span> spotlight のキーバインドを ctrl + shift + space に変更</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 デフォルトでは ctrl + space だが，このキーバインドは後述する Emacs で「mark set」の機能に割当てられている．
 </p>
 <ul class="org-ul">
-<li>システム環境設定→spotlight を開いて設定
-</li>
+<li>システム環境設定→spotlight を開いて設定</li>
 </ul>
 </div>
 </div>
 </div>
-
-<div id="outline-container-sec-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Trackpad の設定</h3>
+<div id="outline-container-org2d54900" class="outline-3">
+<h3 id="org2d54900"><span class="section-number-3">1.3</span> Trackpad の設定</h3>
 <div class="outline-text-3" id="text-1-3">
 <ul class="org-ul">
-<li>システム環境設定→トラックパッド
-</li>
+<li>システム環境設定→トラックパッド</li>
 </ul>
 
 <div class="figure">
@@ -322,77 +406,75 @@ Mac に入っている OS が最新のものになっていない場合，後述
 </div>
 </div>
 </div>
-
-<div id="outline-container-sec-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> キーボード・ショートカット</h3>
+<div id="outline-container-orgc7a7f74" class="outline-3">
+<h3 id="orgc7a7f74"><span class="section-number-3">1.4</span> キーボード・ショートカット</h3>
 <div class="outline-text-3" id="text-1-4">
 <ul class="org-ul">
 <li>Mac では ⌘ (command), control, shift, option のキーとアルファベットや数字キーを組み合わえることで様々な機能を呼び出せる．
-<a href="http://support.apple.com/kb/HT1343?viewlocale=ja_JP">http://support.apple.com/kb/HT1343?viewlocale=ja_JP</a>
-</li>
+<a href="http://support.apple.com/kb/HT1343?viewlocale=ja_JP">http://support.apple.com/kb/HT1343?viewlocale=ja_JP</a></li>
 </ul>
 </div>
-<div id="outline-container-sec-1-4-1" class="outline-4">
-<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> 覚えておくと便利なショートカット</h4>
+<div id="outline-container-org62c21c5" class="outline-4">
+<h4 id="org62c21c5"><span class="section-number-4">1.4.1</span> 覚えておくと便利なショートカット</h4>
 <div class="outline-text-4" id="text-1-4-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="all" frame="hsides" ID="align_left">
 
 
 <colgroup>
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="left" />
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="left">ショートカット</th>
-<th scope="col" class="left">機能</th>
+<th scope="col" class="org-left">ショートカット</th>
+<th scope="col" class="org-left">機能</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="left">⌘+c</td>
-<td class="left">コピー</td>
+<td class="org-left">⌘+c</td>
+<td class="org-left">コピー</td>
 </tr>
 
 <tr>
-<td class="left">⌘+v</td>
-<td class="left">ペースト</td>
+<td class="org-left">⌘+v</td>
+<td class="org-left">ペースト</td>
 </tr>
 
 <tr>
-<td class="left">⌘+w</td>
-<td class="left">ウィンドウを閉じる</td>
+<td class="org-left">⌘+w</td>
+<td class="org-left">ウィンドウを閉じる</td>
 </tr>
 
 <tr>
-<td class="left">ctrl + shift + space</td>
-<td class="left">spotlight</td>
+<td class="org-left">ctrl + shift + space</td>
+<td class="org-left">spotlight</td>
 </tr>
 
 <tr>
-<td class="left">ctrl + option + space</td>
-<td class="left">spotlight を Finder 上で起動</td>
+<td class="org-left">ctrl + option + space</td>
+<td class="org-left">spotlight を Finder 上で起動</td>
 </tr>
 
 <tr>
-<td class="left">⌘+h</td>
-<td class="left">ウィンドウを隠す</td>
+<td class="org-left">⌘+h</td>
+<td class="org-left">ウィンドウを隠す</td>
 </tr>
 
 <tr>
-<td class="left">⌘+m</td>
-<td class="left">ウィンドウを最小化</td>
+<td class="org-left">⌘+m</td>
+<td class="org-left">ウィンドウを最小化</td>
 </tr>
 
 <tr>
-<td class="left">⌘+q</td>
-<td class="left">終了</td>
+<td class="org-left">⌘+q</td>
+<td class="org-left">終了</td>
 </tr>
 
 <tr>
-<td class="left">⌘+option+esc</td>
-<td class="left">アプリケーションの強制終了</td>
+<td class="org-left">⌘+option+esc</td>
+<td class="org-left">アプリケーションの強制終了</td>
 </tr>
 </tbody>
 </table>
@@ -400,20 +482,16 @@ Mac に入っている OS が最新のものになっていない場合，後述
 </div>
 </div>
 </div>
-
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> ソフトウェアのインストール方法</h2>
+<div id="outline-container-org0af2d7b" class="outline-2">
+<h2 id="org0af2d7b"><span class="section-number-2">2</span> ソフトウェアのインストール方法</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Mac ではソフトウェアのインストール方法に3通りある．
 </p>
 <ol class="org-ol">
-<li>App Store からインストールする
-</li>
-<li>.app ファイルをアプリケーション・フォルダに移動させる
-</li>
-<li>.pkg ファイルをダブルクリックする
-</li>
+<li>App Store からインストールする</li>
+<li>.app ファイルをアプリケーション・フォルダに移動させる</li>
+<li>.pkg ファイルをダブルクリックする</li>
 </ol>
 
 <p>
@@ -422,108 +500,90 @@ dmg ファイルをダブルクリックすると，新しいドライブが認�
 </p>
 </div>
 </div>
-
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> セキュリティソフトウェアのインストール</h2>
+<div id="outline-container-orgfea7eda" class="outline-2">
+<h2 id="orgfea7eda"><span class="section-number-2">3</span> セキュリティソフトウェアのインストール</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
-<li>f-secure は後述する homebrew のパッケージディレクトリ(<code>/usr/local/</code>)を「汚染」しない．
-</li>
-<li>SEPの方が安定しているようだが <code>/usr/local/lib/</code> の下に <code>.dylib</code> を作るので面倒．
-</li>
+<li>f-secure は後述する homebrew のパッケージディレクトリ(<code>/usr/local/</code>)を「汚染」しない．</li>
+<li>SEPの方が安定しているようだが <code>/usr/local/lib/</code> の下に <code>.dylib</code> を作るので面倒．</li>
 </ul>
 </div>
-<div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="section-number-3">3.1</span> f-secure</h3>
+<div id="outline-container-orgf172c26" class="outline-3">
+<h3 id="orgf172c26"><span class="section-number-3">3.1</span> f-secure</h3>
 <div class="outline-text-3" id="text-3-1">
-</div><div id="outline-container-sec-3-1-1" class="outline-4">
-<h4 id="sec-3-1-1"><span class="section-number-4">3.1.1</span> インストール方法</h4>
+</div><div id="outline-container-org2f917aa" class="outline-4">
+<h4 id="org2f917aa"><span class="section-number-4">3.1.1</span> インストール方法</h4>
 <div class="outline-text-4" id="text-3-1-1">
 <ul class="org-ul">
 <li>TAINS のホームページからセキュリティ対策ソフトウェア-&gt;エフセキュアを選択：
-<a href="https://www2.tains.tohoku.ac.jp/fw/dfw/INFO/modules/pico/index.php?content_id=16">https://www2.tains.tohoku.ac.jp/fw/dfw/INFO/modules/pico/index.php?content_id=16</a>
-</li>
-<li>「ダウンロード」ボタンから dmg  ファイルをダウンロードする
-</li>
-<li>dmg ファイルをマウントし，F-Secure****.mpkg というファイルをダブルクリック
-</li>
+<a href="https://www2.tains.tohoku.ac.jp/fw/dfw/INFO/modules/pico/index.php?content_id=16">https://www2.tains.tohoku.ac.jp/fw/dfw/INFO/modules/pico/index.php?content_id=16</a></li>
+<li>「ダウンロード」ボタンから dmg  ファイルをダウンロードする</li>
+<li>dmg ファイルをマウントし，F-Secure****.mpkg というファイルをダブルクリック</li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-sec-3-1-2" class="outline-4">
-<h4 id="sec-3-1-2"><span class="section-number-4">3.1.2</span> ライセンスコードの取得</h4>
+<div id="outline-container-org99ad345" class="outline-4">
+<h4 id="org99ad345"><span class="section-number-4">3.1.2</span> ライセンスコードの取得</h4>
 <div class="outline-text-4" id="text-3-1-2">
 <ul class="org-ul">
-<li>同じページから「ライセンスキーコードを取得する」ボタンをクリック
-</li>
-<li>「ご了解，ご注意事項」を読んだ後「同意する」ボタンをクリック
-</li>
+<li>同じページから「ライセンスキーコードを取得する」ボタンをクリック</li>
+<li>「ご了解，ご注意事項」を読んだ後「同意する」ボタンをクリック</li>
 <li>ライセンスコードがいくつか表示されるので，その中の1つ(どれでもいい)を
-エフセキュアのライセンスコード入力欄にコピー＆ペースト
-</li>
+エフセキュアのライセンスコード入力欄にコピー＆ペースト</li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-sec-3-1-3" class="outline-4">
-<h4 id="sec-3-1-3"><span class="section-number-4">3.1.3</span> アンインストール方法</h4>
+<div id="outline-container-org6a6289d" class="outline-4">
+<h4 id="org6a6289d"><span class="section-number-4">3.1.3</span> アンインストール方法</h4>
 <div class="outline-text-4" id="text-3-1-3">
 <ul class="org-ul">
-<li>コマンドラインから以下を実行(<a href="http://community.f-secure.com/t5/PC-Mac/Mac-%E7%89%88%E3%82%92%E3%82%A2%E3%83%B3%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B%E3%81%AB%E3%81%AF%E3%81%A9%E3%81%86%E3%81%99%E3%82%8C%E3%81%B0%E8%89%AF%E3%81%84%E3%81%A7%E3%81%99%E3%81%8B/ta-p/19814">参考</a>)：
+<li><p>
+コマンドラインから以下を実行(<a href="http://community.f-secure.com/t5/PC-Mac/Mac-%E7%89%88%E3%82%92%E3%82%A2%E3%83%B3%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B%E3%81%AB%E3%81%AF%E3%81%A9%E3%81%86%E3%81%99%E3%82%8C%E3%81%B0%E8%89%AF%E3%81%84%E3%81%A7%E3%81%99%E3%81%8B/ta-p/19814">参考</a>)：
+</p>
 <div class="org-src-container">
-
 <pre class="src src-sh">sudo /usr/local/f-secure/bin/uninstall_MacProtection
 </pre>
-</div>
-</li>
+</div></li>
 </ul>
 </div>
 </div>
 </div>
-
-<div id="outline-container-sec-3-2" class="outline-3">
-<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Symantec Endpoint Protection (SEP)</h3>
+<div id="outline-container-org27cc42f" class="outline-3">
+<h3 id="org27cc42f"><span class="section-number-3">3.2</span> Symantec Endpoint Protection (SEP)</h3>
 <div class="outline-text-3" id="text-3-2">
-</div><div id="outline-container-sec-3-2-1" class="outline-4">
-<h4 id="sec-3-2-1"><span class="section-number-4">3.2.1</span> インストール方法</h4>
+</div><div id="outline-container-org9191449" class="outline-4">
+<h4 id="org9191449"><span class="section-number-4">3.2.1</span> インストール方法</h4>
 <div class="outline-text-4" id="text-3-2-1">
 <ul class="org-ul">
 <li>TAIN のホームページからセキュリティ対策ソフトウェア-&gt;シマンテックを選択：
-<a href="https://www2.tains.tohoku.ac.jp/fw/dfw/INFO/modules/pico/index.php?content_id=3">https://www2.tains.tohoku.ac.jp/fw/dfw/INFO/modules/pico/index.php?content_id=3</a>
-</li>
-<li>MacOS X (32/64ビット)からダウンロードをクリック
-</li>
-<li>dmg ファイルをマウントし「Symantec Endpoint Protection Installer」というファイルをダブルクリック
-</li>
-<li>指示に従って再起動する
-</li>
+<a href="https://www2.tains.tohoku.ac.jp/fw/dfw/INFO/modules/pico/index.php?content_id=3">https://www2.tains.tohoku.ac.jp/fw/dfw/INFO/modules/pico/index.php?content_id=3</a></li>
+<li>MacOS X (32/64ビット)からダウンロードをクリック</li>
+<li>dmg ファイルをマウントし「Symantec Endpoint Protection Installer」というファイルをダブルクリック</li>
+<li>指示に従って再起動する</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> Terminal.app の起動と設定</h2>
+<div id="outline-container-org297026f" class="outline-2">
+<h2 id="org297026f"><span class="section-number-2">4</span> Terminal.app の起動と設定</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 以降では，ターミナル(<code>Terminal.app</code>)をよく使う．
 以下の設定ファイルを作成/編集することで，より便利に使えるようになる．
 </p>
 <div class="org-src-container">
-
 <pre class="src src-sh">~/.bash_profile                 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">PATH &#12420; &#12424;&#12367;&#20351;&#12358;&#12467;&#12510;&#12531;&#12489;&#12398;&#21029;&#21517;(alias)&#12394;&#12393;</span>
 ~/.inputrc                      <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#20837;&#21147;&#12398;&#12459;&#12473;&#12479;&#12510;&#12452;&#12474;</span>
 </pre>
 </div>
 </div>
-<div id="outline-container-sec-4-1" class="outline-3">
-<h3 id="sec-4-1"><span class="section-number-3">4.1</span> <code>~/.inputrc</code> の設定</h3>
+<div id="outline-container-orgf064208" class="outline-3">
+<h3 id="orgf064208"><span class="section-number-3">4.1</span> <code>~/.inputrc</code> の設定</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 ターミナルでは，上下キーや <code>Ctrl-n / Ctrl-p</code> によって過去に入力した履歴を表示させられる．
-さらに，<code>~/.inputrc</code> に以下を記載しておくと，最初の数文字を入力してから上下キーや <code>Ctrl-n/Ctrl-p</code> を押すと，
+さらに，=~/.inputrc= に以下を記載しておくと，最初の数文字を入力してから上下キーや <code>Ctrl-n/Ctrl-p</code> を押すと，
 その文字で始まる履歴のみを表示させられる．
 </p>
 <script src="https://gist.github.com/nagae/10461176.js"></script>
@@ -532,7 +592,6 @@ dmg ファイルをダブルクリックすると，新しいドライブが認�
 ターミナルで以下のように入力すれば， <code>~/.initrc</code> を作成できる．
 </p>
 <div class="org-src-container">
-
 <pre class="src src-sh"><span style="color: #b0c4de;">cd</span> ~/
 curl -O https://gist.githubusercontent.com/nagae/10461176/raw/.inputrc
 </pre>
@@ -540,41 +599,35 @@ curl -O https://gist.githubusercontent.com/nagae/10461176/raw/.inputrc
 </div>
 </div>
 </div>
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> BetterTouchTools のインストールと設定</h2>
+
+<div id="outline-container-orgb30be05" class="outline-2">
+<h2 id="orgb30be05"><span class="section-number-2">5</span> BetterTouchTools のインストールと設定</h2>
 <div class="outline-text-2" id="text-5">
-</div><div id="outline-container-sec-5-1" class="outline-3">
-<h3 id="sec-5-1"><span class="section-number-3">5.1</span> BTT の特徴</h3>
+</div><div id="outline-container-orgba1fab3" class="outline-3">
+<h3 id="orgba1fab3"><span class="section-number-3">5.1</span> BTT の特徴</h3>
 <div class="outline-text-3" id="text-5-1">
 <ul class="org-ul">
-<li>Trackpad による様々なジェスチャーを各種機能に設定できる
-</li>
+<li>Trackpad による様々なジェスチャーを各種機能に設定できる</li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-sec-5-2" class="outline-3">
-<h3 id="sec-5-2"><span class="section-number-3">5.2</span> インストール方法</h3>
+<div id="outline-container-org7c5f98f" class="outline-3">
+<h3 id="org7c5f98f"><span class="section-number-3">5.2</span> インストール方法</h3>
 <div class="outline-text-3" id="text-5-2">
-</div><div id="outline-container-sec-5-2-1" class="outline-4">
-<h4 id="sec-5-2-1"><span class="section-number-4">5.2.1</span> マウスを使う場合</h4>
+</div><div id="outline-container-org8805830" class="outline-4">
+<h4 id="org8805830"><span class="section-number-4">5.2.1</span> マウスを使う場合</h4>
 <div class="outline-text-4" id="text-5-2-1">
 <ul class="org-ul">
-<li><a href="http://www.boastr.de/">http://www.boastr.de/</a> から BetterTouchTool.zip をダウンロード
-</li>
-<li>BetterTouchTool.zip をダブルクリック
-</li>
-<li>生成された BetterTouchTool.app を <code>/Applications/</code> フォルダに移動．
-</li>
+<li><a href="http://www.boastr.de/">http://www.boastr.de/</a> から BetterTouchTool.zip をダウンロード</li>
+<li>BetterTouchTool.zip をダブルクリック</li>
+<li>生成された BetterTouchTool.app を <code>/Applications/</code> フォルダに移動．</li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-sec-5-2-2" class="outline-4">
-<h4 id="sec-5-2-2"><span class="section-number-4">5.2.2</span> ターミナルだけでも行える</h4>
+<div id="outline-container-org53d2a2a" class="outline-4">
+<h4 id="org53d2a2a"><span class="section-number-4">5.2.2</span> ターミナルだけでも行える</h4>
 <div class="outline-text-4" id="text-5-2-2">
 <div class="org-src-container">
-
 <pre class="src src-screen"><span style="color: #b0c4de;">cd</span> ~/Downloads/
 curl -LO http://bettertouchtool.net/BetterTouchTool.zip
 unzip -o BetterTouchTool.zip
@@ -584,183 +637,184 @@ mv BetterTouchTool.app/ /Applications/
 </div>
 </div>
 </div>
-
-<div id="outline-container-sec-5-3" class="outline-3">
-<h3 id="sec-5-3"><span class="section-number-3">5.3</span> Window Snapping の設定</h3>
+<div id="outline-container-org5e8dbd8" class="outline-3">
+<h3 id="org5e8dbd8"><span class="section-number-3">5.3</span> Window Snapping の設定</h3>
 <div class="outline-text-3" id="text-5-3">
 <ul class="org-ul">
-<li>"Do you want to activate Window Snapping (&#x2026;)?" というメッセージが出るので
+<li><p>
+"Do you want to activate Window Snapping (&#x2026;)?" というメッセージが出るので
 「Yes, activate the window snapping!」を選択
+</p>
 
 <div class="figure">
 <p><img src="fig/BTT-WindowSnap.png" alt="BTT-WindowSnap.png" align="center" width="600" />
 </p>
-</div>
-</li>
-<li>しばらく待つと「"BetterTouchTool"はアクセシビリティ機能を使用してこのコンピュータを制御することを求めています。」というダイアログが出るので「"システム環境設定"を開く」を選択
+</div></li>
+<li><p>
+しばらく待つと「"BetterTouchTool"はアクセシビリティ機能を使用してこのコンピュータを制御することを求めています。」というダイアログが出るので「"システム環境設定"を開く」を選択
+</p>
 
 <div class="figure">
 <p><img src="fig/BTT-Accessibility1.png" alt="BTT-Accessibility1.png" align="center" width="600" />
 </p>
-</div>
-</li>
-<li>設定を変更するために右下の鍵マークをクリックし，パスワードを入力
+</div></li>
+<li><p>
+設定を変更するために右下の鍵マークをクリックし，パスワードを入力
+</p>
 
 <div class="figure">
 <p><img src="fig/BTT-Accessibility2.png" alt="BTT-Accessibility2.png" align="center" width="600" />
 </p>
-</div>
-</li>
-<li>「下のアプリケーションにコンピュータの制御を許可。」欄にある BetterTouchTool の横のチェックボックスをチェック．
+</div></li>
+<li><p>
+「下のアプリケーションにコンピュータの制御を許可。」欄にある BetterTouchTool の横のチェックボックスをチェック．
+</p>
 
 <div class="figure">
 <p><img src="fig/BTT-Accessibility3.png" alt="BTT-Accessibility3.png" align="center" width="600" />
 </p>
-</div>
-</li>
+</div></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-sec-5-4" class="outline-3">
-<h3 id="sec-5-4"><span class="section-number-3">5.4</span> 設定例</h3>
+<div id="outline-container-org307f349" class="outline-3">
+<h3 id="org307f349"><span class="section-number-3">5.4</span> 設定例</h3>
 <div class="outline-text-3" id="text-5-4">
-</div><div id="outline-container-sec-5-4-1" class="outline-4">
-<h4 id="sec-5-4-1"><span class="section-number-4">5.4.1</span> ログインと同時に起動するように</h4>
+</div><div id="outline-container-orga212c4f" class="outline-4">
+<h4 id="orga212c4f"><span class="section-number-4">5.4.1</span> ログインと同時に起動するように</h4>
 <div class="outline-text-4" id="text-5-4-1">
 <p>
 Preference -&gt; Settings -&gt; Launch BetterTouchTools on startup をチェック
 </p>
 </div>
 </div>
-
-<div id="outline-container-sec-5-4-2" class="outline-4">
-<h4 id="sec-5-4-2"><span class="section-number-4">5.4.2</span> Global Setting</h4>
+<div id="outline-container-org7cf1a07" class="outline-4">
+<h4 id="org7cf1a07"><span class="section-number-4">5.4.2</span> Global Setting</h4>
 <div class="outline-text-4" id="text-5-4-2">
 <ul class="org-ul">
-<li><a href="btt_setting">設定ファイル</a> をダウンロード
-</li>
-<li>BetterTouchTool の左メニューから「Import」を選択し，ダウンロードしたファイルを選択
+<li><a href="btt_setting">設定ファイル</a> をダウンロード</li>
+<li><p>
+BetterTouchTool の左メニューから「Import」を選択し，ダウンロードしたファイルを選択
+</p>
 
 <div class="figure">
 <p><img src="fig/BTT-Import.png" alt="BTT-Import.png" align="center" width="600" />
 </p>
-</div>
-</li>
+</div></li>
 </ul>
 <table border="2" cellspacing="0" cellpadding="6" rules="all" frame="hsides" ID="align_left">
 
 
 <colgroup>
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="left" />
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="left">ジェスチャー</th>
-<th scope="col" class="left">機能</th>
-<th scope="col" class="left">解説</th>
+<th scope="col" class="org-left">ジェスチャー</th>
+<th scope="col" class="org-left">機能</th>
+<th scope="col" class="org-left">解説</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="left">Corner Click Bottom Right</td>
-<td class="left">Sleep Display</td>
-<td class="left">Trackpadの右下をクリック : ディスプレイをスリープ</td>
+<td class="org-left">Corner Click Bottom Right</td>
+<td class="org-left">Sleep Display</td>
+<td class="org-left">Trackpadの右下をクリック : ディスプレイをスリープ</td>
 </tr>
 
 <tr>
-<td class="left">Three Finger Click</td>
-<td class="left">Lookup word under cursor</td>
-<td class="left">3本指クリック: カーソル下の単語を調べる</td>
+<td class="org-left">Three Finger Click</td>
+<td class="org-left">Lookup word under cursor</td>
+<td class="org-left">3本指クリック: カーソル下の単語を調べる</td>
 </tr>
 
 <tr>
-<td class="left">Three Finger Clickswipe Down</td>
-<td class="left">Restore old window size</td>
-<td class="left">3本指で下へクリック・スワイプ : ウィンドウのサイズを元に戻す</td>
+<td class="org-left">Three Finger Clickswipe Down</td>
+<td class="org-left">Restore old window size</td>
+<td class="org-left">3本指で下へクリック・スワイプ : ウィンドウのサイズを元に戻す</td>
 </tr>
 
 <tr>
-<td class="left">Three Finger Clickswipe Left</td>
-<td class="left">Maximize Window Left</td>
-<td class="left">3本指で左へクリック・スワイプ : ウィンドウを画面の左半分にスナップ・最大化</td>
+<td class="org-left">Three Finger Clickswipe Left</td>
+<td class="org-left">Maximize Window Left</td>
+<td class="org-left">3本指で左へクリック・スワイプ : ウィンドウを画面の左半分にスナップ・最大化</td>
 </tr>
 
 <tr>
-<td class="left">Three Finger Clickswipe Right</td>
-<td class="left">Maximize Window Right</td>
-<td class="left">3本指で右へクリック・スワイプ : ウィンドウを画面の右半分にスナップ・最大化</td>
+<td class="org-left">Three Finger Clickswipe Right</td>
+<td class="org-left">Maximize Window Right</td>
+<td class="org-left">3本指で右へクリック・スワイプ : ウィンドウを画面の右半分にスナップ・最大化</td>
 </tr>
 
 <tr>
-<td class="left">Three Finger Clickswipe Up</td>
-<td class="left">Maximize Window</td>
-<td class="left">3本指で上へクリック・スワイプ : ウィンドウを最大化</td>
+<td class="org-left">Three Finger Clickswipe Up</td>
+<td class="org-left">Maximize Window</td>
+<td class="org-left">3本指で上へクリック・スワイプ : ウィンドウを最大化</td>
 </tr>
 
 <tr>
-<td class="left">Three Finger Clickswipe Left + Shift</td>
-<td class="left">Resize Window to Top Left Quarter/Corner</td>
-<td class="left">シフト+3本指で左へクリックスワイプ：ウィンドウを左上4分の1にスナップ</td>
+<td class="org-left">Three Finger Clickswipe Left + Shift</td>
+<td class="org-left">Resize Window to Top Left Quarter/Corner</td>
+<td class="org-left">シフト+3本指で左へクリックスワイプ：ウィンドウを左上4分の1にスナップ</td>
 </tr>
 
 <tr>
-<td class="left">Three Finger Clickswipe Left + fn</td>
-<td class="left">Resize Window to Bottom Left Quarter/Corner</td>
-<td class="left">fn +3本指で左へクリックスワイプ：ウィンドウを左下4分の1にスナップ</td>
+<td class="org-left">Three Finger Clickswipe Left + fn</td>
+<td class="org-left">Resize Window to Bottom Left Quarter/Corner</td>
+<td class="org-left">fn +3本指で左へクリックスワイプ：ウィンドウを左下4分の1にスナップ</td>
 </tr>
 
 <tr>
-<td class="left">Three Finger Clickswipe Right + Shift</td>
-<td class="left">Resize Window to Top Right Quarter/Corner</td>
-<td class="left">シフト+3本指で右へクリックスワイプ：ウィンドウを右上4分の1にスナップ</td>
+<td class="org-left">Three Finger Clickswipe Right + Shift</td>
+<td class="org-left">Resize Window to Top Right Quarter/Corner</td>
+<td class="org-left">シフト+3本指で右へクリックスワイプ：ウィンドウを右上4分の1にスナップ</td>
 </tr>
 
 <tr>
-<td class="left">Three Finger Clickswipe Right + fn</td>
-<td class="left">Resize Window to Bottom Right Quarter/Corner</td>
-<td class="left">fn +3本指で右へクリックスワイプ：ウィンドウを右下4分の1にスナップ</td>
+<td class="org-left">Three Finger Clickswipe Right + fn</td>
+<td class="org-left">Resize Window to Bottom Right Quarter/Corner</td>
+<td class="org-left">fn +3本指で右へクリックスワイプ：ウィンドウを右下4分の1にスナップ</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
-<td class="left">TipTap Left</td>
-<td class="left">Page Up</td>
-<td class="left">2本の指を置いた後，左側の指をタップ：上スクロール</td>
+<td class="org-left">TipTap Left</td>
+<td class="org-left">Page Up</td>
+<td class="org-left">2本の指を置いた後，左側の指をタップ：上スクロール</td>
 </tr>
 
 <tr>
-<td class="left">TipTap Right</td>
-<td class="left">Page Down</td>
-<td class="left">2本の指を置いた後，右側の指をタップ：上スクロール</td>
+<td class="org-left">TipTap Right</td>
+<td class="org-left">Page Down</td>
+<td class="org-left">2本の指を置いた後，右側の指をタップ：上スクロール</td>
 </tr>
 
 <tr>
-<td class="left">Two Finger TipTap Right</td>
-<td class="left">End (end of the page)</td>
-<td class="left">3本の指を置いた後，一番右側の指でタップ：ページの最後へ（fn + →と同じ）</td>
+<td class="org-left">Two Finger TipTap Right</td>
+<td class="org-left">End (end of the page)</td>
+<td class="org-left">3本の指を置いた後，一番右側の指でタップ：ページの最後へ（fn + →と同じ）</td>
 </tr>
 
 <tr>
-<td class="left">Two Finger TipTap Left</td>
-<td class="left">Home (beginning of the page)</td>
-<td class="left">3本の指を置いた後，一番左の指でタップ：ページの先頭へ（fn + ←と同じ）</td>
+<td class="org-left">Two Finger TipTap Left</td>
+<td class="org-left">Home (beginning of the page)</td>
+<td class="org-left">3本の指を置いた後，一番左の指でタップ：ページの先頭へ（fn + ←と同じ）</td>
 </tr>
 
 <tr>
-<td class="left">Three Finger Swipe Left</td>
-<td class="left">⌘⇧]</td>
-<td class="left">3本指で右から左へスワイプ : 右のタブへ(Safari.app, Terminal.app, Firefox.app, Google Chrome.app などで共通に利用可能)</td>
+<td class="org-left">Three Finger Swipe Left</td>
+<td class="org-left">⌘⇧]</td>
+<td class="org-left">3本指で右から左へスワイプ : 右のタブへ(Safari.app, Terminal.app, Firefox.app, Google Chrome.app などで共通に利用可能)</td>
 </tr>
 
 <tr>
-<td class="left">Three Finger Swipe Right</td>
-<td class="left">⌘⇧[</td>
-<td class="left">3本指で左から右へスワイプ : 左のタブへ</td>
+<td class="org-left">Three Finger Swipe Right</td>
+<td class="org-left">⌘⇧[</td>
+<td class="org-left">3本指で左から右へスワイプ : 左のタブへ</td>
 </tr>
 </tbody>
 </table>
@@ -768,220 +822,172 @@ Preference -&gt; Settings -&gt; Launch BetterTouchTools on startup をチェッ�
 </div>
 </div>
 </div>
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6"><span class="section-number-2">6</span> 各種サービスのアカウント作成とユーティリティのインストール</h2>
+
+<div id="outline-container-orga0967ff" class="outline-2">
+<h2 id="orga0967ff"><span class="section-number-2">6</span> 各種サービスのアカウント作成とユーティリティのインストール</h2>
 <div class="outline-text-2" id="text-6">
-</div><div id="outline-container-sec-6-1" class="outline-3">
-<h3 id="sec-6-1"><span class="section-number-3">6.1</span> iCloud (<a href="https://www.icloud.com">https://www.icloud.com</a>)</h3>
+</div><div id="outline-container-org8353683" class="outline-3">
+<h3 id="org8353683"><span class="section-number-3">6.1</span> iCloud (<a href="https://www.icloud.com/">https://www.icloud.com/</a>)</h3>
 <div class="outline-text-3" id="text-6-1">
-</div><div id="outline-container-sec-6-1-1" class="outline-4">
-<h4 id="sec-6-1-1"><span class="section-number-4">6.1.1</span> 特徴</h4>
+</div><div id="outline-container-org2a81668" class="outline-4">
+<h4 id="org2a81668"><span class="section-number-4">6.1.1</span> 特徴</h4>
 <div class="outline-text-4" id="text-6-1-1">
 <ul class="org-ul">
-<li>無料で5GBのクラウドストレージ．
-</li>
-<li>MacやiOS デバイス間でMail/Safariのブックマーク/iCalendarを同期させたり，iOSデバイスのデータや設定をバックアップしたりできる．
-</li>
-<li>GoodReaderを始め，各種iOS Appからのアクセスが容易だが，ローカル・フォルダとの同期は無い．
-</li>
+<li>無料で5GBのクラウドストレージ．</li>
+<li>MacやiOS デバイス間でMail/Safariのブックマーク/iCalendarを同期させたり，iOSデバイスのデータや設定をバックアップしたりできる．</li>
+<li>GoodReaderを始め，各種iOS Appからのアクセスが容易だが，ローカル・フォルダとの同期は無い．</li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-sec-6-1-2" class="outline-4">
-<h4 id="sec-6-1-2"><span class="section-number-4">6.1.2</span> アカウント作成・ユーティリティ</h4>
+<div id="outline-container-org0aeb155" class="outline-4">
+<h4 id="org0aeb155"><span class="section-number-4">6.1.2</span> アカウント作成・ユーティリティ</h4>
 <div class="outline-text-4" id="text-6-1-2">
 <ul class="org-ul">
-<li><a href="http://www.apple.com/jp/icloud/setup/mac.html">http://www.apple.com/jp/icloud/setup/mac.html</a> を参考に
-</li>
+<li><a href="http://www.apple.com/jp/icloud/setup/mac.html">http://www.apple.com/jp/icloud/setup/mac.html</a> を参考に</li>
 </ul>
 </div>
 </div>
 </div>
-
-<div id="outline-container-sec-6-2" class="outline-3">
-<h3 id="sec-6-2"><span class="section-number-3">6.2</span> Dropbox (<a href="https://www.dropbox.com/">https://www.dropbox.com/</a>)</h3>
+<div id="outline-container-org9ab5085" class="outline-3">
+<h3 id="org9ab5085"><span class="section-number-3">6.2</span> Dropbox (<a href="https://www.dropbox.com/">https://www.dropbox.com/</a>)</h3>
 <div class="outline-text-3" id="text-6-2">
-</div><div id="outline-container-sec-6-2-1" class="outline-4">
-<h4 id="sec-6-2-1"><span class="section-number-4">6.2.1</span> 特徴</h4>
+</div><div id="outline-container-org67c9605" class="outline-4">
+<h4 id="org67c9605"><span class="section-number-4">6.2.1</span> 特徴</h4>
 <div class="outline-text-4" id="text-6-2-1">
 <ul class="org-ul">
-<li>無料で2GBのクラウドストレージ．
-</li>
-<li><b>30日まで</b> 履歴を保存しているので，うっかり上書き・削除してしまっても復元可能．
-</li>
-<li>ローカルの <code>~/Dropbox</code> フォルダと自動的に同期．
-</li>
-<li>.emacs, texmf, skk 辞書などの保存には便利．
-</li>
-<li>iOS からもファイル閲覧可能．
-</li>
+<li>無料で2GBのクラウドストレージ．</li>
+<li><b>30日まで</b> 履歴を保存しているので，うっかり上書き・削除してしまっても復元可能．</li>
+<li>ローカルの <code>~/Dropbox</code> フォルダと自動的に同期．</li>
+<li>.emacs, texmf, skk 辞書などの保存には便利．</li>
+<li>iOS からもファイル閲覧可能．</li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-sec-6-2-2" class="outline-4">
-<h4 id="sec-6-2-2"><span class="section-number-4">6.2.2</span> アカウント作成・ユーティリティ</h4>
+<div id="outline-container-orgb31b6fc" class="outline-4">
+<h4 id="orgb31b6fc"><span class="section-number-4">6.2.2</span> アカウント作成・ユーティリティ</h4>
 <div class="outline-text-4" id="text-6-2-2">
 <ul class="org-ul">
-<li><a href="http://db.tt/pqpSl9b">http://db.tt/pqpSl9b</a> からアカウントを作成
-</li>
-<li><a href="https://www.dropbox.com/downloading?src=index">https://www.dropbox.com/downloading?src=index</a> からユーティリティをダウンロード．
-</li>
+<li><a href="http://db.tt/pqpSl9b">http://db.tt/pqpSl9b</a> からアカウントを作成</li>
+<li><a href="https://www.dropbox.com/downloading?src=index">https://www.dropbox.com/downloading?src=index</a> からユーティリティをダウンロード．</li>
 </ul>
 </div>
 </div>
 </div>
-
-<div id="outline-container-sec-6-3" class="outline-3">
-<h3 id="sec-6-3"><span class="section-number-3">6.3</span> Cloud.app (<a href="http://getcloudapp.com">http://getcloudapp.com</a>)</h3>
+<div id="outline-container-org50747e8" class="outline-3">
+<h3 id="org50747e8"><span class="section-number-3">6.3</span> Cloud.app (<a href="http://getcloudapp.com/">http://getcloudapp.com/</a>)</h3>
 <div class="outline-text-3" id="text-6-3">
-</div><div id="outline-container-sec-6-3-1" class="outline-4">
-<h4 id="sec-6-3-1"><span class="section-number-4">6.3.1</span> 特徴</h4>
+</div><div id="outline-container-org233b70f" class="outline-4">
+<h4 id="org233b70f"><span class="section-number-4">6.3.1</span> 特徴</h4>
 <div class="outline-text-4" id="text-6-3-1">
 <ul class="org-ul">
-<li>ファイルの共有機能に特化．
-</li>
-<li>Cloud への保存と同時に，当該ファイルへのURLをクリップボードに送ってくれる．これをメールなどにペーストすることでファイルが共有可能．
-</li>
-<li>Finder から Ctrl + option + R とするだけで，上記作業が完了するので便利．
-</li>
-<li>保存容量は無制限だが，無料プランの場合，アップロードできるファイルが 10ファイル/日，25MB/ファイル に限定される．
-</li>
+<li>ファイルの共有機能に特化．</li>
+<li>Cloud への保存と同時に，当該ファイルへのURLをクリップボードに送ってくれる．これをメールなどにペーストすることでファイルが共有可能．</li>
+<li>Finder から Ctrl + option + R とするだけで，上記作業が完了するので便利．</li>
+<li>保存容量は無制限だが，無料プランの場合，アップロードできるファイルが 10ファイル/日，25MB/ファイル に限定される．</li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-sec-6-3-2" class="outline-4">
-<h4 id="sec-6-3-2"><span class="section-number-4">6.3.2</span> アカウント作成・ユーティリティ</h4>
+<div id="outline-container-org07b8a5f" class="outline-4">
+<h4 id="org07b8a5f"><span class="section-number-4">6.3.2</span> アカウント作成・ユーティリティ</h4>
 <div class="outline-text-4" id="text-6-3-2">
 <ul class="org-ul">
-<li><a href="http://getcloudapp.com">http://getcloudapp.com</a> からアカウント作成＆ユーティリティをダウンロード
-</li>
-<li>アカウントを作成したら <a href="http://my.cl.ly/account">http://my.cl.ly/account</a> の Privacy -&gt; Default Privacy for New Drops のチェックを private にすること(→<a href="http://blog.getcloudapp.com/privacy-redux/">理由</a>)
-</li>
+<li><a href="http://getcloudapp.com/">http://getcloudapp.com/</a> からアカウント作成＆ユーティリティをダウンロード</li>
+<li>アカウントを作成したら <a href="http://my.cl.ly/account">http://my.cl.ly/account</a> の Privacy -&gt; Default Privacy for New Drops のチェックを private にすること(→<a href="http://blog.getcloudapp.com/privacy-redux/">理由</a>)</li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-sec-6-3-3" class="outline-4">
-<h4 id="sec-6-3-3"><span class="section-number-4">6.3.3</span> 参考サイト</h4>
+<div id="outline-container-org93defaa" class="outline-4">
+<h4 id="org93defaa"><span class="section-number-4">6.3.3</span> 参考サイト</h4>
 <div class="outline-text-4" id="text-6-3-3">
 <ul class="org-ul">
-<li><a href="http://www.dtp-transit.jp/utility/post_1650.html">http://www.dtp-transit.jp/utility/post_1650.html</a>
-</li>
-<li><a href="http://wakabamac.blog95.fc2.com/blog-entry-1046.html">http://wakabamac.blog95.fc2.com/blog-entry-1046.html</a>
-</li>
+<li><a href="http://www.dtp-transit.jp/utility/post_1650.html">http://www.dtp-transit.jp/utility/post_1650.html</a></li>
+<li><a href="http://wakabamac.blog95.fc2.com/blog-entry-1046.html">http://wakabamac.blog95.fc2.com/blog-entry-1046.html</a></li>
 </ul>
 </div>
 </div>
 </div>
-
-<div id="outline-container-sec-6-4" class="outline-3">
-<h3 id="sec-6-4"><span class="section-number-3">6.4</span> Github (<a href="https://github.com">https://github.com</a>)</h3>
+<div id="outline-container-org5e47f22" class="outline-3">
+<h3 id="org5e47f22"><span class="section-number-3">6.4</span> Github (<a href="https://github.com/">https://github.com/</a>)</h3>
 <div class="outline-text-3" id="text-6-4">
-</div><div id="outline-container-sec-6-4-1" class="outline-4">
-<h4 id="sec-6-4-1"><span class="section-number-4">6.4.1</span> 特徴</h4>
+</div><div id="outline-container-org2890acc" class="outline-4">
+<h4 id="org2890acc"><span class="section-number-4">6.4.1</span> 特徴</h4>
 <div class="outline-text-4" id="text-6-4-1">
 <ul class="org-ul">
-<li>Bitbucket と同じ git リポジトリ
-</li>
-<li>ちょっとしたコード断片の公開・管理に便利な gist システムを備える
-</li>
-<li>push したソースを Web 上からでも編集できる
-</li>
-<li>公開リポジトリは無料で無制限に作成可能．プライベート・リポジトリは有料．
-</li>
-<li>ディレクトリ構造を持たない gist であればプライベートでも無制限に作成可能．
-</li>
+<li>Bitbucket と同じ git リポジトリ</li>
+<li>ちょっとしたコード断片の公開・管理に便利な gist システムを備える</li>
+<li>push したソースを Web 上からでも編集できる</li>
+<li>公開リポジトリは無料で無制限に作成可能．プライベート・リポジトリは有料．</li>
+<li>ディレクトリ構造を持たない gist であればプライベートでも無制限に作成可能．</li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-sec-6-4-2" class="outline-4">
-<h4 id="sec-6-4-2"><span class="section-number-4">6.4.2</span> アカウント作成・ユーティリティ</h4>
+<div id="outline-container-org8af8b13" class="outline-4">
+<h4 id="org8af8b13"><span class="section-number-4">6.4.2</span> アカウント作成・ユーティリティ</h4>
 <div class="outline-text-4" id="text-6-4-2">
 <ul class="org-ul">
-<li><a href="https://github.com">https://github.com</a> から Sign up
-</li>
-<li>Mac 用のユーティリティとして <a href="http://mac.github.com">http://mac.github.com</a> が用意されている．
-</li>
+<li><a href="https://github.com/">https://github.com/</a> から Sign up</li>
+<li>Mac 用のユーティリティとして <a href="http://mac.github.com/">http://mac.github.com/</a> が用意されている．</li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-sec-6-4-3" class="outline-4">
-<h4 id="sec-6-4-3"><span class="section-number-4">6.4.3</span> 参考サイト</h4>
+<div id="outline-container-org5129d30" class="outline-4">
+<h4 id="org5129d30"><span class="section-number-4">6.4.3</span> 参考サイト</h4>
 <div class="outline-text-4" id="text-6-4-3">
 <ul class="org-ul">
-<li><a href="http://qiita.com/items/4272209ad80380933000">http://qiita.com/items/4272209ad80380933000</a>
-</li>
-<li><a href="http://samura1.net/2012/10/github_first/">http://samura1.net/2012/10/github_first/</a>
-</li>
+<li><a href="http://qiita.com/items/4272209ad80380933000">http://qiita.com/items/4272209ad80380933000</a></li>
+<li><a href="http://samura1.net/2012/10/github_first/">http://samura1.net/2012/10/github_first/</a></li>
 </ul>
 </div>
 </div>
 </div>
-
-<div id="outline-container-sec-6-5" class="outline-3">
-<h3 id="sec-6-5"><span class="section-number-3">6.5</span> Bitbucket (<a href="https://bitbucket.org">https://bitbucket.org</a>)</h3>
+<div id="outline-container-orge8e3390" class="outline-3">
+<h3 id="orge8e3390"><span class="section-number-3">6.5</span> Bitbucket (<a href="https://bitbucket.org/">https://bitbucket.org/</a>)</h3>
 <div class="outline-text-3" id="text-6-5">
-</div><div id="outline-container-sec-6-5-1" class="outline-4">
-<h4 id="sec-6-5-1"><span class="section-number-4">6.5.1</span> 特徴</h4>
+</div><div id="outline-container-orgd7578e6" class="outline-4">
+<h4 id="orgd7578e6"><span class="section-number-4">6.5.1</span> 特徴</h4>
 <div class="outline-text-4" id="text-6-5-1">
 <ul class="org-ul">
-<li>Github と同様の git リポジトリ
-</li>
-<li>gist システムやソースのWeb編集機能は無い
-</li>
-<li>公開/プライベートともに無制限にリポジトリを作成できる
-</li>
-<li>5人までならプライベート・リポジトリを共有できる．アカデミック・アカウントなら無制限に共有できる(!)
-</li>
-<li>長江研では <a href="https://bitbucket.org/nagaelab/weeklymeeting">メンバ・ページ</a> を作って報告会の情報を共有している
-</li>
+<li>Github と同様の git リポジトリ</li>
+<li>gist システムやソースのWeb編集機能は無い</li>
+<li>公開/プライベートともに無制限にリポジトリを作成できる</li>
+<li>5人までならプライベート・リポジトリを共有できる．アカデミック・アカウントなら無制限に共有できる(!)</li>
+<li>長江研では <a href="https://bitbucket.org/nagaelab/weeklymeeting">メンバ・ページ</a> を作って報告会の情報を共有している</li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-sec-6-5-2" class="outline-4">
-<h4 id="sec-6-5-2"><span class="section-number-4">6.5.2</span> アカウント作成・ユーティリティ</h4>
+<div id="outline-container-org88630cd" class="outline-4">
+<h4 id="org88630cd"><span class="section-number-4">6.5.2</span> アカウント作成・ユーティリティ</h4>
 <div class="outline-text-4" id="text-6-5-2">
 <ul class="org-ul">
-<li><a href="https://bitbucket.org">https://bitbucket.org</a> から sign up
-</li>
-<li>アカウントを作成したら，長江に通知．
-</li>
-<li>Mac 用のユーティリティとして <a href="http://www.sourcetreeapp.com">http://www.sourcetreeapp.com</a> が用意されている
-</li>
+<li><a href="https://bitbucket.org/">https://bitbucket.org/</a> から sign up</li>
+<li>アカウントを作成したら，長江に通知．</li>
+<li>Mac 用のユーティリティとして <a href="http://www.sourcetreeapp.com/">http://www.sourcetreeapp.com/</a> が用意されている</li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-sec-6-5-3" class="outline-4">
-<h4 id="sec-6-5-3"><span class="section-number-4">6.5.3</span> 参考サイト</h4>
+<div id="outline-container-orgc922f38" class="outline-4">
+<h4 id="orgc922f38"><span class="section-number-4">6.5.3</span> 参考サイト</h4>
 <div class="outline-text-4" id="text-6-5-3">
 <dl class="org-dl">
-<dt> サインアップ </dt><dd><a href="http://toruuetani.bitbucket.org/bitbucket.html#id2">http://toruuetani.bitbucket.org/bitbucket.html#id2</a>
-</dd>
+<dt>サインアップ</dt><dd><a href="http://toruuetani.bitbucket.org/bitbucket.html#id2">http://toruuetani.bitbucket.org/bitbucket.html#id2</a></dd>
 </dl>
 </div>
 </div>
 </div>
-
-<div id="outline-container-sec-6-6" class="outline-3">
-<h3 id="sec-6-6"><span class="section-number-3">6.6</span> Evernote (必須ではない)</h3>
+<div id="outline-container-orga399696" class="outline-3">
+<h3 id="orga399696"><span class="section-number-3">6.6</span> Evernote (必須ではない)</h3>
 </div>
-<div id="outline-container-sec-6-7" class="outline-3">
-<h3 id="sec-6-7"><span class="section-number-3">6.7</span> Github / Bitbucket に SSH で接続する</h3>
+<div id="outline-container-org9174e41" class="outline-3">
+<h3 id="org9174e41"><span class="section-number-3">6.7</span> Github / Bitbucket に SSH で接続する</h3>
 <div class="outline-text-3" id="text-6-7">
-</div><div id="outline-container-sec-6-7-1" class="outline-4">
-<h4 id="sec-6-7-1"><span class="section-number-4">6.7.1</span> 公開鍵と秘密鍵の作成</h4>
+</div><div id="outline-container-orgfe29dbc" class="outline-4">
+<h4 id="orgfe29dbc"><span class="section-number-4">6.7.1</span> 公開鍵と秘密鍵の作成</h4>
 <div class="outline-text-4" id="text-6-7-1">
 <ul class="org-ul">
-<li><code>~/.ssh</code> にSSH用の公開鍵と秘密鍵を作る
+<li><p>
+<code>~/.ssh</code> にSSH用の公開鍵と秘密鍵を作る
+</p>
 <div class="org-src-container">
-
 <pre class="src src-screen">mkdir ~/.ssh                    <span style="color: #00cd66;"># </span><span style="color: #00cd66;">ssh&#29992;&#12398;&#12487;&#12451;&#12524;&#12463;&#12488;&#12522;&#12434;&#20316;&#12427;</span>
 <span style="color: #b0c4de;">cd</span> ~/.ssh                       <span style="color: #00cd66;"># </span><span style="color: #00cd66;">.ssh &#12487;&#12451;&#12524;&#12463;&#12488;&#12522;ni&#31227;&#21205;</span>
 ssh-keygen -t rsa -f id_rsa     <span style="color: #00cd66;"># </span><span style="color: #00cd66;">id_rsa &#12392;&#12356;&#12358;&#31192;&#23494;&#37749;&#12392; id_rsa.pub &#12392;&#12356;&#12358;&#20844;&#38283;&#37749;&#12434;&#20316;&#12427;</span>
@@ -990,40 +996,41 @@ ssh-keygen -t rsa -f id_rsa     <span style="color: #00cd66;"># </span><span sty
 chmod 700 ~/.ssh                <span style="color: #00cd66;"># </span><span style="color: #00cd66;">.ssh &#12487;&#12451;&#12524;&#12463;&#12488;&#12522;&#12398;&#12450;&#12463;&#12475;&#12473;&#27177;&#12434;&#12300;&#31649;&#29702;&#32773;&#12398;&#12415;&#35501;&#12415;&#26360;&#12365;&#23455;&#34892;&#21487;&#12301;&#12395;&#22793;&#26356;</span>
 chmod 600 ~/.ssh/id_rsa.pub     <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#20844;&#38283;&#37749;&#12398;&#12450;&#12463;&#12475;&#12473;&#27177;&#12434;&#12300;&#31649;&#29702;&#32773;&#12398;&#12415;&#35501;&#12415;&#26360;&#12365;&#21487;&#12301;&#12395;&#22793;&#26356;</span>
 </pre>
-</div>
-</li>
-<li>ここで作成した公開鍵/秘密鍵のパスフレーズは，以下のコマンドで後から変更できる：
+</div></li>
+<li><p>
+ここで作成した公開鍵/秘密鍵のパスフレーズは，以下のコマンドで後から変更できる：
+</p>
 <div class="org-src-container">
-
 <pre class="src src-sh">ssh-keygen -f id_rsa -p
 </pre>
-</div>
-</li>
+</div></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-sec-6-7-2" class="outline-4">
-<h4 id="sec-6-7-2"><span class="section-number-4">6.7.2</span> Bitbucket に SSH の公開鍵を登録する</h4>
+<div id="outline-container-org94d45a3" class="outline-4">
+<h4 id="org94d45a3"><span class="section-number-4">6.7.2</span> Bitbucket に SSH の公開鍵を登録する</h4>
 <div class="outline-text-4" id="text-6-7-2">
 <ul class="org-ul">
-<li><a href="https://bitbucket.org/">Bitbucket</a> の右上のアバターから「Manage account」を選ぶ
+<li><p>
+<a href="https://bitbucket.org/">Bitbucket</a> の右上のアバターから「Manage account」を選ぶ
+</p>
 
 <div class="figure">
 <p><img src="fig/Bitbucket-icon.png" alt="Bitbucket-icon.png" align="center" width="600" />
 </p>
-</div>
-</li>
-<li>左側のメニューから「SSH keys」を選び，「Add Key」をクリック
+</div></li>
+<li><p>
+左側のメニューから「SSH keys」を選び，「Add Key」をクリック
+</p>
 
 <div class="figure">
 <p><img src="fig/Bitbucket-SSH_keys.png" alt="Bitbucket-SSH_keys.png" align="center" width="600" />
 </p>
-</div>
-</li>
-<li>適当なラベルを与えたあと，公開鍵を Keys にコピーする．ターミナル上で
+</div></li>
+<li><p>
+適当なラベルを与えたあと，公開鍵を Keys にコピーする．ターミナル上で
+</p>
 <div class="org-src-container">
-
 <pre class="src src-screen">pbcopy &lt; ~/.ssh/id_rsa.pub
 </pre>
 </div>
@@ -1034,11 +1041,11 @@ chmod 600 ~/.ssh/id_rsa.pub     <span style="color: #00cd66;"># </span><span sty
 <div class="figure">
 <p><img src="fig/Bitbucket-Add_key.png" alt="Bitbucket-Add_key.png" align="center" width="600" />
 </p>
-</div>
-</li>
-<li><code>~/.ssh/config</code> に以下を記載
+</div></li>
+<li><p>
+<code>~/.ssh/config</code> に以下を記載
+</p>
 <div class="org-src-container">
-
 <pre class="src src-text">Host bitbucket
  User git
  Port 22
@@ -1052,52 +1059,47 @@ chmod 600 ~/.ssh/id_rsa.pub     <span style="color: #00cd66;"># </span><span sty
 これを実現する方法は2つある
 </p>
 <dl class="org-dl">
-<dt> ターミナル上で Emacs を起動して編集する方法 </dt><dd><ol class="org-ol">
-<li>まず，ターミナル上で
+<dt>ターミナル上で Emacs を起動して編集する方法</dt><dd><ol class="org-ol">
+<li><p>
+まず，ターミナル上で
+</p>
 <div class="org-src-container">
-
 <pre class="src src-sh">emacs ~/.ssh/config
 </pre>
 </div>
 <p>
 として，Emacs を起動する．
-</p>
-</li>
-<li>上記をコピー＆ペーストする．
-</li>
+</p></li>
+<li>上記をコピー＆ペーストする．</li>
 <li>保存(C-x C-s: Ctrlを押しながら x, s とタイプする)した後，
-Emacs を終了(C-x C-c; Ctrl を押しながら x, cとタイプ)する．
-</li>
-</ol>
-</dd>
-<dt> <code>pbpaste</code> から追記する方法 </dt><dd><ol class="org-ol">
-<li>上記をコピーする．
-</li>
-<li>ターミナル上で以下を入力：
+Emacs を終了(C-x C-c; Ctrl を押しながら x, cとタイプ)する．</li>
+</ol></dd>
+<dt><code>pbpaste</code> から追記する方法</dt><dd><ol class="org-ol">
+<li>上記をコピーする．</li>
+<li><p>
+ターミナル上で以下を入力：
+</p>
 <div class="org-src-container">
-
 <pre class="src src-sh">pbpaste &gt;&gt; ~/.ssh/config
 <span style="color: #b0c4de;">echo</span> &gt;&gt; ~/.ssh/config         <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#25913;&#34892;&#12434;&#21152;&#12360;&#12427;</span>
 </pre>
-</div>
-</li>
-</ol>
-</dd>
-<dt> 確認 </dt><dd>追記したら，うまく記載できているか確認．ターミナル上で
+</div></li>
+</ol></dd>
+<dt>確認</dt><dd><p>
+追記したら，うまく記載できているか確認．ターミナル上で
+</p>
 <div class="org-src-container">
-
 <pre class="src src-sh">less ~/.ssh/config
 </pre>
 </div>
 <p>
 とする． <code>less</code> は <code>q</code> で終了できる．思った通りに記載できていなかったら emacs などで編集．
+</p></dd>
+</dl></li>
+<li><p>
+SSH接続を試してみる．ターミナル上で <code>ssh git@bitbucket.org</code> としてみる．
 </p>
-</dd>
-</dl>
-</li>
-<li>SSH接続を試してみる．ターミナル上で <code>ssh git@bitbucket.org</code> としてみる．
 <div class="org-src-container">
-
 <pre class="src src-text">$ ssh git@bitbucket.org
 The authenticity of host 'bitbucket.org (207.223.240.182)' can't be established.
 RSA key fingerprint is 97:8c:1b:f2:.....
@@ -1108,7 +1110,6 @@ Are you sure you want to continue connecting (yes/no)?
 と表示されたら， <code>yes</code> を入力．
 </p>
 <div class="org-src-container">
-
 <pre class="src src-text"># (Warning &#12364;&#20986;&#12427;&#12371;&#12392;&#12418;&#12354;&#12427;)
 PTY allocation request failed on channel 0
 conq: logged in as ****.        # **** &#12395;&#12399; bitbucket.org &#12398;&#12450;&#12459;&#12454;&#12531;&#12488;&#21517;&#12364;&#20837;&#12427;
@@ -1119,51 +1120,54 @@ Connection to bitbucket.org closed.
 </div>
 <p>
 と出れば成功．
-</p>
-</li>
+</p></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-6-7-3" class="outline-4">
-<h4 id="sec-6-7-3"><span class="section-number-4">6.7.3</span> Github に SSH の公開鍵を登録する</h4>
+
+<div id="outline-container-org992f854" class="outline-4">
+<h4 id="org992f854"><span class="section-number-4">6.7.3</span> Github に SSH の公開鍵を登録する</h4>
 <div class="outline-text-4" id="text-6-7-3">
 <ul class="org-ul">
-<li><a href="https://github.com/">github.com</a> の右上のユーザー名をクリック
+<li><p>
+<a href="https://github.com/">github.com</a> の右上のユーザー名をクリック
+</p>
 
 <div class="figure">
 <p><img src="fig/Github-icon.png" alt="Github-icon.png" align="center" width="600" />
 </p>
-</div>
-</li>
-<li>ダッシュボード画面で右上の「Edit Your Profile」をクリック
+</div></li>
+<li><p>
+ダッシュボード画面で右上の「Edit Your Profile」をクリック
+</p>
 
 <div class="figure">
 <p><img src="fig/Github-edit_profile.png" alt="Github-edit_profile.png" align="center" width="600" />
 </p>
-</div>
-</li>
-<li>左側のメニューから「SSH Keys」を選び，「Add SSH Key」をクリック．
-</li>
-<li>編集画面が開くので，Title に適当なラベルを与え(省略可能)，公開鍵を Key にペーストし「Add Key」をクリック．
+</div></li>
+<li>左側のメニューから「SSH Keys」を選び，「Add SSH Key」をクリック．</li>
+<li><p>
+編集画面が開くので，Title に適当なラベルを与え(省略可能)，公開鍵を Key にペーストし「Add Key」をクリック．
+</p>
 
 <div class="figure">
 <p><img src="fig/Github-Add_SSH_key.png" alt="Github-Add_SSH_key.png" align="center" width="600" />
 </p>
-</div>
-</li>
-<li>公開鍵をペーストする簡単な方法：ターミナル上で
+</div></li>
+<li><p>
+公開鍵をペーストする簡単な方法：ターミナル上で
+</p>
 <div class="org-src-container">
-
 <pre class="src src-screen">pbcopy &lt; ~/.ssh/id_rsa.pub
 </pre>
 </div>
 <p>
 としてから Key のところでペースト(Command+V)．
+</p></li>
+<li><p>
+<code>~/.ssh/config</code> に以下を追記(上述も参照)．
 </p>
-</li>
-<li><code>~/.ssh/config</code> に以下を追記(上述も参照)．
 <div class="org-src-container">
-
 <pre class="src src-text">Host github
  User git
  Port 22
@@ -1172,21 +1176,21 @@ Connection to bitbucket.org closed.
  TCPKeepAlive yes
  IdentitiesOnly yes
 </pre>
-</div>
-</li>
-<li>うまく記載できているか確認．ターミナル上で
+</div></li>
+<li><p>
+うまく記載できているか確認．ターミナル上で
+</p>
 <div class="org-src-container">
-
 <pre class="src src-screen">$ less ~/.ssh/config
 </pre>
 </div>
 <p>
 とする．less は <code>q</code> で終了できる．思った通りに記載できていなかったら emacs などで編集．
+</p></li>
+<li><p>
+SSH接続を試してみる．ターミナル上で <code>ssh git@github.com</code> としてみる．
 </p>
-</li>
-<li>SSH接続を試してみる．ターミナル上で <code>ssh git@github.com</code> としてみる．
 <div class="org-src-container">
-
 <pre class="src src-text">$ ssh git@github.com
 The authenticity of host 'github.com (204.232.175.90)' can't be established.
 RSA key fingerprint is 16:27:ac:a5:76:....
@@ -1194,10 +1198,9 @@ Are you sure you want to continue connecting (yes/no)?
 </pre>
 </div>
 <p>
-と表示されたら，<code>yes</code> を入力．
+と表示されたら，=yes= を入力．
 </p>
 <div class="org-src-container">
-
 <pre class="src src-text"># (Warning &#12364;&#20986;&#12427;&#12371;&#12392;&#12418;&#12354;&#12427;)
 PTY allocation request failed on channel 0
 Hi ****! You've successfully authenticated, but GitHub does not provide shell access.
@@ -1207,21 +1210,18 @@ Connection to github.com closed.
 </div>
 <p>
 と出れば成功．
-</p>
-</li>
+</p></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-sec-6-7-4" class="outline-4">
-<h4 id="sec-6-7-4"><span class="section-number-4">6.7.4</span> その他の SSH サーバーを登録する</h4>
+<div id="outline-container-org6ff9065" class="outline-4">
+<h4 id="org6ff9065"><span class="section-number-4">6.7.4</span> その他の SSH サーバーを登録する</h4>
 <div class="outline-text-4" id="text-6-7-4">
 <p>
 上述の方法を応用すれば，他の SSH サーバーにもSSH公開鍵を登録できる．
 例えば， <code>username@remote.to</code> というサーバーに登録したい場合は，まず，以下のようにターミナルから入力する．
 </p>
 <div class="org-src-container">
-
 <pre class="src src-sh">cat ~/.ssh/id_rsa.pub | ssh username@remote.to <span style="color: #bdb76b;">"cat&gt;&gt;.ssh/authorized_keys"</span>
 </pre>
 </div>
@@ -1229,7 +1229,6 @@ Connection to github.com closed.
 次に <code>~/.ssh/config</code> に以下を追記する：
 </p>
 <div class="org-src-container">
-
 <pre class="src src-text">Host alias
  User username
  Port 22
@@ -1241,12 +1240,25 @@ Connection to github.com closed.
 </div>
 </div>
 </div>
+<div id="outline-container-org36a71ae" class="outline-4">
+<h4 id="org36a71ae"><span class="section-number-4">6.7.5</span> Mac の keychain にパスワードを記録する</h4>
+<div class="outline-text-4" id="text-6-7-5">
+<p>
+SSH 用のパスワードを毎回入力するのはかなり面倒. 下記をターミナルから実行しておくことで,
+Mac の keychain にSSHパスワードを記録しておける.
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">ssh-keygen -f ~/.ssh/id_rsa -p
+</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
-<p class="date">Created: 2014-04-16 Wed 11:02</p>
+<p class="date">Created: 2017-03-01 Wed 11:32</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
