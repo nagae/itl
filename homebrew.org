@@ -33,7 +33,7 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
 - 本家 :: http://mxcl.github.com/homebrew/
 - https://github.com/mxcl/homebrew/wiki/installation
 ** Command Line Tools for Xcode のインストール
-- 事前に [[#Apple_ID][Apple ID]] の登録が必要．
+- 事前に [[https://appleid.apple.com/][Apple ID]] の登録が必要．
 - https://developer.apple.com/downloads/index.action にアクセス．Apple ID での Sign in を求められる．
 - Command Line Tools (OS X Mavericks) for Xcode の最新版をクリックし，dmg ファイル(下図参照)をクリックしてダウンロード
   - Mountain Lion の場合：\\

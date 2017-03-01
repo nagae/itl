@@ -3,23 +3,30 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
+<!-- 2017-03-01 Wed 11:36 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ITL/パッケージ管理システム homebrew の導入</title>
-<!-- 2014-09-09 Tue 11:32 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Takeshi Nagae" />
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Takeshi Nagae" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
   .todo   { font-family: monospace; color: red; }
-  .done   { color: green; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -46,27 +53,110 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.right  { text-align: center;  }
-  th.left   { text-align: center;   }
-  th.center { text-align: center; }
-  td.right  { text-align: right;  }
-  td.left   { text-align: left;   }
-  td.center { text-align: center; }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara:nth-child(2) { display: inline; }
-  .footpara { display: block; }
+  .footpara { display: inline; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -86,6 +176,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel=stylesheet href="style.css" type="text/css">
@@ -219,26 +310,26 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#27425;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. 概要</a></li>
-<li><a href="#sec-2">2. Homebrew 本体のインストール</a>
+<li><a href="#org207e6ce">1. 概要</a></li>
+<li><a href="#org1118c30">2. Homebrew 本体のインストール</a>
 <ul>
-<li><a href="#sec-2-1">2.1. 参考サイト</a></li>
-<li><a href="#sec-2-2">2.2. Command Line Tools for Xcode のインストール</a></li>
-<li><a href="#sec-2-3">2.3. Homebrew のインストール</a></li>
+<li><a href="#org8417177">2.1. 参考サイト</a></li>
+<li><a href="#org4e89aef">2.2. Command Line Tools for Xcode のインストール</a></li>
+<li><a href="#org1162eeb">2.3. Homebrew のインストール</a></li>
 </ul>
 </li>
-<li><a href="#sec-3">3. Homebrew の使い方</a>
+<li><a href="#org7424fdb">3. Homebrew の使い方</a>
 <ul>
-<li><a href="#sec-3-1">3.1. ワークフロー</a></li>
-<li><a href="#sec-3-2">3.2. 基本コマンド</a></li>
+<li><a href="#org22a1f9c">3.1. ワークフロー</a></li>
+<li><a href="#org0bab5d2">3.2. 基本コマンド</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> 概要</h2>
+<div id="outline-container-org207e6ce" class="outline-2">
+<h2 id="org207e6ce"><span class="section-number-2">1</span> 概要</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 homebrew は研究環境に必要な様々な UNIX ツールをまとめて管理(インストール，
@@ -253,77 +344,70 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
 </p>
 </div>
 </div>
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> Homebrew 本体のインストール</h2>
+<div id="outline-container-org1118c30" class="outline-2">
+<h2 id="org1118c30"><span class="section-number-2">2</span> Homebrew 本体のインストール</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1"><span class="section-number-3">2.1</span> 参考サイト</h3>
+</div><div id="outline-container-org8417177" class="outline-3">
+<h3 id="org8417177"><span class="section-number-3">2.1</span> 参考サイト</h3>
 <div class="outline-text-3" id="text-2-1">
 <dl class="org-dl">
-<dt> 本家 </dt><dd><a href="http:mxcl.github.com/homebrew/">http:mxcl.github.com/homebrew/</a>
-</dd>
-<dt> (no term) </dt><dd><a href="https:github.com/mxcl/homebrew/wiki/installation">https:github.com/mxcl/homebrew/wiki/installation</a>
-</dd>
+<dt>本家</dt><dd><a href="http://mxcl.github.com/homebrew/">http://mxcl.github.com/homebrew/</a></dd>
+<dt>(no term)</dt><dd><a href="https://github.com/mxcl/homebrew/wiki/installation">https://github.com/mxcl/homebrew/wiki/installation</a></dd>
 </dl>
 </div>
 </div>
-<div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Command Line Tools for Xcode のインストール</h3>
+<div id="outline-container-org4e89aef" class="outline-3">
+<h3 id="org4e89aef"><span class="section-number-3">2.2</span> Command Line Tools for Xcode のインストール</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
-<li>事前に <i>Apple ID</i> の登録が必要．
-</li>
-<li><a href="https:developer.apple.com/downloads/index.action">https:developer.apple.com/downloads/index.action</a> にアクセス．Apple ID での Sign in を求められる．
-</li>
+<li>事前に <a href="https://appleid.apple.com/">Apple ID</a> の登録が必要．</li>
+<li><a href="https://developer.apple.com/downloads/index.action">https://developer.apple.com/downloads/index.action</a> にアクセス．Apple ID での Sign in を求められる．</li>
 <li>Command Line Tools (OS X Mavericks) for Xcode の最新版をクリックし，dmg ファイル(下図参照)をクリックしてダウンロード
 <ul class="org-ul">
-<li>Mountain Lion の場合：<br  />
-    Command Line Tools (OS X Mountain Lion) for Xcode の最新版をクリックし，dmg ファイル(下図参照)をクリックしてダウンロード
+<li><p>
+Mountain Lion の場合：<br />
+Command Line Tools (OS X Mountain Lion) for Xcode の最新版をクリックし，dmg ファイル(下図参照)をクリックしてダウンロード
+</p>
 
 <div class="figure">
 <p><img src="fig/homebrew_Command_Line_Tools_Mountain_Lion.png" alt="homebrew_Command_Line_Tools_Mountain_Lion.png" />
 </p>
-</div>
-</li>
-</ul>
-</li>
-<li>Download された dmg ファイルをマウントし，仮想ドライブ内の Command Line Tools (OS X 10.x).mpkg をダブルクリック
-</li>
+</div></li>
+</ul></li>
+<li>Download された dmg ファイルをマウントし，仮想ドライブ内の Command Line Tools (OS X 10.x).mpkg をダブルクリック</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-2-3" class="outline-3">
-<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Homebrew のインストール</h3>
+<div id="outline-container-org1162eeb" class="outline-3">
+<h3 id="org1162eeb"><span class="section-number-3">2.3</span> Homebrew のインストール</h3>
 <div class="outline-text-3" id="text-2-3">
 <ol class="org-ol">
-<li>本体のダウンロード．ターミナルから以下を実行：
+<li><p>
+本体のダウンロード．ターミナルから以下を実行：
+</p>
 <div class="org-src-container">
-
 <pre class="src src-sh">ruby -e <span style="color: #bdb76b;">"$(</span><span style="color: #fa8072;">curl</span><span style="color: #bdb76b;"> -fsSL https://raw.github.com/mxcl/homebrew/go/install)"</span>
 </pre>
 </div>
 <ul class="org-ul">
-<li>Press RETURN to continue or any other 何か訊かれたら RETURN を押す．
-</li>
-<li>パスワードの入力を求められたら入力する．
-</li>
-<li>ダウンロードが始まる．
-</li>
-</ul>
-</li>
-<li>診断する．ターミナルから以下を実行：
+<li>Press RETURN to continue or any other 何か訊かれたら RETURN を押す．</li>
+<li>パスワードの入力を求められたら入力する．</li>
+<li>ダウンロードが始まる．</li>
+</ul></li>
+<li><p>
+診断する．ターミナルから以下を実行：
+</p>
 <div class="org-src-container">
-
 <pre class="src src-sh">brew doctor
 </pre>
 </div>
 <p>
 <code>Your system is ready to brew</code> と表示されれば OK.
+</p></li>
+<li><p>
+<code>~/.bash_profile</code> (無ければ新たに作成し)に以下を追記：
 </p>
-</li>
-<li><code>~/.bash_profile</code> (無ければ新たに作成し)に以下を追記：
 <div class="org-src-container">
-
 <pre class="src src-screen"><span style="color: #b0c4de;">export</span> <span style="color: #9acd32;">PATH</span>=/usr/local/bin:$<span style="color: #9acd32;">PATH</span>
 </pre>
 </div>
@@ -331,171 +415,166 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
 上記を実行する方法は2通りある：
 </p>
 <dl class="org-dl">
-<dt> ターミナル上で Emacs を起動して編集する方法 </dt><dd><ol class="org-ol">
-<li>まず，ターミナル上で
+<dt>ターミナル上で Emacs を起動して編集する方法</dt><dd><ol class="org-ol">
+<li><p>
+まず，ターミナル上で
+</p>
 <div class="org-src-container">
-
 <pre class="src src-screen">emacs ~/.bash_profile
 </pre>
 </div>
 <p>
 として，Emacs を起動する．
-</p>
-</li>
-<li>上記をコピー＆ペーストする．
-</li>
+</p></li>
+<li>上記をコピー＆ペーストする．</li>
 <li>保存(C-x C-s: Ctrlを押しながら x, s とタイプする)した後，
-Emacs を終了(C-x C-c; Ctrl を押しながら x, cとタイプ)する．
-</li>
-</ol>
-</dd>
-<dt> ターミナルから実行する方法 </dt><dd><ol class="org-ol">
-<li>ターミナル上で以下を実行する．
+Emacs を終了(C-x C-c; Ctrl を押しながら x, cとタイプ)する．</li>
+</ol></dd>
+<dt>ターミナルから実行する方法</dt><dd><ol class="org-ol">
+<li><p>
+ターミナル上で以下を実行する．
+</p>
 <div class="org-src-container">
-
 <pre class="src src-screen"><span style="color: #b0c4de;">echo</span> export <span style="color: #9acd32;">PATH</span>=<span style="color: #bdb76b;">'/usr/local/bin:$PATH'</span> &gt;&gt; ~/.bash_profile
 </pre>
-</div>
-</li>
-</ol>
-</dd>
-</dl>
-</li>
-<li><code>brew tap</code> コマンドを使ってリポジトリを追加する：
+</div></li>
+</ol></dd>
+</dl></li>
+<li><p>
+<code>brew tap</code> コマンドを使ってリポジトリを追加する：
+</p>
 <div class="org-src-container">
-
 <pre class="src src-sh">brew tap homebrew/dupes         <span style="color: #00cd66;"># </span><span style="color: #00cd66;">OS X &#12395;&#27161;&#28310;&#12391;&#30331;&#36617;&#12373;&#12428;&#12390;&#12356;&#12427;&#12467;&#12510;&#12531;&#12489;&#12398;&#26368;&#26032;&#29256;&#12434;&#25552;&#20379;</span>
 brew tap homebrew/versions      <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#36942;&#21435;&#12398; version &#12434;&#25552;&#20379;</span>
 brew tap homebrew/science       <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#31185;&#23398;&#25216;&#34899;&#35336;&#31639;&#12395;&#20351;&#12360;&#12427;&#12497;&#12483;&#12465;&#12540;&#12472;&#12434;&#25552;&#20379;</span>
 brew tap homebrew/python        <span style="color: #00cd66;"># </span><span style="color: #00cd66;">Python &#29992;&#12398;&#12497;&#12483;&#12465;&#12540;&#12472;&#12434;&#25552;&#20379;</span>
 </pre>
-</div>
-</li>
+</div></li>
 </ol>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> Homebrew の使い方</h2>
+<div id="outline-container-org7424fdb" class="outline-2">
+<h2 id="org7424fdb"><span class="section-number-2">3</span> Homebrew の使い方</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="section-number-3">3.1</span> ワークフロー</h3>
+</div><div id="outline-container-org22a1f9c" class="outline-3">
+<h3 id="org22a1f9c"><span class="section-number-3">3.1</span> ワークフロー</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
-<li>必要なツールをインストール
+<li><p>
+必要なツールをインストール
+</p>
 <div class="org-src-container">
-
 <pre class="src src-screen">$ brew search foo             <span style="color: #00cd66;"># </span><span style="color: #00cd66;">foo &#12392;&#12356;&#12358;&#21517;&#21069;&#12398; formula &#12434;&#25506;&#12377;</span>
 $ brew options foo            <span style="color: #00cd66;"># </span><span style="color: #00cd66;">foo &#12398;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#26178;&#12395;&#35373;&#23450;&#12391;&#12365;&#12427;&#12458;&#12503;&#12471;&#12519;&#12531;&#19968;&#35239;&#12434;&#34920;&#31034;</span>
 $ brew install [options] foo  <span style="color: #00cd66;"># </span><span style="color: #00cd66;">foo &#12392;&#12356;&#12358;&#21517;&#21069;&#12398; formula &#12434;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#12377;&#12427;</span>
 </pre>
-</div>
-</li>
-<li>Command Line Tools がアップデートされたら必ずインストールする
-<a href="https:developer.apple.com/downloads">https:developer.apple.com/downloads</a> を定期的にチェックすること
+</div></li>
+<li><p>
+Command Line Tools がアップデートされたら必ずインストールする
+<a href="https://developer.apple.com/downloads">https://developer.apple.com/downloads</a> を定期的にチェックすること
+</p>
 
 <p>
 最新版は Command Line Tools (OS X 10.0) for Xcode - September 2014 (2014.9.9 現在)
+</p></li>
+
+<li><p>
+週に1度くらいは自身のアップデートと formula 更新
 </p>
-</li>
-
-<li>週に1度くらいは自身のアップデートと formula 更新
 <div class="org-src-container">
-
 <pre class="src src-screen">$ brew update                 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">Homebrew &#33258;&#36523;&#12434;&#12450;&#12483;&#12503;&#12487;&#12540;&#12488;</span>
 $ brew outdated               <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#26356;&#26032;&#12373;&#12428;&#12383; formula &#19968;&#35239;&#12434;&#34920;&#31034;</span>
 $ brew upgrade                <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#26356;&#26032;&#12373;&#12428;&#12383; formula &#12434;&#12450;&#12483;&#12503;&#12464;&#12524;&#12540;&#12489;</span>
 </pre>
-</div>
-</li>
+</div></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-3-2" class="outline-3">
-<h3 id="sec-3-2"><span class="section-number-3">3.2</span> 基本コマンド</h3>
+<div id="outline-container-org0bab5d2" class="outline-3">
+<h3 id="org0bab5d2"><span class="section-number-3">3.2</span> 基本コマンド</h3>
 <div class="outline-text-3" id="text-3-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="left" />
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="left">コマンド</th>
-<th scope="col" class="left">機能</th>
+<th scope="col" class="org-left">コマンド</th>
+<th scope="col" class="org-left">機能</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="left"><code>brew update</code></td>
-<td class="left">自分自身をアップデート</td>
+<td class="org-left"><code>brew update</code></td>
+<td class="org-left">自分自身をアップデート</td>
 </tr>
 
 <tr>
-<td class="left"><code>brew outdated</code></td>
-<td class="left">更新された formula を表示</td>
+<td class="org-left"><code>brew outdated</code></td>
+<td class="org-left">更新された formula を表示</td>
 </tr>
 
 <tr>
-<td class="left"><code>brew upgrade</code></td>
-<td class="left">更新された formula をアップグレード</td>
+<td class="org-left"><code>brew upgrade</code></td>
+<td class="org-left">更新された formula をアップグレード</td>
 </tr>
 
 <tr>
-<td class="left"><code>brew doctor</code></td>
-<td class="left">Homebrew を自己診断</td>
+<td class="org-left"><code>brew doctor</code></td>
+<td class="org-left">Homebrew を自己診断</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
-<td class="left"><code>brew search foo</code></td>
-<td class="left">foo という名前の formula を検索</td>
+<td class="org-left"><code>brew search foo</code></td>
+<td class="org-left">foo という名前の formula を検索</td>
 </tr>
 
 <tr>
-<td class="left"><code>brew options foo</code></td>
-<td class="left">foo をインストールする際に設定できるオプション一覧を表示</td>
+<td class="org-left"><code>brew options foo</code></td>
+<td class="org-left">foo をインストールする際に設定できるオプション一覧を表示</td>
 </tr>
 
 <tr>
-<td class="left"><code>brew install foo</code></td>
-<td class="left">foo をインストール</td>
+<td class="org-left"><code>brew install foo</code></td>
+<td class="org-left">foo をインストール</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
-<td class="left"><code>brew list</code></td>
-<td class="left">インストール済の formula 一覧を表示</td>
+<td class="org-left"><code>brew list</code></td>
+<td class="org-left">インストール済の formula 一覧を表示</td>
 </tr>
 
 <tr>
-<td class="left"><code>brew list foo</code></td>
-<td class="left">foo という名前の formula がインストールしたファイル一覧を表示</td>
+<td class="org-left"><code>brew list foo</code></td>
+<td class="org-left">foo という名前の formula がインストールしたファイル一覧を表示</td>
 </tr>
 
 <tr>
-<td class="left"><code>brew unlink foo</code></td>
-<td class="left">foo へのシンボリックリンクを外す</td>
+<td class="org-left"><code>brew unlink foo</code></td>
+<td class="org-left">foo へのシンボリックリンクを外す</td>
 </tr>
 
 <tr>
-<td class="left"><code>brew remove foo</code></td>
-<td class="left">foo を削除する</td>
+<td class="org-left"><code>brew remove foo</code></td>
+<td class="org-left">foo を削除する</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="outline-container-sec-3-2-1" class="outline-4">
-<h4 id="sec-3-2-1"><span class="section-number-4">3.2.1</span> <code>brew update</code> すると <code>error: The following untracked working tree files would be overwritten by merge:</code> というエラーが出る(13.10.25)</h4>
+<div id="outline-container-org7761714" class="outline-4">
+<h4 id="org7761714"><span class="section-number-4">3.2.1</span> <code>brew update</code> すると <code>error: The following untracked working tree files would be overwritten by merge:</code> というエラーが出る(13.10.25)</h4>
 <div class="outline-text-4" id="text-3-2-1">
 <p>
 <code>brew update</code> しようとすると以下のようなエラーメッセージが出る場合の対処法：
 </p>
 <div class="org-src-container">
-
 <pre class="src src-screen">$ brew update
 error: The following untracked working tree files would be overwritten by merge:
   Library/Formula/apple-gcc42.rb
@@ -510,7 +589,6 @@ Error: Failure while executing: git pull -q origin refs/heads/master:refs/remote
 を移動させる
 </p>
 <div class="org-src-container">
-
 <pre class="src src-screen"><span style="color: #b0c4de;">cd</span> /usr/local/Library/Formula/
 mkdir .temporary_stack
 mv apple-gcc42.rb .temporary_stack/
@@ -521,7 +599,6 @@ mv apple-gcc42.rb .temporary_stack/
 あとはいつも通り <code>brew update</code> する
 </p>
 <div class="org-src-container">
-
 <pre class="src src-screen">brew update
 </pre>
 </div>
@@ -532,7 +609,7 @@ mv apple-gcc42.rb .temporary_stack/
 </div>
 <div id="postamble" class="status">
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
-<p class="date">Created: 2014-09-09 Tue 11:32</p>
+<p class="date">Created: 2017-03-01 Wed 11:36</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
