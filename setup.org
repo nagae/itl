@@ -368,6 +368,6 @@ Host alias
 SSH 用のパスワードを毎回入力するのはかなり面倒. 下記をターミナルから実行しておくことで,
 Mac の keychain にSSHパスワードを記録しておける.
 #+BEGIN_SRC sh
-ssh-keygen -f ~/.ssh/id_rsa -p
+ssh-add -K ~/.ssh/id_rsa
 #+END_SRC
 

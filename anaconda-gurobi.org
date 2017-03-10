@@ -57,20 +57,21 @@
       anaconda2-4.0.0
       anaconda2-4.1.0
       anaconda2-4.1.1
-      anaconda2-4.2.0 # ← 最新版のバージョンを覚えておく
+      anaconda2-4.2.0
+      anaconda2-4.3.0 # ← 最新版のバージョンを覚えておく
   #+END_SRC
 - =pyenv= を使って Anaconda をインストールする
   
   ターミナルから以下を入力
   #+BEGIN_SRC sh
-    pyenv install anaconda2-4.2.0 # 上で確認した最新版を入力
-    echo 'export PATH="$PYENV_ROOT/versions/anaconda2-4.2.0/bin:$PATH"' >> ~/.bash_profile
+    pyenv install anaconda2-4.3.0 # 上で確認した最新版を入力
+    echo 'export PATH="$PYENV_ROOT/versions/anaconda2-4.3.0/bin:$PATH"' >> ~/.bash_profile
     source ~/.bash_profile
   #+END_SRC
 
 - =pyenv global= を使って Python 環境を Anaconda2系 に切り替える
   #+BEGIN_SRC sh
-    pyenv global anaconda2-4.2.0
+    pyenv global anaconda2-4.3.0
   #+END_SRC
 
 - =conda= を使ってパッケージをアップデートする
