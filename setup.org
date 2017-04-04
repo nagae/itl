@@ -216,6 +216,7 @@ Preference -> Settings -> Launch BetterTouchTools on startup をチェック
 - 長江研では [[https://bitbucket.org/nagaelab/weeklymeeting][メンバ・ページ]] を作って報告会の情報を共有している
 *** アカウント作成・ユーティリティ
 - https://bitbucket.org から sign up
+- メールアドレスには東北大学のアドレス(=xxxx@dc.tohoku.ac.jp=)を使うこと.
 - アカウントを作成したら，長江に通知．
 - Mac 用のユーティリティとして http://www.sourcetreeapp.com が用意されている
 *** 参考サイト
