@@ -181,7 +181,16 @@ sudo tlmgr conf texmf TEXMFHOME ~/Dropbox/texmf:/usr/local/share/texmf
    #+BEGIN_SRC screen
    source ~/.bash_profile
    #+END_SRC
-* otf パッケージ用のフォントの設定
+* 日本語フォントの設定(ヒラギノフォントの埋め込みを可能に)
+ターミナルから以下のコマンドを *一行ずつ* 入力して実行:
+#+BEGIN_SRC sh
+cd /usr/local/texlive/2016/texmf-dist/scripts/cjk-gs-integrate
+sudo perl cjk-gs-integrate.pl --link-texmf --force
+sudo mktexlsr
+sudo kanji-config-updmap-sys hiragino-elcapitan-pron
+#+END_SRC
+
+* COMMENT otf パッケージ用のフォントの設定
 TexLive 2013 からは =/usr/local/texlive/20**/texmf-dist/fonts/map/dvipdfmx/jfontmaps/= 以下に日本語フォントマップが入っている．
 Mac OS X 用には =hiragino/otf-hiragino.map= あたりが使える(参照：http://www.fugenji.org/~thomas/texlive-guide/font_setup.html)
 1. ヒラギノフォントにシンボリックリンクを貼る：
