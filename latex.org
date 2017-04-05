@@ -51,8 +51,9 @@
    #+END_SRC
 2. インストーラを起動
    #+BEGIN_SRC sh
-     ./install-tl
+     sudo ./install-tl
    #+END_SRC
+   
    設定画面で =TEXMFHOME= を =~/Dropbox/texmf:/usr/local/share/texmf= に変更．その方法は後述．
 
 3. 不要なファイルを消去
@@ -157,7 +158,7 @@
 *** インストールした後で TEXMFHOME を修正したい場合
 =tlmgr= でも変更できる． 
 #+BEGIN_SRC sh
-tlmgr conf texmf TEXMFHOME ~/Dropbox/texmf:/usr/local/share/texmf
+sudo tlmgr conf texmf TEXMFHOME ~/Dropbox/texmf:/usr/local/share/texmf
 #+END_SRC
 
 * パスの設定

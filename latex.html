@@ -3,23 +3,30 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
+<!-- 2017-04-05 Wed 14:31 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ITL/LaTeX編</title>
-<!-- 2015-04-06 Mon 15:35 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Takeshi Nagae" />
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Takeshi Nagae" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
   .todo   { font-family: monospace; color: red; }
-  .done   { color: green; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -46,27 +53,110 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.right  { text-align: center;  }
-  th.left   { text-align: center;   }
-  th.center { text-align: center; }
-  td.right  { text-align: right;  }
-  td.left   { text-align: left;   }
-  td.center { text-align: center; }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara:nth-child(2) { display: inline; }
-  .footpara { display: block; }
+  .footpara { display: inline; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -86,6 +176,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel=stylesheet href="style.css" type="text/css">
@@ -219,58 +310,58 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#27425;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. TeXLive 2014 のインストール</a>
+<li><a href="#orgddc89d8">1. TeXLive 2014 のインストール</a>
 <ul>
-<li><a href="#sec-1-1">1.1. 参考</a></li>
-<li><a href="#sec-1-2">1.2. 旧バージョンからのアップグレード</a></li>
-<li><a href="#sec-1-3">1.3. 本体のインストール</a></li>
+<li><a href="#org300cb14">1.1. 参考</a></li>
+<li><a href="#orga564206">1.2. 旧バージョンからのアップグレード</a></li>
+<li><a href="#orga8d1102">1.3. 本体のインストール</a></li>
 </ul>
 </li>
-<li><a href="#sec-2">2. パスの設定</a></li>
-<li><a href="#sec-3">3. otf パッケージ用のフォントの設定</a></li>
-<li><a href="#sec-4">4. コンパイルしてみる</a></li>
-<li><a href="#sec-5">5. tlmgr を使って常に最新の状態を保つ</a>
+<li><a href="#org01125b6">2. パスの設定</a></li>
+<li><a href="#orgf159fe5">3. otf パッケージ用のフォントの設定</a></li>
+<li><a href="#orga0d9992">4. コンパイルしてみる</a></li>
+<li><a href="#org38806e5">5. tlmgr を使って常に最新の状態を保つ</a>
 <ul>
-<li><a href="#sec-5-1">5.1. リポジトリを登録</a></li>
-<li><a href="#sec-5-2">5.2. tlmgr 自身の更新</a></li>
+<li><a href="#org7fd596f">5.1. リポジトリを登録</a></li>
+<li><a href="#org774cb65">5.2. tlmgr 自身の更新</a></li>
 </ul>
 </li>
-<li><a href="#sec-6">6. latexmk</a></li>
-<li><a href="#sec-7">7. 長江研標準 Tex ライブラリ</a></li>
-<li><a href="#sec-8">8. Emacs との連携</a>
+<li><a href="#org4bf40d9">6. latexmk</a></li>
+<li><a href="#orgf577c82">7. 長江研標準 Tex ライブラリ</a></li>
+<li><a href="#orgf92c5a4">8. Emacs との連携</a>
 <ul>
-<li><a href="#sec-8-1">8.1. auctex</a></li>
-<li><a href="#sec-8-2">8.2. cdLaTeX</a></li>
+<li><a href="#org5b8b5c1">8.1. auctex</a></li>
+<li><a href="#orgea8cf2d">8.2. cdLaTeX</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> TeXLive 2014 のインストール</h2>
+<div id="outline-container-orgddc89d8" class="outline-2">
+<h2 id="orgddc89d8"><span class="section-number-2">1</span> TeXLive 2014 のインストール</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 以下では， <code>texmf</code> ディレクトリを Dropbox 上に置く方法を示す．
 </p>
 </div>
-<div id="outline-container-sec-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 参考</h3>
+<div id="outline-container-org300cb14" class="outline-3">
+<h3 id="org300cb14"><span class="section-number-3">1.1</span> 参考</h3>
 <div class="outline-text-3" id="text-1-1">
 <dl class="org-dl">
-<dt> TeX Live を使おう &#x2014; Linux ユーザと Mac OS X ユーザのために --- </dt><dd><a href="http://www.fugenji.org/~thomas/texlive-guide/">http://www.fugenji.org/~thomas/texlive-guide/</a>
-</dd>
+<dt>TeX Live を使おう &#x2014; Linux ユーザと Mac OS X ユーザのために ---</dt><dd><a href="http://www.fugenji.org/~thomas/texlive-guide/">http://www.fugenji.org/~thomas/texlive-guide/</a></dd>
 </dl>
 </div>
 </div>
-<div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 旧バージョンからのアップグレード</h3>
+<div id="outline-container-orga564206" class="outline-3">
+<h3 id="orga564206"><span class="section-number-3">1.2</span> 旧バージョンからのアップグレード</h3>
 <div class="outline-text-3" id="text-1-2">
 <ol class="org-ol">
-<li>TeXLive 20** のバックアップ
+<li><p>
+TeXLive 20** のバックアップ
 ** の部分はバックアップしたいバージョンに合わせて適宜変更(<code>2012, 2013</code> など)
+</p>
 <div class="org-src-container">
-
 <pre class="src src-sh">mv /usr/local/texlive/20**/ /usr/local/texlive/.20**
 </pre>
 </div>
@@ -279,7 +370,6 @@ for the JavaScript code in this tag.
 TeXLive 2014 でうまく動かなくなったら，
 </p>
 <div class="org-src-container">
-
 <pre class="src src-sh">mv /usr/local/texlive/2014 /usr/local/texlive/.2014
 mv /usr/local/texlive/.20** /usr/local/texlive/20**
 sed <span style="color: #bdb76b;">'s|/usr/local/texlive/2014|/usr/local/texlive/20**|g'</span> ~/.bash_profile
@@ -289,59 +379,60 @@ mktexlsr
 </div>
 <p>
 とすれば TeXLive 20** に戻せるはず．
-</p>
-</li>
+</p></li>
 </ol>
 </div>
 </div>
-<div id="outline-container-sec-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> 本体のインストール</h3>
+<div id="outline-container-orga8d1102" class="outline-3">
+<h3 id="orga8d1102"><span class="section-number-3">1.3</span> 本体のインストール</h3>
 <div class="outline-text-3" id="text-1-3">
 <ol class="org-ol">
-<li>インストーラをダウンロード
+<li><p>
+インストーラをダウンロード
+</p>
 
 <p>
 長江研では <code>TEXMFHOME</code> を <code>~/Dropbox/texmf:/usr/local/share/texmf</code> とすることを推奨している．
 なお， <code>/usr/local/share/texmf</code> は後述する auctex で利用．
 </p>
 <div class="org-src-container">
-
 <pre class="src src-sh"><span style="color: #b0c4de;">cd</span> ~/Downloads
 curl -LO http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz 
 tar -xzf install-tl-unx.tar.gz
 <span style="color: #b0c4de;">cd</span> install-tl*
 </pre>
-</div>
-</li>
-<li>インストーラを起動
+</div></li>
+<li><p>
+インストーラを起動
+</p>
 <div class="org-src-container">
-
-<pre class="src src-sh">./install-tl
+<pre class="src src-sh">sudo ./install-tl
 </pre>
 </div>
+
 <p>
 設定画面で <code>TEXMFHOME</code> を <code>~/Dropbox/texmf:/usr/local/share/texmf</code> に変更．その方法は後述．
+</p></li>
+
+<li><p>
+不要なファイルを消去
 </p>
-</li>
-
-<li>不要なファイルを消去
 <div class="org-src-container">
-
 <pre class="src src-sh"><span style="color: #b0c4de;">cd</span> ~/Downloads
 rm -rf install-tl*
 </pre>
-</div>
-</li>
+</div></li>
 </ol>
 </div>
 
-<div id="outline-container-sec-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> <code>install-tl</code> で <code>TEXMFHOME</code> を <code>~/Dropbox/texmf</code> に変更する方法</h4>
+<div id="outline-container-org972546b" class="outline-4">
+<h4 id="org972546b"><span class="section-number-4">1.3.1</span> <code>install-tl</code> で <code>TEXMFHOME</code> を <code>~/Dropbox/texmf</code> に変更する方法</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <ol class="org-ol">
-<li>下記の main manu で <code>Enter command:</code> の後に <code>D RET</code> を入力(ディレクトリ)：
+<li><p>
+下記の main manu で <code>Enter command:</code> の後に <code>D RET</code> を入力(ディレクトリ)：
+</p>
 <div class="org-src-container">
-
 <pre class="src src-screen">======================&gt; TeX Live installation procedure &lt;=====================
 
 =======&gt; Note: Letters/digits<span style="color: #ffffff;"> in</span> &lt;angle brackets&gt; indicate menu items &lt;=======
@@ -368,13 +459,13 @@ Actions:
 
 Enter command:
 </pre>
-</div>
-</li>
+</div></li>
 
-<li>下記の Directories setup メニューで <code>Enter command:</code> の後に <code>7 RET</code> と入力
+<li><p>
+下記の Directories setup メニューで <code>Enter command:</code> の後に <code>7 RET</code> と入力
 (<code>TEXMFHOME</code> の設定)
+</p>
 <div class="org-src-container">
-
 <pre class="src src-screen">===============================================================================
 Directories setup:
 
@@ -396,21 +487,21 @@ Actions:
 
 Enter command:
 </pre>
-</div>
-</li>
+</div></li>
 
-<li>下記のように新しい <code>TEXMFHOME</code> ディレクトリを訊かれるので <code>~/Dropbox/texmf:/usr/local/share/texmf</code> と入力して return：
+<li><p>
+下記のように新しい <code>TEXMFHOME</code> ディレクトリを訊かれるので <code>~/Dropbox/texmf:/usr/local/share/texmf</code> と入力して return：
+</p>
 <div class="org-src-container">
-
 <pre class="src src-screen">New value for TEXMFHOME [~/texmf]:
 </pre>
-</div>
-</li>
+</div></li>
 
-<li>Directory setup の表示の <code>TEXMFHOME</code> の部分が下記のように変わったことを確認し
+<li><p>
+Directory setup の表示の <code>TEXMFHOME</code> の部分が下記のように変わったことを確認し
 たら <code>r RET</code> と入力して main menu に戻る．
+</p>
 <div class="org-src-container">
-
 <pre class="src src-screen">(&#30465;&#30053;)
 &lt;6&gt; TEXMFCONFIG:    ~/.texlive2013/texmf-config
 &lt;7&gt; TEXMFHOME:      ~/Dropbox/texmf:/usr/local/share/texmf
@@ -418,12 +509,12 @@ Enter command:
  Note: ~ will expand to $<span style="color: #9acd32;">HOME</span> (or to %USERPROFILE% on Windows)
 (&#30465;&#30053;)
 </pre>
-</div>
-</li>
+</div></li>
 
-<li>main menu で下記のように表示されたら <code>i RET</code> としてインストールを開始する
+<li><p>
+main menu で下記のように表示されたら <code>i RET</code> としてインストールを開始する
+</p>
 <div class="org-src-container">
-
 <pre class="src src-screen">======================&gt; TeX Live installation procedure &lt;=====================
 
 =======&gt; Note: Letters/digits<span style="color: #ffffff;"> in</span> &lt;angle brackets&gt; indicate menu items &lt;=======
@@ -443,21 +534,19 @@ Actions:
  &lt;H&gt; help
  &lt;Q&gt; quit
 </pre>
-</div>
-</li>
+</div></li>
 </ol>
 </div>
 </div>
 
-<div id="outline-container-sec-1-3-2" class="outline-4">
-<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> インストールした後で TEXMFHOME を修正したい場合</h4>
+<div id="outline-container-orgd53db68" class="outline-4">
+<h4 id="orgd53db68"><span class="section-number-4">1.3.2</span> インストールした後で TEXMFHOME を修正したい場合</h4>
 <div class="outline-text-4" id="text-1-3-2">
 <p>
 <code>tlmgr</code> でも変更できる． 
 </p>
 <div class="org-src-container">
-
-<pre class="src src-sh">tlmgr conf texmf TEXMFHOME ~/Dropbox/texmf:/usr/local/share/texmf
+<pre class="src src-sh">sudo tlmgr conf texmf TEXMFHOME ~/Dropbox/texmf:/usr/local/share/texmf
 </pre>
 </div>
 </div>
@@ -465,14 +554,15 @@ Actions:
 </div>
 </div>
 
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> パスの設定</h2>
+<div id="outline-container-org01125b6" class="outline-2">
+<h2 id="org01125b6"><span class="section-number-2">2</span> パスの設定</h2>
 <div class="outline-text-2" id="text-2">
 <ol class="org-ol">
-<li>TeX フォルダパスの設定
+<li><p>
+TeX フォルダパスの設定
 <code>~/.bash_profile</code> に以下を追記：
+</p>
 <div class="org-src-container">
-
 <pre class="src src-sh"><span style="color: #b0c4de;">export</span> <span style="color: #9acd32;">PATH</span>=/usr/local/texlive/2014/bin/x86_64-darwin:$<span style="color: #9acd32;">PATH</span>
 <span style="color: #b0c4de;">export</span> <span style="color: #9acd32;">MANPATH</span>=/usr/local/texlive/2014/texmf/doc/man:$<span style="color: #9acd32;">MANPATH</span>
 <span style="color: #b0c4de;">export</span> <span style="color: #9acd32;">INFOPATH</span>=/usr/local/texlive/2014/texmf-dist/doc/info:$<span style="color: #9acd32;">INFOPATH</span>
@@ -484,34 +574,33 @@ TeXLive 2013 で既に <code>PATH</code> などを設定済みなら，ターミ
 い．
 </p>
 <div class="org-src-container">
-
 <pre class="src src-sh">sed <span style="color: #bdb76b;">'s|/usr/local/texlive/2013|/usr/local/texlive/2014|g'</span> ~/.bash_profile
 </pre>
-</div>
-</li>
+</div></li>
 
-<li>パスを反映
+<li><p>
+パスを反映
 どのフォルダでも構わないのでターミナルから以下を実行：
+</p>
 <div class="org-src-container">
-
 <pre class="src src-screen"><span style="color: #b0c4de;">source</span> ~/.bash_profile
 </pre>
-</div>
-</li>
+</div></li>
 </ol>
 </div>
 </div>
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> otf パッケージ用のフォントの設定</h2>
+<div id="outline-container-orgf159fe5" class="outline-2">
+<h2 id="orgf159fe5"><span class="section-number-2">3</span> otf パッケージ用のフォントの設定</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 TexLive 2013 からは <code>/usr/local/texlive/20**/texmf-dist/fonts/map/dvipdfmx/jfontmaps/</code> 以下に日本語フォントマップが入っている．
 Mac OS X 用には <code>hiragino/otf-hiragino.map</code> あたりが使える(参照：<a href="http://www.fugenji.org/~thomas/texlive-guide/font_setup.html">http://www.fugenji.org/~thomas/texlive-guide/font_setup.html</a>)
 </p>
 <ol class="org-ol">
-<li>ヒラギノフォントにシンボリックリンクを貼る：
+<li><p>
+ヒラギノフォントにシンボリックリンクを貼る：
+</p>
 <div class="org-src-container">
-
 <pre class="src src-sh">mkdir -p /usr/local/texlive/texmf-local/fonts/opentype/public/hiragino/
 <span style="color: #b0c4de;">cd</span> /usr/local/texlive/texmf-local/fonts/opentype/public/hiragino/
 ln -fs <span style="color: #bdb76b;">"/Library/Fonts/&#12498;&#12521;&#12462;&#12494;&#26126;&#26397; Pro W3.otf"</span> ./HiraMinPro-W3.otf
@@ -521,34 +610,32 @@ ln -fs <span style="color: #bdb76b;">"/Library/Fonts/&#12498;&#12521;&#12462;&#1
 ln -fs <span style="color: #bdb76b;">"/Library/Fonts/&#12498;&#12521;&#12462;&#12494;&#35282;&#12468; Pro W6.otf"</span> ./HiraKakuPro-W6.otf
 ln -fs <span style="color: #bdb76b;">"/Library/Fonts/&#12498;&#12521;&#12462;&#12494;&#35282;&#12468; Std W8.otf"</span> ./HiraKakuStd-W8.otf
 </pre>
-</div>
-</li>
-<li>Tex用のパスを更新：
+</div></li>
+<li><p>
+Tex用のパスを更新：
 どのフォルダからでも構わないのでターミナルから以下を実行：
+</p>
 <div class="org-src-container">
-
 <pre class="src src-sh">mktexlsr
 </pre>
-</div>
-</li>
-<li>デフォルトのフォントマップを <code>otf-hiragino</code> にする
+</div></li>
+<li><p>
+デフォルトのフォントマップを <code>otf-hiragino</code> にする
+</p>
 <div class="org-src-container">
-
 <pre class="src src-sh">kanji-config-updmap hiragino
 </pre>
-</div>
-</li>
+</div></li>
 </ol>
 </div>
 </div>
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> コンパイルしてみる</h2>
+<div id="outline-container-orga0d9992" class="outline-2">
+<h2 id="orga0d9992"><span class="section-number-2">4</span> コンパイルしてみる</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 以下をターミナルから実行してみる
 </p>
 <div class="org-src-container">
-
 <pre class="src src-sh">mkdir -p ~/Downloads/sampletex
 <span style="color: #b0c4de;">cd</span> ~/Downloads/sampletex
 curl -O https://gist.githubusercontent.com/nagae/1350983/raw/sample.tex
@@ -559,60 +646,59 @@ open sample.pdf
 </div>
 </div>
 </div>
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> tlmgr を使って常に最新の状態を保つ</h2>
+<div id="outline-container-org38806e5" class="outline-2">
+<h2 id="org38806e5"><span class="section-number-2">5</span> tlmgr を使って常に最新の状態を保つ</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 上述の方法によって tlmgr もインストールされる．これを使えば，TeX を常に最新の状態に保てる．
 </p>
 </div>
-<div id="outline-container-sec-5-1" class="outline-3">
-<h3 id="sec-5-1"><span class="section-number-3">5.1</span> リポジトリを登録</h3>
+<div id="outline-container-org7fd596f" class="outline-3">
+<h3 id="org7fd596f"><span class="section-number-3">5.1</span> リポジトリを登録</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 tlmgr が参照するリポジトリに <code>mirror.ctan.org</code> を指定しておく(<a href="http://www.fugenji.org/~thomas/texlive-guide/tlmgr.html">参考</a>)．この操作は初回に一度行えばよい．
 </p>
 <div class="org-src-container">
-
 <pre class="src src-sh">tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-5-2" class="outline-3">
-<h3 id="sec-5-2"><span class="section-number-3">5.2</span> tlmgr 自身の更新</h3>
+<div id="outline-container-org774cb65" class="outline-3">
+<h3 id="org774cb65"><span class="section-number-3">5.2</span> tlmgr 自身の更新</h3>
 <div class="outline-text-3" id="text-5-2">
 <ul class="org-ul">
-<li>tlmgr 自身とシステムを同時に更新
+<li><p>
+tlmgr 自身とシステムを同時に更新
+</p>
 <div class="org-src-container">
-
 <pre class="src src-sh">tlmgr update --self --all
 </pre>
-</div>
-</li>
+</div></li>
 </ul>
 </div>
-<div id="outline-container-sec-5-2-1" class="outline-4">
-<h4 id="sec-5-2-1"><span class="section-number-4">5.2.1</span> 知られている問題：</h4>
+<div id="outline-container-org03e8102" class="outline-4">
+<h4 id="org03e8102"><span class="section-number-4">5.2.1</span> 知られている問題：</h4>
 <div class="outline-text-4" id="text-5-2-1">
 <ul class="org-ul">
-<li>2013年9月頃 <code>Unknown docfile tag:</code>
+<li><p>
+2013年9月頃 <code>Unknown docfile tag:</code>
+</p>
 <div class="org-src-container">
-
 <pre class="src src-sh">Unknown docfile tag:  texmf-dist/doc/latex/pythontex/pythontex_quickstart.pdf <span style="color: #9acd32;">details</span>=<span style="color: #bdb76b;">""</span>Quick start<span style="color: #bdb76b;">" documentation"</span> at /usr/local/texlive/2013/tlpkg/TeXLive/TLPOBJ.pm line 127
 </pre>
 </div>
 <p>
 というメッセージが出て止まる場合の対処法は <a href="http://tex.stackexchange.com/a/133690/36810">http://tex.stackexchange.com/a/133690/36810</a>
-</p>
-</li>
+</p></li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6"><span class="section-number-2">6</span> latexmk</h2>
+<div id="outline-container-org4bf40d9" class="outline-2">
+<h2 id="org4bf40d9"><span class="section-number-2">6</span> latexmk</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 latexmk は TeX の処理を自動化してくれるスクリプト．
@@ -624,7 +710,6 @@ latexmk は TeX の処理を自動化してくれるスクリプト．
 もしくは，ターミナルから
 </p>
 <div class="org-src-container">
-
 <pre class="src src-sh"><span style="color: #b0c4de;">cd</span> ~/
 curl -LO curl -LO https://gist.github.com/nagae/3293112/raw/.latexmkrc
 </pre>
@@ -633,7 +718,6 @@ curl -LO curl -LO https://gist.github.com/nagae/3293112/raw/.latexmkrc
 としておくと，
 </p>
 <div class="org-src-container">
-
 <pre class="src src-sh">$ latexmk sample.tex
 </pre>
 </div>
@@ -641,7 +725,6 @@ curl -LO curl -LO https://gist.github.com/nagae/3293112/raw/.latexmkrc
 とするだけで <code>platex</code> → <code>pbitex</code> → <code>platex</code> → <code>dvipdfmx</code> と処理を続けて pdf を作成してくれる．さらに，
 </p>
 <div class="org-src-container">
-
 <pre class="src src-sh">$ latexmk -pv sample.tex
 </pre>
 </div>
@@ -651,238 +734,225 @@ curl -LO curl -LO https://gist.github.com/nagae/3293112/raw/.latexmkrc
 </div>
 </div>
 
-<div id="outline-container-sec-7" class="outline-2">
-<h2 id="sec-7"><span class="section-number-2">7</span> 長江研標準 Tex ライブラリ</h2>
+<div id="outline-container-orgf577c82" class="outline-2">
+<h2 id="orgf577c82"><span class="section-number-2">7</span> 長江研標準 Tex ライブラリ</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 長江研ではユーザー個別の TeX ライブラリの置き場 <code>TEXMFHOME</code> として
 <code>~/Dropbox/texmf/tex</code> を用いる．
 </p>
 <ul class="org-ul">
-<li>使い方は <a href="http://github.com/nagae/texmf">http://github.com/nagae/texmf</a> から．
-</li>
+<li>使い方は <a href="http://github.com/nagae/texmf">http://github.com/nagae/texmf</a> から．</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-8" class="outline-2">
-<h2 id="sec-8"><span class="section-number-2">8</span> Emacs との連携</h2>
+<div id="outline-container-orgf92c5a4" class="outline-2">
+<h2 id="orgf92c5a4"><span class="section-number-2">8</span> Emacs との連携</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 Emacs 上でのLaTeX ソースの編集に支援ツールは必須
 </p>
 </div>
-<div id="outline-container-sec-8-1" class="outline-3">
-<h3 id="sec-8-1"><span class="section-number-3">8.1</span> auctex</h3>
+<div id="outline-container-org5b8b5c1" class="outline-3">
+<h3 id="org5b8b5c1"><span class="section-number-3">8.1</span> auctex</h3>
 <div class="outline-text-3" id="text-8-1">
-</div><div id="outline-container-sec-8-1-1" class="outline-4">
-<h4 id="sec-8-1-1"><span class="section-number-4">8.1.1</span> 特徴</h4>
+</div><div id="outline-container-org0c7adb8" class="outline-4">
+<h4 id="org0c7adb8"><span class="section-number-4">8.1.1</span> 特徴</h4>
 <div class="outline-text-4" id="text-8-1-1">
 <p>
 Emacs 上での LaTeX 編集を支援．C-c C-c で compile したり，C-c C-p C-d で preview 見たりできる．
 </p>
 </div>
 </div>
-<div id="outline-container-sec-8-1-2" class="outline-4">
-<h4 id="sec-8-1-2"><span class="section-number-4">8.1.2</span> 参考</h4>
+<div id="outline-container-org783857f" class="outline-4">
+<h4 id="org783857f"><span class="section-number-4">8.1.2</span> 参考</h4>
 <div class="outline-text-4" id="text-8-1-2">
 <dl class="org-dl">
-<dt> 公式サイト </dt><dd><a href="http://www.gnu.org/software/auctex/">http://www.gnu.org/software/auctex/</a>
-</dd>
-<dt> EmacsWiki </dt><dd><a href="http://emacswiki.org/emacs/AUCTeX">http://emacswiki.org/emacs/AUCTeX</a>
-</dd>
-<dt> 奥村先生 </dt><dd><a href="http://oku.edu.mie-u.ac.jp/~okumura/texwiki/?AUCTeX">http://oku.edu.mie-u.ac.jp/~okumura/texwiki/?AUCTeX</a>
-</dd>
+<dt>公式サイト</dt><dd><a href="http://www.gnu.org/software/auctex/">http://www.gnu.org/software/auctex/</a></dd>
+<dt>EmacsWiki</dt><dd><a href="http://emacswiki.org/emacs/AUCTeX">http://emacswiki.org/emacs/AUCTeX</a></dd>
+<dt>奥村先生</dt><dd><a href="http://oku.edu.mie-u.ac.jp/~okumura/texwiki/?AUCTeX">http://oku.edu.mie-u.ac.jp/~okumura/texwiki/?AUCTeX</a></dd>
 </dl>
 </div>
 </div>
-<div id="outline-container-sec-8-1-3" class="outline-4">
-<h4 id="sec-8-1-3"><span class="section-number-4">8.1.3</span> インストール</h4>
+<div id="outline-container-org43343bb" class="outline-4">
+<h4 id="org43343bb"><span class="section-number-4">8.1.3</span> インストール</h4>
 <div class="outline-text-4" id="text-8-1-3">
 <ul class="org-ul">
-<li>ELPA からインストール可能
-</li>
-<li>Emacs を立ち上げ，以下を入力して RET
+<li>ELPA からインストール可能</li>
+<li><p>
+Emacs を立ち上げ，以下を入力して RET
+</p>
 <div class="org-src-container">
-
 <pre class="src src-example">M-x package-install auctex
 </pre>
-</div>
-</li>
+</div></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-8-1-4" class="outline-4">
-<h4 id="sec-8-1-4"><span class="section-number-4">8.1.4</span> 使い方</h4>
+<div id="outline-container-org55f7681" class="outline-4">
+<h4 id="org55f7681"><span class="section-number-4">8.1.4</span> 使い方</h4>
 <div class="outline-text-4" id="text-8-1-4">
-</div><ul class="org-ul"><li><a id="sec-8-1-4-1" name="sec-8-1-4-1"></a>章・節，環境，マクロの入力<br  /><div class="outline-text-5" id="text-8-1-4-1">
+</div><ul class="org-ul"><li><a id="org9ddd758"></a>章・節，環境，マクロの入力<br /><div class="outline-text-5" id="text-org9ddd758">
 <ul class="org-ul">
-<li>TABで補完が可能．
-</li>
-<li>カーソルの上下(もしくは <code>M-p, M-n</code>)で履歴を選択可能．
-</li>
+<li>TABで補完が可能．</li>
+<li>カーソルの上下(もしくは <code>M-p, M-n</code>)で履歴を選択可能．</li>
 </ul>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="left" />
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="left">ショートカット</th>
-<th scope="col" class="left">機能</th>
+<th scope="col" class="org-left">ショートカット</th>
+<th scope="col" class="org-left">機能</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="left"><code>C-c C-s</code></td>
-<td class="left">章(<code>chapter</code>)，節(<code>section</code>)，小節(<code>subsection</code>)を入力</td>
+<td class="org-left"><code>C-c C-s</code></td>
+<td class="org-left">章(<code>chapter</code>)，節(<code>section</code>)，小節(<code>subsection</code>)を入力</td>
 </tr>
 
 <tr>
-<td class="left"><code>C-c C-e</code></td>
-<td class="left">環境(<code>\begin{}...\end{}</code>)を入力</td>
+<td class="org-left"><code>C-c C-e</code></td>
+<td class="org-left">環境(<code>\begin{}...\end{}</code>)を入力</td>
 </tr>
 
 <tr>
-<td class="left"><code>C-c C-m</code> もしくは <code>C-c RET</code></td>
-<td class="left">マクロ(eg. <code>\ret{}, \centering{}</code>)を挿入</td>
+<td class="org-left"><code>C-c C-m</code> もしくは <code>C-c RET</code></td>
+<td class="org-left">マクロ(eg. <code>\ret{}, \centering{}</code>)を挿入</td>
 </tr>
 </tbody>
 </table>
-</div>
-</li>
-<li><a id="sec-8-1-4-2" name="sec-8-1-4-2"></a>フォント変更<br  /><div class="outline-text-5" id="text-8-1-4-2">
+</div></li>
+<li><a id="org33aed6a"></a>フォント変更<br /><div class="outline-text-5" id="text-org33aed6a">
 <ul class="org-ul">
-<li>何も選択せずにショートカットを入力すると LaTeX コマンドだけを入力し，括弧内で待機
-</li>
-<li>文字列を選択してショートカットを入力すると，当該文字を LaTeX コマンド内に内挿
-</li>
+<li>何も選択せずにショートカットを入力すると LaTeX コマンドだけを入力し，括弧内で待機</li>
+<li>文字列を選択してショートカットを入力すると，当該文字を LaTeX コマンド内に内挿</li>
 </ul>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="left" />
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="left">ショートカット</th>
-<th scope="col" class="left">機能</th>
+<th scope="col" class="org-left">ショートカット</th>
+<th scope="col" class="org-left">機能</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="left"><code>C-c C-f C-b</code></td>
-<td class="left">太字 <code>\textbf{*}</code></td>
+<td class="org-left"><code>C-c C-f C-b</code></td>
+<td class="org-left">太字 <code>\textbf{*}</code></td>
 </tr>
 
 <tr>
-<td class="left"><code>C-c C-f C-i</code></td>
-<td class="left">イタリック <code>\textit{*}</code></td>
+<td class="org-left"><code>C-c C-f C-i</code></td>
+<td class="org-left">イタリック <code>\textit{*}</code></td>
 </tr>
 
 <tr>
-<td class="left"><code>C-c C-f C-e</code></td>
-<td class="left">強調 <code>\emph{*}</code></td>
+<td class="org-left"><code>C-c C-f C-e</code></td>
+<td class="org-left">強調 <code>\emph{*}</code></td>
 </tr>
 
 <tr>
-<td class="left"><code>C-c C-f C-s</code></td>
-<td class="left">斜体 <code>\textsl{*}</code></td>
+<td class="org-left"><code>C-c C-f C-s</code></td>
+<td class="org-left">斜体 <code>\textsl{*}</code></td>
 </tr>
 
 <tr>
-<td class="left"><code>C-c C-f C-r</code></td>
-<td class="left">ローマン <code>\textrm{*}</code></td>
+<td class="org-left"><code>C-c C-f C-r</code></td>
+<td class="org-left">ローマン <code>\textrm{*}</code></td>
 </tr>
 
 <tr>
-<td class="left"><code>C-c C-f C-f</code></td>
-<td class="left">サンセリフ．修飾の無い(Sans-serif)=ゴシック体 <code>\textsf{*}</code></td>
+<td class="org-left"><code>C-c C-f C-f</code></td>
+<td class="org-left">サンセリフ．修飾の無い(Sans-serif)=ゴシック体 <code>\textsf{*}</code></td>
 </tr>
 
 <tr>
-<td class="left"><code>C-c C-f C-t</code></td>
-<td class="left">タイプライター <code>\texttt{*}</code></td>
+<td class="org-left"><code>C-c C-f C-t</code></td>
+<td class="org-left">タイプライター <code>\texttt{*}</code></td>
 </tr>
 
 <tr>
-<td class="left"><code>C-c C-f C-c</code></td>
-<td class="left">スモールキャピタル(Small cap.)．小文字を「小さい大文字」で表記． <code>\textsc{*}</code></td>
+<td class="org-left"><code>C-c C-f C-c</code></td>
+<td class="org-left">スモールキャピタル(Small cap.)．小文字を「小さい大文字」で表記． <code>\textsc{*}</code></td>
 </tr>
 
 <tr>
-<td class="left"><code>C-c C-f C-d</code></td>
-<td class="left">フォント修飾を削除</td>
+<td class="org-left"><code>C-c C-f C-d</code></td>
+<td class="org-left">フォント修飾を削除</td>
 </tr>
 </tbody>
 </table>
-</div>
-</li>
-<li><a id="sec-8-1-4-3" name="sec-8-1-4-3"></a>コメント<br  /><div class="outline-text-5" id="text-8-1-4-3">
+</div></li>
+<li><a id="org001ed75"></a>コメント<br /><div class="outline-text-5" id="text-org001ed75">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="left" />
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="left">ショートカット</th>
-<th scope="col" class="left">機能</th>
+<th scope="col" class="org-left">ショートカット</th>
+<th scope="col" class="org-left">機能</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="left"><code>C-c ;</code></td>
-<td class="left">選択したリージョンをコメントアウト</td>
+<td class="org-left"><code>C-c ;</code></td>
+<td class="org-left">選択したリージョンをコメントアウト</td>
 </tr>
 
 <tr>
-<td class="left"><code>C-c %</code></td>
-<td class="left">現在の段落をコメントアウト</td>
+<td class="org-left"><code>C-c %</code></td>
+<td class="org-left">現在の段落をコメントアウト</td>
 </tr>
 </tbody>
 </table>
-</div>
-</li>
-<li><a id="sec-8-1-4-4" name="sec-8-1-4-4"></a>マーク<br  /><div class="outline-text-5" id="text-8-1-4-4">
+</div></li>
+<li><a id="orgba7786e"></a>マーク<br /><div class="outline-text-5" id="text-orgba7786e">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="left" />
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="left">ショートカット</th>
-<th scope="col" class="left">機能</th>
+<th scope="col" class="org-left">ショートカット</th>
+<th scope="col" class="org-left">機能</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="left"><code>C-c *</code></td>
-<td class="left">現在のセクションをマーク</td>
+<td class="org-left"><code>C-c *</code></td>
+<td class="org-left">現在のセクションをマーク</td>
 </tr>
 
 <tr>
-<td class="left"><code>C-c .</code></td>
-<td class="left">現在の環境をマーク</td>
+<td class="org-left"><code>C-c .</code></td>
+<td class="org-left">現在の環境をマーク</td>
 </tr>
 </tbody>
 </table>
-</div>
-</li>
-<li><a id="sec-8-1-4-5" name="sec-8-1-4-5"></a>処理<br  /><div class="outline-text-5" id="text-8-1-4-5">
+</div></li>
+<li><a id="orgbdd6a07"></a>処理<br /><div class="outline-text-5" id="text-orgbdd6a07">
 <p>
 処理コマンドは TAB補完および上下(<code>M-p, M-n</code>)履歴表示が可能
 </p>
@@ -890,46 +960,46 @@ Emacs 上での LaTeX 編集を支援．C-c C-c で compile したり，C-c C-p 
 
 
 <colgroup>
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="left" />
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="left">ショートカット</th>
-<th scope="col" class="left">機能</th>
+<th scope="col" class="org-left">ショートカット</th>
+<th scope="col" class="org-left">機能</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="left"><code>C-c C-c</code></td>
-<td class="left">文章全体を処理(※)</td>
+<td class="org-left"><code>C-c C-c</code></td>
+<td class="org-left">文章全体を処理(※)</td>
 </tr>
 
 <tr>
-<td class="left"><code>C-c C-r</code></td>
-<td class="left">選択したリージョンのみを処理(※)</td>
+<td class="org-left"><code>C-c C-r</code></td>
+<td class="org-left">選択したリージョンのみを処理(※)</td>
 </tr>
 
 <tr>
-<td class="left"><code>C-c C-b</code></td>
-<td class="left">現在のバッファのみを処理(※)</td>
+<td class="org-left"><code>C-c C-b</code></td>
+<td class="org-left">現在のバッファのみを処理(※)</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
-<td class="left">=C-c '=</td>
-<td class="left">エラーを表示</td>
+<td class="org-left"><code>C-c '</code></td>
+<td class="org-left">エラーを表示</td>
 </tr>
 
 <tr>
-<td class="left">=C-x '=</td>
-<td class="left">次のエラーを表示</td>
+<td class="org-left"><code>C-x '</code></td>
+<td class="org-left">次のエラーを表示</td>
 </tr>
 
 <tr>
-<td class="left">=C-u C-x '=</td>
-<td class="left">前のエラーを表示</td>
+<td class="org-left"><code>C-u C-x '</code></td>
+<td class="org-left">前のエラーを表示</td>
 </tr>
 </tbody>
 </table>
@@ -949,102 +1019,101 @@ dvipdfmx 	latexmk 	pBibTeX 	pLaTeX
 
 
 <colgroup>
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="left" />
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="left">コマンド</th>
-<th scope="col" class="left">処理内容</th>
+<th scope="col" class="org-left">コマンド</th>
+<th scope="col" class="org-left">処理内容</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="left">pLaTeX</td>
-<td class="left">pLaTeX を実行(.tex → .dvi)</td>
+<td class="org-left">pLaTeX</td>
+<td class="org-left">pLaTeX を実行(.tex → .dvi)</td>
 </tr>
 
 <tr>
-<td class="left">pBibTeX</td>
-<td class="left">pBibTeX を実行(.aux ファイルを元に .bbl を生成)</td>
+<td class="org-left">pBibTeX</td>
+<td class="org-left">pBibTeX を実行(.aux ファイルを元に .bbl を生成)</td>
 </tr>
 
 <tr>
-<td class="left">dvipdfmx</td>
-<td class="left">dvipdfmx を実行(.dvi → .pdf)</td>
+<td class="org-left">dvipdfmx</td>
+<td class="org-left">dvipdfmx を実行(.dvi → .pdf)</td>
 </tr>
 
 <tr>
-<td class="left">latexmk</td>
-<td class="left">latexmk を実行(<code>~/.latexmkrc</code> で処理内容を設定可能)</td>
+<td class="org-left">latexmk</td>
+<td class="org-left">latexmk を実行(<code>~/.latexmkrc</code> で処理内容を設定可能)</td>
 </tr>
 
 <tr>
-<td class="left">View</td>
-<td class="left">(<code>open foo.pdf</code> などを呼び出せる)</td>
+<td class="org-left">View</td>
+<td class="org-left">(<code>open foo.pdf</code> などを呼び出せる)</td>
 </tr>
 
 <tr>
-<td class="left">Other</td>
-<td class="left">任意のコマンドを実行(e.g. <code>open -a Preview foo.pdf</code> などを呼び出せる)</td>
+<td class="org-left">Other</td>
+<td class="org-left">任意のコマンドを実行(e.g. <code>open -a Preview foo.pdf</code> などを呼び出せる)</td>
 </tr>
 
 <tr>
-<td class="left">direct</td>
-<td class="left">TeX ファイルを処理した後，PDF ファイルを開く(latexmk の後， <code>open -a Preview foo.pdf</code> を実行)</td>
+<td class="org-left">direct</td>
+<td class="org-left">TeX ファイルを処理した後，PDF ファイルを開く(latexmk の後， <code>open -a Preview foo.pdf</code> を実行)</td>
 </tr>
 
 <tr>
-<td class="left">Check</td>
-<td class="left">lacheck による文法チェック</td>
+<td class="org-left">Check</td>
+<td class="org-left">lacheck による文法チェック</td>
 </tr>
 
 <tr>
-<td class="left">Clean</td>
-<td class="left">TeX 処理時に生成される中間ファイル(.aux, .toc, .log, .bbl など)を削除</td>
+<td class="org-left">Clean</td>
+<td class="org-left">TeX 処理時に生成される中間ファイル(.aux, .toc, .log, .bbl など)を削除</td>
 </tr>
 
 <tr>
-<td class="left">Clean All</td>
-<td class="left">上記中間ファイルに加えて .dvi, .ps, .pdf などのファイルも削除</td>
+<td class="org-left">Clean All</td>
+<td class="org-left">上記中間ファイルに加えて .dvi, .ps, .pdf などのファイルも削除</td>
 </tr>
 
 <tr>
-<td class="left">Spell</td>
-<td class="left">スペルチェック</td>
+<td class="org-left">Spell</td>
+<td class="org-left">スペルチェック</td>
 </tr>
 </tbody>
 </table>
+</div></li></ul>
 </div>
-</li></ul>
 </div>
-</div>
-<div id="outline-container-sec-8-2" class="outline-3">
-<h3 id="sec-8-2"><span class="section-number-3">8.2</span> cdLaTeX</h3>
+
+<div id="outline-container-orgea8cf2d" class="outline-3">
+<h3 id="orgea8cf2d"><span class="section-number-3">8.2</span> cdLaTeX</h3>
 <div class="outline-text-3" id="text-8-2">
-</div><div id="outline-container-sec-8-2-1" class="outline-4">
-<h4 id="sec-8-2-1"><span class="section-number-4">8.2.1</span> 特徴</h4>
+</div><div id="outline-container-org94f8eeb" class="outline-4">
+<h4 id="org94f8eeb"><span class="section-number-4">8.2.1</span> 特徴</h4>
 <div class="outline-text-4" id="text-8-2-1">
 <p>
 auctex と同様の機能を持つが minor-mode のため，org-mode などと併用できる
 </p>
 </div>
 </div>
-<div id="outline-container-sec-8-2-2" class="outline-4">
-<h4 id="sec-8-2-2"><span class="section-number-4">8.2.2</span> インストール</h4>
+<div id="outline-container-orga0316cb" class="outline-4">
+<h4 id="orga0316cb"><span class="section-number-4">8.2.2</span> インストール</h4>
 <div class="outline-text-4" id="text-8-2-2">
 <ul class="org-ul">
-<li>ELPA のバージョン(4.0)は古くて使えないので，git から最新版を取ってくる必要がある．
-</li>
-<li>ターミナルから以下を実行
+<li>ELPA のバージョン(4.0)は古くて使えないので，git から最新版を取ってくる必要がある．</li>
+<li><p>
+ターミナルから以下を実行
+</p>
 <div class="org-src-container">
-
 <pre class="src src-screen"><span style="color: #b0c4de;">cd</span> ~/Dropbox/.emacs.d/
 git submodule add git@github.com:emacsmirror/cdlatex.git lisp/cdlatex
 </pre>
-</div>
-</li>
+</div></li>
 </ul>
 </div>
 </div>
@@ -1053,7 +1122,7 @@ git submodule add git@github.com:emacsmirror/cdlatex.git lisp/cdlatex
 </div>
 <div id="postamble" class="status">
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
-<p class="date">Created: 2015-04-06 Mon 15:35</p>
+<p class="date">Created: 2017-04-05 Wed 14:31</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
