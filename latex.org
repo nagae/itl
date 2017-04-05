@@ -165,15 +165,15 @@ sudo tlmgr conf texmf TEXMFHOME ~/Dropbox/texmf:/usr/local/share/texmf
 6. TeX フォルダパスの設定
    =~/.bash_profile= に以下を追記：
    #+BEGIN_SRC sh
-     export PATH=/usr/local/texlive/2014/bin/x86_64-darwin:$PATH
-     export MANPATH=/usr/local/texlive/2014/texmf/doc/man:$MANPATH
-     export INFOPATH=/usr/local/texlive/2014/texmf-dist/doc/info:$INFOPATH
+     export PATH=/usr/local/texlive/2016/bin/x86_64-darwin:$PATH
+     export MANPATH=/usr/local/texlive/2016/texmf/doc/man:$MANPATH
+     export INFOPATH=/usr/local/texlive/2016/texmf-dist/doc/info:$INFOPATH
    #+END_SRC
 
-   TeXLive 2013 で既に =PATH= などを設定済みなら，ターミナルから以下を実行すればよ
+   TeXLive 2015 で既に =PATH= などを設定済みなら，ターミナルから以下を実行すればよ
    い．
    #+BEGIN_SRC sh
-   sed 's|/usr/local/texlive/2013|/usr/local/texlive/2014|g' ~/.bash_profile
+   sed 's|/usr/local/texlive/2015|/usr/local/texlive/2016|g' ~/.bash_profile
    #+END_SRC
 
 7. パスを反映
@@ -228,12 +228,12 @@ Mac OS X 用には =hiragino/otf-hiragino.map= あたりが使える(参照：ht
 ** リポジトリを登録
 tlmgr が参照するリポジトリに =mirror.ctan.org= を指定しておく([[http://www.fugenji.org/~thomas/texlive-guide/tlmgr.html][参考]])．この操作は初回に一度行えばよい．
 #+BEGIN_SRC sh
-tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet
+sudo tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet
 #+END_SRC
 ** tlmgr 自身の更新
 - tlmgr 自身とシステムを同時に更新
   #+BEGIN_SRC sh
-  tlmgr update --self --all
+  sudo tlmgr update --self --all
   #+END_SRC
 *** 知られている問題：
 - 2013年9月頃 =Unknown docfile tag:=
