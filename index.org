@@ -24,6 +24,7 @@
 - [[./password.org][少しはマシなパスワードの設定方法]]
 * 環境を整えよう
 - [[./setup.org][Mac のセットアップ，基本的なソフトウェアのインストール]]
+- [[./repository.org][Github・Bitbucket のセットアップと SourceTree]]
 - [[./homebrew.html][パッケージ管理システム homebrew の導入]]
 - [[./emacs.org][最強のエディタ，Emacs のインストール]]
 - [[./latex.org][LaTeX (文章執筆＆プレゼン作成用)のインストール]]
