@@ -53,10 +53,12 @@ sudo tlmgr conf texmf TEXMFHOME "~/Dropbox/texmf/"
 #+END_SRC
 
 ** フォントの設定
-https://texwiki.texjp.org/?TeX%20Live%2FMac#elcapitan
+- https://texwiki.texjp.org/?TeX%20Live%2FMac#elcapitan
+- https://qiita.com/hideaki_polisci/items/3afd204449c6cdd995c9
+
+以下のコマンドを1行づつ実行する:
 #+BEGIN_SRC sh
-cd /usr/local/texlive/2017/texmf-dist/scripts/cjk-gs-integrate
-sudo perl cjk-gs-integrate.pl --link-texmf --force
+sudo cjk-gs-integrate --link-texmf --force
 sudo mktexlsr
 sudo updmap-sys --setoption jaEmbed hiragino-elcapitan-pron
 #+END_SRC
