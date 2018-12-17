@@ -58,7 +58,8 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
    curl https://gist.githubusercontent.com/nagae/bcc31992f4a864cd002a1f91ee9c275d/raw/94bd7d3e65b214242ef4dca9f95bba23bcb74708/Brewfile -o ~/Brewfile
    brew bundle
    #+END_SRC
-   自分が現在インストールしているパッケージを出力するには =brew bundle dump= とすればよい．
+   上述でインストールされる [[https://gist.github.com/nagae/bcc31992f4a864cd002a1f91ee9c275d][パッケージ一覧]] 
+   - 自分が現在インストールしているパッケージを出力するには =brew bundle dump= とすればよい．
 
 * Homebrew の使い方
 ** ワークフロー
