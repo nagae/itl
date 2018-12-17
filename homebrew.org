@@ -31,7 +31,6 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
 * Homebrew 本体のインストール
 ** 参考サイト
 - 本家 :: http://mxcl.github.com/homebrew/
-- https://github.com/mxcl/homebrew/wiki/installation
 ** COMMENT Command Line Tools for Xcode のインストール
 - 事前に [[https://appleid.apple.com/][Apple ID]] の登録が必要．
 - https://developer.apple.com/downloads/index.action にアクセス．Apple ID での Sign in を求められる．
@@ -54,32 +53,13 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
    brew doctor
    #+END_SRC
    =Your system is ready to brew= と表示されれば OK.
-3) =~/.bash_profile= (無ければ新たに作成し)に以下を追記：
-   #+begin_src screen
-   export PATH=/usr/local/bin:$PATH
-   #+end_src
-   上記を実行する方法は2通りある：
-   - ターミナル上で Emacs を起動して編集する方法 :: 
-     1) まず，ターミナル上で
-        #+BEGIN_SRC screen
-        emacs ~/.bash_profile
-        #+END_SRC
-        として，Emacs を起動する．
-     2) 上記をコピー＆ペーストする．
-     3) 保存(C-x C-s: Ctrlを押しながら x, s とタイプする)した後，
-        Emacs を終了(C-x C-c; Ctrl を押しながら x, cとタイプ)する．
-   - ターミナルから実行する方法 :: 
-     1) ターミナル上で以下を実行する．
-        #+BEGIN_SRC screen
-          echo export PATH='/usr/local/bin:$PATH' >> ~/.bash_profile
-        #+END_SRC
-4) =brew tap= コマンドを使ってリポジトリを追加する：
+3) =brew bundle= を使って必要なパッケージを一気にインストール
    #+BEGIN_SRC sh
-     brew tap homebrew/dupes         # OS X に標準で登載されているコマンドの最新版を提供
-     brew tap homebrew/versions      # 過去の version を提供
-     brew tap homebrew/science       # 科学技術計算に使えるパッケージを提供
-     brew tap homebrew/python        # Python 用のパッケージを提供
+   curl https://gist.githubusercontent.com/nagae/bcc31992f4a864cd002a1f91ee9c275d/raw/94bd7d3e65b214242ef4dca9f95bba23bcb74708/Brewfile -o ~/Brewfile
+   brew bundle
    #+END_SRC
+   自分が現在インストールしているパッケージを出力するには =brew bundle dump= とすればよい．
+
 * Homebrew の使い方
 ** ワークフロー
 - 必要なツールをインストール

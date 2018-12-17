@@ -110,10 +110,9 @@ curl -O https://gist.githubusercontent.com/nagae/10461176/raw/.inputrc
 - Trackpad による様々なジェスチャーを各種機能に設定できる
 ** インストール方法
 *** マウスを使う場合
-- http://www.boastr.de/ から BetterTouchTool.zip をダウンロード
-- BetterTouchTool.zip をダブルクリック
-- 生成された BetterTouchTool.app を =/Applications/= フォルダに移動．
-*** ターミナルだけでも行える
+- https://folivora.ai から DOWNLOAD TRIAL (45 DAYS)をダウンロード
+- BetterTouchTool.app を =/Applications/= フォルダに移動．
+*** COMMENT ターミナルだけでも行える
 #+BEGIN_SRC screen
 cd ~/Downloads/
 curl -LO http://bettertouchtool.net/BetterTouchTool.zip

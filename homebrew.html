@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
-<!-- 2017-03-01 Wed 11:41 -->
+<!-- 2018-12-17 Mon 17:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ITL/パッケージ管理システム homebrew の導入</title>
@@ -68,6 +68,7 @@
   pre.src-fortran:before { content: 'Fortran'; }
   pre.src-gnuplot:before { content: 'gnuplot'; }
   pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
   pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
@@ -181,15 +182,15 @@
 </style>
 <link rel=stylesheet href="style.css" type="text/css">
 
-<script type="text/javascript" src="http://orgmode.org/org-info.js">
+<script type="text/javascript" src="https://orgmode.org/org-info.js">
 /**
  *
- * @source: http://orgmode.org/org-info.js
+ * @source: https://orgmode.org/org-info.js
  *
  * @licstart  The following is the entire license notice for the
- *  JavaScript code in http://orgmode.org/org-info.js.
+ *  JavaScript code in https://orgmode.org/org-info.js.
  *
- * Copyright (C) 2012-2013 Free Software Foundation, Inc.
+ * Copyright (C) 2012-2018 Free Software Foundation, Inc.
  *
  *
  * The JavaScript code in this tag is free software: you can
@@ -207,7 +208,7 @@
  * through which recipients can access the Corresponding Source.
  *
  * @licend  The above is the entire license notice
- * for the JavaScript code in http://orgmode.org/org-info.js.
+ * for the JavaScript code in https://orgmode.org/org-info.js.
  *
  */
 </script>
@@ -218,7 +219,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -257,7 +258,7 @@ org_html_manager.setup();  // activate after the parameters are set
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -310,25 +311,25 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#27425;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org8a4f3ac">1. 概要</a></li>
-<li><a href="#org4196fdc">2. Homebrew 本体のインストール</a>
+<li><a href="#org7fffd75">1. 概要</a></li>
+<li><a href="#org774dbac">2. Homebrew 本体のインストール</a>
 <ul>
-<li><a href="#org8e4896a">2.1. 参考サイト</a></li>
-<li><a href="#org6ee4136">2.2. Homebrew のインストール</a></li>
+<li><a href="#org3173a3c">2.1. 参考サイト</a></li>
+<li><a href="#org768a21b">2.2. Homebrew のインストール</a></li>
 </ul>
 </li>
-<li><a href="#org29e3c66">3. Homebrew の使い方</a>
+<li><a href="#orgc0a7f9e">3. Homebrew の使い方</a>
 <ul>
-<li><a href="#org0822a35">3.1. ワークフロー</a></li>
-<li><a href="#org7d2dd08">3.2. 基本コマンド</a></li>
+<li><a href="#orgef93067">3.1. ワークフロー</a></li>
+<li><a href="#orgb3d91ca">3.2. 基本コマンド</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org8a4f3ac" class="outline-2">
-<h2 id="org8a4f3ac"><span class="section-number-2">1</span> 概要</h2>
+<div id="outline-container-org7fffd75" class="outline-2">
+<h2 id="org7fffd75"><span class="section-number-2">1</span> 概要</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 homebrew は研究環境に必要な様々な UNIX ツールをまとめて管理(インストール，
@@ -343,27 +344,27 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
 </p>
 </div>
 </div>
-<div id="outline-container-org4196fdc" class="outline-2">
-<h2 id="org4196fdc"><span class="section-number-2">2</span> Homebrew 本体のインストール</h2>
+<div id="outline-container-org774dbac" class="outline-2">
+<h2 id="org774dbac"><span class="section-number-2">2</span> Homebrew 本体のインストール</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-org8e4896a" class="outline-3">
-<h3 id="org8e4896a"><span class="section-number-3">2.1</span> 参考サイト</h3>
+</div>
+<div id="outline-container-org3173a3c" class="outline-3">
+<h3 id="org3173a3c"><span class="section-number-3">2.1</span> 参考サイト</h3>
 <div class="outline-text-3" id="text-2-1">
 <dl class="org-dl">
 <dt>本家</dt><dd><a href="http://mxcl.github.com/homebrew/">http://mxcl.github.com/homebrew/</a></dd>
-<dt>(no term)</dt><dd><a href="https://github.com/mxcl/homebrew/wiki/installation">https://github.com/mxcl/homebrew/wiki/installation</a></dd>
 </dl>
 </div>
 </div>
-<div id="outline-container-org6ee4136" class="outline-3">
-<h3 id="org6ee4136"><span class="section-number-3">2.2</span> Homebrew のインストール</h3>
+<div id="outline-container-org768a21b" class="outline-3">
+<h3 id="org768a21b"><span class="section-number-3">2.2</span> Homebrew のインストール</h3>
 <div class="outline-text-3" id="text-2-2">
 <ol class="org-ol">
 <li><p>
 本体のダウンロード．ターミナルから以下を実行：
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">/usr/bin/ruby -e <span style="color: #bdb76b;">"$(</span><span style="color: #fa8072;">curl</span><span style="color: #bdb76b;"> -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span>
+<pre class="src src-sh">/usr/bin/ruby -e <span style="color: #CC9393;">"$(</span><span style="color: #CC9393;">curl</span><span style="color: #CC9393;"> -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span>
 </pre>
 </div>
 <ul class="org-ul">
@@ -382,69 +383,33 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
 <code>Your system is ready to brew</code> と表示されれば OK.
 </p></li>
 <li><p>
-<code>~/.bash_profile</code> (無ければ新たに作成し)に以下を追記：
+Bundle を使って必要なパッケージを一気にインストール
 </p>
+<script src="https://gist.github.com/nagae/bcc31992f4a864cd002a1f91ee9c275d.js"></script>
 <div class="org-src-container">
-<pre class="src src-screen"><span style="color: #b0c4de;">export</span> <span style="color: #9acd32;">PATH</span>=/usr/local/bin:$<span style="color: #9acd32;">PATH</span>
-</pre>
-</div>
-<p>
-上記を実行する方法は2通りある：
-</p>
-<dl class="org-dl">
-<dt>ターミナル上で Emacs を起動して編集する方法</dt><dd><ol class="org-ol">
-<li><p>
-まず，ターミナル上で
-</p>
-<div class="org-src-container">
-<pre class="src src-screen">emacs ~/.bash_profile
-</pre>
-</div>
-<p>
-として，Emacs を起動する．
-</p></li>
-<li>上記をコピー＆ペーストする．</li>
-<li>保存(C-x C-s: Ctrlを押しながら x, s とタイプする)した後，
-Emacs を終了(C-x C-c; Ctrl を押しながら x, cとタイプ)する．</li>
-</ol></dd>
-<dt>ターミナルから実行する方法</dt><dd><ol class="org-ol">
-<li><p>
-ターミナル上で以下を実行する．
-</p>
-<div class="org-src-container">
-<pre class="src src-screen"><span style="color: #b0c4de;">echo</span> export <span style="color: #9acd32;">PATH</span>=<span style="color: #bdb76b;">'/usr/local/bin:$PATH'</span> &gt;&gt; ~/.bash_profile
-</pre>
-</div></li>
-</ol></dd>
-</dl></li>
-<li><p>
-<code>brew tap</code> コマンドを使ってリポジトリを追加する：
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">brew tap homebrew/dupes         <span style="color: #00cd66;"># </span><span style="color: #00cd66;">OS X &#12395;&#27161;&#28310;&#12391;&#30331;&#36617;&#12373;&#12428;&#12390;&#12356;&#12427;&#12467;&#12510;&#12531;&#12489;&#12398;&#26368;&#26032;&#29256;&#12434;&#25552;&#20379;</span>
-brew tap homebrew/versions      <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#36942;&#21435;&#12398; version &#12434;&#25552;&#20379;</span>
-brew tap homebrew/science       <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#31185;&#23398;&#25216;&#34899;&#35336;&#31639;&#12395;&#20351;&#12360;&#12427;&#12497;&#12483;&#12465;&#12540;&#12472;&#12434;&#25552;&#20379;</span>
-brew tap homebrew/python        <span style="color: #00cd66;"># </span><span style="color: #00cd66;">Python &#29992;&#12398;&#12497;&#12483;&#12465;&#12540;&#12472;&#12434;&#25552;&#20379;</span>
+<pre class="src src-sh">curl https://gist.githubusercontent.com/nagae/bcc31992f4a864cd002a1f91ee9c275d/raw/94bd7d3e65b214242ef4dca9f95bba23bcb74708/Brewfile -o ~/Brewfile
+brew bundle
 </pre>
 </div></li>
 </ol>
 </div>
 </div>
 </div>
-<div id="outline-container-org29e3c66" class="outline-2">
-<h2 id="org29e3c66"><span class="section-number-2">3</span> Homebrew の使い方</h2>
+<div id="outline-container-orgc0a7f9e" class="outline-2">
+<h2 id="orgc0a7f9e"><span class="section-number-2">3</span> Homebrew の使い方</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-org0822a35" class="outline-3">
-<h3 id="org0822a35"><span class="section-number-3">3.1</span> ワークフロー</h3>
+</div>
+<div id="outline-container-orgef93067" class="outline-3">
+<h3 id="orgef93067"><span class="section-number-3">3.1</span> ワークフロー</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li><p>
 必要なツールをインストール
 </p>
 <div class="org-src-container">
-<pre class="src src-screen">$ brew search foo             <span style="color: #00cd66;"># </span><span style="color: #00cd66;">foo &#12392;&#12356;&#12358;&#21517;&#21069;&#12398; formula &#12434;&#25506;&#12377;</span>
-$ brew options foo            <span style="color: #00cd66;"># </span><span style="color: #00cd66;">foo &#12398;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#26178;&#12395;&#35373;&#23450;&#12391;&#12365;&#12427;&#12458;&#12503;&#12471;&#12519;&#12531;&#19968;&#35239;&#12434;&#34920;&#31034;</span>
-$ brew install [options] foo  <span style="color: #00cd66;"># </span><span style="color: #00cd66;">foo &#12392;&#12356;&#12358;&#21517;&#21069;&#12398; formula &#12434;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#12377;&#12427;</span>
+<pre class="src src-screen">$ brew search foo             <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">foo &#12392;&#12356;&#12358;&#21517;&#21069;&#12398; formula &#12434;&#25506;&#12377;</span>
+$ brew options foo            <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">foo &#12398;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#26178;&#12395;&#35373;&#23450;&#12391;&#12365;&#12427;&#12458;&#12503;&#12471;&#12519;&#12531;&#19968;&#35239;&#12434;&#34920;&#31034;</span>
+$ brew install [options] foo  <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">foo &#12392;&#12356;&#12358;&#21517;&#21069;&#12398; formula &#12434;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#12377;&#12427;</span>
 </pre>
 </div></li>
 <li><p>
@@ -460,16 +425,16 @@ Command Line Tools がアップデートされたら必ずインストールす�
 週に1度くらいは自身のアップデートと formula 更新
 </p>
 <div class="org-src-container">
-<pre class="src src-screen">$ brew update                 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">Homebrew &#33258;&#36523;&#12434;&#12450;&#12483;&#12503;&#12487;&#12540;&#12488;</span>
-$ brew outdated               <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#26356;&#26032;&#12373;&#12428;&#12383; formula &#19968;&#35239;&#12434;&#34920;&#31034;</span>
-$ brew upgrade                <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#26356;&#26032;&#12373;&#12428;&#12383; formula &#12434;&#12450;&#12483;&#12503;&#12464;&#12524;&#12540;&#12489;</span>
+<pre class="src src-screen">$ brew update                 <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">Homebrew &#33258;&#36523;&#12434;&#12450;&#12483;&#12503;&#12487;&#12540;&#12488;</span>
+$ brew outdated               <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">&#26356;&#26032;&#12373;&#12428;&#12383; formula &#19968;&#35239;&#12434;&#34920;&#31034;</span>
+$ brew upgrade                <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">&#26356;&#26032;&#12373;&#12428;&#12383; formula &#12434;&#12450;&#12483;&#12503;&#12464;&#12524;&#12540;&#12489;</span>
 </pre>
 </div></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org7d2dd08" class="outline-3">
-<h3 id="org7d2dd08"><span class="section-number-3">3.2</span> 基本コマンド</h3>
+<div id="outline-container-orgb3d91ca" class="outline-3">
+<h3 id="orgb3d91ca"><span class="section-number-3">3.2</span> 基本コマンド</h3>
 <div class="outline-text-3" id="text-3-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -545,8 +510,8 @@ $ brew upgrade                <span style="color: #00cd66;"># </span><span style
 </tbody>
 </table>
 </div>
-<div id="outline-container-orgf5bead9" class="outline-4">
-<h4 id="orgf5bead9"><span class="section-number-4">3.2.1</span> <code>brew update</code> すると <code>error: The following untracked working tree files would be overwritten by merge:</code> というエラーが出る(13.10.25)</h4>
+<div id="outline-container-orgdd5964f" class="outline-4">
+<h4 id="orgdd5964f"><span class="section-number-4">3.2.1</span> <code>brew update</code> すると <code>error: The following untracked working tree files would be overwritten by merge:</code> というエラーが出る(13.10.25)</h4>
 <div class="outline-text-4" id="text-3-2-1">
 <p>
 <code>brew update</code> しようとすると以下のようなエラーメッセージが出る場合の対処法：
@@ -566,7 +531,7 @@ Error: Failure while executing: git pull -q origin refs/heads/master:refs/remote
 を移動させる
 </p>
 <div class="org-src-container">
-<pre class="src src-screen"><span style="color: #b0c4de;">cd</span> /usr/local/Library/Formula/
+<pre class="src src-screen"><span style="color: #DCDCCC; font-weight: bold;">cd</span> /usr/local/Library/Formula/
 mkdir .temporary_stack
 mv apple-gcc42.rb .temporary_stack/
 </pre>
@@ -586,7 +551,7 @@ mv apple-gcc42.rb .temporary_stack/
 </div>
 <div id="postamble" class="status">
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
-<p class="date">Created: 2017-03-01 Wed 11:41</p>
+<p class="date">Created: 2018-12-17 Mon 17:31</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
