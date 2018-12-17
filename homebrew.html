@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
-<!-- 2018-12-17 Mon 17:35 -->
+<!-- 2018-12-17 Mon 17:36 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ITL/パッケージ管理システム homebrew の導入</title>
@@ -311,25 +311,25 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#27425;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org1cd8db8">1. 概要</a></li>
-<li><a href="#orgca2a321">2. Homebrew 本体のインストール</a>
+<li><a href="#org7013c6c">1. 概要</a></li>
+<li><a href="#orga472d13">2. Homebrew 本体のインストール</a>
 <ul>
-<li><a href="#org37def4c">2.1. 参考サイト</a></li>
-<li><a href="#org99f65ff">2.2. Homebrew のインストール</a></li>
+<li><a href="#org6d21641">2.1. 参考サイト</a></li>
+<li><a href="#org57a5935">2.2. Homebrew のインストール</a></li>
 </ul>
 </li>
-<li><a href="#org2f71003">3. Homebrew の使い方</a>
+<li><a href="#orgf5fce82">3. Homebrew の使い方</a>
 <ul>
-<li><a href="#org4b5a328">3.1. ワークフロー</a></li>
-<li><a href="#org27e74bf">3.2. 基本コマンド</a></li>
+<li><a href="#orga02c106">3.1. ワークフロー</a></li>
+<li><a href="#orgdb5eaa2">3.2. 基本コマンド</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org1cd8db8" class="outline-2">
-<h2 id="org1cd8db8"><span class="section-number-2">1</span> 概要</h2>
+<div id="outline-container-org7013c6c" class="outline-2">
+<h2 id="org7013c6c"><span class="section-number-2">1</span> 概要</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 homebrew は研究環境に必要な様々な UNIX ツールをまとめて管理(インストール，
@@ -344,20 +344,20 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
 </p>
 </div>
 </div>
-<div id="outline-container-orgca2a321" class="outline-2">
-<h2 id="orgca2a321"><span class="section-number-2">2</span> Homebrew 本体のインストール</h2>
+<div id="outline-container-orga472d13" class="outline-2">
+<h2 id="orga472d13"><span class="section-number-2">2</span> Homebrew 本体のインストール</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org37def4c" class="outline-3">
-<h3 id="org37def4c"><span class="section-number-3">2.1</span> 参考サイト</h3>
+<div id="outline-container-org6d21641" class="outline-3">
+<h3 id="org6d21641"><span class="section-number-3">2.1</span> 参考サイト</h3>
 <div class="outline-text-3" id="text-2-1">
 <dl class="org-dl">
 <dt>本家</dt><dd><a href="http://mxcl.github.com/homebrew/">http://mxcl.github.com/homebrew/</a></dd>
 </dl>
 </div>
 </div>
-<div id="outline-container-org99f65ff" class="outline-3">
-<h3 id="org99f65ff"><span class="section-number-3">2.2</span> Homebrew のインストール</h3>
+<div id="outline-container-org57a5935" class="outline-3">
+<h3 id="org57a5935"><span class="section-number-3">2.2</span> Homebrew のインストール</h3>
 <div class="outline-text-3" id="text-2-2">
 <ol class="org-ol">
 <li><p>
@@ -398,12 +398,12 @@ brew bundle
 </div>
 </div>
 
-<div id="outline-container-org2f71003" class="outline-2">
-<h2 id="org2f71003"><span class="section-number-2">3</span> Homebrew の使い方</h2>
+<div id="outline-container-orgf5fce82" class="outline-2">
+<h2 id="orgf5fce82"><span class="section-number-2">3</span> Homebrew の使い方</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org4b5a328" class="outline-3">
-<h3 id="org4b5a328"><span class="section-number-3">3.1</span> ワークフロー</h3>
+<div id="outline-container-orga02c106" class="outline-3">
+<h3 id="orga02c106"><span class="section-number-3">3.1</span> ワークフロー</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li><p>
@@ -415,14 +415,6 @@ $ brew options foo            <span style="color: #5F7F5F;"># </span><span style
 $ brew install [options] foo  <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">foo &#12392;&#12356;&#12358;&#21517;&#21069;&#12398; formula &#12434;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#12377;&#12427;</span>
 </pre>
 </div></li>
-<li><p>
-Command Line Tools がアップデートされたら必ずインストールする
-<a href="https://developer.apple.com/downloads">https://developer.apple.com/downloads</a> を定期的にチェックすること
-</p>
-
-<p>
-最新版は Command Line Tools (OS X 10.0) for Xcode - September 2014 (2014.9.9 現在)
-</p></li>
 
 <li><p>
 週に1度くらいは自身のアップデートと formula 更新
@@ -436,8 +428,8 @@ $ brew upgrade                <span style="color: #5F7F5F;"># </span><span style
 </ul>
 </div>
 </div>
-<div id="outline-container-org27e74bf" class="outline-3">
-<h3 id="org27e74bf"><span class="section-number-3">3.2</span> 基本コマンド</h3>
+<div id="outline-container-orgdb5eaa2" class="outline-3">
+<h3 id="orgdb5eaa2"><span class="section-number-3">3.2</span> 基本コマンド</h3>
 <div class="outline-text-3" id="text-3-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -513,8 +505,8 @@ $ brew upgrade                <span style="color: #5F7F5F;"># </span><span style
 </tbody>
 </table>
 </div>
-<div id="outline-container-org8cb3113" class="outline-4">
-<h4 id="org8cb3113"><span class="section-number-4">3.2.1</span> <code>brew update</code> すると <code>error: The following untracked working tree files would be overwritten by merge:</code> というエラーが出る(13.10.25)</h4>
+<div id="outline-container-org537494e" class="outline-4">
+<h4 id="org537494e"><span class="section-number-4">3.2.1</span> <code>brew update</code> すると <code>error: The following untracked working tree files would be overwritten by merge:</code> というエラーが出る(13.10.25)</h4>
 <div class="outline-text-4" id="text-3-2-1">
 <p>
 <code>brew update</code> しようとすると以下のようなエラーメッセージが出る場合の対処法：
@@ -554,7 +546,7 @@ mv apple-gcc42.rb .temporary_stack/
 </div>
 <div id="postamble" class="status">
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
-<p class="date">Created: 2018-12-17 Mon 17:35</p>
+<p class="date">Created: 2018-12-17 Mon 17:36</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

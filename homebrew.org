@@ -68,10 +68,6 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
   $ brew options foo            # foo のインストール時に設定できるオプション一覧を表示
   $ brew install [options] foo  # foo という名前の formula をインストールする
   #+end_src
-- Command Line Tools がアップデートされたら必ずインストールする
-  https://developer.apple.com/downloads を定期的にチェックすること
-
-  最新版は Command Line Tools (OS X 10.0) for Xcode - September 2014 (2014.9.9 現在)
   
 - 週に1度くらいは自身のアップデートと formula 更新
   #+begin_src screen
