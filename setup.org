@@ -228,7 +228,7 @@ Preference -> Settings -> Launch BetterTouchTools on startup をチェック
   #+begin_src screen
     mkdir ~/.ssh                    # ssh用のディレクトリを作る
     cd ~/.ssh                       # .ssh ディレクトリni移動
-    ssh-keygen -t rsa -f id_rsa     # id_rsa という秘密鍵と id_rsa.pub という公開鍵を作る
+    ssh-keygen -t rsa -b 4096 -f id_rsa     # id_rsa という秘密鍵と id_rsa.pub という公開鍵を作る
     # パスフレーズを入力した後，同じものをもう一度入力．
     # ここで入力するパスフレーズは，Mac 本体へのログイン用と同じにしても問題無い．
     chmod 700 ~/.ssh                # .ssh ディレクトリのアクセス権を「管理者のみ読み書き実行可」に変更
