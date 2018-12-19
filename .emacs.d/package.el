@@ -26,7 +26,7 @@
     evil
     
     ;;;; org-mode
-    org
+    org htmlize
 
     ;;;; tex関連
     auctex auctex-latexmk cdlatex

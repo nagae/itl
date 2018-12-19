@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
-<!-- 2018-12-17 Mon 17:40 -->
+<!-- 2018-12-19 Wed 14:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ITL/パッケージ管理システム homebrew の導入</title>
@@ -311,25 +311,25 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#27425;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org0701137">1. 概要</a></li>
-<li><a href="#org8e1744f">2. Homebrew 本体のインストール</a>
+<li><a href="#orgdeeaefb">1. 概要</a></li>
+<li><a href="#org7e32326">2. Homebrew 本体のインストール</a>
 <ul>
-<li><a href="#org9b266c3">2.1. 参考サイト</a></li>
-<li><a href="#orgd911178">2.2. Homebrew のインストール</a></li>
+<li><a href="#orgb4c7836">2.1. 参考サイト</a></li>
+<li><a href="#org192cb40">2.2. Homebrew のインストール</a></li>
 </ul>
 </li>
-<li><a href="#orgdf37161">3. Homebrew の使い方</a>
+<li><a href="#org5d53809">3. Homebrew の使い方</a>
 <ul>
-<li><a href="#orgac8656a">3.1. ワークフロー</a></li>
-<li><a href="#org08bc32d">3.2. 基本コマンド</a></li>
+<li><a href="#orgced0788">3.1. ワークフロー</a></li>
+<li><a href="#org5eb1441">3.2. 基本コマンド</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org0701137" class="outline-2">
-<h2 id="org0701137"><span class="section-number-2">1</span> 概要</h2>
+<div id="outline-container-orgdeeaefb" class="outline-2">
+<h2 id="orgdeeaefb"><span class="section-number-2">1</span> 概要</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 homebrew は研究環境に必要な様々な UNIX ツールをまとめて管理(インストール，
@@ -344,20 +344,20 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
 </p>
 </div>
 </div>
-<div id="outline-container-org8e1744f" class="outline-2">
-<h2 id="org8e1744f"><span class="section-number-2">2</span> Homebrew 本体のインストール</h2>
+<div id="outline-container-org7e32326" class="outline-2">
+<h2 id="org7e32326"><span class="section-number-2">2</span> Homebrew 本体のインストール</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org9b266c3" class="outline-3">
-<h3 id="org9b266c3"><span class="section-number-3">2.1</span> 参考サイト</h3>
+<div id="outline-container-orgb4c7836" class="outline-3">
+<h3 id="orgb4c7836"><span class="section-number-3">2.1</span> 参考サイト</h3>
 <div class="outline-text-3" id="text-2-1">
 <dl class="org-dl">
 <dt>本家</dt><dd><a href="http://mxcl.github.com/homebrew/">http://mxcl.github.com/homebrew/</a></dd>
 </dl>
 </div>
 </div>
-<div id="outline-container-orgd911178" class="outline-3">
-<h3 id="orgd911178"><span class="section-number-3">2.2</span> Homebrew のインストール</h3>
+<div id="outline-container-org192cb40" class="outline-3">
+<h3 id="org192cb40"><span class="section-number-3">2.2</span> Homebrew のインストール</h3>
 <div class="outline-text-3" id="text-2-2">
 <ol class="org-ol">
 <li><p>
@@ -386,12 +386,12 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
 <code>brew bundle</code> を使って必要なパッケージを一気にインストール
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">curl https://gist.githubusercontent.com/nagae/bcc31992f4a864cd002a1f91ee9c275d/raw/94bd7d3e65b214242ef4dca9f95bba23bcb74708/Brewfile -o ~/Brewfile
+<pre class="src src-sh">curl https://raw.githubusercontent.com/nagae/itl/gh-pages/Brewfile -o ~/Brewfile
 brew bundle
 </pre>
 </div>
 <p>
-上述でインストールされる <a href="https://gist.github.com/nagae/bcc31992f4a864cd002a1f91ee9c275d">パッケージ一覧</a> 
+上述でインストールされる <a href="https://github.com/nagae/itl/blob/gh-pages/Brewfile">パッケージ一覧</a> 
 </p>
 <ul class="org-ul">
 <li>自分が現在インストールしているパッケージを出力するには <code>brew bundle dump</code> とすればよい．</li>
@@ -401,12 +401,12 @@ brew bundle
 </div>
 </div>
 
-<div id="outline-container-orgdf37161" class="outline-2">
-<h2 id="orgdf37161"><span class="section-number-2">3</span> Homebrew の使い方</h2>
+<div id="outline-container-org5d53809" class="outline-2">
+<h2 id="org5d53809"><span class="section-number-2">3</span> Homebrew の使い方</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orgac8656a" class="outline-3">
-<h3 id="orgac8656a"><span class="section-number-3">3.1</span> ワークフロー</h3>
+<div id="outline-container-orgced0788" class="outline-3">
+<h3 id="orgced0788"><span class="section-number-3">3.1</span> ワークフロー</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li><p>
@@ -431,8 +431,8 @@ $ brew upgrade                <span style="color: #5F7F5F;"># </span><span style
 </ul>
 </div>
 </div>
-<div id="outline-container-org08bc32d" class="outline-3">
-<h3 id="org08bc32d"><span class="section-number-3">3.2</span> 基本コマンド</h3>
+<div id="outline-container-org5eb1441" class="outline-3">
+<h3 id="org5eb1441"><span class="section-number-3">3.2</span> 基本コマンド</h3>
 <div class="outline-text-3" id="text-3-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -508,8 +508,8 @@ $ brew upgrade                <span style="color: #5F7F5F;"># </span><span style
 </tbody>
 </table>
 </div>
-<div id="outline-container-orgd7b3ce3" class="outline-4">
-<h4 id="orgd7b3ce3"><span class="section-number-4">3.2.1</span> <code>brew update</code> すると <code>error: The following untracked working tree files would be overwritten by merge:</code> というエラーが出る(13.10.25)</h4>
+<div id="outline-container-org88eb9ef" class="outline-4">
+<h4 id="org88eb9ef"><span class="section-number-4">3.2.1</span> <code>brew update</code> すると <code>error: The following untracked working tree files would be overwritten by merge:</code> というエラーが出る(13.10.25)</h4>
 <div class="outline-text-4" id="text-3-2-1">
 <p>
 <code>brew update</code> しようとすると以下のようなエラーメッセージが出る場合の対処法：
@@ -549,7 +549,7 @@ mv apple-gcc42.rb .temporary_stack/
 </div>
 <div id="postamble" class="status">
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
-<p class="date">Created: 2018-12-17 Mon 17:40</p>
+<p class="date">Created: 2018-12-19 Wed 14:58</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

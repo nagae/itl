@@ -4,15 +4,15 @@
 ;; 
 ;; ============================================================
 
-;; パッケージを初期化
+;; MELPA
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 (package-initialize)
-
-;; viper-mode にしない
-(setq viper-mode nil)
-
 ;; パッケージ群をインストールする方法：
 ;; emacs を起動し,
 ;; M-x load-file RET ~/.emacs.d/package.el RET
+
+;; viper-mode にしない
+(setq viper-mode nil)
 
 ;; 基本的な入出力
 (load "~/.emacs.d/init-emacs.el")
