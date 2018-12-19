@@ -21,6 +21,27 @@
 #+LATEX_HEADER:\usepackage{amsmath,rmss_math,rmss_color}
 
 * Emacs のインストール方法
+[[./homebrew.org][Homebrew]] で既にインストール済み．
+
+* 長江研Emacs設定方針(2018年12月19日 大幅改訂)
+Emacs は初期設定ファイル(=~/.emacs.d/init.el=)が極めて重要な役割を果たす[1]．同じ
+Emacs を使っていても，初期設定ファイルが違うと全く違うアプリケーションのように感
+じる．そのため，マシンごとに別々の初期設定ファイルを用いると，複数のマシンで作業
+する(eg. 研究室の作業を自宅で引き継ぐ)際に作業効率が著しく低下する．そこで，以下
+では，次のポリシーに従った設定方法を述べる：
+- 設定ファイルおよびパッケージは =~/.emacs.d/= 以下に置く
+- ELPA(Emacs Lisp Package Archives)を積極的に利用．インストールするパッケージは =~/.emacs.d/package.el= に記載し, Emacs から =M-x load-file RET ~/.emacs.d/package.el RET= を実行することでインストールする．
+
+[1] =.emacs.d= のように先頭に =.= のついたファイルやフォルダは隠しファイル/隠しフォ
+ルダであり，普段はFinder や =ls= コマンドで見ることはできない．これらを見るには，
+ターミナルから以下のように入力する：
+#+begin_src screen
+$ ls -a ~/
+#+end_src
+
+* =package.el= の実行
+
+* Emacs のインストール方法
 1. 本体および関連するパッケージを Homebrew でインストール
    - ターミナルで以下を実行
       #+begin_src screen
@@ -38,6 +59,7 @@
     open -a /Applications/Emacs.app
     #+end_src
    - ファイル名を =Emacs.app= として iCloud フォルダに保存する
+** 
 * 長江研 Emacs 設定方針
 Emacs は初期設定ファイル(=~/.emacs.d/init.el=)が極めて重要な役割を果たす[1]．同じ
 Emacs を使っていても，初期設定ファイルが違うと全く違うアプリケーションのように感
