@@ -47,11 +47,14 @@ mkdir ~/.emacs.d
 次に，ターミナルから以下を実行すれば，設定ファイルが =~/.emacs.d/= 以下に書き込まれる:
 #+BEGIN_SRC sh
 cd ~/Downloads
-curl https://codeload.github.com/nagae/itl/zip/resource -o resource.zip
-unzip resource.zip
+curl -L -O https://codeload.github.com/nagae/itl/zip/resource
+unzip resource
 mkdir -p ~/.emacs.d/
 cp itl-resource/emacs.d/*.el ~/.emacs.d/
 rm -rf itl-resource
+rm -f resource
+# 以下は aspell の実行に必要
+echo "lang en_US" > ~/.aspell.conf
 #+END_SRC
 
 Emacs を起動し, =M-x load-file RET ~/.emacs.d/package.el RET= を実行すれば，必要なパッケージが自動的にインストールされる．
