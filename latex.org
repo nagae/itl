@@ -19,6 +19,23 @@
 #+LATEX_HEADER:\usepackage{amsmath,rmss_math,rmss_color}
 
 * MacTeX のインストール
+[[./homebrew.org][Homebrew]] で既にインストールされているはず．
+
+* 日本語フォントの設定(ヒラギノフォントの埋め込みを可能に)
+以下を *1行づつ順に* ターミナルで実行(=sudo= でパスワードを打つ必要があることに注意)
+#+BEGIN_SRC sh
+sudo tlmgr update --self --all
+sudo tlmgr repository add http://contrib.texlive.info/current tlcontrib
+sudo tlmgr pinning add tlcontrib '*'
+sudo tlmgr install japanese-otf-nonfree japanese-otf-uptex-nonfree ptex-fontmaps-macos cjk-gs-integrate-macos
+sudo cjk-gs-integrate --link-texmf --cleanup
+curl -L -O https://raw.githubusercontent.com/texjporg/cjk-gs-support/master/cjk-gs-integrate-macos.pl
+sudo perl cjk-gs-integrate-macos.pl --link-texmf
+sudo mktexls
+sudo kanji-config-updmap-sys --jis2004 hiragino-highsierra-pron
+#+END_SRC
+
+* COMMENT MacTeX のインストール
 https://snap.textfile.org/20151006085255/
 
 Homebrew がインストールされていることを前提に.
@@ -63,7 +80,7 @@ sudo mktexlsr
 sudo updmap-sys --setoption jaEmbed hiragino-elcapitan-pron
 #+END_SRC
 
-* TeXLive 2014 のインストール
+* COMMENT TeXLive 2014 のインストール
 以下では， =texmf= ディレクトリを Dropbox 上に置く方法を示す．
 ** 参考
 - TeX Live を使おう --- Linux ユーザと Mac OS X ユーザのために --- :: http://www.fugenji.org/~thomas/texlive-guide/
@@ -206,7 +223,7 @@ sudo updmap-sys --setoption jaEmbed hiragino-elcapitan-pron
 sudo tlmgr conf texmf TEXMFHOME ~/Dropbox/texmf:/usr/local/share/texmf
 #+END_SRC
 
-* パスの設定
+* COMMENT パスの設定
 6. TeX フォルダパスの設定
    =~/.bash_profile= に以下を追記：
    #+BEGIN_SRC sh
@@ -226,7 +243,7 @@ sudo tlmgr conf texmf TEXMFHOME ~/Dropbox/texmf:/usr/local/share/texmf
    #+BEGIN_SRC screen
    source ~/.bash_profile
    #+END_SRC
-* 日本語フォントの設定(ヒラギノフォントの埋め込みを可能に)
+* COMMENT 日本語フォントの設定(ヒラギノフォントの埋め込みを可能に)
 ターミナルから以下のコマンドを *一行ずつ* 入力して実行:
 #+BEGIN_SRC sh
 cd /usr/local/texlive/2016/texmf-dist/scripts/cjk-gs-integrate

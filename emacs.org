@@ -64,7 +64,7 @@ Emacs を起動し, =M-x load-file RET ~/.emacs.d/package.el RET= を実行す�
 SKK は品詞解析を行なわないため，漢字にする箇所や送り仮名を自分で指定する必要がある．しかし，ひとたび慣れれば高速かつ直感的な入力が可能となる———上述のような入力メソッドが使えなくなるほど．
 Macの標準入力方式に代替できる [[https://github.com/codefirst/aquaskk/releases][AquaSKK]] ([[http://aquaskk.sourceforge.jp][旧サイト]])と Emacs 上で動く [[http://openlab.ring.gr.jp/skk/ddskk-ja.html][DDSKK (Daredevil SKK)]] とがあり，両方併用するのが吉．
 ** DDSKK / AquaSKK のインストール
-Homebrew および 上記の手順により自動的にインストールされているはず．ん
+Homebrew および 上記の手順により自動的にインストールされているはず．
 ** AquaSKKの設定
 3. 言語環境に AquaSKK を登録
    - 画面左上のリンゴマーク→システム環境設定→言語とテキスト
