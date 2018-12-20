@@ -31,6 +31,7 @@ sudo tlmgr install japanese-otf-nonfree japanese-otf-uptex-nonfree ptex-fontmaps
 sudo cjk-gs-integrate --link-texmf --cleanup
 curl -L -O https://raw.githubusercontent.com/texjporg/cjk-gs-support/master/cjk-gs-integrate-macos.pl
 sudo perl cjk-gs-integrate-macos.pl --link-texmf
+rm cjk-gs-integrate-macos.pl 
 sudo mktexlsr
 sudo kanji-config-updmap-sys --jis2004 hiragino-highsierra-pron
 #+END_SRC
