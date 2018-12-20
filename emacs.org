@@ -57,7 +57,7 @@ rm -rf itl-resource
 Emacs を起動し, =M-x load-file RET ~/.emacs.d/package.el RET= を実行すれば，必要なパッケージが自動的にインストールされる．
 ここで, =M-x= は =Esc= キーを押しながら =x=.
 
-インストールが終わったら Emacs を再起動すれば
+インストールが終わったら Emacs を再起動すれば長江研用にカスタマイズされた Emacs が利用可能になる．
 
 * SKK / AquaSKK --- シンプル漢字かな入力
 長江は「ことえり」や「IME」のような形態素解析をベースとした入力メソッドが苦手なので，SKK(Simple Kana to Kanji conversion program)を利用している．
