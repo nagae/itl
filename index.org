@@ -28,6 +28,5 @@
 - [[./homebrew.html][パッケージ管理システム homebrew の導入]]
 - [[./emacs.org][最強のエディタ，Emacs のインストール]]
 - [[./latex.org][LaTeX (文章執筆＆プレゼン作成用)のインストール]]
-- [[./homebrew-packages.org][homebrew でインストールしておくべきパッケージ群]] 
 - [[./anaconda-gurobi.org][Anaconda + Gurobi による科学技術計算環境の構築]]
 
