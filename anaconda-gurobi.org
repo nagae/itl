@@ -29,64 +29,97 @@
   Anaconda Python との共存は可能.
 
 * pyenv のインストール
-- =homebrew= を使って =pyenv= をインストールする
+- [[./homebrew.org][Homebrew]] の段階で既にインストールされているはず．
 
   ターミナルから以下を入力
   #+BEGIN_SRC sh
-  brew update
-  brew install pyenv
-  echo '' >> ~/.bash_profile
-  echo '# the following lines were inserted for pyenv' >> ~/.bash_profile
-  echo 'export PYENV_ROOT="${HOME}/.pyenv"' >> ~/.bash_profile
-  echo 'export PATH="${PYENV_ROOT}/bin:$PATH"' >> ~/.bash_profile
-  echo 'eval "$(pyenv init -)"' >> ~/.bash_profile
-  echo '# the above lines were inserted for pyenv' >> ~/.bash_profile
-  exec $SHELL -l
+    echo '' >> ~/.bash_profile 
+    echo '# the following lines were inserted for pyenv' >> ~/.bash_profile
+    echo 'export PYENV_ROOT="${HOME}/.pyenv"' >> ~/.bash_profile
+    echo 'export PATH="${PYENV_ROOT}/bin:$PATH"' >> ~/.bash_profile
+    echo 'eval "$(pyenv init -)"' >> ~/.bash_profile
+    echo '# the above lines were inserted for pyenv' >> ~/.bash_profile
+    exec $SHELL -l
   #+END_SRC
 
 * Anaconda のインストール
-- =pyenv= を使って Anaconda2 系の最新バージョンを確認する
+- =pyenv= を使って Anaconda3 系の最新バージョンを確認する
 
   ターミナルから以下を入力
   #+BEGIN_SRC sh
-    pyenv install -l | grep anaconda2-
-    # 対応するバージョンが表示される
-      anaconda2-2.4.0
-      anaconda2-2.4.1
-      anaconda2-2.5.0
-      anaconda2-4.0.0
-      anaconda2-4.1.0
-      anaconda2-4.1.1
-      anaconda2-4.2.0
-      anaconda2-4.3.0 # ← 最新版のバージョンを覚えておく
+    pyenv install -l | grep anaconda3-
+      # 対応するバージョンが表示される
+      anaconda3-2.0.0
+      anaconda3-2.0.1
+      anaconda3-2.1.0
+      anaconda3-2.2.0
+      anaconda3-2.3.0
+      anaconda3-2.4.0
+      anaconda3-2.4.1
+      anaconda3-2.5.0
+      anaconda3-4.0.0
+      anaconda3-4.1.0
+      anaconda3-4.1.1
+      anaconda3-4.2.0
+      anaconda3-4.3.0
+      anaconda3-4.3.1
+      anaconda3-4.4.0
+      anaconda3-5.0.0
+      anaconda3-5.0.1
+      anaconda3-5.1.0
+      anaconda3-5.2.0
+      anaconda3-5.3.0 # ← 最新版のバージョンを覚えておく
   #+END_SRC
 - =pyenv= を使って Anaconda をインストールする
   
   ターミナルから以下を入力
   #+BEGIN_SRC sh
-    pyenv install anaconda2-4.3.0 # 上で確認した最新版を入力
-    echo 'export PATH="$PYENV_ROOT/versions/anaconda2-4.3.0/bin:$PATH"' >> ~/.bash_profile
-    source ~/.bash_profile
+    pyenv install anaconda3-5.3.0 # 上で確認した最新版を入力
   #+END_SRC
 
-- =pyenv global= を使って Python 環境を Anaconda2系 に切り替える
+- =pyenv global= を使って Python 環境を Anaconda3系 に切り替える
   #+BEGIN_SRC sh
-    pyenv global anaconda2-4.3.0
+    pyenv global anaconda3-5.3.0
   #+END_SRC
 
-- =conda= を使ってパッケージをアップデートする
+* =conda= を使った Python モジュール管理
+Anaconda と同時にインストールされる =conda= という Python 用パッケージ管理ツールを使えば,
+新しいモジュールをインストールしたり, 既存のモジュールをアップデートしたりできる.
 
-  Anaconda と同時にインストールされる =conda= という Python 用パッケージ管理ツールを使えば,
-  新しいモジュールをインストールしたり, 既存のモジュールをアップデートしたりできる.
+Anaconda のインストールが終わったら，ターミナルから下記を実行しよう:
+#+BEGIN_SRC sh
+conda update conda # conda 自身をアップデート
+conda update --all # インストールされているモジュールをアップデート
+#+END_SRC
 
-  #+BEGIN_SRC sh
-  conda update --all
-  #+END_SRC
-  
+次に，長江研で必要になる(or 必要になりそうな)モジュールは，以下の通り：
+1. numpy
+2. scipy
+3. matplotlib
+4. pandas
+5. networkx
+特に最初の3つは無いと途方に暮れるレベルなので, =conda install= でインストールしておこう．
+#+BEGIN_SRC sh
+conda install numpy scipy matplotlib pandas networkx
+#+END_SRC
+
+Python =conda= は =homebrew= の Anaconda/Python 版. 
+主な使い方は，ターミナルから下記のようなコマンドで利用可能.
+#+BEGIN_SRC sh
+conda install [モジュール名] # 指定したモジュールをインストール 
+conda search [モジュール名] # 指定したモジュールを検索(*などのワイルドカードも使える)
+conda update conda # conda 自身をアップデート
+conda update --all # 全てのモジュールをアップデート
+#+END_SRC
+=conda install= や =conda update= を実行するとどうなるかが知りたいだけの場合は, =--dry-run= オプションをつけて
+#+BEGIN_SRC sh
+conda install --dry-run [モジュール名]
+conda update --dry-run --all
+#+END_SRC
+などとするとよい．
+
 * Gurobi のインストール
-- =conda= を使って Gurobi をインストールする 
-
-  
+- =conda= を使って Gurobi をインストールする :
   #+BEGIN_SRC sh
   conda config --add channels http://conda.anaconda.org/gurobi
   conda install gurobi
@@ -201,6 +234,8 @@ In which directory would you like to store the Gurobi license key file?
      gurobipy.GurobiError: No Gurobi license found (user nagae, host iMac-Late2012.local, hostid b1b0acc5)
    #+END_SRC
    この場合も終了させるには Ctrl-D．
+
+
 
 * COMMENT Python の環境構築
 ** Python のバージョン確認
@@ -370,6 +405,7 @@ Python の対話型インタープリタを拡張したもの.
   #+END_SRC
   続いて, 下記を入力して実行:
   #+BEGIN_SRC python
+    %matplotlib inline # これを実行すると, qtconsole 上にグラフをプロットできる
     import matplotlib.pyplot as pyplot
     pyplot.plot([0,4], [0,4]) # Constraint 1
     pyplot.plot([4,0], [0,4]) # Constraint 2
@@ -415,6 +451,7 @@ Python の対話型インタープリタを拡張したもの.
   =Shift+RET= で評価すると数式部分がコンパイルされる.
 - 2つ目のセルの種別が =Code= になっていることを確認した上で, 以下を記述:
   #+BEGIN_SRC python
+    %matplotlib inline # グラフのインライン表示に必要
     from gurobipy import *
     m = Model()
     v0 = m.addVar()                  # Unknown variable 1
