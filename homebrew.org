@@ -56,6 +56,7 @@ homebrew は同様の Mac 用パッケージ管理システムである macport 
 3) =brew bundle= を使って必要なパッケージを一気にインストール
    #+BEGIN_SRC sh
    curl https://raw.githubusercontent.com/nagae/itl/resource/Brewfile -o ~/Brewfile
+   cd ~/
    brew bundle
    #+END_SRC
    上述でインストールされる [[https://github.com/nagae/itl/blob/gh-pages/Brewfile][パッケージ一覧]] 
