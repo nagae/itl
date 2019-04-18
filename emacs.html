@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
-<!-- 2019-04-18 Thu 16:32 -->
+<!-- 2019-04-18 Thu 16:36 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ITL/Emacs &#x2014; 最強のエディタ</title>
@@ -311,54 +311,48 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#27425;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org45b8441">1. 源ノ角ゴシックのインストール</a></li>
-<li><a href="#org86dc9d2">2. Emacs のインストール方法</a></li>
-<li><a href="#org0768148">3. 長江研Emacs設定方針(2018年12月19日 大幅改訂)</a></li>
-<li><a href="#org71fef93">4. 設定ファイルのダウンロードとパッケージのインストール</a></li>
-<li><a href="#org612425a">5. SKK / AquaSKK &#x2014; シンプル漢字かな入力</a>
+<li><a href="#org6a15028">1. 源ノ角ゴシックのインストール</a></li>
+<li><a href="#org76c89ea">2. Emacs のインストール方法</a></li>
+<li><a href="#orga7bead0">3. 長江研Emacs設定方針(2018年12月19日 大幅改訂)</a></li>
+<li><a href="#orgec77507">4. 設定ファイルのダウンロードとパッケージのインストール</a></li>
+<li><a href="#orgf9c66c7">5. SKK / AquaSKK &#x2014; シンプル漢字かな入力</a>
 <ul>
-<li><a href="#org694cfa3">5.1. DDSKK / AquaSKK のインストール</a></li>
-<li><a href="#orge6ff1c8">5.2. AquaSKKの設定</a></li>
+<li><a href="#orgb9b8240">5.1. DDSKK / AquaSKK のインストール</a></li>
+<li><a href="#org975237c">5.2. AquaSKKの設定</a></li>
 </ul>
 </li>
-<li><a href="#org80fe627">6. 基本的な操作方法</a>
+<li><a href="#org76fc881">6. 基本的な操作方法</a>
 <ul>
-<li><a href="#org815e984">6.1. 特殊キー</a></li>
-<li><a href="#org5e46564">6.2. 同時押しと順次押し</a></li>
-<li><a href="#org4d9b049">6.3. まずはパニック対応(<code>ESC, C-g</code>)</a></li>
-<li><a href="#org971bfe2">6.4. カーソルの操作</a></li>
+<li><a href="#orgc167b97">6.1. 特殊キー</a></li>
+<li><a href="#orgab378ae">6.2. 同時押しと順次押し</a></li>
+<li><a href="#org00410e1">6.3. まずはパニック対応(<code>ESC, C-g</code>)</a></li>
+<li><a href="#org8cfab43">6.4. カーソルの操作</a></li>
 </ul>
 </li>
-<li><a href="#orgca3a632">7. 参考資料</a></li>
-<li><a href="#org0d5cede">8. 独自設定</a>
+<li><a href="#orgd4630ad">7. 参考資料</a></li>
+<li><a href="#org51098c5">8. 独自設定</a>
 <ul>
-<li><a href="#orge8aa189">8.1. 基本操作</a></li>
-<li><a href="#org31b76ba">8.2. もっとある</a></li>
+<li><a href="#org159b041">8.1. 基本操作</a></li>
+<li><a href="#org560b89d">8.2. もっとある</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org45b8441" class="outline-2">
-<h2 id="org45b8441"><span class="section-number-2">1</span> 源ノ角ゴシックのインストール</h2>
+<div id="outline-container-org6a15028" class="outline-2">
+<h2 id="org6a15028"><span class="section-number-2">1</span> 源ノ角ゴシックのインストール</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li><a href="https://github.com/adobe-fonts/source-han-code-jp/tree/release">https://github.com/adobe-fonts/source-han-code-jp/tree/release</a> へ行き，ソースにある <code>/OTC/SourceHanCodeJP.ttc</code> の RAW ファイルをダウンロードする．</li>
-<li><p>
-ダウンロードフォルダから該当ファイルをダブルクリックするとフォントウィンドウが開くので，右下の「フォントをインストール」をクリックする．
-</p>
-
-<div class="figure">
-<p><img src="fig/SourceHan_install.png" alt="SourceHan_install.png" />
-</p>
-</div></li>
+<li>ダウンロードフォルダから該当ファイルをダブルクリックするとフォントウィンドウが開くので，右下の「フォントをインストール」をクリックする．
+<img src="fig/SourceHan_install.png" alt="SourceHan_install.png" /></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org86dc9d2" class="outline-2">
-<h2 id="org86dc9d2"><span class="section-number-2">2</span> Emacs のインストール方法</h2>
+<div id="outline-container-org76c89ea" class="outline-2">
+<h2 id="org76c89ea"><span class="section-number-2">2</span> Emacs のインストール方法</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 <a href="./homebrew.html">Homebrew</a> で既にインストール済み．
@@ -366,8 +360,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org0768148" class="outline-2">
-<h2 id="org0768148"><span class="section-number-2">3</span> 長江研Emacs設定方針(2018年12月19日 大幅改訂)</h2>
+<div id="outline-container-orga7bead0" class="outline-2">
+<h2 id="orga7bead0"><span class="section-number-2">3</span> 長江研Emacs設定方針(2018年12月19日 大幅改訂)</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Emacs は初期設定ファイル(<code>~/.emacs.d/init.el</code>)が極めて重要な役割を果たす[1]．同じ
@@ -393,8 +387,8 @@ Emacs を使っていても，初期設定ファイルが違うと全く違う�
 </div>
 </div>
 
-<div id="outline-container-org71fef93" class="outline-2">
-<h2 id="org71fef93"><span class="section-number-2">4</span> 設定ファイルのダウンロードとパッケージのインストール</h2>
+<div id="outline-container-orgec77507" class="outline-2">
+<h2 id="orgec77507"><span class="section-number-2">4</span> 設定ファイルのダウンロードとパッケージのインストール</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 もし <code>~/.emacs.d/</code> を作っていないなら，ターミナルから以下を実行する:
@@ -430,8 +424,8 @@ Emacs を起動し, <code>M-x load-file RET ~/.emacs.d/package.el RET</code> を
 </div>
 </div>
 
-<div id="outline-container-org612425a" class="outline-2">
-<h2 id="org612425a"><span class="section-number-2">5</span> SKK / AquaSKK &#x2014; シンプル漢字かな入力</h2>
+<div id="outline-container-orgf9c66c7" class="outline-2">
+<h2 id="orgf9c66c7"><span class="section-number-2">5</span> SKK / AquaSKK &#x2014; シンプル漢字かな入力</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 長江は「ことえり」や「IME」のような形態素解析をベースとした入力メソッドが苦手なので，SKK(Simple Kana to Kanji conversion program)を利用している．
@@ -439,16 +433,16 @@ SKK は品詞解析を行なわないため，漢字にする箇所や送り仮�
 Macの標準入力方式に代替できる <a href="https://github.com/codefirst/aquaskk/releases">AquaSKK</a> (<a href="http://aquaskk.sourceforge.jp">旧サイト</a>)と Emacs 上で動く <a href="http://openlab.ring.gr.jp/skk/ddskk-ja.html">DDSKK (Daredevil SKK)</a> とがあり，両方併用するのが吉．
 </p>
 </div>
-<div id="outline-container-org694cfa3" class="outline-3">
-<h3 id="org694cfa3"><span class="section-number-3">5.1</span> DDSKK / AquaSKK のインストール</h3>
+<div id="outline-container-orgb9b8240" class="outline-3">
+<h3 id="orgb9b8240"><span class="section-number-3">5.1</span> DDSKK / AquaSKK のインストール</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 Homebrew および 上記の手順により自動的にインストールされているはず．
 </p>
 </div>
 </div>
-<div id="outline-container-orge6ff1c8" class="outline-3">
-<h3 id="orge6ff1c8"><span class="section-number-3">5.2</span> AquaSKKの設定</h3>
+<div id="outline-container-org975237c" class="outline-3">
+<h3 id="org975237c"><span class="section-number-3">5.2</span> AquaSKKの設定</h3>
 <div class="outline-text-3" id="text-5-2">
 <ol class="org-ol">
 <li>言語環境に AquaSKK を登録
@@ -481,12 +475,12 @@ Homebrew および 上記の手順により自動的にインストールされ�
 </div>
 </div>
 </div>
-<div id="outline-container-org80fe627" class="outline-2">
-<h2 id="org80fe627"><span class="section-number-2">6</span> 基本的な操作方法</h2>
+<div id="outline-container-org76fc881" class="outline-2">
+<h2 id="org76fc881"><span class="section-number-2">6</span> 基本的な操作方法</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-org815e984" class="outline-3">
-<h3 id="org815e984"><span class="section-number-3">6.1</span> 特殊キー</h3>
+<div id="outline-container-orgc167b97" class="outline-3">
+<h3 id="orgc167b97"><span class="section-number-3">6.1</span> 特殊キー</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
 上記の設定の下では，Emacs で用いる特殊キーは以下のように割当てられる．
@@ -564,8 +558,8 @@ Homebrew および 上記の手順により自動的にインストールされ�
 </p>
 </div>
 </div>
-<div id="outline-container-org5e46564" class="outline-3">
-<h3 id="org5e46564"><span class="section-number-3">6.2</span> 同時押しと順次押し</h3>
+<div id="outline-container-orgab378ae" class="outline-3">
+<h3 id="orgab378ae"><span class="section-number-3">6.2</span> 同時押しと順次押し</h3>
 <div class="outline-text-3" id="text-6-2">
 <p>
 Emacs では，特殊キーとそれ以外のキーの組み合わせ(キーバインド)によって多彩な操作が可能である．
@@ -590,8 +584,8 @@ Emacs では，特殊キーとそれ以外のキーの組み合わせ(キーバ�
 </p>
 </div>
 </div>
-<div id="outline-container-org4d9b049" class="outline-3">
-<h3 id="org4d9b049"><span class="section-number-3">6.3</span> まずはパニック対応(<code>ESC, C-g</code>)</h3>
+<div id="outline-container-org00410e1" class="outline-3">
+<h3 id="org00410e1"><span class="section-number-3">6.3</span> まずはパニック対応(<code>ESC, C-g</code>)</h3>
 <div class="outline-text-3" id="text-6-3">
 <p>
 操作中に予期せぬ画面になってしまった時は，=ESC= か <code>C-g</code> (Control と g の同時押し)を押すことで，大抵，元の画面に戻ってこれる．
@@ -628,8 +622,8 @@ Emacs を起動すると，最初はこのような画面(eshell)が現れるは
 </ol>
 </div>
 </div>
-<div id="outline-container-org971bfe2" class="outline-3">
-<h3 id="org971bfe2"><span class="section-number-3">6.4</span> カーソルの操作</h3>
+<div id="outline-container-org8cfab43" class="outline-3">
+<h3 id="org8cfab43"><span class="section-number-3">6.4</span> カーソルの操作</h3>
 <div class="outline-text-3" id="text-6-4">
 <p>
 Emacs では，十字キーではなく，キーバインドでもカーソルを操作できる．最初は十字キーの方が楽なように思うだろうが，慣れてくると十字キーに手を伸ばすのが億劫になってくるはずだ．最初の画面(eshell)で色々試してみよう．
@@ -725,24 +719,24 @@ Emacs では，十字キーではなく，キーバインドでもカーソル�
 </div>
 </div>
 </div>
-<div id="outline-container-orgca3a632" class="outline-2">
-<h2 id="orgca3a632"><span class="section-number-2">7</span> 参考資料</h2>
+<div id="outline-container-orgd4630ad" class="outline-2">
+<h2 id="orgd4630ad"><span class="section-number-2">7</span> 参考資料</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 とても書ききれないので，まずは <a href="http://www.amazon.co.jp/dp/4774150029">Emacs 実践入門</a> の§2.3以降を読みながら各自で慣れていって下さい．
 </p>
 </div>
 </div>
-<div id="outline-container-org0d5cede" class="outline-2">
-<h2 id="org0d5cede"><span class="section-number-2">8</span> 独自設定</h2>
+<div id="outline-container-org51098c5" class="outline-2">
+<h2 id="org51098c5"><span class="section-number-2">8</span> 独自設定</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 <a href="https://bitbucket.org/nagae/.emacs.d">https://bitbucket.org/nagae/.emacs.d</a> で公開している設定ファイルでは，
 <a href="http://www.amazon.co.jp/dp/4774150029">Emacs 実践入門</a> に記載されていないような独自のキーバインドがいくつかある．
 </p>
 </div>
-<div id="outline-container-orge8aa189" class="outline-3">
-<h3 id="orge8aa189"><span class="section-number-3">8.1</span> 基本操作</h3>
+<div id="outline-container-org159b041" class="outline-3">
+<h3 id="org159b041"><span class="section-number-3">8.1</span> 基本操作</h3>
 <div class="outline-text-3" id="text-8-1">
 <dl class="org-dl">
 <dt>ウィンドウの切り替え(<code>C-;</code>)</dt><dd><code>C-x o</code> だけでなく <code>C-;</code> でもウィンドウが切り替えられる．</dd>
@@ -751,8 +745,8 @@ Emacs では，十字キーではなく，キーバインドでもカーソル�
 </dl>
 </div>
 </div>
-<div id="outline-container-org31b76ba" class="outline-3">
-<h3 id="org31b76ba"><span class="section-number-3">8.2</span> もっとある</h3>
+<div id="outline-container-org560b89d" class="outline-3">
+<h3 id="org560b89d"><span class="section-number-3">8.2</span> もっとある</h3>
 <div class="outline-text-3" id="text-8-2">
 <p>
 便利な独自機能はまだ沢山あるが鋭意執筆中．
@@ -763,7 +757,7 @@ Emacs では，十字キーではなく，キーバインドでもカーソル�
 </div>
 <div id="postamble" class="status">
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
-<p class="date">Created: 2019-04-18 Thu 16:32</p>
+<p class="date">Created: 2019-04-18 Thu 16:36</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
