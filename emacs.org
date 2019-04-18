@@ -20,6 +20,11 @@
 #+INFOJS_OPT: view:showall toc:t sdepth:2 ltoc:1 mouse:nil buttons:nil
 #+LATEX_HEADER:\usepackage{amsmath,rmss_math,rmss_color}
 
+* 源ノ角ゴシックのインストール
+- https://github.com/adobe-fonts/source-han-code-jp/tree/release へ行き，ソースにある =/OTC/SourceHanCodeJP.ttc= の RAW ファイルをダウンロードする．
+- ダウンロードフォルダから該当ファイルをダブルクリックするとフォントウィンドウが開くので，右下の「フォントをインストール」をクリックする．
+  [[file:fig/SourceHan_install.png]]
+
 * Emacs のインストール方法
 1. 本体および関連するパッケージを Homebrew でインストール
    - ターミナルで以下を実行
