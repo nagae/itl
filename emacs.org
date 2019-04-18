@@ -23,6 +23,7 @@
 * 源ノ角ゴシックのインストール
 - https://github.com/adobe-fonts/source-han-code-jp/tree/release へ行き，ソースにある =/OTC/SourceHanCodeJP.ttc= の RAW ファイルをダウンロードする．
 - ダウンロードフォルダから該当ファイルをダブルクリックするとフォントウィンドウが開くので，右下の「フォントをインストール」をクリックする．
+  #+ATTR_HTML: height="100"
   [[file:fig/SourceHan_install.png]]
 
 * Emacs のインストール方法
