@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
-<!-- 2018-12-20 Thu 12:54 -->
+<!-- 2019-04-18 Thu 16:48 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ITL/LaTeX編</title>
@@ -311,29 +311,29 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#27425;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgf02afdf">1. MacTeX のインストール</a></li>
-<li><a href="#org6644579">2. 日本語フォントの設定(ヒラギノフォントの埋め込みを可能に)</a></li>
-<li><a href="#org1d0f2a1">3. コンパイルしてみる</a></li>
-<li><a href="#orgafb3068">4. tlmgr を使って常に最新の状態を保つ</a>
+<li><a href="#org4f5b9af">1. MacTeX のインストール</a></li>
+<li><a href="#org90555a6">2. 日本語フォントの設定(ヒラギノフォントの埋め込みを可能に)</a></li>
+<li><a href="#orgd8d8bd8">3. コンパイルしてみる</a></li>
+<li><a href="#orgfbaa573">4. tlmgr を使って常に最新の状態を保つ</a>
 <ul>
-<li><a href="#org3fbe151">4.1. リポジトリを登録</a></li>
-<li><a href="#orge0da9c7">4.2. tlmgr 自身の更新</a></li>
+<li><a href="#org5886ee1">4.1. リポジトリを登録</a></li>
+<li><a href="#org3122f5a">4.2. tlmgr 自身の更新</a></li>
 </ul>
 </li>
-<li><a href="#org242e5b3">5. latexmk</a></li>
-<li><a href="#orgefbafd1">6. 長江研標準 Tex ライブラリ</a></li>
-<li><a href="#orge6c9463">7. Emacs との連携</a>
+<li><a href="#org45c5677">5. latexmk</a></li>
+<li><a href="#orge92aaf8">6. 長江研標準 Tex ライブラリ</a></li>
+<li><a href="#orgfb8daae">7. Emacs との連携</a>
 <ul>
-<li><a href="#orgde99a75">7.1. auctex</a></li>
-<li><a href="#org6fa6528">7.2. cdLaTeX</a></li>
+<li><a href="#org53e1a74">7.1. auctex</a></li>
+<li><a href="#orgcddadaf">7.2. cdLaTeX</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgf02afdf" class="outline-2">
-<h2 id="orgf02afdf"><span class="section-number-2">1</span> MacTeX のインストール</h2>
+<div id="outline-container-org4f5b9af" class="outline-2">
+<h2 id="org4f5b9af"><span class="section-number-2">1</span> MacTeX のインストール</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <a href="./homebrew.html">Homebrew</a> で既にインストールされているはず．
@@ -341,8 +341,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org6644579" class="outline-2">
-<h2 id="org6644579"><span class="section-number-2">2</span> 日本語フォントの設定(ヒラギノフォントの埋め込みを可能に)</h2>
+<div id="outline-container-org90555a6" class="outline-2">
+<h2 id="org90555a6"><span class="section-number-2">2</span> 日本語フォントの設定(ヒラギノフォントの埋め込みを可能に)</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 以下を <b>1行づつ順に</b> ターミナルで実行(<code>sudo</code> でパスワードを打つ必要があることに注意)
@@ -363,8 +363,8 @@ sudo kanji-config-updmap-sys --jis2004 hiragino-highsierra-pron
 </div>
 </div>
 
-<div id="outline-container-org1d0f2a1" class="outline-2">
-<h2 id="org1d0f2a1"><span class="section-number-2">3</span> コンパイルしてみる</h2>
+<div id="outline-container-orgd8d8bd8" class="outline-2">
+<h2 id="orgd8d8bd8"><span class="section-number-2">3</span> コンパイルしてみる</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 以下をターミナルから実行してみる
@@ -380,15 +380,15 @@ open sample.pdf
 </div>
 </div>
 </div>
-<div id="outline-container-orgafb3068" class="outline-2">
-<h2 id="orgafb3068"><span class="section-number-2">4</span> tlmgr を使って常に最新の状態を保つ</h2>
+<div id="outline-container-orgfbaa573" class="outline-2">
+<h2 id="orgfbaa573"><span class="section-number-2">4</span> tlmgr を使って常に最新の状態を保つ</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 上述の方法によって tlmgr もインストールされる．これを使えば，TeX を常に最新の状態に保てる．
 </p>
 </div>
-<div id="outline-container-org3fbe151" class="outline-3">
-<h3 id="org3fbe151"><span class="section-number-3">4.1</span> リポジトリを登録</h3>
+<div id="outline-container-org5886ee1" class="outline-3">
+<h3 id="org5886ee1"><span class="section-number-3">4.1</span> リポジトリを登録</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 tlmgr が参照するリポジトリに <code>mirror.ctan.org</code> を指定しておく(<a href="http://www.fugenji.org/~thomas/texlive-guide/tlmgr.html">参考</a>)．この操作は初回に一度行えばよい．
@@ -399,8 +399,8 @@ tlmgr が参照するリポジトリに <code>mirror.ctan.org</code> を指定�
 </div>
 </div>
 </div>
-<div id="outline-container-orge0da9c7" class="outline-3">
-<h3 id="orge0da9c7"><span class="section-number-3">4.2</span> tlmgr 自身の更新</h3>
+<div id="outline-container-org3122f5a" class="outline-3">
+<h3 id="org3122f5a"><span class="section-number-3">4.2</span> tlmgr 自身の更新</h3>
 <div class="outline-text-3" id="text-4-2">
 <ul class="org-ul">
 <li><p>
@@ -412,8 +412,8 @@ tlmgr 自身とシステムを同時に更新
 </div></li>
 </ul>
 </div>
-<div id="outline-container-org6f40530" class="outline-4">
-<h4 id="org6f40530"><span class="section-number-4">4.2.1</span> 知られている問題：</h4>
+<div id="outline-container-org0d1597d" class="outline-4">
+<h4 id="org0d1597d"><span class="section-number-4">4.2.1</span> 知られている問題：</h4>
 <div class="outline-text-4" id="text-4-2-1">
 <ul class="org-ul">
 <li><p>
@@ -431,8 +431,8 @@ tlmgr 自身とシステムを同時に更新
 </div>
 </div>
 </div>
-<div id="outline-container-org242e5b3" class="outline-2">
-<h2 id="org242e5b3"><span class="section-number-2">5</span> latexmk</h2>
+<div id="outline-container-org45c5677" class="outline-2">
+<h2 id="org45c5677"><span class="section-number-2">5</span> latexmk</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 latexmk は TeX の処理を自動化してくれるスクリプト．
@@ -468,39 +468,48 @@ curl -LO curl -LO https://gist.github.com/nagae/3293112/raw/.latexmkrc
 </div>
 </div>
 
-<div id="outline-container-orgefbafd1" class="outline-2">
-<h2 id="orgefbafd1"><span class="section-number-2">6</span> 長江研標準 Tex ライブラリ</h2>
+<div id="outline-container-orge92aaf8" class="outline-2">
+<h2 id="orge92aaf8"><span class="section-number-2">6</span> 長江研標準 Tex ライブラリ</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 長江研ではユーザー個別の TeX ライブラリの置き場 <code>TEXMFHOME</code> として
 <code>~/Dropbox/texmf/tex</code> を用いる．
 </p>
+
+<p>
+ターミナルから以下を実行する. 
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">sudo tlmgr conf texmf TEXMFHOME ~/Dropbox/texmf:/usr/local/share/texmf
+</pre>
+</div>
+
 <ul class="org-ul">
 <li>使い方は <a href="http://github.com/nagae/texmf">http://github.com/nagae/texmf</a> から．</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orge6c9463" class="outline-2">
-<h2 id="orge6c9463"><span class="section-number-2">7</span> Emacs との連携</h2>
+<div id="outline-container-orgfb8daae" class="outline-2">
+<h2 id="orgfb8daae"><span class="section-number-2">7</span> Emacs との連携</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 Emacs 上でのLaTeX ソースの編集に支援ツールは必須
 </p>
 </div>
-<div id="outline-container-orgde99a75" class="outline-3">
-<h3 id="orgde99a75"><span class="section-number-3">7.1</span> auctex</h3>
+<div id="outline-container-org53e1a74" class="outline-3">
+<h3 id="org53e1a74"><span class="section-number-3">7.1</span> auctex</h3>
 <div class="outline-text-3" id="text-7-1">
 </div>
-<div id="outline-container-org19d02d6" class="outline-4">
-<h4 id="org19d02d6"><span class="section-number-4">7.1.1</span> 特徴</h4>
+<div id="outline-container-org0109b76" class="outline-4">
+<h4 id="org0109b76"><span class="section-number-4">7.1.1</span> 特徴</h4>
 <div class="outline-text-4" id="text-7-1-1">
 <p>
 Emacs 上での LaTeX 編集を支援．C-c C-c で compile したり，C-c C-p C-d で preview 見たりできる．
 </p>
 </div>
 </div>
-<div id="outline-container-org35dccbe" class="outline-4">
-<h4 id="org35dccbe"><span class="section-number-4">7.1.2</span> 参考</h4>
+<div id="outline-container-orga56659f" class="outline-4">
+<h4 id="orga56659f"><span class="section-number-4">7.1.2</span> 参考</h4>
 <div class="outline-text-4" id="text-7-1-2">
 <dl class="org-dl">
 <dt>公式サイト</dt><dd><a href="http://www.gnu.org/software/auctex/">http://www.gnu.org/software/auctex/</a></dd>
@@ -509,8 +518,8 @@ Emacs 上での LaTeX 編集を支援．C-c C-c で compile したり，C-c C-p 
 </dl>
 </div>
 </div>
-<div id="outline-container-orgfbd5370" class="outline-4">
-<h4 id="orgfbd5370"><span class="section-number-4">7.1.3</span> インストール</h4>
+<div id="outline-container-org77acb89" class="outline-4">
+<h4 id="org77acb89"><span class="section-number-4">7.1.3</span> インストール</h4>
 <div class="outline-text-4" id="text-7-1-3">
 <ul class="org-ul">
 <li>ELPA からインストール可能</li>
@@ -524,13 +533,13 @@ Emacs を立ち上げ，以下を入力して RET
 </ul>
 </div>
 </div>
-<div id="outline-container-org8d791e8" class="outline-4">
-<h4 id="org8d791e8"><span class="section-number-4">7.1.4</span> 使い方</h4>
+<div id="outline-container-orgf025476" class="outline-4">
+<h4 id="orgf025476"><span class="section-number-4">7.1.4</span> 使い方</h4>
 <div class="outline-text-4" id="text-7-1-4">
 </div>
 <ul class="org-ul">
-<li><a id="org76963cb"></a>章・節，環境，マクロの入力<br />
-<div class="outline-text-5" id="text-org76963cb">
+<li><a id="org5a1d620"></a>章・節，環境，マクロの入力<br />
+<div class="outline-text-5" id="text-org5a1d620">
 <ul class="org-ul">
 <li>TABで補完が可能．</li>
 <li>カーソルの上下(もしくは <code>M-p, M-n</code>)で履歴を選択可能．</li>
@@ -568,8 +577,8 @@ Emacs を立ち上げ，以下を入力して RET
 </table>
 </div>
 </li>
-<li><a id="org133c680"></a>フォント変更<br />
-<div class="outline-text-5" id="text-org133c680">
+<li><a id="orgc3b1a31"></a>フォント変更<br />
+<div class="outline-text-5" id="text-orgc3b1a31">
 <ul class="org-ul">
 <li>何も選択せずにショートカットを入力すると LaTeX コマンドだけを入力し，括弧内で待機</li>
 <li>文字列を選択してショートカットを入力すると，当該文字を LaTeX コマンド内に内挿</li>
@@ -637,8 +646,8 @@ Emacs を立ち上げ，以下を入力して RET
 </table>
 </div>
 </li>
-<li><a id="org175ef3d"></a>コメント<br />
-<div class="outline-text-5" id="text-org175ef3d">
+<li><a id="orgac9454b"></a>コメント<br />
+<div class="outline-text-5" id="text-orgac9454b">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -667,8 +676,8 @@ Emacs を立ち上げ，以下を入力して RET
 </table>
 </div>
 </li>
-<li><a id="org805465b"></a>マーク<br />
-<div class="outline-text-5" id="text-org805465b">
+<li><a id="org5779c74"></a>マーク<br />
+<div class="outline-text-5" id="text-org5779c74">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -697,8 +706,8 @@ Emacs を立ち上げ，以下を入力して RET
 </table>
 </div>
 </li>
-<li><a id="org80be78e"></a>処理<br />
-<div class="outline-text-5" id="text-org80be78e">
+<li><a id="org75db310"></a>処理<br />
+<div class="outline-text-5" id="text-org75db310">
 <p>
 処理コマンドは TAB補完および上下(<code>M-p, M-n</code>)履歴表示が可能
 </p>
@@ -838,20 +847,20 @@ dvipdfmx 	latexmk 	pBibTeX 	pLaTeX
 </div>
 </div>
 
-<div id="outline-container-org6fa6528" class="outline-3">
-<h3 id="org6fa6528"><span class="section-number-3">7.2</span> cdLaTeX</h3>
+<div id="outline-container-orgcddadaf" class="outline-3">
+<h3 id="orgcddadaf"><span class="section-number-3">7.2</span> cdLaTeX</h3>
 <div class="outline-text-3" id="text-7-2">
 </div>
-<div id="outline-container-org3f83542" class="outline-4">
-<h4 id="org3f83542"><span class="section-number-4">7.2.1</span> 特徴</h4>
+<div id="outline-container-orga5945ad" class="outline-4">
+<h4 id="orga5945ad"><span class="section-number-4">7.2.1</span> 特徴</h4>
 <div class="outline-text-4" id="text-7-2-1">
 <p>
 auctex と同様の機能を持つが minor-mode のため，org-mode などと併用できる
 </p>
 </div>
 </div>
-<div id="outline-container-org487a8ac" class="outline-4">
-<h4 id="org487a8ac"><span class="section-number-4">7.2.2</span> インストール</h4>
+<div id="outline-container-org78e6258" class="outline-4">
+<h4 id="org78e6258"><span class="section-number-4">7.2.2</span> インストール</h4>
 <div class="outline-text-4" id="text-7-2-2">
 <ul class="org-ul">
 <li>ELPA のバージョン(4.0)は古くて使えないので，git から最新版を取ってくる必要がある．</li>
@@ -871,7 +880,7 @@ git submodule add git@github.com:emacsmirror/cdlatex.git lisp/cdlatex
 </div>
 <div id="postamble" class="status">
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
-<p class="date">Created: 2018-12-20 Thu 12:54</p>
+<p class="date">Created: 2019-04-18 Thu 16:48</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
