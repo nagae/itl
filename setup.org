@@ -60,12 +60,13 @@ Mac ではソフトウェアのインストール方法に3通りある．
 2や3の方法の場合，必要となるファイルが dmg (仮想ドライブイメージ)ファイルとして提供されている場合がある．
 dmg ファイルをダブルクリックすると，新しいドライブが認識される．その中に .app ファイルが入っていたり，.pkg ファイルが入っていたりする．
 * セキュリティソフトウェアのインストール
-- f-secure は後述する homebrew のパッケージディレクトリ(=/usr/local/=)を「汚染」しない．
-- SEPの方が安定しているようだが =/usr/local/lib/= の下に =.dylib= を作るので面倒．
+- F-secure は後述する homebrew のパッケージディレクトリ(=/usr/local/=)を「汚染」しない．
+- @@html:<strike>@@SEPの方が安定しているようだが =/usr/local/lib/= の下に =.dylib= を作るので面倒．@@html:</strike>@@
+  契約改訂により現在は利用不可能．
 ** f-secure
 *** インストール方法
 - TAINS のホームページからセキュリティ対策ソフトウェア->エフセキュアを選択：
-  https://www2.tains.tohoku.ac.jp/fw/dfw/INFO/modules/pico/index.php?content_id=16
+  https://www2.tains.tohoku.ac.jp/security/f-secure
 - 「ダウンロード」ボタンから dmg  ファイルをダウンロードする
 - dmg ファイルをマウントし，F-Secure****.mpkg というファイルをダブルクリック
 *** ライセンスコードの取得
@@ -78,7 +79,7 @@ dmg ファイルをダブルクリックすると，新しいドライブが認�
   #+BEGIN_SRC sh
   sudo /usr/local/f-secure/bin/uninstall_MacProtection 
   #+END_SRC
-** Symantec Endpoint Protection (SEP)
+** COMMENT Symantec Endpoint Protection (SEP)
 *** インストール方法
 - TAIN のホームページからセキュリティ対策ソフトウェア->シマンテックを選択：
   https://www2.tains.tohoku.ac.jp/fw/dfw/INFO/modules/pico/index.php?content_id=3
@@ -94,7 +95,7 @@ dmg ファイルをダブルクリックすると，新しいドライブが認�
 #+END_SRC
 ** =~/.inputrc= の設定
 ターミナルでは，上下キーや =Ctrl-n / Ctrl-p= によって過去に入力した履歴を表示させられる．
-さらに，=~/.inputrc= に以下を記載しておくと，最初の数文字を入力してから上下キーや =Ctrl-n/Ctrl-p= を押すと，
+さらに, =~/.inputrc= に以下を記載しておくと，最初の数文字を入力してから上下キーや =Ctrl-n/Ctrl-p= を押すと，
 その文字で始まる履歴のみを表示させられる．
 #+HTML: <script src="https://gist.github.com/nagae/10461176.js"></script>
 
@@ -109,10 +110,9 @@ curl -O https://gist.githubusercontent.com/nagae/10461176/raw/.inputrc
 - Trackpad による様々なジェスチャーを各種機能に設定できる
 ** インストール方法
 *** マウスを使う場合
-- http://www.boastr.de/ から BetterTouchTool.zip をダウンロード
-- BetterTouchTool.zip をダブルクリック
-- 生成された BetterTouchTool.app を =/Applications/= フォルダに移動．
-*** ターミナルだけでも行える
+- https://folivora.ai から DOWNLOAD TRIAL (45 DAYS)をダウンロード
+- BetterTouchTool.app を =/Applications/= フォルダに移動．
+*** COMMENT ターミナルだけでも行える
 #+BEGIN_SRC screen
 cd ~/Downloads/
 curl -LO http://bettertouchtool.net/BetterTouchTool.zip
@@ -228,7 +228,7 @@ Preference -> Settings -> Launch BetterTouchTools on startup をチェック
   #+begin_src screen
     mkdir ~/.ssh                    # ssh用のディレクトリを作る
     cd ~/.ssh                       # .ssh ディレクトリni移動
-    ssh-keygen -t rsa -f id_rsa     # id_rsa という秘密鍵と id_rsa.pub という公開鍵を作る
+    ssh-keygen -t rsa -b 4096 -f id_rsa     # id_rsa という秘密鍵と id_rsa.pub という公開鍵を作る
     # パスフレーズを入力した後，同じものをもう一度入力．
     # ここで入力するパスフレーズは，Mac 本体へのログイン用と同じにしても問題無い．
     chmod 700 ~/.ssh                # .ssh ディレクトリのアクセス権を「管理者のみ読み書き実行可」に変更
@@ -291,7 +291,7 @@ Preference -> Settings -> Launch BetterTouchTools on startup をチェック
     RSA key fingerprint is 97:8c:1b:f2:.....
     Are you sure you want to continue connecting (yes/no)? 
   #+END_SRC
-  と表示されたら， =yes= を入力．
+  と表示されたら, =yes= を入力．
   #+BEGIN_SRC text
     # (Warning が出ることもある)
     PTY allocation request failed on channel 0
@@ -340,7 +340,7 @@ Preference -> Settings -> Launch BetterTouchTools on startup をチェック
     RSA key fingerprint is 16:27:ac:a5:76:....
     Are you sure you want to continue connecting (yes/no)? 
   #+END_SRC
-  と表示されたら，=yes= を入力．
+  と表示されたら, =yes= を入力．
   #+BEGIN_SRC text
     # (Warning が出ることもある)
     PTY allocation request failed on channel 0

@@ -26,33 +26,16 @@
   [[file:fig/SourceHan_install.png]]
 
 * Emacs のインストール方法
-1. 本体および関連するパッケージを Homebrew でインストール
-   - ターミナルで以下を実行
-      #+begin_src screen
-        brew cask install emacs # 最強のエディタ
-        brew install skktools # 日本語入力 SKK
-      #+end_src
-2. Spotlight で呼び出せるように Automator でアプリケーションとして登録
-   - [[file:/Applications/Automator.app][Automator.app]] を起動し，メニューから「アプリケーション」を選択
-     #+attr_html: alt="Automator設定画面" align="center" width="600"
-     [[file:fig/emacs_Automator_1.png]]
-   - 検索窓に「シェルスクリプトを実行」と入力
-   - 「シェルスクリプトを実行」と書かれたアイコンをダブルクリック
-   - デフォルトで =cat= と書かれたシェルスクリプトを以下に変更：
-    #+begin_src screen
-    open -a /Applications/Emacs.app
-    #+end_src
-   - ファイル名を =Emacs.app= として iCloud フォルダに保存する
-* 長江研 Emacs 設定方針
+[[./homebrew.org][Homebrew]] で既にインストール済み．
+
+* 長江研Emacs設定方針(2018年12月19日 大幅改訂)
 Emacs は初期設定ファイル(=~/.emacs.d/init.el=)が極めて重要な役割を果たす[1]．同じ
 Emacs を使っていても，初期設定ファイルが違うと全く違うアプリケーションのように感
 じる．そのため，マシンごとに別々の初期設定ファイルを用いると，複数のマシンで作業
 する(eg. 研究室の作業を自宅で引き継ぐ)際に作業効率が著しく低下する．そこで，以下
 では，次のポリシーに従った設定方法を述べる：
-- 環境変数や homebrew のパスなど，マシン固有の設定はローカル上の =~/.emacs.d/init.el= に記述
-- それ以外の初期設定ファイルは Dropbox上の =~/Dropbox/.emacs.d/= 以下に置く
-- ELPA(Emacs Lisp Package Archives)を積極的に利用．通常，これらのファイルはローカルの =~/.emacs.d/elpa/= 以下に置かれるが，ここでは，これをDropbox 上の =~/Dropbox/.emacs.d/elpa= へのシンボリックリンクとして設定．
-- ELPAでインストールできないlispファイル群は Dropbox 上の =~/Dropbox/.emacs.d/lisp= 以下に置く．
+- 設定ファイルおよびパッケージは =~/.emacs.d/= 以下に置く
+- ELPA(Emacs Lisp Package Archives)を積極的に利用．インストールするパッケージは =~/.emacs.d/package.el= に記載し, Emacs から =M-x load-file RET ~/.emacs.d/package.el RET= を実行することでインストールする．
 
 [1] =.emacs.d= のように先頭に =.= のついたファイルやフォルダは隠しファイル/隠しフォ
 ルダであり，普段はFinder や =ls= コマンドで見ることはできない．これらを見るには，
@@ -60,88 +43,37 @@ Emacs を使っていても，初期設定ファイルが違うと全く違う�
 #+begin_src screen
 $ ls -a ~/
 #+end_src
-** Emacs の初期設定
-1. ローカルの初期設定フォルダを作成：
-   #+begin_src screen
-   $ mkdir ~/.emacs.d/
-   #+end_src
-2. =~/.emacs.d/init.el= を以下のように設定する：
-   #+html: <script src="https://gist.github.com/nagae/5269225.js"></script>
-   
-   なお，上記ファイルは以下の手順でダウンロードすることも可能：
-   #+begin_src screen
-   $ cd ~/.emacs.d
-   $ curl -O https://gist.github.com/nagae/5269225/raw/init.el
-   #+end_src
-   =curl -O foo= は指定されたインターネット上のファイルを同じ名前で現在のディレクトリに保存するコマンド．
-3. リポジトリからDropbox 上に設定ファイルを読み込む：
-   1) Bitbucket と Github に SSH 公開鍵アクセスが可能か調べる
-      #+BEGIN_SRC text
-        $ ssh git@bitbucket.org
-        PTY allocation request failed on channel 0
-        conq: logged in as ***.
-        
-        You can use git or hg to connect to Bitbucket. Shell access is disabled.
-        Connection to bitbucket.org closed.
-      #+END_SRC
-      =You can use git or hg to connect to Bitbucket.= と表示されれば OK.
-      #+BEGIN_SRC text
-        $ ssh git@github.com
-        PTY allocation request failed on channel 0
-        Hi ****! You've successfully authenticated, but GitHub does not provide shell access.
-        Connection to github.com closed.
-      #+END_SRC
-      =Hi ****! You've successfully authenticated= と表示されればOK(****は Github.com のアカウント名)．
-   2) アクセスできない場合は以下の手順を試してみる：
-      - [[https://nagae.github.io/itl/setup.html#org9174e41][Github / Bitbucket に SSH で接続する]] の設定を確認
-      - =~/.ssh/known_host= から =github.com= や =bitbucket.org= を含む行を削除する
-      - 秘密鍵を指定してSSHでアクセスしてみる: 具体的には，ターミナルから以下を入力
-        #+BEGIN_SRC screen
-          $ ssh -i ~/.ssh/id_rsa git@bitbucket.org
-          $ ssh -i ~/.ssh/id_rsa git@github.com
-        #+END_SRC
-   3) Bitbucket / Github にアクセスできることを確認したら，ターミナルから以下を実行：
-      #+BEGIN_SRC screen
-      $ cd ~/Dropbox/
-      $ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git
-      #+END_SRC
-4. Dropbox のlisp用フォルダへのシンボリックリンクをローカルの設定フォルダ =~/.emacs.d/= に置く：
-   #+BEGIN_SRC screen
-      $ ln -s ~/Dropbox/.emacs.d/elpa ~/.emacs.d # Dropbox上の elpa フォルダへのシンボリックリンクを張る
-   #+END_SRC
-** TODO 初期設定ファイルの更新
-- 上記の初期設定ファイルは適宜更新される．更新を反映するにはターミナルから以下を実行する：
-  #+BEGIN_SRC screen
-    $ cd ~/Dropbox/.emacs.d
-    $ git pull
-  #+END_SRC
-- =lisp/spaces= など，一部の lisp は別のリポジトリを(submodule として)取り込んでいるので，以下で最新のものに更新できる(はず)：
-  #+BEGIN_SRC screen
-    $ cd ~/Dropbox/.emacs.d
-    $ git submodule update --init --recursive
-    $ git submodule update --recursive
-  #+END_SRC
-- =--init= オプションをつけると初期化のみを行うようです([[http://stackoverflow.com/questions/10168449/git-update-submodule-recursive][参考]])．
-- =git pull= あたりでどうにもうまく行かないときは，=~/Dropbox/.emacs.d= 自体を clone し直してみる：
-  #+BEGIN_SRC screen
-    $ cd ~/Dropbox                  # ~/Dropbox に移動
-    $ mv .emacs.d .emacs.d.backup   # .emacs.d を別名で退避
-    $ git clone --recursive git@bitbucket.org:nagae/.emacs.d.git   # 最新版を clone
-  #+END_SRC
-  後は =.emacs.d.backup= の中身を適宜 =.emacs.d= に書き写していけばいい
+
+* 設定ファイルのダウンロードとパッケージのインストール
+もし =~/.emacs.d/= を作っていないなら，ターミナルから以下を実行する:
+#+BEGIN_SRC sh
+mkdir ~/.emacs.d
+#+END_SRC
+次に，ターミナルから以下を実行すれば，設定ファイルが =~/.emacs.d/= 以下に書き込まれる:
+#+BEGIN_SRC sh
+cd ~/Downloads
+curl -L -O https://codeload.github.com/nagae/itl/zip/resource
+unzip resource
+mkdir -p ~/.emacs.d/
+cp itl-resource/emacs.d/*.el ~/.emacs.d/
+rm -rf itl-resource
+rm -f resource
+# 以下は aspell の実行に必要
+echo "lang en_US" > ~/.aspell.conf
+#+END_SRC
+
+Emacs を起動し, =M-x load-file RET ~/.emacs.d/package.el RET= を実行すれば，必要なパッケージが自動的にインストールされる．
+ここで, =M-x= は =Esc= キーを押しながら =x=.
+
+インストールが終わったら Emacs を再起動すれば長江研用にカスタマイズされた Emacs が利用可能になる．
 
 * SKK / AquaSKK --- シンプル漢字かな入力
 長江は「ことえり」や「IME」のような形態素解析をベースとした入力メソッドが苦手なので，SKK(Simple Kana to Kanji conversion program)を利用している．
 SKK は品詞解析を行なわないため，漢字にする箇所や送り仮名を自分で指定する必要がある．しかし，ひとたび慣れれば高速かつ直感的な入力が可能となる———上述のような入力メソッドが使えなくなるほど．
 Macの標準入力方式に代替できる [[https://github.com/codefirst/aquaskk/releases][AquaSKK]] ([[http://aquaskk.sourceforge.jp][旧サイト]])と Emacs 上で動く [[http://openlab.ring.gr.jp/skk/ddskk-ja.html][DDSKK (Daredevil SKK)]] とがあり，両方併用するのが吉．
-** DDSKKのインストール
-1. Emacs の package に MELPA を入れておけば,
-   =M-x package install [RET] ddskk= でインストール可能になった.
-** AquaSKKのインストール
-1. =brew cask= でインストールできるようになっている:
-   #+BEGIN_SRC sh
-   brew cask install aquaskk
-   #+END_SRC
+** DDSKK / AquaSKK のインストール
+Homebrew および 上記の手順により自動的にインストールされているはず．
+** AquaSKKの設定
 3. 言語環境に AquaSKK を登録
    - 画面左上のリンゴマーク→システム環境設定→言語とテキスト
      [[file:fig/setting_language_text.png]]
@@ -230,16 +162,13 @@ Emacs では，十字キーではなく，キーバインドでもカーソル�
 | =C-d=        | カーソルの *後* の1文字を消去 |
 |--------------+-------------------------------|
 * 参考資料
-順次書いていきますが膨大なので，まずは [[http://www.amazon.co.jp/dp/4774150029][Emacs 実践入門]] の§2.3以降を読みながら各自で慣れていって下さい．
+とても書ききれないので，まずは [[http://www.amazon.co.jp/dp/4774150029][Emacs 実践入門]] の§2.3以降を読みながら各自で慣れていって下さい．
 * 独自設定
 https://bitbucket.org/nagae/.emacs.d で公開している設定ファイルでは，
 [[http://www.amazon.co.jp/dp/4774150029][Emacs 実践入門]] に記載されていないような独自のキーバインドがいくつかある．
 ** 基本操作
 - ウィンドウの切り替え(=C-;=) :: =C-x o= だけでなく =C-;= でもウィンドウが切り替えられる．
 - 指定行への移動(=M-g=) :: =M-x goto-line= を =M-g= だけで起動できる
-- バッファ切り替え(=C-x b=) :: =C-x b= で [[http://www.bookshelf.jp/soft/meadow_28.html#SEC370][iswitchb]] を起動できる．カーソルの左右と =C-f, C-b= で次のバッファ/前のバッファを選択できる．
 - 前後のバッファへの瞬時切り替え(=C-<, C->=) :: バッファ切り替えを立ち上げなくても =C-<= で前のバッファ， =C->= で後のバッファに切り替えられる
-** Anything
-- =s-a= (option キーと a の同時押し) :: =s-a= でanything-for-files を起動
 ** もっとある
 便利な独自機能はまだ沢山あるが鋭意執筆中．

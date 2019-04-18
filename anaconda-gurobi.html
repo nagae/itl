@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
-<!-- 2017-03-10 Fri 22:08 -->
+<!-- 2018-12-21 Fri 09:35 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Anaconda + Gurobi による科学技術計算環境の構築</title>
@@ -68,6 +68,7 @@
   pre.src-fortran:before { content: 'Fortran'; }
   pre.src-gnuplot:before { content: 'gnuplot'; }
   pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
   pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
@@ -181,15 +182,15 @@
 </style>
 <link rel=stylesheet href="style.css" type="text/css">
 
-<script type="text/javascript" src="http://orgmode.org/org-info.js">
+<script type="text/javascript" src="https://orgmode.org/org-info.js">
 /**
  *
- * @source: http://orgmode.org/org-info.js
+ * @source: https://orgmode.org/org-info.js
  *
  * @licstart  The following is the entire license notice for the
- *  JavaScript code in http://orgmode.org/org-info.js.
+ *  JavaScript code in https://orgmode.org/org-info.js.
  *
- * Copyright (C) 2012-2013 Free Software Foundation, Inc.
+ * Copyright (C) 2012-2018 Free Software Foundation, Inc.
  *
  *
  * The JavaScript code in this tag is free software: you can
@@ -207,7 +208,7 @@
  * through which recipients can access the Corresponding Source.
  *
  * @licend  The above is the entire license notice
- * for the JavaScript code in http://orgmode.org/org-info.js.
+ * for the JavaScript code in https://orgmode.org/org-info.js.
  *
  */
 </script>
@@ -218,7 +219,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -257,7 +258,7 @@ org_html_manager.setup();  // activate after the parameters are set
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -310,27 +311,28 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#27425;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org4eb8695">1. pyenv + Anaconda + Gurobi</a></li>
-<li><a href="#org6c7015d">2. pyenv のインストール</a></li>
-<li><a href="#org74af0d2">3. Anaconda のインストール</a></li>
-<li><a href="#orgbd6b52f">4. Gurobi のインストール</a>
+<li><a href="#orgbb1d912">1. pyenv + Anaconda + Gurobi</a></li>
+<li><a href="#org0faa56b">2. pyenv のインストール</a></li>
+<li><a href="#orge000369">3. Anaconda のインストール</a></li>
+<li><a href="#org62c8a5a">4. <code>conda</code> を使った Python モジュール管理</a></li>
+<li><a href="#orgc26cff3">5. Gurobi のインストール</a>
 <ul>
-<li><a href="#orga42a49c">4.1. Gurobi アカウントの作成とアカデミック・ライセンスの取得</a></li>
+<li><a href="#org770fa85">5.1. Gurobi アカウントの作成とアカデミック・ライセンスの取得</a></li>
 </ul>
 </li>
-<li><a href="#orgf7ac06f">5. jupyter を使ってみる</a>
+<li><a href="#org231abac">6. jupyter を使ってみる</a>
 <ul>
-<li><a href="#org9efd0fb">5.1. jupyter とは</a></li>
-<li><a href="#org5bfe26e">5.2. jupyter qtconsole を使ってみる</a></li>
-<li><a href="#orga80e4fe">5.3. jupyter notebook を使ってみる</a></li>
+<li><a href="#orgb3f24c7">6.1. jupyter とは</a></li>
+<li><a href="#org1fe5eed">6.2. jupyter qtconsole を使ってみる</a></li>
+<li><a href="#org3198d59">6.3. jupyter notebook を使ってみる</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org4eb8695" class="outline-2">
-<h2 id="org4eb8695"><span class="section-number-2">1</span> pyenv + Anaconda + Gurobi</h2>
+<div id="outline-container-orgbb1d912" class="outline-2">
+<h2 id="orgbb1d912"><span class="section-number-2">1</span> pyenv + Anaconda + Gurobi</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>Anaconda は jupyter や spyder など, Python 開発に便利なツールや科学計算に必要なライブラリがセットで入ったパッケージ.
@@ -344,55 +346,65 @@ Anaconda Python との共存は可能.</li>
 </div>
 </div>
 
-<div id="outline-container-org6c7015d" class="outline-2">
-<h2 id="org6c7015d"><span class="section-number-2">2</span> pyenv のインストール</h2>
+<div id="outline-container-org0faa56b" class="outline-2">
+<h2 id="org0faa56b"><span class="section-number-2">2</span> pyenv のインストール</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li><p>
-<code>homebrew</code> を使って <code>pyenv</code> をインストールする
+<a href="./homebrew.html">Homebrew</a> の段階で既にインストールされているはず．
 </p>
 
 <p>
 ターミナルから以下を入力
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">brew update
-brew install pyenv
-<span style="color: #b0c4de;">echo</span> <span style="color: #bdb76b;">''</span> &gt;&gt; ~/.bash_profile
-<span style="color: #b0c4de;">echo</span> <span style="color: #bdb76b;">'# the following lines were inserted for pyenv'</span> &gt;&gt; ~/.bash_profile
-<span style="color: #b0c4de;">echo</span> <span style="color: #bdb76b;">'export PYENV_ROOT="${HOME}/.pyenv"'</span> &gt;&gt; ~/.bash_profile
-<span style="color: #b0c4de;">echo</span> <span style="color: #bdb76b;">'export PATH="${PYENV_ROOT}/bin:$PATH"'</span> &gt;&gt; ~/.bash_profile
-<span style="color: #b0c4de;">echo</span> <span style="color: #bdb76b;">'eval "$(</span><span style="color: #fa8072;">pyenv</span><span style="color: #bdb76b;"> init -)"'</span> &gt;&gt; ~/.bash_profile
-<span style="color: #b0c4de;">echo</span> <span style="color: #bdb76b;">'# the above lines were inserted for pyenv'</span> &gt;&gt; ~/.bash_profile
-<span style="color: #ffffff;">exec</span> $<span style="color: #9acd32;">SHELL</span> -l
+<pre class="src src-sh"><span style="color: #DCDCCC; font-weight: bold;">echo</span> <span style="color: #CC9393;">''</span> &gt;&gt; ~/.bash_profile 
+<span style="color: #DCDCCC; font-weight: bold;">echo</span> <span style="color: #CC9393;">'# the following lines were inserted for pyenv'</span> &gt;&gt; ~/.bash_profile
+<span style="color: #DCDCCC; font-weight: bold;">echo</span> <span style="color: #CC9393;">'export PYENV_ROOT="${HOME}/.pyenv"'</span> &gt;&gt; ~/.bash_profile
+<span style="color: #DCDCCC; font-weight: bold;">echo</span> <span style="color: #CC9393;">'export PATH="${PYENV_ROOT}/bin:$PATH"'</span> &gt;&gt; ~/.bash_profile
+<span style="color: #DCDCCC; font-weight: bold;">echo</span> <span style="color: #CC9393;">'eval "$(</span><span style="color: #CC9393;">pyenv</span><span style="color: #CC9393;"> init -)"'</span> &gt;&gt; ~/.bash_profile
+<span style="color: #DCDCCC; font-weight: bold;">echo</span> <span style="color: #CC9393;">'# the above lines were inserted for pyenv'</span> &gt;&gt; ~/.bash_profile
+<span style="color: #F0DFAF; font-weight: bold;">exec</span> $<span style="color: #DFAF8F;">SHELL</span> -l
 </pre>
 </div></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org74af0d2" class="outline-2">
-<h2 id="org74af0d2"><span class="section-number-2">3</span> Anaconda のインストール</h2>
+<div id="outline-container-orge000369" class="outline-2">
+<h2 id="orge000369"><span class="section-number-2">3</span> Anaconda のインストール</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li><p>
-<code>pyenv</code> を使って Anaconda2 系の最新バージョンを確認する
+<code>pyenv</code> を使って Anaconda3 系の最新バージョンを確認する
 </p>
 
 <p>
 ターミナルから以下を入力
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">pyenv install -l | grep anaconda2-
-<span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#23550;&#24540;&#12377;&#12427;&#12496;&#12540;&#12472;&#12519;&#12531;&#12364;&#34920;&#31034;&#12373;&#12428;&#12427;</span>
-  anaconda2-2.4.0
-  anaconda2-2.4.1
-  anaconda2-2.5.0
-  anaconda2-4.0.0
-  anaconda2-4.1.0
-  anaconda2-4.1.1
-  anaconda2-4.2.0
-  anaconda2-4.3.0 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#8592; &#26368;&#26032;&#29256;&#12398;&#12496;&#12540;&#12472;&#12519;&#12531;&#12434;&#35226;&#12360;&#12390;&#12362;&#12367;</span>
+<pre class="src src-sh">pyenv install -l | grep anaconda3-
+  <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">&#23550;&#24540;&#12377;&#12427;&#12496;&#12540;&#12472;&#12519;&#12531;&#12364;&#34920;&#31034;&#12373;&#12428;&#12427;</span>
+  anaconda3-2.0.0
+  anaconda3-2.0.1
+  anaconda3-2.1.0
+  anaconda3-2.2.0
+  anaconda3-2.3.0
+  anaconda3-2.4.0
+  anaconda3-2.4.1
+  anaconda3-2.5.0
+  anaconda3-4.0.0
+  anaconda3-4.1.0
+  anaconda3-4.1.1
+  anaconda3-4.2.0
+  anaconda3-4.3.0
+  anaconda3-4.3.1
+  anaconda3-4.4.0
+  anaconda3-5.0.0
+  anaconda3-5.0.1
+  anaconda3-5.1.0
+  anaconda3-5.2.0
+  anaconda3-5.3.0 <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">&#8592; &#26368;&#26032;&#29256;&#12398;&#12496;&#12540;&#12472;&#12519;&#12531;&#12434;&#35226;&#12360;&#12390;&#12362;&#12367;</span>
 </pre>
 </div></li>
 <li><p>
@@ -403,45 +415,88 @@ brew install pyenv
 ターミナルから以下を入力
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">pyenv install anaconda2-4.3.0 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#19978;&#12391;&#30906;&#35469;&#12375;&#12383;&#26368;&#26032;&#29256;&#12434;&#20837;&#21147;</span>
-<span style="color: #b0c4de;">echo</span> <span style="color: #bdb76b;">'export PATH="$PYENV_ROOT/versions/anaconda2-4.3.0/bin:$PATH"'</span> &gt;&gt; ~/.bash_profile
-<span style="color: #b0c4de;">source</span> ~/.bash_profile
+<pre class="src src-sh">pyenv install anaconda3-5.3.0 <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">&#19978;&#12391;&#30906;&#35469;&#12375;&#12383;&#26368;&#26032;&#29256;&#12434;&#20837;&#21147;</span>
 </pre>
 </div></li>
 
 <li><p>
-<code>pyenv global</code> を使って Python 環境を Anaconda2系 に切り替える
+<code>pyenv global</code> を使って Python 環境を Anaconda3系 に切り替える
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">pyenv global anaconda2-4.3.0
+<pre class="src src-sh">pyenv global anaconda3-5.3.0
 </pre>
 </div></li>
+</ul>
+</div>
+</div>
 
-<li><p>
-<code>conda</code> を使ってパッケージをアップデートする
-</p>
-
+<div id="outline-container-org62c8a5a" class="outline-2">
+<h2 id="org62c8a5a"><span class="section-number-2">4</span> <code>conda</code> を使った Python モジュール管理</h2>
+<div class="outline-text-2" id="text-4">
 <p>
 Anaconda と同時にインストールされる <code>conda</code> という Python 用パッケージ管理ツールを使えば,
 新しいモジュールをインストールしたり, 既存のモジュールをアップデートしたりできる.
 </p>
 
+<p>
+Anaconda のインストールが終わったら，ターミナルから下記を実行しよう:
+</p>
 <div class="org-src-container">
-<pre class="src src-sh">conda update --all
+<pre class="src src-sh">conda update conda <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">conda &#33258;&#36523;&#12434;&#12450;&#12483;&#12503;&#12487;&#12540;&#12488;</span>
+conda update --all <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#12373;&#12428;&#12390;&#12356;&#12427;&#12514;&#12472;&#12517;&#12540;&#12523;&#12434;&#12450;&#12483;&#12503;&#12487;&#12540;&#12488;</span>
 </pre>
-</div></li>
-</ul>
+</div>
+
+<p>
+次に，長江研で必要になる(or 必要になりそうな)モジュールは，以下の通り：
+</p>
+<ol class="org-ol">
+<li>numpy</li>
+<li>scipy</li>
+<li>matplotlib</li>
+<li>pandas</li>
+<li>networkx</li>
+</ol>
+<p>
+特に最初の3つは無いと途方に暮れるレベルなので, <code>conda install</code> でインストールしておこう．
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">conda install numpy scipy matplotlib pandas networkx
+</pre>
+</div>
+
+<p>
+Python <code>conda</code> は <code>homebrew</code> の Anaconda/Python 版. 
+主な使い方は，ターミナルから下記のようなコマンドで利用可能.
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">conda install [&#12514;&#12472;&#12517;&#12540;&#12523;&#21517;] <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">&#25351;&#23450;&#12375;&#12383;&#12514;&#12472;&#12517;&#12540;&#12523;&#12434;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523; </span>
+conda search [&#12514;&#12472;&#12517;&#12540;&#12523;&#21517;] <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">&#25351;&#23450;&#12375;&#12383;&#12514;&#12472;&#12517;&#12540;&#12523;&#12434;&#26908;&#32034;(*&#12394;&#12393;&#12398;&#12527;&#12452;&#12523;&#12489;&#12459;&#12540;&#12489;&#12418;&#20351;&#12360;&#12427;)</span>
+conda update conda <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">conda &#33258;&#36523;&#12434;&#12450;&#12483;&#12503;&#12487;&#12540;&#12488;</span>
+conda update --all <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">&#20840;&#12390;&#12398;&#12514;&#12472;&#12517;&#12540;&#12523;&#12434;&#12450;&#12483;&#12503;&#12487;&#12540;&#12488;</span>
+</pre>
+</div>
+<p>
+<code>conda install</code> や <code>conda update</code> を実行するとどうなるかが知りたいだけの場合は, <code>--dry-run</code> オプションをつけて
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">conda install --dry-run [&#12514;&#12472;&#12517;&#12540;&#12523;&#21517;]
+conda update --dry-run --all
+</pre>
+</div>
+<p>
+などとするとよい．
+</p>
 </div>
 </div>
 
-<div id="outline-container-orgbd6b52f" class="outline-2">
-<h2 id="orgbd6b52f"><span class="section-number-2">4</span> Gurobi のインストール</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-orgc26cff3" class="outline-2">
+<h2 id="orgc26cff3"><span class="section-number-2">5</span> Gurobi のインストール</h2>
+<div class="outline-text-2" id="text-5">
 <ul class="org-ul">
-<li><code>conda</code> を使って Gurobi をインストールする</li>
-</ul>
-
-
+<li><p>
+<code>conda</code> を使って Gurobi をインストールする :
+</p>
 <div class="org-src-container">
 <pre class="src src-sh">conda config --add channels http://conda.anaconda.org/gurobi
 conda install gurobi
@@ -450,26 +505,25 @@ conda install gurobi
 
 <p>
 参考: <a href="http://www.gurobi.com/downloads/get-anaconda">http://www.gurobi.com/downloads/get-anaconda</a>
-</p>
+</p></li>
 
-<ul class="org-ul">
 <li>ライセンスをインストールする
 参考: <a href="http://www.gurobi.com/documentation/7.0/quickstart_mac/retrieving_a_free_academic.html#subsection:academiclicense">http://www.gurobi.com/documentation/7.0/quickstart_mac/retrieving_a_free_academic.html#subsection:academiclicense</a></li>
 </ul>
 </div>
 
-<div id="outline-container-orga42a49c" class="outline-3">
-<h3 id="orga42a49c"><span class="section-number-3">4.1</span> Gurobi アカウントの作成とアカデミック・ライセンスの取得</h3>
-<div class="outline-text-3" id="text-4-1">
+<div id="outline-container-org770fa85" class="outline-3">
+<h3 id="org770fa85"><span class="section-number-3">5.1</span> Gurobi アカウントの作成とアカデミック・ライセンスの取得</h3>
+<div class="outline-text-3" id="text-5-1">
 <p>
 以下の情報は
 <a href="http://www.gurobi.com/products/licensing-and-pricing/academic-licensing">http://www.gurobi.com/products/licensing-and-pricing/academic-licensing</a> に基づい
 ている．
 </p>
 </div>
-<div id="outline-container-org5141b8b" class="outline-4">
-<h4 id="org5141b8b"><span class="section-number-4">4.1.1</span> Gurobi のアカウント・ライセンスについて</h4>
-<div class="outline-text-4" id="text-4-1-1">
+<div id="outline-container-org0d60dad" class="outline-4">
+<h4 id="org0d60dad"><span class="section-number-4">5.1.1</span> Gurobi のアカウント・ライセンスについて</h4>
+<div class="outline-text-4" id="text-5-1-1">
 <p>
 Gurobi のアカデミック・ライセンスは以下の制約の下で利用可能である：
 </p>
@@ -483,9 +537,9 @@ Gurobi のアカデミック・ライセンスは以下の制約の下で利用�
 </div>
 </div>
 
-<div id="outline-container-orga09ddff" class="outline-4">
-<h4 id="orga09ddff"><span class="section-number-4">4.1.2</span> アカウント作成，ライセンスの取得および認証の方法</h4>
-<div class="outline-text-4" id="text-4-1-2">
+<div id="outline-container-orga485e19" class="outline-4">
+<h4 id="orga485e19"><span class="section-number-4">5.1.2</span> アカウント作成，ライセンスの取得および認証の方法</h4>
+<div class="outline-text-4" id="text-5-1-2">
 <ol class="org-ol">
 <li><p>
 <a href="http://www.gurobi.com">http://www.gurobi.com</a> にアクセスし，Register をクリック
@@ -538,12 +592,13 @@ Free Academic License のページが表示されるので, End User License Agr
 </div>
 </div>
 </div>
-<div id="outline-container-orgf7ac06f" class="outline-2">
-<h2 id="orgf7ac06f"><span class="section-number-2">5</span> jupyter を使ってみる</h2>
-<div class="outline-text-2" id="text-5">
-</div><div id="outline-container-org9efd0fb" class="outline-3">
-<h3 id="org9efd0fb"><span class="section-number-3">5.1</span> jupyter とは</h3>
-<div class="outline-text-3" id="text-5-1">
+<div id="outline-container-org231abac" class="outline-2">
+<h2 id="org231abac"><span class="section-number-2">6</span> jupyter を使ってみる</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-orgb3f24c7" class="outline-3">
+<h3 id="orgb3f24c7"><span class="section-number-3">6.1</span> jupyter とは</h3>
+<div class="outline-text-3" id="text-6-1">
 <p>
 Python の対話型インタープリタを拡張したもの. 
 </p>
@@ -554,9 +609,9 @@ Python の対話型インタープリタを拡張したもの.
 </dl>
 </div>
 </div>
-<div id="outline-container-org5bfe26e" class="outline-3">
-<h3 id="org5bfe26e"><span class="section-number-3">5.2</span> jupyter qtconsole を使ってみる</h3>
-<div class="outline-text-3" id="text-5-2">
+<div id="outline-container-org1fe5eed" class="outline-3">
+<h3 id="org1fe5eed"><span class="section-number-3">6.2</span> jupyter qtconsole を使ってみる</h3>
+<div class="outline-text-3" id="text-6-2">
 <ul class="org-ul">
 <li><p>
 ターミナルから以下を入力:
@@ -577,16 +632,16 @@ Python の対話型インタープリタを拡張したもの.
 開いたコンソールに以下を入力. <code>Ctrl+RET</code> で(実行せずに)セル内で改行. <code>Shift+RET</code> でセルを実行.
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #ffffff;">from</span> gurobipy <span style="color: #ffffff;">import</span> *
-<span style="color: #f5deb3; background-color: #000000;">m</span> = Model()
-<span style="color: #f5deb3; background-color: #000000;">v0</span> = m.addVar()
-<span style="color: #f5deb3; background-color: #000000;">v1</span> = m.addVar()
+<pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">from</span> gurobipy <span style="color: #F0DFAF; font-weight: bold;">import</span> *
+<span style="color: #DFAF8F;">m</span> = Model()
+<span style="color: #DFAF8F;">v0</span> = m.addVar()
+<span style="color: #DFAF8F;">v1</span> = m.addVar()
 m.update()
-m.addConstr(v0-v1 &lt;= <span style="color: #f5deb3; background-color: #000000;">4</span>) <span style="color: #00cd66;"># Constraint 1</span>
-m.addConstr(v0+v1 &lt;= <span style="color: #f5deb3; background-color: #000000;">4</span>) <span style="color: #00cd66;"># Constraint 2</span>
-m.addConstr(-<span style="color: #f5deb3; background-color: #000000;">0</span>.<span style="color: #f5deb3; background-color: #000000;">25</span>*v0 + v1 &lt;= <span style="color: #f5deb3; background-color: #000000;">1</span>) <span style="color: #00cd66;"># Constraint 3</span>
-m.setObjective(v1, GRB.MAXIMIZE) <span style="color: #00cd66;"># Objective: maximize v1</span>
-<span style="color: #f5deb3; background-color: #000000;">m.params.outputflag</span> = <span style="color: #f5deb3; background-color: #000000;">0</span>
+m.addConstr(v0-v1 &lt;= 4) <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">Constraint 1</span>
+m.addConstr(v0+v1 &lt;= 4) <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">Constraint 2</span>
+m.addConstr(-0.25*v0 + v1 &lt;= 1) <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">Constraint 3</span>
+m.setObjective(v1, GRB.MAXIMIZE) <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">Objective: maximize v1</span>
+<span style="color: #DFAF8F;">m.params.outputflag</span> = 0
 m.optimize()
 </pre>
 </div>
@@ -594,11 +649,12 @@ m.optimize()
 続いて, 下記を入力して実行:
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #ffffff;">import</span> matplotlib.pyplot <span style="color: #ffffff;">as</span> pyplot
-pyplot.plot([<span style="color: #f5deb3; background-color: #000000;">0</span>,<span style="color: #f5deb3; background-color: #000000;">4</span>], [<span style="color: #f5deb3; background-color: #000000;">0</span>,<span style="color: #f5deb3; background-color: #000000;">4</span>]) <span style="color: #00cd66;"># Constraint 1</span>
-pyplot.plot([<span style="color: #f5deb3; background-color: #000000;">4</span>,<span style="color: #f5deb3; background-color: #000000;">0</span>], [<span style="color: #f5deb3; background-color: #000000;">0</span>,<span style="color: #f5deb3; background-color: #000000;">4</span>]) <span style="color: #00cd66;"># Constraint 2</span>
-pyplot.plot([<span style="color: #f5deb3; background-color: #000000;">0</span>,<span style="color: #f5deb3; background-color: #000000;">4</span>], [<span style="color: #f5deb3; background-color: #000000;">1</span>,<span style="color: #f5deb3; background-color: #000000;">2</span>]) <span style="color: #00cd66;"># Constraint 3</span>
-pyplot.plot([v0.x], [v1.x], <span style="color: #bdb76b;">'ro'</span>) <span style="color: #00cd66;"># Plot the optimal vertex</span>
+<pre class="src src-python">%matplotlib inline <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">&#12371;&#12428;&#12434;&#23455;&#34892;&#12377;&#12427;&#12392;, qtconsole &#19978;&#12395;&#12464;&#12521;&#12501;&#12434;&#12503;&#12525;&#12483;&#12488;&#12391;&#12365;&#12427;</span>
+<span style="color: #F0DFAF; font-weight: bold;">import</span> matplotlib.pyplot <span style="color: #F0DFAF; font-weight: bold;">as</span> pyplot
+pyplot.plot([0,4], [0,4]) <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">Constraint 1</span>
+pyplot.plot([4,0], [0,4]) <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">Constraint 2</span>
+pyplot.plot([0,4], [1,2]) <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">Constraint 3</span>
+pyplot.plot([v0.x], [v1.x], <span style="color: #CC9393;">'ro'</span>) <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">Plot the optimal vertex</span>
 pyplot.show()
 </pre>
 </div>
@@ -614,17 +670,17 @@ pyplot.show()
 </div>
 </div>
 
-<div id="outline-container-orga80e4fe" class="outline-3">
-<h3 id="orga80e4fe"><span class="section-number-3">5.3</span> jupyter notebook を使ってみる</h3>
-<div class="outline-text-3" id="text-5-3">
+<div id="outline-container-org3198d59" class="outline-3">
+<h3 id="org3198d59"><span class="section-number-3">6.3</span> jupyter notebook を使ってみる</h3>
+<div class="outline-text-3" id="text-6-3">
 <ul class="org-ul">
 <li><p>
 ターミナルから以下を入力:
 </p>
 <div class="org-src-container">
 <pre class="src src-sh">mkdir ~/Downloads/jupyter_notebook
-<span style="color: #b0c4de;">pushd</span> ~/Downloads/jupyter_notebook
-jupyter notebook
+<span style="color: #DCDCCC; font-weight: bold;">pushd</span> ~/Downloads/jupyter_notebook
+jupyter notebook 
 </pre>
 </div>
 <p>
@@ -671,22 +727,22 @@ Use ```Gurobi``` to find the *optimal solution* for the following **linear progr
 2つ目のセルの種別が <code>Code</code> になっていることを確認した上で, 以下を記述:
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #ffffff;">from</span> gurobipy <span style="color: #ffffff;">import</span> *
-<span style="color: #f5deb3; background-color: #000000;">m</span> = Model()
-<span style="color: #f5deb3; background-color: #000000;">v0</span> = m.addVar()                  <span style="color: #00cd66;"># Unknown variable 1</span>
-<span style="color: #f5deb3; background-color: #000000;">v1</span> = m.addVar()                  <span style="color: #00cd66;"># Unknown variable 2</span>
-m.update()                       <span style="color: #00cd66;"># Update the model</span>
-m.addConstr(v0-v1 &lt;= <span style="color: #f5deb3; background-color: #000000;">4</span>)          <span style="color: #00cd66;"># Constraint 1</span>
-m.addConstr(v0+v1 &lt;= <span style="color: #f5deb3; background-color: #000000;">4</span>)          <span style="color: #00cd66;"># Constraint 2</span>
-m.addConstr(-<span style="color: #f5deb3; background-color: #000000;">0</span>.<span style="color: #f5deb3; background-color: #000000;">25</span>*v0 + v1 &lt;= <span style="color: #f5deb3; background-color: #000000;">1</span>)  <span style="color: #00cd66;"># Constraint 3</span>
-m.setObjective(v1, GRB.MAXIMIZE) <span style="color: #00cd66;"># Objective: maximize v1</span>
-<span style="color: #f5deb3; background-color: #000000;">m.params.outputflag</span> = <span style="color: #f5deb3; background-color: #000000;">0</span>          <span style="color: #00cd66;"># Silent mode</span>
-m.optimize()                     <span style="color: #00cd66;"># Do optimize</span>
-<span style="color: #ffffff;">import</span> matplotlib.pyplot <span style="color: #ffffff;">as</span> pyplot
-pyplot.plot([<span style="color: #f5deb3; background-color: #000000;">0</span>,<span style="color: #f5deb3; background-color: #000000;">4</span>], [<span style="color: #f5deb3; background-color: #000000;">0</span>,<span style="color: #f5deb3; background-color: #000000;">4</span>])         <span style="color: #00cd66;"># Constraint 1</span>
-pyplot.plot([<span style="color: #f5deb3; background-color: #000000;">4</span>,<span style="color: #f5deb3; background-color: #000000;">0</span>], [<span style="color: #f5deb3; background-color: #000000;">0</span>,<span style="color: #f5deb3; background-color: #000000;">4</span>])         <span style="color: #00cd66;"># Constraint 2</span>
-pyplot.plot([<span style="color: #f5deb3; background-color: #000000;">0</span>,<span style="color: #f5deb3; background-color: #000000;">4</span>], [<span style="color: #f5deb3; background-color: #000000;">1</span>,<span style="color: #f5deb3; background-color: #000000;">2</span>])         <span style="color: #00cd66;"># Constraint 3</span>
-pyplot.plot([v0.x], [v1.x], <span style="color: #bdb76b;">'ro'</span>) <span style="color: #00cd66;"># The optimal solution</span>
+<pre class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">from</span> gurobipy <span style="color: #F0DFAF; font-weight: bold;">import</span> *
+<span style="color: #DFAF8F;">m</span> = Model()
+<span style="color: #DFAF8F;">v0</span> = m.addVar()                  <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">Unknown variable 1</span>
+<span style="color: #DFAF8F;">v1</span> = m.addVar()                  <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">Unknown variable 2</span>
+m.update()                       <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">Update the model</span>
+m.addConstr(v0-v1 &lt;= 4)          <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">Constraint 1</span>
+m.addConstr(v0+v1 &lt;= 4)          <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">Constraint 2</span>
+m.addConstr(-0.25*v0 + v1 &lt;= 1)  <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">Constraint 3</span>
+m.setObjective(v1, GRB.MAXIMIZE) <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">Objective: maximize v1</span>
+<span style="color: #DFAF8F;">m.params.outputflag</span> = 0          <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">Silent mode</span>
+m.optimize()                     <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">Do optimize</span>
+<span style="color: #F0DFAF; font-weight: bold;">import</span> matplotlib.pyplot <span style="color: #F0DFAF; font-weight: bold;">as</span> pyplot
+pyplot.plot([0,4], [0,4])         <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">Constraint 1</span>
+pyplot.plot([4,0], [0,4])         <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">Constraint 2</span>
+pyplot.plot([0,4], [1,2])         <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">Constraint 3</span>
+pyplot.plot([v0.x], [v1.x], <span style="color: #CC9393;">'ro'</span>) <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">The optimal solution</span>
 pyplot.show()
 </pre>
 </div>
@@ -706,6 +762,7 @@ pyplot.show()
 <li>メニューバーから File &gt; Save &amp; Checkpoint を選べば, 現在のノートブックを保存できる.</li>
 </ul>
 
+
 <div class="figure">
 <p><img src="fig/jupyter_notebook_title_save.png" alt="jupyter_notebook_title_save.png" width="700" />
 </p>
@@ -719,7 +776,7 @@ pyplot.show()
 ターミナルから
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">jupyter notebook [&#12479;&#12452;&#12488;&#12523;].ipynb
+<pre class="src src-sh">jupyter notebook [&#12479;&#12452;&#12488;&#12523;].ipynb 
 </pre>
 </div></li>
 </ul></li>
@@ -733,7 +790,7 @@ LaTeX でコンパイルした上で PDF ファイルにしてくれる.
 </div>
 <div id="postamble" class="status">
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
-<p class="date">Created: 2017-03-10 Fri 22:08</p>
+<p class="date">Created: 2018-12-21 Fri 09:35</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

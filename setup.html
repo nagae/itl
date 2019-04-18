@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
-<!-- 2017-04-04 Tue 11:07 -->
+<!-- 2018-12-17 Mon 16:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ITL/セットアップ編</title>
@@ -68,6 +68,7 @@
   pre.src-fortran:before { content: 'Fortran'; }
   pre.src-gnuplot:before { content: 'gnuplot'; }
   pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
   pre.src-js:before { content: 'Javascript'; }
   pre.src-latex:before { content: 'LaTeX'; }
@@ -181,15 +182,15 @@
 </style>
 <link rel=stylesheet href="style.css" type="text/css">
 
-<script type="text/javascript" src="http://orgmode.org/org-info.js">
+<script type="text/javascript" src="https://orgmode.org/org-info.js">
 /**
  *
- * @source: http://orgmode.org/org-info.js
+ * @source: https://orgmode.org/org-info.js
  *
  * @licstart  The following is the entire license notice for the
- *  JavaScript code in http://orgmode.org/org-info.js.
+ *  JavaScript code in https://orgmode.org/org-info.js.
  *
- * Copyright (C) 2012-2013 Free Software Foundation, Inc.
+ * Copyright (C) 2012-2018 Free Software Foundation, Inc.
  *
  *
  * The JavaScript code in this tag is free software: you can
@@ -207,7 +208,7 @@
  * through which recipients can access the Corresponding Source.
  *
  * @licend  The above is the entire license notice
- * for the JavaScript code in http://orgmode.org/org-info.js.
+ * for the JavaScript code in https://orgmode.org/org-info.js.
  *
  */
 </script>
@@ -218,7 +219,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -257,7 +258,7 @@ org_html_manager.setup();  // activate after the parameters are set
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -310,54 +311,54 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#27425;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgcae368a">1. Mac のセットアップ</a>
+<li><a href="#orgd11dc2a">1. Mac のセットアップ</a>
 <ul>
-<li><a href="#org8d5ba21">1.1. ソフトウェア・アップデートの実行</a></li>
-<li><a href="#orgecfe6dd">1.2. キーバインドの変更</a></li>
-<li><a href="#org7b3a6e3">1.3. Trackpad の設定</a></li>
-<li><a href="#org2ab93d0">1.4. キーボード・ショートカット</a></li>
+<li><a href="#org20805d4">1.1. ソフトウェア・アップデートの実行</a></li>
+<li><a href="#orgcdecbe5">1.2. キーバインドの変更</a></li>
+<li><a href="#org3f3c5cd">1.3. Trackpad の設定</a></li>
+<li><a href="#org58ea113">1.4. キーボード・ショートカット</a></li>
 </ul>
 </li>
-<li><a href="#org927a4f7">2. ソフトウェアのインストール方法</a></li>
-<li><a href="#orgaad4f64">3. セキュリティソフトウェアのインストール</a>
+<li><a href="#orgcbf36ca">2. ソフトウェアのインストール方法</a></li>
+<li><a href="#org8c627c2">3. セキュリティソフトウェアのインストール</a>
 <ul>
-<li><a href="#org5ff6e00">3.1. f-secure</a></li>
-<li><a href="#org77c846b">3.2. Symantec Endpoint Protection (SEP)</a></li>
+<li><a href="#org26d9ca7">3.1. f-secure</a></li>
 </ul>
 </li>
-<li><a href="#org4e0f4ff">4. Terminal.app の起動と設定</a>
+<li><a href="#org07d2b07">4. Terminal.app の起動と設定</a>
 <ul>
-<li><a href="#org39f0a7f">4.1. <code>~/.inputrc</code> の設定</a></li>
+<li><a href="#orgdc7fba7">4.1. <code>~/.inputrc</code> の設定</a></li>
 </ul>
 </li>
-<li><a href="#orgebbd471">5. BetterTouchTools のインストールと設定</a>
+<li><a href="#org0bd63af">5. BetterTouchTools のインストールと設定</a>
 <ul>
-<li><a href="#org262f9b8">5.1. BTT の特徴</a></li>
-<li><a href="#orga51204f">5.2. インストール方法</a></li>
-<li><a href="#orgc16481d">5.3. Window Snapping の設定</a></li>
-<li><a href="#org531777a">5.4. 設定例</a></li>
+<li><a href="#orgbae115f">5.1. BTT の特徴</a></li>
+<li><a href="#orgb887baa">5.2. インストール方法</a></li>
+<li><a href="#org185cde7">5.3. Window Snapping の設定</a></li>
+<li><a href="#org2b0020f">5.4. 設定例</a></li>
 </ul>
 </li>
-<li><a href="#orgbc44e94">6. 各種サービスのアカウント作成とユーティリティのインストール</a>
+<li><a href="#org873332c">6. 各種サービスのアカウント作成とユーティリティのインストール</a>
 <ul>
-<li><a href="#org396baab">6.1. iCloud ()</a></li>
-<li><a href="#org82913db">6.2. Dropbox ()</a></li>
-<li><a href="#org5609ee1">6.3. Cloud.app ()</a></li>
-<li><a href="#orgf3a408e">6.4. Github ()</a></li>
-<li><a href="#org285b2bb">6.5. Bitbucket ()</a></li>
-<li><a href="#orgb865e76">6.6. Evernote (必須ではない)</a></li>
-<li><a href="#org17d2d27">6.7. Github / Bitbucket に SSH で接続する</a></li>
+<li><a href="#org41087d5">6.1. iCloud (https://www.icloud.com)</a></li>
+<li><a href="#orgd915968">6.2. Dropbox (https://www.dropbox.com/)</a></li>
+<li><a href="#orgeed4cc6">6.3. Cloud.app (http://getcloudapp.com)</a></li>
+<li><a href="#orgba9b555">6.4. Github (https://github.com)</a></li>
+<li><a href="#orgd1170ea">6.5. Bitbucket (https://bitbucket.org)</a></li>
+<li><a href="#orgb4ee10c">6.6. Evernote (必須ではない)</a></li>
+<li><a href="#org181253a">6.7. Github / Bitbucket に SSH で接続する</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgcae368a" class="outline-2">
-<h2 id="orgcae368a"><span class="section-number-2">1</span> Mac のセットアップ</h2>
+<div id="outline-container-orgd11dc2a" class="outline-2">
+<h2 id="orgd11dc2a"><span class="section-number-2">1</span> Mac のセットアップ</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-org8d5ba21" class="outline-3">
-<h3 id="org8d5ba21"><span class="section-number-3">1.1</span> ソフトウェア・アップデートの実行</h3>
+</div>
+<div id="outline-container-org20805d4" class="outline-3">
+<h3 id="org20805d4"><span class="section-number-3">1.1</span> ソフトウェア・アップデートの実行</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Mac に入っている OS が最新のものになっていない場合，後述する機能が使えない可能性があるばかりか，悪意のある攻撃に対する脆弱性が修正されていないかもしれない．
@@ -367,11 +368,12 @@ Mac に入っている OS が最新のものになっていない場合，後述
 </ul>
 </div>
 </div>
-<div id="outline-container-orgecfe6dd" class="outline-3">
-<h3 id="orgecfe6dd"><span class="section-number-3">1.2</span> キーバインドの変更</h3>
+<div id="outline-container-orgcdecbe5" class="outline-3">
+<h3 id="orgcdecbe5"><span class="section-number-3">1.2</span> キーバインドの変更</h3>
 <div class="outline-text-3" id="text-1-2">
-</div><div id="outline-container-org5e713ae" class="outline-4">
-<h4 id="org5e713ae"><span class="section-number-4">1.2.1</span> ctrl と caps lock を入れ替える</h4>
+</div>
+<div id="outline-container-org2dd2a65" class="outline-4">
+<h4 id="org2dd2a65"><span class="section-number-4">1.2.1</span> ctrl と caps lock を入れ替える</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 本研究室では ctrl を多用するので，あまり使わない caps lock と入れ替える．
@@ -381,8 +383,8 @@ Mac に入っている OS が最新のものになっていない場合，後述
 </ul>
 </div>
 </div>
-<div id="outline-container-org96a378f" class="outline-4">
-<h4 id="org96a378f"><span class="section-number-4">1.2.2</span> spotlight のキーバインドを ctrl + shift + space に変更</h4>
+<div id="outline-container-orgbcb778b" class="outline-4">
+<h4 id="orgbcb778b"><span class="section-number-4">1.2.2</span> spotlight のキーバインドを ctrl + shift + space に変更</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 デフォルトでは ctrl + space だが，このキーバインドは後述する Emacs で「mark set」の機能に割当てられている．
@@ -393,8 +395,8 @@ Mac に入っている OS が最新のものになっていない場合，後述
 </div>
 </div>
 </div>
-<div id="outline-container-org7b3a6e3" class="outline-3">
-<h3 id="org7b3a6e3"><span class="section-number-3">1.3</span> Trackpad の設定</h3>
+<div id="outline-container-org3f3c5cd" class="outline-3">
+<h3 id="org3f3c5cd"><span class="section-number-3">1.3</span> Trackpad の設定</h3>
 <div class="outline-text-3" id="text-1-3">
 <ul class="org-ul">
 <li>システム環境設定→トラックパッド</li>
@@ -406,16 +408,16 @@ Mac に入っている OS が最新のものになっていない場合，後述
 </div>
 </div>
 </div>
-<div id="outline-container-org2ab93d0" class="outline-3">
-<h3 id="org2ab93d0"><span class="section-number-3">1.4</span> キーボード・ショートカット</h3>
+<div id="outline-container-org58ea113" class="outline-3">
+<h3 id="org58ea113"><span class="section-number-3">1.4</span> キーボード・ショートカット</h3>
 <div class="outline-text-3" id="text-1-4">
 <ul class="org-ul">
 <li>Mac では ⌘ (command), control, shift, option のキーとアルファベットや数字キーを組み合わえることで様々な機能を呼び出せる．
 <a href="http://support.apple.com/kb/HT1343?viewlocale=ja_JP">http://support.apple.com/kb/HT1343?viewlocale=ja_JP</a></li>
 </ul>
 </div>
-<div id="outline-container-orgc447454" class="outline-4">
-<h4 id="orgc447454"><span class="section-number-4">1.4.1</span> 覚えておくと便利なショートカット</h4>
+<div id="outline-container-org31ac725" class="outline-4">
+<h4 id="org31ac725"><span class="section-number-4">1.4.1</span> 覚えておくと便利なショートカット</h4>
 <div class="outline-text-4" id="text-1-4-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="all" frame="hsides" ID="align_left">
 
@@ -482,8 +484,8 @@ Mac に入っている OS が最新のものになっていない場合，後述
 </div>
 </div>
 </div>
-<div id="outline-container-org927a4f7" class="outline-2">
-<h2 id="org927a4f7"><span class="section-number-2">2</span> ソフトウェアのインストール方法</h2>
+<div id="outline-container-orgcbf36ca" class="outline-2">
+<h2 id="orgcbf36ca"><span class="section-number-2">2</span> ソフトウェアのインストール方法</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Mac ではソフトウェアのインストール方法に3通りある．
@@ -500,30 +502,32 @@ dmg ファイルをダブルクリックすると，新しいドライブが認�
 </p>
 </div>
 </div>
-<div id="outline-container-orgaad4f64" class="outline-2">
-<h2 id="orgaad4f64"><span class="section-number-2">3</span> セキュリティソフトウェアのインストール</h2>
+<div id="outline-container-org8c627c2" class="outline-2">
+<h2 id="org8c627c2"><span class="section-number-2">3</span> セキュリティソフトウェアのインストール</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
-<li>f-secure は後述する homebrew のパッケージディレクトリ(<code>/usr/local/</code>)を「汚染」しない．</li>
-<li>SEPの方が安定しているようだが <code>/usr/local/lib/</code> の下に <code>.dylib</code> を作るので面倒．</li>
+<li>F-secure は後述する homebrew のパッケージディレクトリ(<code>/usr/local/</code>)を「汚染」しない．</li>
+<li><strike>SEPの方が安定しているようだが <code>/usr/local/lib/</code> の下に <code>.dylib</code> を作るので面倒．</strike>
+契約改訂により現在は利用不可能．</li>
 </ul>
 </div>
-<div id="outline-container-org5ff6e00" class="outline-3">
-<h3 id="org5ff6e00"><span class="section-number-3">3.1</span> f-secure</h3>
+<div id="outline-container-org26d9ca7" class="outline-3">
+<h3 id="org26d9ca7"><span class="section-number-3">3.1</span> f-secure</h3>
 <div class="outline-text-3" id="text-3-1">
-</div><div id="outline-container-orgcf9d8de" class="outline-4">
-<h4 id="orgcf9d8de"><span class="section-number-4">3.1.1</span> インストール方法</h4>
+</div>
+<div id="outline-container-org0e77113" class="outline-4">
+<h4 id="org0e77113"><span class="section-number-4">3.1.1</span> インストール方法</h4>
 <div class="outline-text-4" id="text-3-1-1">
 <ul class="org-ul">
 <li>TAINS のホームページからセキュリティ対策ソフトウェア-&gt;エフセキュアを選択：
-<a href="https://www2.tains.tohoku.ac.jp/fw/dfw/INFO/modules/pico/index.php?content_id=16">https://www2.tains.tohoku.ac.jp/fw/dfw/INFO/modules/pico/index.php?content_id=16</a></li>
+<a href="https://www2.tains.tohoku.ac.jp/security/f-secure">https://www2.tains.tohoku.ac.jp/security/f-secure</a></li>
 <li>「ダウンロード」ボタンから dmg  ファイルをダウンロードする</li>
 <li>dmg ファイルをマウントし，F-Secure****.mpkg というファイルをダブルクリック</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbd8b54a" class="outline-4">
-<h4 id="orgbd8b54a"><span class="section-number-4">3.1.2</span> ライセンスコードの取得</h4>
+<div id="outline-container-org4e19e51" class="outline-4">
+<h4 id="org4e19e51"><span class="section-number-4">3.1.2</span> ライセンスコードの取得</h4>
 <div class="outline-text-4" id="text-3-1-2">
 <ul class="org-ul">
 <li>同じページから「ライセンスキーコードを取得する」ボタンをクリック</li>
@@ -533,57 +537,41 @@ dmg ファイルをダブルクリックすると，新しいドライブが認�
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb11cf77" class="outline-4">
-<h4 id="orgb11cf77"><span class="section-number-4">3.1.3</span> アンインストール方法</h4>
+<div id="outline-container-orgfcbffc4" class="outline-4">
+<h4 id="orgfcbffc4"><span class="section-number-4">3.1.3</span> アンインストール方法</h4>
 <div class="outline-text-4" id="text-3-1-3">
 <ul class="org-ul">
 <li><p>
 コマンドラインから以下を実行(<a href="http://community.f-secure.com/t5/PC-Mac/Mac-%E7%89%88%E3%82%92%E3%82%A2%E3%83%B3%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B%E3%81%AB%E3%81%AF%E3%81%A9%E3%81%86%E3%81%99%E3%82%8C%E3%81%B0%E8%89%AF%E3%81%84%E3%81%A7%E3%81%99%E3%81%8B/ta-p/19814">参考</a>)：
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">sudo /usr/local/f-secure/bin/uninstall_MacProtection
+<pre class="src src-sh">sudo /usr/local/f-secure/bin/uninstall_MacProtection 
 </pre>
 </div></li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-org77c846b" class="outline-3">
-<h3 id="org77c846b"><span class="section-number-3">3.2</span> Symantec Endpoint Protection (SEP)</h3>
-<div class="outline-text-3" id="text-3-2">
-</div><div id="outline-container-org0d1dc0a" class="outline-4">
-<h4 id="org0d1dc0a"><span class="section-number-4">3.2.1</span> インストール方法</h4>
-<div class="outline-text-4" id="text-3-2-1">
-<ul class="org-ul">
-<li>TAIN のホームページからセキュリティ対策ソフトウェア-&gt;シマンテックを選択：
-<a href="https://www2.tains.tohoku.ac.jp/fw/dfw/INFO/modules/pico/index.php?content_id=3">https://www2.tains.tohoku.ac.jp/fw/dfw/INFO/modules/pico/index.php?content_id=3</a></li>
-<li>MacOS X (32/64ビット)からダウンロードをクリック</li>
-<li>dmg ファイルをマウントし「Symantec Endpoint Protection Installer」というファイルをダブルクリック</li>
-<li>指示に従って再起動する</li>
-</ul>
 </div>
-</div>
-</div>
-</div>
-<div id="outline-container-org4e0f4ff" class="outline-2">
-<h2 id="org4e0f4ff"><span class="section-number-2">4</span> Terminal.app の起動と設定</h2>
+<div id="outline-container-org07d2b07" class="outline-2">
+<h2 id="org07d2b07"><span class="section-number-2">4</span> Terminal.app の起動と設定</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 以降では，ターミナル(<code>Terminal.app</code>)をよく使う．
 以下の設定ファイルを作成/編集することで，より便利に使えるようになる．
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">~/.bash_profile                 <span style="color: #00cd66;"># </span><span style="color: #00cd66;">PATH &#12420; &#12424;&#12367;&#20351;&#12358;&#12467;&#12510;&#12531;&#12489;&#12398;&#21029;&#21517;(alias)&#12394;&#12393;</span>
-~/.inputrc                      <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#20837;&#21147;&#12398;&#12459;&#12473;&#12479;&#12510;&#12452;&#12474;</span>
+<pre class="src src-sh">~/.bash_profile                 <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">PATH &#12420; &#12424;&#12367;&#20351;&#12358;&#12467;&#12510;&#12531;&#12489;&#12398;&#21029;&#21517;(alias)&#12394;&#12393;</span>
+~/.inputrc                      <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">&#20837;&#21147;&#12398;&#12459;&#12473;&#12479;&#12510;&#12452;&#12474;</span>
 </pre>
 </div>
 </div>
-<div id="outline-container-org39f0a7f" class="outline-3">
-<h3 id="org39f0a7f"><span class="section-number-3">4.1</span> <code>~/.inputrc</code> の設定</h3>
+<div id="outline-container-orgdc7fba7" class="outline-3">
+<h3 id="orgdc7fba7"><span class="section-number-3">4.1</span> <code>~/.inputrc</code> の設定</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 ターミナルでは，上下キーや <code>Ctrl-n / Ctrl-p</code> によって過去に入力した履歴を表示させられる．
-さらに，=~/.inputrc= に以下を記載しておくと，最初の数文字を入力してから上下キーや <code>Ctrl-n/Ctrl-p</code> を押すと，
+さらに, <code>~/.inputrc</code> に以下を記載しておくと，最初の数文字を入力してから上下キーや <code>Ctrl-n/Ctrl-p</code> を押すと，
 その文字で始まる履歴のみを表示させられる．
 </p>
 <script src="https://gist.github.com/nagae/10461176.js"></script>
@@ -592,7 +580,7 @@ dmg ファイルをダブルクリックすると，新しいドライブが認�
 ターミナルで以下のように入力すれば， <code>~/.initrc</code> を作成できる．
 </p>
 <div class="org-src-container">
-<pre class="src src-sh"><span style="color: #b0c4de;">cd</span> ~/
+<pre class="src src-sh"><span style="color: #DCDCCC; font-weight: bold;">cd</span> ~/
 curl -O https://gist.githubusercontent.com/nagae/10461176/raw/.inputrc
 </pre>
 </div>
@@ -600,45 +588,34 @@ curl -O https://gist.githubusercontent.com/nagae/10461176/raw/.inputrc
 </div>
 </div>
 
-<div id="outline-container-orgebbd471" class="outline-2">
-<h2 id="orgebbd471"><span class="section-number-2">5</span> BetterTouchTools のインストールと設定</h2>
+<div id="outline-container-org0bd63af" class="outline-2">
+<h2 id="org0bd63af"><span class="section-number-2">5</span> BetterTouchTools のインストールと設定</h2>
 <div class="outline-text-2" id="text-5">
-</div><div id="outline-container-org262f9b8" class="outline-3">
-<h3 id="org262f9b8"><span class="section-number-3">5.1</span> BTT の特徴</h3>
+</div>
+<div id="outline-container-orgbae115f" class="outline-3">
+<h3 id="orgbae115f"><span class="section-number-3">5.1</span> BTT の特徴</h3>
 <div class="outline-text-3" id="text-5-1">
 <ul class="org-ul">
 <li>Trackpad による様々なジェスチャーを各種機能に設定できる</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orga51204f" class="outline-3">
-<h3 id="orga51204f"><span class="section-number-3">5.2</span> インストール方法</h3>
+<div id="outline-container-orgb887baa" class="outline-3">
+<h3 id="orgb887baa"><span class="section-number-3">5.2</span> インストール方法</h3>
 <div class="outline-text-3" id="text-5-2">
-</div><div id="outline-container-org2fdd1e7" class="outline-4">
-<h4 id="org2fdd1e7"><span class="section-number-4">5.2.1</span> マウスを使う場合</h4>
+</div>
+<div id="outline-container-org81e5e22" class="outline-4">
+<h4 id="org81e5e22"><span class="section-number-4">5.2.1</span> マウスを使う場合</h4>
 <div class="outline-text-4" id="text-5-2-1">
 <ul class="org-ul">
-<li><a href="http://www.boastr.de/">http://www.boastr.de/</a> から BetterTouchTool.zip をダウンロード</li>
-<li>BetterTouchTool.zip をダブルクリック</li>
-<li>生成された BetterTouchTool.app を <code>/Applications/</code> フォルダに移動．</li>
+<li><a href="https://folivora.ai">https://folivora.ai</a> から DOWNLOAD TRIAL (45 DAYS)をダウンロード</li>
+<li>BetterTouchTool.app を <code>/Applications/</code> フォルダに移動．</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org05820fc" class="outline-4">
-<h4 id="org05820fc"><span class="section-number-4">5.2.2</span> ターミナルだけでも行える</h4>
-<div class="outline-text-4" id="text-5-2-2">
-<div class="org-src-container">
-<pre class="src src-screen"><span style="color: #b0c4de;">cd</span> ~/Downloads/
-curl -LO http://bettertouchtool.net/BetterTouchTool.zip
-unzip -o BetterTouchTool.zip
-mv BetterTouchTool.app/ /Applications/
-</pre>
 </div>
-</div>
-</div>
-</div>
-<div id="outline-container-orgc16481d" class="outline-3">
-<h3 id="orgc16481d"><span class="section-number-3">5.3</span> Window Snapping の設定</h3>
+<div id="outline-container-org185cde7" class="outline-3">
+<h3 id="org185cde7"><span class="section-number-3">5.3</span> Window Snapping の設定</h3>
 <div class="outline-text-3" id="text-5-3">
 <ul class="org-ul">
 <li><p>
@@ -677,19 +654,20 @@ mv BetterTouchTool.app/ /Applications/
 </ul>
 </div>
 </div>
-<div id="outline-container-org531777a" class="outline-3">
-<h3 id="org531777a"><span class="section-number-3">5.4</span> 設定例</h3>
+<div id="outline-container-org2b0020f" class="outline-3">
+<h3 id="org2b0020f"><span class="section-number-3">5.4</span> 設定例</h3>
 <div class="outline-text-3" id="text-5-4">
-</div><div id="outline-container-orgce38e2b" class="outline-4">
-<h4 id="orgce38e2b"><span class="section-number-4">5.4.1</span> ログインと同時に起動するように</h4>
+</div>
+<div id="outline-container-org6bf8c9b" class="outline-4">
+<h4 id="org6bf8c9b"><span class="section-number-4">5.4.1</span> ログインと同時に起動するように</h4>
 <div class="outline-text-4" id="text-5-4-1">
 <p>
 Preference -&gt; Settings -&gt; Launch BetterTouchTools on startup をチェック
 </p>
 </div>
 </div>
-<div id="outline-container-org8eefb16" class="outline-4">
-<h4 id="org8eefb16"><span class="section-number-4">5.4.2</span> Global Setting</h4>
+<div id="outline-container-org1e2c10a" class="outline-4">
+<h4 id="org1e2c10a"><span class="section-number-4">5.4.2</span> Global Setting</h4>
 <div class="outline-text-4" id="text-5-4-2">
 <ul class="org-ul">
 <li><a href="btt_setting">設定ファイル</a> をダウンロード</li>
@@ -823,14 +801,16 @@ BetterTouchTool の左メニューから「Import」を選択し，ダウンロ�
 </div>
 </div>
 
-<div id="outline-container-orgbc44e94" class="outline-2">
-<h2 id="orgbc44e94"><span class="section-number-2">6</span> 各種サービスのアカウント作成とユーティリティのインストール</h2>
+<div id="outline-container-org873332c" class="outline-2">
+<h2 id="org873332c"><span class="section-number-2">6</span> 各種サービスのアカウント作成とユーティリティのインストール</h2>
 <div class="outline-text-2" id="text-6">
-</div><div id="outline-container-org396baab" class="outline-3">
-<h3 id="org396baab"><span class="section-number-3">6.1</span> iCloud (<a href="https://www.icloud.com">https://www.icloud.com</a>)</h3>
+</div>
+<div id="outline-container-org41087d5" class="outline-3">
+<h3 id="org41087d5"><span class="section-number-3">6.1</span> iCloud (<a href="https://www.icloud.com">https://www.icloud.com</a>)</h3>
 <div class="outline-text-3" id="text-6-1">
-</div><div id="outline-container-orgf2a5b25" class="outline-4">
-<h4 id="orgf2a5b25"><span class="section-number-4">6.1.1</span> 特徴</h4>
+</div>
+<div id="outline-container-org5d6e3bb" class="outline-4">
+<h4 id="org5d6e3bb"><span class="section-number-4">6.1.1</span> 特徴</h4>
 <div class="outline-text-4" id="text-6-1-1">
 <ul class="org-ul">
 <li>無料で5GBのクラウドストレージ．</li>
@@ -839,8 +819,8 @@ BetterTouchTool の左メニューから「Import」を選択し，ダウンロ�
 </ul>
 </div>
 </div>
-<div id="outline-container-org67be95b" class="outline-4">
-<h4 id="org67be95b"><span class="section-number-4">6.1.2</span> アカウント作成・ユーティリティ</h4>
+<div id="outline-container-org8b90b35" class="outline-4">
+<h4 id="org8b90b35"><span class="section-number-4">6.1.2</span> アカウント作成・ユーティリティ</h4>
 <div class="outline-text-4" id="text-6-1-2">
 <ul class="org-ul">
 <li><a href="http://www.apple.com/jp/icloud/setup/mac.html">http://www.apple.com/jp/icloud/setup/mac.html</a> を参考に</li>
@@ -848,11 +828,12 @@ BetterTouchTool の左メニューから「Import」を選択し，ダウンロ�
 </div>
 </div>
 </div>
-<div id="outline-container-org82913db" class="outline-3">
-<h3 id="org82913db"><span class="section-number-3">6.2</span> Dropbox (<a href="https://www.dropbox.com/">https://www.dropbox.com/</a>)</h3>
+<div id="outline-container-orgd915968" class="outline-3">
+<h3 id="orgd915968"><span class="section-number-3">6.2</span> Dropbox (<a href="https://www.dropbox.com/">https://www.dropbox.com/</a>)</h3>
 <div class="outline-text-3" id="text-6-2">
-</div><div id="outline-container-org1b51f08" class="outline-4">
-<h4 id="org1b51f08"><span class="section-number-4">6.2.1</span> 特徴</h4>
+</div>
+<div id="outline-container-orgd638df9" class="outline-4">
+<h4 id="orgd638df9"><span class="section-number-4">6.2.1</span> 特徴</h4>
 <div class="outline-text-4" id="text-6-2-1">
 <ul class="org-ul">
 <li>無料で2GBのクラウドストレージ．</li>
@@ -863,8 +844,8 @@ BetterTouchTool の左メニューから「Import」を選択し，ダウンロ�
 </ul>
 </div>
 </div>
-<div id="outline-container-org0424cd6" class="outline-4">
-<h4 id="org0424cd6"><span class="section-number-4">6.2.2</span> アカウント作成・ユーティリティ</h4>
+<div id="outline-container-org15db266" class="outline-4">
+<h4 id="org15db266"><span class="section-number-4">6.2.2</span> アカウント作成・ユーティリティ</h4>
 <div class="outline-text-4" id="text-6-2-2">
 <ul class="org-ul">
 <li><a href="http://db.tt/pqpSl9b">http://db.tt/pqpSl9b</a> からアカウントを作成</li>
@@ -873,11 +854,12 @@ BetterTouchTool の左メニューから「Import」を選択し，ダウンロ�
 </div>
 </div>
 </div>
-<div id="outline-container-org5609ee1" class="outline-3">
-<h3 id="org5609ee1"><span class="section-number-3">6.3</span> Cloud.app (<a href="http://getcloudapp.com">http://getcloudapp.com</a>)</h3>
+<div id="outline-container-orgeed4cc6" class="outline-3">
+<h3 id="orgeed4cc6"><span class="section-number-3">6.3</span> Cloud.app (<a href="http://getcloudapp.com">http://getcloudapp.com</a>)</h3>
 <div class="outline-text-3" id="text-6-3">
-</div><div id="outline-container-org8478ee8" class="outline-4">
-<h4 id="org8478ee8"><span class="section-number-4">6.3.1</span> 特徴</h4>
+</div>
+<div id="outline-container-org244a824" class="outline-4">
+<h4 id="org244a824"><span class="section-number-4">6.3.1</span> 特徴</h4>
 <div class="outline-text-4" id="text-6-3-1">
 <ul class="org-ul">
 <li>ファイルの共有機能に特化．</li>
@@ -887,8 +869,8 @@ BetterTouchTool の左メニューから「Import」を選択し，ダウンロ�
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd37d022" class="outline-4">
-<h4 id="orgd37d022"><span class="section-number-4">6.3.2</span> アカウント作成・ユーティリティ</h4>
+<div id="outline-container-org85ee0dc" class="outline-4">
+<h4 id="org85ee0dc"><span class="section-number-4">6.3.2</span> アカウント作成・ユーティリティ</h4>
 <div class="outline-text-4" id="text-6-3-2">
 <ul class="org-ul">
 <li><a href="http://getcloudapp.com">http://getcloudapp.com</a> からアカウント作成＆ユーティリティをダウンロード</li>
@@ -896,8 +878,8 @@ BetterTouchTool の左メニューから「Import」を選択し，ダウンロ�
 </ul>
 </div>
 </div>
-<div id="outline-container-org92191c8" class="outline-4">
-<h4 id="org92191c8"><span class="section-number-4">6.3.3</span> 参考サイト</h4>
+<div id="outline-container-orgc866c81" class="outline-4">
+<h4 id="orgc866c81"><span class="section-number-4">6.3.3</span> 参考サイト</h4>
 <div class="outline-text-4" id="text-6-3-3">
 <ul class="org-ul">
 <li><a href="http://www.dtp-transit.jp/utility/post_1650.html">http://www.dtp-transit.jp/utility/post_1650.html</a></li>
@@ -906,11 +888,12 @@ BetterTouchTool の左メニューから「Import」を選択し，ダウンロ�
 </div>
 </div>
 </div>
-<div id="outline-container-orgf3a408e" class="outline-3">
-<h3 id="orgf3a408e"><span class="section-number-3">6.4</span> Github (<a href="https://github.com">https://github.com</a>)</h3>
+<div id="outline-container-orgba9b555" class="outline-3">
+<h3 id="orgba9b555"><span class="section-number-3">6.4</span> Github (<a href="https://github.com">https://github.com</a>)</h3>
 <div class="outline-text-3" id="text-6-4">
-</div><div id="outline-container-org95107a0" class="outline-4">
-<h4 id="org95107a0"><span class="section-number-4">6.4.1</span> 特徴</h4>
+</div>
+<div id="outline-container-org400cf32" class="outline-4">
+<h4 id="org400cf32"><span class="section-number-4">6.4.1</span> 特徴</h4>
 <div class="outline-text-4" id="text-6-4-1">
 <ul class="org-ul">
 <li>Bitbucket と同じ git リポジトリ</li>
@@ -921,8 +904,8 @@ BetterTouchTool の左メニューから「Import」を選択し，ダウンロ�
 </ul>
 </div>
 </div>
-<div id="outline-container-org4a3ffad" class="outline-4">
-<h4 id="org4a3ffad"><span class="section-number-4">6.4.2</span> アカウント作成・ユーティリティ</h4>
+<div id="outline-container-orgafc6b71" class="outline-4">
+<h4 id="orgafc6b71"><span class="section-number-4">6.4.2</span> アカウント作成・ユーティリティ</h4>
 <div class="outline-text-4" id="text-6-4-2">
 <ul class="org-ul">
 <li><a href="https://github.com">https://github.com</a> から Sign up</li>
@@ -930,8 +913,8 @@ BetterTouchTool の左メニューから「Import」を選択し，ダウンロ�
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf6dd339" class="outline-4">
-<h4 id="orgf6dd339"><span class="section-number-4">6.4.3</span> 参考サイト</h4>
+<div id="outline-container-org453116a" class="outline-4">
+<h4 id="org453116a"><span class="section-number-4">6.4.3</span> 参考サイト</h4>
 <div class="outline-text-4" id="text-6-4-3">
 <ul class="org-ul">
 <li><a href="http://qiita.com/items/4272209ad80380933000">http://qiita.com/items/4272209ad80380933000</a></li>
@@ -940,11 +923,12 @@ BetterTouchTool の左メニューから「Import」を選択し，ダウンロ�
 </div>
 </div>
 </div>
-<div id="outline-container-org285b2bb" class="outline-3">
-<h3 id="org285b2bb"><span class="section-number-3">6.5</span> Bitbucket (<a href="https://bitbucket.org">https://bitbucket.org</a>)</h3>
+<div id="outline-container-orgd1170ea" class="outline-3">
+<h3 id="orgd1170ea"><span class="section-number-3">6.5</span> Bitbucket (<a href="https://bitbucket.org">https://bitbucket.org</a>)</h3>
 <div class="outline-text-3" id="text-6-5">
-</div><div id="outline-container-orgf08957b" class="outline-4">
-<h4 id="orgf08957b"><span class="section-number-4">6.5.1</span> 特徴</h4>
+</div>
+<div id="outline-container-org1752d23" class="outline-4">
+<h4 id="org1752d23"><span class="section-number-4">6.5.1</span> 特徴</h4>
 <div class="outline-text-4" id="text-6-5-1">
 <ul class="org-ul">
 <li>Github と同様の git リポジトリ</li>
@@ -955,8 +939,8 @@ BetterTouchTool の左メニューから「Import」を選択し，ダウンロ�
 </ul>
 </div>
 </div>
-<div id="outline-container-org7ff142b" class="outline-4">
-<h4 id="org7ff142b"><span class="section-number-4">6.5.2</span> アカウント作成・ユーティリティ</h4>
+<div id="outline-container-orgb3820bc" class="outline-4">
+<h4 id="orgb3820bc"><span class="section-number-4">6.5.2</span> アカウント作成・ユーティリティ</h4>
 <div class="outline-text-4" id="text-6-5-2">
 <ul class="org-ul">
 <li><a href="https://bitbucket.org">https://bitbucket.org</a> から sign up</li>
@@ -966,8 +950,8 @@ BetterTouchTool の左メニューから「Import」を選択し，ダウンロ�
 </ul>
 </div>
 </div>
-<div id="outline-container-org2b28519" class="outline-4">
-<h4 id="org2b28519"><span class="section-number-4">6.5.3</span> 参考サイト</h4>
+<div id="outline-container-orgdb10316" class="outline-4">
+<h4 id="orgdb10316"><span class="section-number-4">6.5.3</span> 参考サイト</h4>
 <div class="outline-text-4" id="text-6-5-3">
 <dl class="org-dl">
 <dt>サインアップ</dt><dd><a href="http://toruuetani.bitbucket.org/bitbucket.html#id2">http://toruuetani.bitbucket.org/bitbucket.html#id2</a></dd>
@@ -975,27 +959,28 @@ BetterTouchTool の左メニューから「Import」を選択し，ダウンロ�
 </div>
 </div>
 </div>
-<div id="outline-container-orgb865e76" class="outline-3">
-<h3 id="orgb865e76"><span class="section-number-3">6.6</span> Evernote (必須ではない)</h3>
+<div id="outline-container-orgb4ee10c" class="outline-3">
+<h3 id="orgb4ee10c"><span class="section-number-3">6.6</span> Evernote (必須ではない)</h3>
 </div>
-<div id="outline-container-org17d2d27" class="outline-3">
-<h3 id="org17d2d27"><span class="section-number-3">6.7</span> Github / Bitbucket に SSH で接続する</h3>
+<div id="outline-container-org181253a" class="outline-3">
+<h3 id="org181253a"><span class="section-number-3">6.7</span> Github / Bitbucket に SSH で接続する</h3>
 <div class="outline-text-3" id="text-6-7">
-</div><div id="outline-container-orgf027f4a" class="outline-4">
-<h4 id="orgf027f4a"><span class="section-number-4">6.7.1</span> 公開鍵と秘密鍵の作成</h4>
+</div>
+<div id="outline-container-orgd99b3f0" class="outline-4">
+<h4 id="orgd99b3f0"><span class="section-number-4">6.7.1</span> 公開鍵と秘密鍵の作成</h4>
 <div class="outline-text-4" id="text-6-7-1">
 <ul class="org-ul">
 <li><p>
 <code>~/.ssh</code> にSSH用の公開鍵と秘密鍵を作る
 </p>
 <div class="org-src-container">
-<pre class="src src-screen">mkdir ~/.ssh                    <span style="color: #00cd66;"># </span><span style="color: #00cd66;">ssh&#29992;&#12398;&#12487;&#12451;&#12524;&#12463;&#12488;&#12522;&#12434;&#20316;&#12427;</span>
-<span style="color: #b0c4de;">cd</span> ~/.ssh                       <span style="color: #00cd66;"># </span><span style="color: #00cd66;">.ssh &#12487;&#12451;&#12524;&#12463;&#12488;&#12522;ni&#31227;&#21205;</span>
-ssh-keygen -t rsa -f id_rsa     <span style="color: #00cd66;"># </span><span style="color: #00cd66;">id_rsa &#12392;&#12356;&#12358;&#31192;&#23494;&#37749;&#12392; id_rsa.pub &#12392;&#12356;&#12358;&#20844;&#38283;&#37749;&#12434;&#20316;&#12427;</span>
-<span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#12497;&#12473;&#12501;&#12524;&#12540;&#12474;&#12434;&#20837;&#21147;&#12375;&#12383;&#24460;&#65292;&#21516;&#12376;&#12418;&#12398;&#12434;&#12418;&#12358;&#19968;&#24230;&#20837;&#21147;&#65294;</span>
-<span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#12371;&#12371;&#12391;&#20837;&#21147;&#12377;&#12427;&#12497;&#12473;&#12501;&#12524;&#12540;&#12474;&#12399;&#65292;Mac &#26412;&#20307;&#12408;&#12398;&#12525;&#12464;&#12452;&#12531;&#29992;&#12392;&#21516;&#12376;&#12395;&#12375;&#12390;&#12418;&#21839;&#38988;&#28961;&#12356;&#65294;</span>
-chmod 700 ~/.ssh                <span style="color: #00cd66;"># </span><span style="color: #00cd66;">.ssh &#12487;&#12451;&#12524;&#12463;&#12488;&#12522;&#12398;&#12450;&#12463;&#12475;&#12473;&#27177;&#12434;&#12300;&#31649;&#29702;&#32773;&#12398;&#12415;&#35501;&#12415;&#26360;&#12365;&#23455;&#34892;&#21487;&#12301;&#12395;&#22793;&#26356;</span>
-chmod 600 ~/.ssh/id_rsa.pub     <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#20844;&#38283;&#37749;&#12398;&#12450;&#12463;&#12475;&#12473;&#27177;&#12434;&#12300;&#31649;&#29702;&#32773;&#12398;&#12415;&#35501;&#12415;&#26360;&#12365;&#21487;&#12301;&#12395;&#22793;&#26356;</span>
+<pre class="src src-screen">mkdir ~/.ssh                    <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">ssh&#29992;&#12398;&#12487;&#12451;&#12524;&#12463;&#12488;&#12522;&#12434;&#20316;&#12427;</span>
+<span style="color: #DCDCCC; font-weight: bold;">cd</span> ~/.ssh                       <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">.ssh &#12487;&#12451;&#12524;&#12463;&#12488;&#12522;ni&#31227;&#21205;</span>
+ssh-keygen -t rsa -f id_rsa     <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">id_rsa &#12392;&#12356;&#12358;&#31192;&#23494;&#37749;&#12392; id_rsa.pub &#12392;&#12356;&#12358;&#20844;&#38283;&#37749;&#12434;&#20316;&#12427;</span>
+<span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">&#12497;&#12473;&#12501;&#12524;&#12540;&#12474;&#12434;&#20837;&#21147;&#12375;&#12383;&#24460;&#65292;&#21516;&#12376;&#12418;&#12398;&#12434;&#12418;&#12358;&#19968;&#24230;&#20837;&#21147;&#65294;</span>
+<span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">&#12371;&#12371;&#12391;&#20837;&#21147;&#12377;&#12427;&#12497;&#12473;&#12501;&#12524;&#12540;&#12474;&#12399;&#65292;Mac &#26412;&#20307;&#12408;&#12398;&#12525;&#12464;&#12452;&#12531;&#29992;&#12392;&#21516;&#12376;&#12395;&#12375;&#12390;&#12418;&#21839;&#38988;&#28961;&#12356;&#65294;</span>
+chmod 700 ~/.ssh                <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">.ssh &#12487;&#12451;&#12524;&#12463;&#12488;&#12522;&#12398;&#12450;&#12463;&#12475;&#12473;&#27177;&#12434;&#12300;&#31649;&#29702;&#32773;&#12398;&#12415;&#35501;&#12415;&#26360;&#12365;&#23455;&#34892;&#21487;&#12301;&#12395;&#22793;&#26356;</span>
+chmod 600 ~/.ssh/id_rsa.pub     <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">&#20844;&#38283;&#37749;&#12398;&#12450;&#12463;&#12475;&#12473;&#27177;&#12434;&#12300;&#31649;&#29702;&#32773;&#12398;&#12415;&#35501;&#12415;&#26360;&#12365;&#21487;&#12301;&#12395;&#22793;&#26356;</span>
 </pre>
 </div></li>
 <li><p>
@@ -1008,8 +993,8 @@ chmod 600 ~/.ssh/id_rsa.pub     <span style="color: #00cd66;"># </span><span sty
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb25865b" class="outline-4">
-<h4 id="orgb25865b"><span class="section-number-4">6.7.2</span> Bitbucket に SSH の公開鍵を登録する</h4>
+<div id="outline-container-org494610e" class="outline-4">
+<h4 id="org494610e"><span class="section-number-4">6.7.2</span> Bitbucket に SSH の公開鍵を登録する</h4>
 <div class="outline-text-4" id="text-6-7-2">
 <ul class="org-ul">
 <li><p>
@@ -1053,7 +1038,7 @@ chmod 600 ~/.ssh/id_rsa.pub     <span style="color: #00cd66;"># </span><span sty
  Hostname bitbucket.org
  IdentityFile ~/.ssh/id_rsa
  TCPKeepAlive yes
- IdentitiesOnly yes
+ IdentitiesOnly yes  
 </pre>
 </div>
 <p>
@@ -1082,7 +1067,7 @@ Emacs を終了(C-x C-c; Ctrl を押しながら x, cとタイプ)する．</li>
 </p>
 <div class="org-src-container">
 <pre class="src src-sh">pbpaste &gt;&gt; ~/.ssh/config
-<span style="color: #b0c4de;">echo</span> &gt;&gt; ~/.ssh/config         <span style="color: #00cd66;"># </span><span style="color: #00cd66;">&#25913;&#34892;&#12434;&#21152;&#12360;&#12427;</span>
+<span style="color: #DCDCCC; font-weight: bold;">echo</span> &gt;&gt; ~/.ssh/config         <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">&#25913;&#34892;&#12434;&#21152;&#12360;&#12427;</span>
 </pre>
 </div></li>
 </ol></dd>
@@ -1104,11 +1089,11 @@ SSH接続を試してみる．ターミナル上で <code>ssh git@bitbucket.org<
 <pre class="src src-text">$ ssh git@bitbucket.org
 The authenticity of host 'bitbucket.org (207.223.240.182)' can't be established.
 RSA key fingerprint is 97:8c:1b:f2:.....
-Are you sure you want to continue connecting (yes/no)?
+Are you sure you want to continue connecting (yes/no)? 
 </pre>
 </div>
 <p>
-と表示されたら， <code>yes</code> を入力．
+と表示されたら, <code>yes</code> を入力．
 </p>
 <div class="org-src-container">
 <pre class="src src-text"># (Warning &#12364;&#20986;&#12427;&#12371;&#12392;&#12418;&#12354;&#12427;)
@@ -1126,8 +1111,8 @@ Connection to bitbucket.org closed.
 </div>
 </div>
 
-<div id="outline-container-org66facc4" class="outline-4">
-<h4 id="org66facc4"><span class="section-number-4">6.7.3</span> Github に SSH の公開鍵を登録する</h4>
+<div id="outline-container-orgb0a9e30" class="outline-4">
+<h4 id="orgb0a9e30"><span class="section-number-4">6.7.3</span> Github に SSH の公開鍵を登録する</h4>
 <div class="outline-text-4" id="text-6-7-3">
 <ul class="org-ul">
 <li><p>
@@ -1195,11 +1180,11 @@ SSH接続を試してみる．ターミナル上で <code>ssh git@github.com</co
 <pre class="src src-text">$ ssh git@github.com
 The authenticity of host 'github.com (204.232.175.90)' can't be established.
 RSA key fingerprint is 16:27:ac:a5:76:....
-Are you sure you want to continue connecting (yes/no)?
+Are you sure you want to continue connecting (yes/no)? 
 </pre>
 </div>
 <p>
-と表示されたら，=yes= を入力．
+と表示されたら, <code>yes</code> を入力．
 </p>
 <div class="org-src-container">
 <pre class="src src-text"># (Warning &#12364;&#20986;&#12427;&#12371;&#12392;&#12418;&#12354;&#12427;)
@@ -1215,15 +1200,15 @@ Connection to github.com closed.
 </ul>
 </div>
 </div>
-<div id="outline-container-org1f61d47" class="outline-4">
-<h4 id="org1f61d47"><span class="section-number-4">6.7.4</span> その他の SSH サーバーを登録する</h4>
+<div id="outline-container-orga2e2d8a" class="outline-4">
+<h4 id="orga2e2d8a"><span class="section-number-4">6.7.4</span> その他の SSH サーバーを登録する</h4>
 <div class="outline-text-4" id="text-6-7-4">
 <p>
 上述の方法を応用すれば，他の SSH サーバーにもSSH公開鍵を登録できる．
 例えば， <code>username@remote.to</code> というサーバーに登録したい場合は，まず，以下のようにターミナルから入力する．
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">cat ~/.ssh/id_rsa.pub | ssh username@remote.to <span style="color: #bdb76b;">"cat&gt;&gt;.ssh/authorized_keys"</span>
+<pre class="src src-sh">cat ~/.ssh/id_rsa.pub | ssh username@remote.to <span style="color: #CC9393;">"cat&gt;&gt;.ssh/authorized_keys"</span>
 </pre>
 </div>
 <p>
@@ -1241,8 +1226,8 @@ Connection to github.com closed.
 </div>
 </div>
 </div>
-<div id="outline-container-orgb0741dd" class="outline-4">
-<h4 id="orgb0741dd"><span class="section-number-4">6.7.5</span> Mac の keychain にパスワードを記録する</h4>
+<div id="outline-container-orgff340e6" class="outline-4">
+<h4 id="orgff340e6"><span class="section-number-4">6.7.5</span> Mac の keychain にパスワードを記録する</h4>
 <div class="outline-text-4" id="text-6-7-5">
 <p>
 SSH 用のパスワードを毎回入力するのはかなり面倒. 下記をターミナルから実行しておくことで,
@@ -1259,7 +1244,7 @@ Mac の keychain にSSHパスワードを記録しておける.
 </div>
 <div id="postamble" class="status">
 <p class="author">&#33879;&#32773;: Takeshi Nagae</p>
-<p class="date">Created: 2017-04-04 Tue 11:07</p>
+<p class="date">Created: 2018-12-17 Mon 16:47</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
