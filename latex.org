@@ -21,21 +21,9 @@
 * MacTeX のインストール
 [[./homebrew.org][Homebrew]] で既にインストールされているはず．
 
-* 日本語フォントの設定(ヒラギノフォントの埋め込みを可能に)
-以下を *1行づつ順に* ターミナルで実行(=sudo= でパスワードを打つ必要があることに注意)
-#+BEGIN_SRC sh
-sudo tlmgr update --self --all
-sudo tlmgr repository add http://contrib.texlive.info/current tlcontrib
-sudo tlmgr pinning add tlcontrib '*'
-sudo tlmgr install japanese-otf-nonfree japanese-otf-uptex-nonfree ptex-fontmaps-macos cjk-gs-integrate-macos
-sudo cjk-gs-integrate --link-texmf --cleanup
-curl -L -O https://raw.githubusercontent.com/texjporg/cjk-gs-support/master/cjk-gs-integrate-macos.pl
-sudo perl cjk-gs-integrate-macos.pl --link-texmf
-rm cjk-gs-integrate-macos.pl 
-sudo mktexlsr
-sudo kanji-config-updmap-sys --jis2004 hiragino-highsierra-pron
-#+END_SRC
-
+* 日本語フォントの設定
+https://github.com/munepi/bibunsho7-patch/releases
+へ行き，最新の patch を実行
 * COMMENT MacTeX のインストール
 https://snap.textfile.org/20151006085255/
 
